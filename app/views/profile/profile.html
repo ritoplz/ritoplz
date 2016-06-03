@@ -1,0 +1,61 @@
+<div class="container" style= "margin-top: -60px">
+  <form>
+
+
+     <!-- {{auth.profile.picture}}  -->
+
+     <section class= "header">
+        <h3 class= "title"> yo ! <b>{{auth.profile.name}}</b></h3>
+     </section>
+
+    <br>
+    <p><h5>Choose your regions.</h5></p>
+
+    <div class="row"> 
+    
+      <div class="three columns">
+        <label for="countrytInput">Server/Country</label>
+
+        <select name="regionSelect" class="u-full-width" ng-model="region">
+          <option ng-repeat="region in regions" value="{{region.name}}">{{region.name}}</option>
+        </select>
+      </div>
+
+      <div class="three columns">
+        <label for="exampleRecipientInput">State</label>
+        <select class="u-full-width" id="exampleRecipientInput">
+          <option value="Option 1">Questions</option>
+          <option value="Option 2">Admiration</option>
+          <option value="Option 3">Can I get your number?</option>
+        </select>
+      </div>
+
+      <div class="three columns">
+        <label for="exampleRecipientInput">City</label>
+        <select class="u-full-width" id="exampleRecipientInput">
+          <option value="Option 1">Questions</option>
+          <option value="Option 2">Admiration</option>
+          <option value="Option 3">Can I get your number?</option>
+        </select>
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="six colums">
+        <label for="exampleMessage">A bit about you.</label>
+        <textarea class="u-full-width" placeholder="Diamond mid laner looking for teams. . ." id="exampleMessage"></textarea>
+      </div>
+
+    </div>
+
+    <label class="example-send-yourself-copy">
+      <input type="checkbox">
+      <span class="label-body">Looking for 5x Team ?</span>
+    </label>
+
+    <input class="button-primary" type="submit" value="Submit">
+
+  </form>
+</div>

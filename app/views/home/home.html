@@ -1,0 +1,75 @@
+<!-- <md-toolbar>
+  <h1>halo</h1>
+</md-toolbar> -->
+
+<!-- <input type="text" ng-model="name" placeholder="Type your name here"/>
+<input type="button" value="Add Name" ng-click="addName()"/>
+<br/>
+<h1>Hello, {{name}}</h1>
+<hr/>
+<ul>
+<li ng-repeat="nm in names">{{nm.name}}</li>
+</ul> -->
+
+<script>
+  var config = JSON.parse(decodeURIComponent(escape(window.atob('eyJhdXRoMERvbWFpbiI6ImxlYWd1ZXJhbmtpbmdzLmF1dGgwLmNvbSIsImNhbGxiYWNrT25Mb2NhdGlvbkhhc2giOmZhbHNlLCJjYWxsYmFja1VSTCI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC8jIS9ob21lIiwiY2RuIjoiaHR0cHM6Ly9zZGsuYXV0aDAuY29tLyIsImNsaWVudElEIjoiSlJwUXZqRmJUNUdWRGdidkVvYzhOcWxveVlES3BVdFEiLCJkaWN0Ijp7InNpZ25pbiI6eyJ0aXRsZSI6IkxlYWd1ZSBSYW5raW5ncyJ9fSwiZXh0cmFQYXJhbXMiOnt9LCJpbnRlcm5hbE9wdGlvbnMiOnt9LCJwcm9tcHQiOmZhbHNlLCJ3aWRnZXRVcmwiOiJodHRwczovL2Nkbi5hdXRoMC5jb20vdzIvYXV0aDAtd2lkZ2V0LTUuMS5taW4uanMifQ=='))));
+
+  var connection = config.connection;
+  var prompt = config.prompt;
+
+  var initializationOptions = {
+    assetsUrl:  config.assetsUrl,
+    cdn:        config.cdn
+  };
+
+  var lock = new Auth0Lock(config.clientID, config.auth0Domain, initializationOptions);
+  
+  function login() {
+    lock.show({
+      icon:               'https://cldup.com/bxABgDlMvt.png',
+      callbackURL:        config.callbackURL,
+      focusInput:         false,
+      popup:              false,
+      responseType:       'token',
+      dict:               config.dict,
+      connections:        connection ? [connection] : null,
+      rememberLastLogin:  !prompt,
+      authParams:         config.internalOptions
+    });
+  }  
+
+</script>
+
+<!-- Primary Page Layout
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<div class="container" style="align: center;">
+
+  <section class="header">
+    <h2 class="title">Are you the best of your Region ?</h2>
+    <a class="button button-primary" ng-controller="HomeCtrl" onClick="login()">Join Rankings</a>
+    <a class="button button-primary" href="#!/dashboards">See Rankings</a>
+    <div class="value-props row">
+
+      <div class="four columns value-prop">
+        <img class="value-img" src="static/images/n_yasuo.png">
+        Link your Summoner to a profile, for example your Facebook, or a 
+        riotplz profile.
+      </div>
+
+      <div class="four columns value-prop">
+        <img class="value-img" src="static/images/n_vayne.png">
+        See who is the best player of your State, Country, or City.
+        Join those rankings as yourself and as a Summoner.
+      </div>
+
+      <div class="four columns value-prop">
+        <img class="value-img" src="static/images/n_veigar.png">
+        Rankings per Champion, per Elo, per Victory streak.
+        Rankings can change everytime, make sure you keep on top ! 
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
