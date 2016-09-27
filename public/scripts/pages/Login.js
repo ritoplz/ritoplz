@@ -7,24 +7,22 @@ export default class Login extends Component {
     return (
       <div>
         <div className='row'>
-          <section className='col-md-7'>
-            <h2 className='title'>Login</h2>
-            <p className='description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel lacus vel augue aliquet luctus. Ut urna libero.</p>
+          <h2 className='title'>Login</h2>
+          <p className='description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel lacus vel augue aliquet luctus. Ut urna libero.</p>
 
-            <form className='registration-form'>
-              <fieldset className='form-input'>
-                <label className='label'>E-mail</label>
-                <input className='input' type='text' name='email' />
-              </fieldset>
+          <form className='registration-form'>
+            <fieldset className='form-input'>
+              <label className='label'>E-mail</label>
+              <input className='input' type='text' name='email' />
+            </fieldset>
 
-              <fieldset className='form-input'>
-                <label className='label'>Password</label>
-                <input className='input' type='password' name='password' />
-              </fieldset>
+            <fieldset className='form-input'>
+              <label className='label'>Password</label>
+              <input className='input' type='password' name='password' />
+            </fieldset>
 
-              <button className='btn -secondary -large' type='submit'>Login</button>
-            </form>
-          </section>
+            <button className='btn -secondary -large' type='submit'>Login</button>
+          </form>
         </div>
       </div>
     )
