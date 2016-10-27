@@ -2,7 +2,7 @@
 
 import React, {Component} from 'react'
 
-export default class SignUp extends Component {
+export default class extends Component {
   constructor (props) {
     super(props)
     this.handleChange = this.handleChange.bind(this)
@@ -18,7 +18,7 @@ export default class SignUp extends Component {
   submitSignup (e) {
     e.preventDefault()
 
-    return fetch('http://localhost:3000/signup', {
+    return fetch('http://localhost:3001/signup', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -27,7 +27,7 @@ export default class SignUp extends Component {
         password: this.state.password
       })
     }).then((res) => {
-      console.log(res)
+      this.props.url.pushTo('/login')
     })
   }
 
