@@ -7,6 +7,18 @@ export default class extends Component {
   constructor (props) {
     super(props)
     this.submitSummoner = this.submitSummoner.bind(this)
+
+    this.state = {
+      user: {
+        username: '',
+        email: '',
+        emailConfirmed: ''
+      },
+      summoner: {
+        code: ''
+      },
+      profileReceived: false
+    }
   }
   
   componentDidMount() {
@@ -20,6 +32,14 @@ export default class extends Component {
     })
     .then(res => {
       console.log(res)
+
+      this.setState({
+        user: {
+          username: res.data.name,
+          email: res.data.email,
+          emailConfirmed: res.data.emailConfirmed.toString()
+        }
+      })
     })
   }
 
@@ -40,6 +60,12 @@ export default class extends Component {
       }
     }).then(res => {
       console.log(res)
+
+      this.setState({
+        summoner: {
+          code: res.data.code
+        }
+      })
     }).catch(err => {
       console.log(err)
     })
@@ -52,6 +78,13 @@ export default class extends Component {
           <h2 className='title'>Profile</h2>
           <p className='description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel lacus vel augue aliquet luctus. Ut urna libero.</p>
 
+          <header>
+            <h1>Welcome {this.state.user.username}</h1>
+            <h2>Email: {this.state.user.email}</h2>
+
+            <h3>Email Confirmed: {this.state.user.emailConfirmed}</h3>
+          </header>
+
           <form className='registration-form' onSubmit={this.submitSummoner}>
             <fieldset className='form-input'>
               <label className='label'>Summoner Name</label>
@@ -60,6 +93,8 @@ export default class extends Component {
 
             <button className='btn -secondary -large' type='submit'>Add Summoner</button>
           </form>
+
+          <h1>Summoner Code: {this.state.summoner.code}</h1>
         </div>
       </div>
     )
