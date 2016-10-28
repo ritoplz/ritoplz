@@ -8,8 +8,8 @@ export default class extends Component {
     super(props)
     this.submitSummoner = this.submitSummoner.bind(this)
   }
-
-  componentWillMount () {
+  
+  componentDidMount() {
     const localStorageRef = localStorage.getItem('token')
 
     axios.get('http://localhost:3001/account', {
@@ -25,17 +25,19 @@ export default class extends Component {
 
   submitSummoner (e) {
     e.preventDefault()
+
     const localStorageRef = localStorage.getItem('token')
 
-    fetch('http://localhost:3001/summoner', {
-      method: 'POST',
+    axios({
+      method: 'post',
+      url: 'http://localhost:3001/summoner',
+      data: {
+        name: this.name.value
+      },
       headers: {
         'Content-Type': 'application/json',
         'Authorization': localStorageRef
-      },
-      body: JSON.stringify({
-        name: this.name.value
-      })
+      }
     }).then(res => {
       console.log(res)
     }).catch(err => {
