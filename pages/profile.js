@@ -12,7 +12,7 @@ export default class extends Component {
   componentWillMount () {
     const localStorageRef = localStorage.getItem('token')
 
-    axios.get('http://localhost:3001/profile', {
+    axios.get('http://localhost:3001/account', {
       headers: { 
         'Content-Type': 'application/json',
         'Authorization': localStorageRef
@@ -25,10 +25,14 @@ export default class extends Component {
 
   submitSummoner (e) {
     e.preventDefault()
+    const localStorageRef = localStorage.getItem('token')
 
     fetch('http://localhost:3001/summoner', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': localStorageRef
+      },
       body: JSON.stringify({
         name: this.name.value
       })
