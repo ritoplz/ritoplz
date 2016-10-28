@@ -1,6 +1,7 @@
 'use strict'
 
 import React, {Component} from 'react'
+import axios from 'axios'
 
 export default class extends Component {
   constructor (props) {
@@ -11,14 +12,12 @@ export default class extends Component {
   submitLogin (e) {
     e.preventDefault()
 
-    fetch('http://localhost:3001/login', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        email: this.email.value,
-        password: this.password.value
-      })
+    axios.post('http://localhost:3001/login', {
+      email: this.email.value,
+      password: this.password.value
     }).then(res => {
+      const token = res.data.token
+      localStorage.setItem('token', token)
       this.props.url.pushTo('/profile')
     }).catch(err => {
       console.log(err)

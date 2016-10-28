@@ -1,11 +1,26 @@
 'use strict'
 
 import React, {Component} from 'react'
+import axios from 'axios'
 
 export default class extends Component {
   constructor (props) {
     super(props)
     this.submitSummoner = this.submitSummoner.bind(this)
+  }
+
+  componentWillMount () {
+    const localStorageRef = localStorage.getItem('token')
+
+    axios.get('http://localhost:3001/profile', {
+      headers: { 
+        'Content-Type': 'application/json',
+        'Authorization': localStorageRef
+      }
+    })
+    .then(res => {
+      console.log(res)
+    })
   }
 
   submitSummoner (e) {

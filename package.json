@@ -9,6 +9,7 @@
   "author": "Bu Kinoshita <bukinoshita@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.15.2",
     "next": "^1.0.0"
   },
   "scripts": {
