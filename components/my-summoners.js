@@ -10,7 +10,7 @@ export default props => (
     <h2 className={style(styles.title)}>My Summoners</h2>
 
     {props.summoners.map(summoner => {
-      return <Summoner cover={summoner.cover} name={summoner.name} code={summoner.code} state={summoner.state} />
+      return <Summoner key={summoner.id} cover={summoner.cover} name={summoner.name} code={summoner.code} state={summoner.state} />
     })}
   </section>
 )
