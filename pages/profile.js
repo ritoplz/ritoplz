@@ -77,7 +77,7 @@ export default class extends Component {
       <div>
         <div className={style(styles.row)}>
           <header className={style(styles.header.base)}>
-            <h1 className={style(styles.header.title)}>Hello {this.state.user.username}!</h1>
+            <h1 className={style(styles.header.title)}>Hello, <span className={style(styles.header.username)}>{this.state.user.username}</span>!</h1>
             <h3 className={style(styles.header.location)}>Sao Paulo, Brazil</h3>
 
             <hr className={style(styles.header.divider)}/>
@@ -88,6 +88,110 @@ export default class extends Component {
             <h3 className={style(styles.addSummoner.subtitle)}>To join the Ritoplz Ranking you must add your summoner</h3>
 
             <button className={style(styles.addSummoner.btn)}>Add summoner</button>
+          </section>
+
+          <section className={style(styles.summoner.page)}>
+            <h2 className={style(styles.summoner.pageTitle)}>My Summoners</h2>
+
+            <article className={style(styles.summoner.base)}>
+              <header className={style(styles.summoner.header)}>
+                <img className={style(styles.summoner.cover)} src="/static/leona.png" alt="" />
+              </header>
+
+              <ul className={style(styles.summoner.info)}>
+                <li className={style(styles.summoner.item)}>
+                  <h3 className={style(styles.summoner.title)}>Summoner</h3>
+                  <span className={style(styles.summoner.subtitle)}>NicoleAniston</span>
+                </li>
+
+                <li className={style(styles.summoner.item)}>
+                  <h3 className={style(styles.summoner.title)}>Code</h3>
+                  <span className={style(styles.summoner.subtitle)}>067283GF</span>
+                </li>
+
+                <li className={style(styles.summoner.item)}>
+                  <h3 className={style(styles.summoner.title)}>Status</h3>
+                  <span>
+                    <img className={style(styles.summoner.checkmark)} src="/static/checkmark.png" alt=""/>
+                  </span>
+                </li>
+              </ul> 
+            </article>
+
+            <article className={style(styles.summoner.base)}>
+              <header className={style(styles.summoner.header)}>
+                <img className={style(styles.summoner.cover)} src="/static/ashe.png" alt="" />
+              </header>
+
+              <ul className={style(styles.summoner.info)}>
+                <li className={style(styles.summoner.item)}>
+                  <h3 className={style(styles.summoner.title)}>Summoner</h3>
+                  <span className={style(styles.summoner.subtitle)}>NicoleAniston</span>
+                </li>
+
+                <li className={style(styles.summoner.item)}>
+                  <h3 className={style(styles.summoner.title)}>Code</h3>
+                  <span className={style(styles.summoner.subtitle)}>067283GF</span>
+                </li>
+
+                <li className={style(styles.summoner.item)}>
+                  <h3 className={style(styles.summoner.title)}>Status</h3>
+                  <span>
+                    <img className={style(styles.summoner.checkmark)} src="/static/checkmark.png" alt=""/>
+                  </span>
+                </li>
+              </ul> 
+            </article>
+
+            <article className={style(styles.summoner.base)}>
+              <header className={style(styles.summoner.header)}>
+                <img className={style(styles.summoner.cover)} src="/static/leona.png" alt="" />
+              </header>
+
+              <ul className={style(styles.summoner.info)}>
+                <li className={style(styles.summoner.item)}>
+                  <h3 className={style(styles.summoner.title)}>Summoner</h3>
+                  <span className={style(styles.summoner.subtitle)}>NicoleAniston</span>
+                </li>
+
+                <li className={style(styles.summoner.item)}>
+                  <h3 className={style(styles.summoner.title)}>Code</h3>
+                  <span className={style(styles.summoner.subtitle)}>067283GF</span>
+                </li>
+
+                <li className={style(styles.summoner.item)}>
+                  <h3 className={style(styles.summoner.title)}>Status</h3>
+                  <span>
+                    <img className={style(styles.summoner.checkmark)} src="/static/checkmark.png" alt=""/>
+                  </span>
+                </li>
+              </ul> 
+            </article>
+
+            <article className={style(styles.summoner.base)}>
+              <header className={style(styles.summoner.header)}>
+                <img className={style(styles.summoner.cover)} src="/static/ashe.png" alt="" />
+              </header>
+
+              <ul className={style(styles.summoner.info)}>
+                <li className={style(styles.summoner.item)}>
+                  <h3 className={style(styles.summoner.title)}>Summoner</h3>
+                  <span className={style(styles.summoner.subtitle)}>NicoleAniston</span>
+                </li>
+
+                <li className={style(styles.summoner.item)}>
+                  <h3 className={style(styles.summoner.title)}>Code</h3>
+                  <span className={style(styles.summoner.subtitle)}>067283GF</span>
+                </li>
+
+                <li className={style(styles.summoner.item)}>
+                  <h3 className={style(styles.summoner.title)}>Status</h3>
+                  <span>
+                    <img className={style(styles.summoner.checkmark)} src="/static/checkmark.png" alt=""/>
+                  </span>
+                </li>
+              </ul> 
+            </article>
           </section>
         </div>
       </div>
@@ -105,32 +209,28 @@ const styles = {
 
   header: {
     base: {
-      paddingTop: '30px',
+      paddingTop: '50px',
       paddingBottom: '30px'
     },
 
     title: {
-      fontSize: '50px',
+      fontSize: '70px',
       fontWeight: '400',
-      lineHeight: '50px',
+      lineHeight: '70px',
       marginBottom: '20px',
+      marginTop: 0,
       color: '#333'
     },
 
-    email: {
-      color: '#ccc',
-      fontWeight: '400',
-      fontSize: '16px',
-      lineHeight: '26px',
-      marginTop: 0,
-      marginBottom: 0
+    username: {
+      fontWeight: 600
     },
 
     location: {
       color: '#ccc',
       fontWeight: '400',
-      fontSize: '16px',
-      lineHeight: '26px',
+      fontSize: '18px',
+      lineHeight: '30px',
       marginTop: 0,
       marginBottom: 0
     },
@@ -185,6 +285,74 @@ const styles = {
       background: '-moz-linear-gradient(left, #52bdab 0%, #6BB6D6 100%)',
       background: '-webkit-linear-gradient(left, #52bdab 0%,#6BB6D6 100%)',
       background: 'linear-gradient(to right, #52bdab 0%,#6BB6D6 100%)'
+    }
+  },
+
+  summoner: {
+    page: {
+      display: 'flex',
+      flexFlow: 'row wrap',
+      alignItems: 'center',
+    },
+
+    pageTitle: {
+      color: '#333',
+      marginBottom: '50px',
+      fontWeight: 400,
+      flexBasis: '100%'
+    },
+
+    base: {
+      flexBasis: 'calc(50% - 30px)',
+      margin: '15px'
+    },
+
+    header: {
+      maxHeight: '228px'
+    },
+
+    cover: {
+      width: '100%'
+    },
+
+    info: {
+      borderLeft: '1px solid #F3F5FB',
+      borderBottom: '1px solid #F3F5FB',
+      borderRight: '1px solid #F3F5FB',
+      marginTop: 0,
+      width: '100%',
+      paddingLeft: 0,
+      paddingRight: 0,
+      boxSizing: 'border-box',
+      borderBottomRightRadius: '10px',
+      borderBottomLeftRadius: '10px'
+    },
+
+    item: {
+      display: 'inline-block',
+      width: '33.33%',
+      textAlign: 'center',
+      paddingTop: '20px',
+      paddingBottom: '20px'
+    },
+
+
+    title: {
+      marginTop: 0,
+      fontWeight: 400,
+      fontSize: '.9rem',
+      color: '#ccc',
+      marginBottom: '5px'
+    },
+
+    subtitle: {
+      fontSize: '1.2rem',
+      fontWeight: 600,
+      color: '#333'
+    },
+
+    checkmark: {
+      verticalAlign: 'middle'
     }
   }
 }
