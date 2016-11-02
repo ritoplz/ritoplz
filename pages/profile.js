@@ -2,6 +2,7 @@
 
 import React, {Component} from 'react'
 import axios from 'axios'
+import {style} from 'next/css'
 
 export default class extends Component {
   constructor (props) {
@@ -74,29 +75,116 @@ export default class extends Component {
   render () {
     return (
       <div>
-        <div className='row'>
-          <h2 className='title'>Profile</h2>
-          <p className='description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel lacus vel augue aliquet luctus. Ut urna libero.</p>
+        <div className={style(styles.row)}>
+          <header className={style(styles.header.base)}>
+            <h1 className={style(styles.header.title)}>Hello {this.state.user.username}!</h1>
+            <h3 className={style(styles.header.location)}>Sao Paulo, Brazil</h3>
 
-          <header>
-            <h1>Welcome {this.state.user.username}</h1>
-            <h2>Email: {this.state.user.email}</h2>
-
-            <h3>Email Confirmed: {this.state.user.emailConfirmed}</h3>
+            <hr className={style(styles.header.divider)}/>
           </header>
 
-          <form className='registration-form' onSubmit={this.submitSummoner}>
-            <fieldset className='form-input'>
-              <label className='label'>Summoner Name</label>
-              <input className='input' type='text' name="name" ref={input => {this.name = input}} />
-            </fieldset>
+          <section className={style(styles.addSummoner.base)}>
+            <h2 className={style(styles.addSummoner.title)}>You don't have any Summoner yet</h2>
+            <h3 className={style(styles.addSummoner.subtitle)}>To join the Ritoplz Ranking you must add your summoner</h3>
 
-            <button className='btn -secondary -large' type='submit'>Add Summoner</button>
-          </form>
-
-          <h1>Summoner Code: {this.state.summoner.code}</h1>
+            <button className={style(styles.addSummoner.btn)}>Add summoner</button>
+          </section>
         </div>
       </div>
     )
+  }
+}
+
+const styles = {
+  row: {
+    maxWidth: '900px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    fontFamily: 'Source Sans Pro'
+  },
+
+  header: {
+    base: {
+      paddingTop: '30px',
+      paddingBottom: '30px'
+    },
+
+    title: {
+      fontSize: '50px',
+      fontWeight: '400',
+      lineHeight: '50px',
+      marginBottom: '20px',
+      color: '#333'
+    },
+
+    email: {
+      color: '#ccc',
+      fontWeight: '400',
+      fontSize: '16px',
+      lineHeight: '26px',
+      marginTop: 0,
+      marginBottom: 0
+    },
+
+    location: {
+      color: '#ccc',
+      fontWeight: '400',
+      fontSize: '16px',
+      lineHeight: '26px',
+      marginTop: 0,
+      marginBottom: 0
+    },
+
+    divider: {
+      width: '50px',
+      border: '1px solid #F3F5FB',
+      marginTop: '30px',
+      marginLeft: 0
+    }
+  },
+
+  addSummoner: {
+    base: {
+      border: '1px solid #F3F5FB',
+      borderRadius: '10px',
+      textAlign: 'center',
+      paddingTop: '50px',
+      paddingBottom: '50px',
+      boxShadow: '0 10px 50px rgba(0, 0, 0, .025)',
+      marginBottom: '70px'
+    },
+
+    title: {
+      color: '#333',
+      fontWeight: '400',
+      fontSize: '2rem',
+      marginBottom: '15px',
+    },
+
+    subtitle: {
+      color: '#ccc',
+      marginTop: 0,
+      fontWeight: '300',
+      fontSize: '20px',
+      lineHeight: '33px',
+      maxWidth: '320px',
+      marginLeft: 'auto',
+      marginRight: 'auto'
+    },
+
+    btn: {
+      color: '#fff',
+      border: 'none',
+      borderRadius: '5px',
+      padding: '10px 25px',
+      fontSize: '.9rem',
+      height: '50px',
+      marginTop: '30px',
+      fontWeight: '500',
+      cursor: 'pointer',
+      background: '-moz-linear-gradient(left, #52bdab 0%, #6BB6D6 100%)',
+      background: '-webkit-linear-gradient(left, #52bdab 0%,#6BB6D6 100%)',
+      background: 'linear-gradient(to right, #52bdab 0%,#6BB6D6 100%)'
+    }
   }
 }
