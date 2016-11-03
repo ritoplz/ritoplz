@@ -38,7 +38,6 @@ export default class extends Component {
   }
   
   componentDidMount() {
-    console.log(this.state)
     const localStorageRef = localStorage.getItem('token')
 
     axios.get('http://localhost:3001/account', {
