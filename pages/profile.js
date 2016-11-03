@@ -9,6 +9,7 @@ import Intro from '../components/intro'
 import EmptyState from '../components/empty-state'
 import MySummoners from '../components/my-summoners'
 import ModalAddLocation from '../components/modal-add-location'
+import ModalAddSummoner from '../components/modal-add-summoner'
 
 export default class extends Component {
   constructor (props) {
@@ -22,12 +23,15 @@ export default class extends Component {
         name: '',
         email: '',
         emailConfirmed: '',
-        modal: false,
         country: '',
         state: '',
         city: '',
       },
       summoners: [],
+      modals: {
+        addLocation: false,
+        addSummoner: false
+      },
       profileReceived: false
     }
   }
@@ -47,14 +51,20 @@ export default class extends Component {
       const nextState = Object.assign(initialState, data)
 
       this.setState({nextState})
-
-      console.log(this.state)
     })
   }
 
   openModalLocation () {
-    const initialState = this.state.user
-    const modalStatus = {modal: true}
+    const initialState = this.state.modals
+    const modalStatus = {addLocation: true}
+    const nextState = Object.assign(initialState, modalStatus)
+
+    this.setState({nextState})
+  }
+
+  openModalSummoner () {
+    const initialState = this.state.modals
+    const modalStatus = {addSummoner: true}
     const nextState = Object.assign(initialState, modalStatus)
 
     this.setState({nextState})
@@ -76,10 +86,16 @@ export default class extends Component {
         'Authorization': localStorageRef
       }
     }).then(res => {
-      const initialState = this.state.user
+      const initialState = this.state
+      const modals = this.state.modals
+      const modalStatus = {addLocation: false}
+      const user = this.state.user
       const data = res.data.user
-      const modalStatus = {modal: false}
-      const nextState = Object.assign(initialState, data, modalStatus)
+      const handleData = {
+        modals: Object.assign(modals, modalStatus),
+        user: Object.assign(user, data)
+      }
+      const nextState = Object.assign(initialState, handleData)
 
       this.setState({nextState})
     }).catch(err => {
@@ -167,7 +183,8 @@ export default class extends Component {
           
           {hasSummoner}
 
-          <ModalAddLocation handleSubmit={this.submitLocation} modal={this.state.user.modal} countries={countries} states={states} cities={cities} />
+          <ModalAddLocation handleSubmit={this.submitLocation} modal={this.state.modals.addLocation} countries={countries} states={states} cities={cities} />
+          <ModalAddSummoner handleSubmit={this.submitSummoner} modal={this.state.modals.addSummoner} />
         </div>
       </div>
     )
