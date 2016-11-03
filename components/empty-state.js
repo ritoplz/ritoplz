@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { style } from 'next/css'
-
   
 export default props => (
   <section className={style(styles.base)}>

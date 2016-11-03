@@ -38,6 +38,7 @@ export default class extends Component {
   }
   
   componentDidMount() {
+    console.log(this.state)
     const localStorageRef = localStorage.getItem('token')
 
     axios.get('http://localhost:3001/account', {
@@ -47,7 +48,7 @@ export default class extends Component {
       }
     })
     .then(res => {
-      const initialState = this.state.user
+      const initialState = this.state
       const data = res.data
       const nextState = Object.assign(initialState, data)
 
