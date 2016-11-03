@@ -6,7 +6,7 @@ import { style } from 'next/css'
 export default props => (
   <header className={style(styles.base)}>
     <h1 className={style(styles.title)}>Hello, <span className={style(styles.username)}>{props.user}</span>!</h1>
-    <h3 className={style(styles.location)} onClick={props.addLocation}>{props.location}</h3>
+    <h3 className={style(styles.location)} onClick={props.openModalLocation}>{props.location}</h3>
 
     <hr className={style(styles.divider)}/>
   </header>
