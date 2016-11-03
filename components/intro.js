@@ -6,7 +6,7 @@ import { style } from 'next/css'
 export default props => (
   <header className={style(styles.base)}>
     <h1 className={style(styles.title)}>Hello, <span className={style(styles.username)}>{props.user}</span>!</h1>
-    <h3 className={style(styles.location)}>{props.location}</h3>
+    <h3 className={style(styles.location)} onClick={props.addLocation}>{props.location}</h3>
 
     <hr className={style(styles.divider)}/>
   </header>
@@ -37,7 +37,13 @@ const styles = {
     fontSize: '18px',
     lineHeight: '30px',
     marginTop: 0,
-    marginBottom: 0
+    marginBottom: 0,
+    cursor: 'pointer',
+    transition: '.25s',
+
+    ':hover': {
+      color: '#999'
+    }
   },
 
   divider: {
