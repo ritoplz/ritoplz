@@ -15,8 +15,9 @@ export default class extends Component {
   constructor (props) {
     super(props)
     this.submitSummoner = this.submitSummoner.bind(this)
-    this.openModalLocation = this.openModalLocation.bind(this)
     this.submitLocation = this.submitLocation.bind(this)
+    this.openModalLocation = this.openModalLocation.bind(this)
+    this.openModalSummoner = this.openModalSummoner.bind(this)
 
     this.state = {
       user: {
@@ -103,27 +104,31 @@ export default class extends Component {
     })
   }
 
-  submitSummoner (e) {
-    e.preventDefault()
-
+  submitSummoner (summoner) {
     const localStorageRef = localStorage.getItem('token')
 
     axios({
       method: 'post',
       url: 'http://localhost:3001/summoner',
-      data: {
-        name: this.name.value
-      },
+      data: {name: summoner},
       headers: {
         'Content-Type': 'application/json',
         'Authorization': localStorageRef
       }
     }).then(res => {
-      this.setState({
-        summoner: {
-          code: res.data.code
-        }
-      })
+      const initialState = this.state
+      const modals = this.state.modals
+      const modalStatus = {addSummoner: false}
+      const summoners = this.state.summoners
+      let data = res.data
+      data = {cover: '/static/ashe.png', status: false, name: 'Nicole', code: data.code}
+      const handleData = {
+        modals: Object.assign(modals, modalStatus),
+        summoners: [Object.assign(summoners, data)]
+      }
+      const nextState = Object.assign(initialState, handleData)
+
+      this.setState({nextState})
     }).catch(err => {
       console.log(err)
     })
@@ -132,7 +137,7 @@ export default class extends Component {
   render () {
     const location = this.state.user
     const fullLocation = location.city.length > 0 ? `${location.city}, ${location.state} - ${location.country}` : 'Add your location'
-    const hasSummoner = this.state.summoners.length > 0 ? <MySummoners summoners={this.state.summoners}/> : <EmptyState/>
+    const hasSummoner = this.state.summoners.length > 0 ? <MySummoners summoners={this.state.summoners}/> : <EmptyState openModalSummoner={this.openModalSummoner} />
     const countries = [
       {value: 'BR', label: 'Brazil'}
     ]

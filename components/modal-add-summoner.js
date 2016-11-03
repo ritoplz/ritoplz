@@ -13,6 +13,7 @@ export default class extends Component {
 
   submitForm (e) {
     e.preventDefault()
+    const data = this.summoner.value
     this.props.handleSubmit(data)
   }
 
@@ -21,15 +22,8 @@ export default class extends Component {
       <Modal isOpen={this.props.modal} style={customStyle}>
         <form onSubmit={this.submitForm}>
           <fieldset className={style(styles.formInput)}>
-            <label className={style(styles.label)}>Country</label>
-          </fieldset>
-
-          <fieldset className={style(styles.formInput)}>
-            <label className={style(styles.label)}>State</label>
-          </fieldset>
-
-          <fieldset className={style(styles.formInput)}>
-            <label className={style(styles.label)}>City</label>
+            <label className={style(styles.label)}>Summoner</label>
+            <input className={style(styles.input)} type="text" ref={node => this.summoner = node} />
           </fieldset>
 
           <button className={style(styles.btn)}>Add Summoner</button>

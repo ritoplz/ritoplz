@@ -9,7 +9,7 @@ export default props => (
     <h2 className={style(styles.title)}>{props.summoners} You don't have any Summoner yet</h2>
     <h3 className={style(styles.subtitle)}>To join the Ritoplz Ranking you must add your summoner</h3>
 
-    <button className={style(styles.btn)}>Add summoner</button>
+    <button className={style(styles.btn)} onClick={props.openModalSummoner}>Add summoner</button>
   </section>
 )
 
