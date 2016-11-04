@@ -1,9 +1,10 @@
 'use strict'
 
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import axios from 'axios'
 import { style, insertRule } from 'next/css'
 import Head from 'next/head'
+import { Notification } from 'react-notification'
 
 import Intro from '../components/intro'
 import EmptyState from '../components/empty-state'
@@ -32,6 +33,9 @@ export default class extends Component {
       modals: {
         addLocation: false,
         addSummoner: false
+      },
+      notifications: {
+        addSummonerSuccess: false
       },
       profileReceived: false
     }
@@ -94,7 +98,7 @@ export default class extends Component {
       const data = res.data.user
       const handleData = {
         modals: Object.assign(modals, modalStatus),
-        user: Object.assign(user, data)
+        user: Object.assign(user, data),
       }
       const nextState = Object.assign(initialState, handleData)
 
@@ -118,15 +122,20 @@ export default class extends Component {
     }).then(res => {
       const initialState = this.state
       const modals = this.state.modals
+      const notifications = this.state.notifications
       const modalStatus = {addSummoner: false}
+      const notificationStatus = {addSummonerSuccess: true}
       const summoners = this.state.summoners
       let data = res.data
       data = {cover: '/static/ashe.png', status: false, name: 'Nicole', code: data.code}
       const handleData = {
         modals: Object.assign(modals, modalStatus),
-        summoners: [Object.assign(summoners, data)]
+        summoners: [Object.assign(summoners, data)],
+        notifications: Object.assign(notifications, notificationStatus)
       }
       const nextState = Object.assign(initialState, handleData)
+
+      console.log(nextState)
 
       this.setState({nextState})
     }).catch(err => {
@@ -190,6 +199,11 @@ export default class extends Component {
 
           <ModalAddLocation handleSubmit={this.submitLocation} modal={this.state.modals.addLocation} countries={countries} states={states} cities={cities} />
           <ModalAddSummoner handleSubmit={this.submitSummoner} modal={this.state.modals.addSummoner} />
+          <Notification
+            isActive={this.state.notifications.addSummonerSuccess}
+            message={'Summoner added successfully'}
+            action={'dismiss'}
+          />
         </div>
       </div>
     )
@@ -204,5 +218,9 @@ const styles = {
     marginLeft: 'auto',
     marginRight: 'auto',
     fontFamily: 'Source Sans Pro'
+  },
+
+  notification: {
+    backgroundColor: 'red'
   }
 }
