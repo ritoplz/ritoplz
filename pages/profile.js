@@ -51,6 +51,7 @@ export default class extends Component {
       }
     })
     .then(res => {
+      console.log(res)
       const initialState = this.state
       const data = res.data
       const nextState = Object.assign(initialState, data)
@@ -134,8 +135,6 @@ export default class extends Component {
         notifications: Object.assign(notifications, notificationStatus)
       }
       const nextState = Object.assign(initialState, handleData)
-
-      console.log(nextState)
 
       this.setState({nextState})
     }).catch(err => {

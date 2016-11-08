@@ -1,34 +1,45 @@
 'use strict'
 
-import React from 'react'
+import React, { Component } from 'react'
 import { style } from 'next/css'
 
-const Summoner = props => (
-  <article className={style(styles.base)}>
-    <header className={style(styles.header)}>
-      <img className={style(styles.cover)} src={props.cover} alt="" />
-    </header>
+export default class Summoner extends Component {
+  constructor (props) {
+    super(props)
+  }
 
-    <ul className={style(styles.info)}>
-      <li className={style(styles.item)}>
-        <h3 className={style(styles.title)}>Summoner</h3>
-        <span className={style(styles.subtitle)}>{props.name}</span>
-      </li>
+  render () {
+    const check = this.props.checkmark ? '/static/checkmark.png' : '/static/errormark.png'
 
-      <li className={style(styles.item)}>
-        <h3 className={style(styles.title)}>Code</h3>
-        <span className={style(styles.subtitle)}>{props.code}</span>
-      </li>
+    return (
+      <article className={style(styles.base)}>
+        <header className={style(styles.header)}>
+          <img className={style(styles.cover)} src={this.props.cover} alt="" />
+        </header>
 
-      <li className={style(styles.item)}>
-        <h3 className={style(styles.title)}>Status</h3>
-        <span>
-          <img className={style(styles.checkmark)} src="/static/checkmark.png" alt=""/>
-        </span>
-      </li>
-    </ul> 
-  </article>
-)
+        <ul className={style(styles.info)}>
+          <li className={style(styles.item)}>
+            <h3 className={style(styles.title)}>Summoner</h3>
+            <span className={style(styles.subtitle)}>{this.props.name}</span>
+          </li>
+
+          <li className={style(styles.item)}>
+            <h3 className={style(styles.title)}>Code</h3>
+            <span className={style(styles.subtitle)}>{this.props.code}</span>
+          </li>
+
+          <li className={style(styles.item)}>
+            <h3 className={style(styles.title)}>Status</h3>
+            <span>
+              <img className={style(styles.checkmark)} src={check} alt=""/>
+            </span>
+          </li>
+        </ul> 
+      </article>
+    )
+  }
+  
+}
 
 Summoner.propTypes = {
   cover: React.PropTypes.string,
@@ -86,5 +97,3 @@ const styles = {
     verticalAlign: 'middle'
   }
 }
-
-export default Summoner
