@@ -3,7 +3,7 @@
 import React from 'react'
 import { style } from 'next/css'
 
-export default props => (
+const Intro = props => (
   <header className={style(styles.base)}>
     <h1 className={style(styles.title)}>Hello, <span className={style(styles.username)}>{props.user}</span>!</h1>
     <h3 className={style(styles.location)} onClick={props.openModalLocation}>{props.location}</h3>
@@ -11,6 +11,12 @@ export default props => (
     <hr className={style(styles.divider)}/>
   </header>
 )
+
+Intro.propTypes = {
+  user: React.PropTypes.string,
+  location: React.PropTypes.string,
+  openModalLocation: React.PropTypes.func
+}
 
 const styles = {
   base: {
@@ -53,3 +59,5 @@ const styles = {
     marginLeft: 0
   }
 }
+
+export default Intro

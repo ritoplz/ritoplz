@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import { style } from 'next/css'
 import Modal from 'react-modal'
 
-export default class extends Component {
+export default class ModalAddSummoner extends Component {
   constructor () {
     super()
 
@@ -31,6 +31,11 @@ export default class extends Component {
       </Modal>
     )
   }
+}
+
+ModalAddSummoner.propTypes = {
+  handleSubmit: React.PropTypes.func,
+  modal: React.PropTypes.bool
 }
 
 const styles = {

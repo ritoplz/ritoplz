@@ -3,7 +3,7 @@
 import React from 'react'
 import { style } from 'next/css'
 
-export default props => (
+const Summoner = props => (
   <article className={style(styles.base)}>
     <header className={style(styles.header)}>
       <img className={style(styles.cover)} src={props.cover} alt="" />
@@ -29,6 +29,12 @@ export default props => (
     </ul> 
   </article>
 )
+
+Summoner.propTypes = {
+  cover: React.PropTypes.string,
+  name: React.PropTypes.string,
+  code: React.PropTypes.string
+}
 
 const styles = {
   base: {
@@ -80,3 +86,5 @@ const styles = {
     verticalAlign: 'middle'
   }
 }
+
+export default Summoner

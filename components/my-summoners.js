@@ -5,7 +5,7 @@ import {style, merge} from 'next/css'
 
 import Summoner from './summoner'
 
-export default props => (
+const MySummoners = props => (
   <section className={style(styles.summoners)}>
     <h2 className={style(styles.title)}>My Summoners</h2>
     <button className={style(styles.btn)} onClick={props.openModalSummoner}>Add Summoner</button>
@@ -15,6 +15,11 @@ export default props => (
     })}
   </section>
 )
+
+MySummoners.propTypes = {
+  openModalSummoner: React.PropTypes.func,
+  summoners: React.PropTypes.array
+}    
 
 const styles = {
   summoners: {
@@ -45,3 +50,5 @@ const styles = {
     background: 'linear-gradient(to right, #52bdab 0%,#6BB6D6 100%)'
   }
 }
+
+export default MySummoners

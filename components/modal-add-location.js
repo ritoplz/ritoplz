@@ -5,7 +5,7 @@ import { style } from 'next/css'
 import Modal from 'react-modal'
 import Select from 'react-select'
 
-export default class extends Component {
+export default class ModalAddLocation extends Component {
   constructor () {
     super()
 
@@ -86,6 +86,14 @@ export default class extends Component {
       </Modal>
     )
   }
+}
+
+ModalAddLocation.propTypes = {
+  handleSubmit: React.PropTypes.func,
+  modal: React.PropTypes.bool,
+  countries: React.PropTypes.array,
+  states: React.PropTypes.array,
+  cities: React.PropTypes.array
 }
 
 const styles = {

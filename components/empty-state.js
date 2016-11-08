@@ -3,14 +3,18 @@
 import React from 'react'
 import { style } from 'next/css'
   
-export default props => (
+const EmptyState = props => (
   <section className={style(styles.base)}>
-    <h2 className={style(styles.title)}>{props.summoners} You don't have any Summoner yet</h2>
+    <h2 className={style(styles.title)}>You don't have any Summoner yet</h2>
     <h3 className={style(styles.subtitle)}>To join the Ritoplz Ranking you must add your summoner</h3>
 
     <button className={style(styles.btn)} onClick={props.openModalSummoner}>Add summoner</button>
   </section>
 )
+
+EmptyState.propTypes = {
+  openModalSummoner: React.PropTypes.func
+}
 
 const styles = {
   base: {
@@ -56,3 +60,5 @@ const styles = {
     background: 'linear-gradient(to right, #52bdab 0%,#6BB6D6 100%)'
   }
 }
+
+export default EmptyState
