@@ -1,13 +1,20 @@
 'use strict'
 
+/* @flow */
+
 import React from 'react'
 import { style } from 'next/css'
 
-const Intro = props => (
+type Props = {
+  user: string,
+  openModalLocation: Object,
+  location: Object
+}
+
+const Intro = (props: Props) => (
   <header className={style(styles.base)}>
     <h1 className={style(styles.title)}>Hello, <span className={style(styles.username)}>{props.user}</span>!</h1>
     <h3 className={style(styles.location)} onClick={props.openModalLocation}>{props.location}</h3>
-
     <hr className={style(styles.divider)}/>
   </header>
 )

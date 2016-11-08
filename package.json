@@ -9,13 +9,30 @@
   "author": "Bu Kinoshita <bukinoshita@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "ava": "^0.16.0",
     "axios": "^0.15.2",
+    "babel-register": "^6.18.0",
+    "enzyme": "^2.5.1",
+    "flow-bin": "^0.34.0",
+    "jsdom": "^9.8.3",
     "next": "^1.0.0",
+    "react-addons-test-utils": "^15.3.2",
     "react-modal": "^1.5.2",
     "react-notification": "^6.3.0",
     "react-select": "^1.0.0-rc.2"
   },
   "scripts": {
-    "start": "next"
+    "start": "next",
+    "test": "ava --verbose",
+    "flow": "./node_modules/flow-bin/cli.js check"
+  },
+  "devDependencies": {
+    "ava": "^0.16.0"
+  },
+  "ava": {
+    "babel": "inherit",
+    "require": [
+      "./__tests__/helpers/test-env.js"
+    ]
   }
 }
