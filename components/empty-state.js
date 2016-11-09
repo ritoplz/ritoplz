@@ -2,19 +2,6 @@
 
 import React from 'react'
 import { style } from 'next/css'
-  
-const EmptyState = props => (
-  <section className={style(styles.base)}>
-    <h2 className={style(styles.title)}>You don't have any Summoner yet</h2>
-    <h3 className={style(styles.subtitle)}>To join the Ritoplz Ranking you must add your summoner</h3>
-
-    <button className={style(styles.btn)} onClick={props.openModalSummoner}>Add summoner</button>
-  </section>
-)
-
-EmptyState.propTypes = {
-  openModalSummoner: React.PropTypes.func
-}
 
 const styles = {
   base: {
@@ -31,7 +18,7 @@ const styles = {
     color: '#333',
     fontWeight: '400',
     fontSize: '2rem',
-    marginBottom: '15px',
+    marginBottom: '15px'
   },
 
   subtitle: {
@@ -55,10 +42,21 @@ const styles = {
     marginTop: '30px',
     fontWeight: '500',
     cursor: 'pointer',
-    background: '-moz-linear-gradient(left, #52bdab 0%, #6BB6D6 100%)',
-    background: '-webkit-linear-gradient(left, #52bdab 0%,#6BB6D6 100%)',
     background: 'linear-gradient(to right, #52bdab 0%,#6BB6D6 100%)'
   }
+}
+
+const EmptyState = props => (
+  <section className={style(styles.base)}>
+    <h2 className={style(styles.title)}>You dont have any Summoner yet</h2>
+    <h3 className={style(styles.subtitle)}>To join the Ritoplz Ranking you must add your summoner</h3>
+
+    <button className={style(styles.btn)} onClick={props.handleModalSummoner}>Add summoner</button>
+  </section>
+)
+
+EmptyState.propTypes = {
+  handleModalSummoner: React.PropTypes.func
 }
 
 export default EmptyState

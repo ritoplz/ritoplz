@@ -2,11 +2,11 @@
 
 import React, {Component} from 'react'
 
-export default class extends Component {
+export default class SignUp extends Component {
   constructor (props) {
     super(props)
     this.handleChange = this.handleChange.bind(this)
-    this.submitSignup = this.submitSignup.bind(this)
+    this.handleSignup = this.handleSignup.bind(this)
 
     this.state = {name: '', email: '', password: ''}
   }
@@ -15,7 +15,7 @@ export default class extends Component {
     this.setState({[e.target.name]: e.target.value})
   }
 
-  submitSignup (e) {
+  handleSignup (e) {
     e.preventDefault()
 
     return fetch('http://localhost:3001/signup', {
@@ -26,7 +26,7 @@ export default class extends Component {
         email: this.state.email,
         password: this.state.password
       })
-    }).then((res) => {
+    }).then(res => {
       this.props.url.pushTo('/login')
     })
   }
@@ -38,20 +38,20 @@ export default class extends Component {
           <h2 className='title'>Sign Up</h2>
           <p className='description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel lacus vel augue aliquet luctus. Ut urna libero.</p>
 
-          <form className='registration-form' onSubmit={this.submitSignup}>
+          <form className='registration-form' onSubmit={this.handleSignup}>
             <fieldset className='form-input'>
               <label className='label'>Name</label>
-              <input className='input' type='text' name="name" onChange={this.handleChange} />
+              <input className='input' type='text' name='name' onChange={this.handleChange}/>
             </fieldset>
 
             <fieldset className='form-input'>
               <label className='label'>E-mail</label>
-              <input className='input' type='text' name="email" onChange={this.handleChange} />
+              <input className='input' type='text' name='email' onChange={this.handleChange}/>
             </fieldset>
 
             <fieldset className='form-input'>
               <label className='label'>Password</label>
-              <input className='input' type='password' name="password" onChange={this.handleChange} />
+              <input className='input' type='password' name='password' onChange={this.handleChange}/>
             </fieldset>
 
             <button className='btn -secondary -large' type='submit'>Sign Up</button>
@@ -60,4 +60,8 @@ export default class extends Component {
       </div>
     )
   }
+}
+
+SignUp.propTypes = {
+  url: React.PropTypes.object
 }

@@ -158,7 +158,7 @@ export default class extends Component {
   render () {
     const location = this.state.user
     const fullLocation = location.city.length > 0 ? `${location.city}, ${location.state} - ${location.country}` : 'Add your location'
-    const hasSummoner = this.state.summoners.length > 0 ? <MySummoners summoners={this.state.summoners} openModalSummoner={this.openModalSummoner}/> : <EmptyState openModalSummoner={this.openModalSummoner}/>
+    const hasSummoner = this.state.summoners.length > 0 ? <MySummoners summoners={this.state.summoners} handleModalSummoner={this.openModalSummoner}/> : <EmptyState handleModalSummoner={this.openModalSummoner}/>
     const countries = [
       {value: 'BR', label: 'Brazil'}
     ]
@@ -211,10 +211,7 @@ export default class extends Component {
 
           <ModalAddLocation handleSubmit={this.submitLocation} modal={this.state.modals.addLocation} countries={countries} states={states} cities={cities}/>
           <ModalAddSummoner handleSubmit={this.submitSummoner} modal={this.state.modals.addSummoner}/>
-          <Notification
-            isActive={this.state.notifications.addSummonerSuccess}
-            message={'Summoner added successfully'}
-            action={'dismiss'}/>
+          <Notification isActive={this.state.notifications.addSummonerSuccess} message={'Summoner added successfully'} action={'dismiss'}/>
         </div>
       </div>
     )
