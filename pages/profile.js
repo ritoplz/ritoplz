@@ -12,6 +12,19 @@ import MySummoners from '../components/my-summoners'
 import ModalAddLocation from '../components/modal-add-location'
 import ModalAddSummoner from '../components/modal-add-summoner'
 
+const styles = {
+  row: {
+    maxWidth: '900px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    fontFamily: 'Source Sans Pro'
+  },
+
+  notification: {
+    backgroundColor: 'red'
+  }
+}
+
 export default class extends Component {
   constructor (props) {
     super(props)
@@ -27,7 +40,7 @@ export default class extends Component {
         emailConfirmed: '',
         country: '',
         state: '',
-        city: '',
+        city: ''
       },
       summoners: [],
       modals: {
@@ -40,14 +53,14 @@ export default class extends Component {
       profileReceived: false
     }
   }
-  
+
   componentDidMount() {
     const localStorageRef = localStorage.getItem('token')
 
     axios.get('http://localhost:3001/account', {
-      headers: { 
+      headers: {
         'Content-Type': 'application/json',
-        'Authorization': localStorageRef
+        Authorization: localStorageRef
       }
     })
     .then(res => {
@@ -89,7 +102,7 @@ export default class extends Component {
       },
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': localStorageRef
+        Authorization: localStorageRef
       }
     }).then(res => {
       const initialState = this.state
@@ -99,7 +112,7 @@ export default class extends Component {
       const data = res.data.user
       const handleData = {
         modals: Object.assign(modals, modalStatus),
-        user: Object.assign(user, data),
+        user: Object.assign(user, data)
       }
       const nextState = Object.assign(initialState, handleData)
 
@@ -118,7 +131,7 @@ export default class extends Component {
       data: {name: summoner},
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': localStorageRef
+        Authorization: localStorageRef
       }
     }).then(res => {
       const initialState = this.state
@@ -145,7 +158,7 @@ export default class extends Component {
   render () {
     const location = this.state.user
     const fullLocation = location.city.length > 0 ? `${location.city}, ${location.state} - ${location.country}` : 'Add your location'
-    const hasSummoner = this.state.summoners.length > 0 ? <MySummoners summoners={this.state.summoners} openModalSummoner={this.openModalSummoner}/> : <EmptyState openModalSummoner={this.openModalSummoner} />
+    const hasSummoner = this.state.summoners.length > 0 ? <MySummoners summoners={this.state.summoners} openModalSummoner={this.openModalSummoner}/> : <EmptyState openModalSummoner={this.openModalSummoner}/>
     const countries = [
       {value: 'BR', label: 'Brazil'}
     ]
@@ -176,7 +189,7 @@ export default class extends Component {
       {value: 'Santa Catarina', label: 'Santa Catarina'},
       {value: 'Sergipe', label: 'Sergipe'},
       {value: 'São Paulo', label: 'São Paulo'},
-      {value: 'Tocantins', label: 'Tocantins'},
+      {value: 'Tocantins', label: 'Tocantins'}
     ]
 
     const cities = [
@@ -186,23 +199,22 @@ export default class extends Component {
     return (
       <div>
         <Head>
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta name="viewport" content="width=device-width, initial-scale=1"/>
           <link rel="stylesheet" href="https://unpkg.com/react-select/dist/react-select.css"/>
           <meta charSet='utf-8'/>
         </Head>
 
         <div className={style(styles.row)}>
           <Intro user={this.state.user.name} location={fullLocation} openModalLocation={this.openModalLocation}/>
-          
+
           {hasSummoner}
 
-          <ModalAddLocation handleSubmit={this.submitLocation} modal={this.state.modals.addLocation} countries={countries} states={states} cities={cities} />
-          <ModalAddSummoner handleSubmit={this.submitSummoner} modal={this.state.modals.addSummoner} />
+          <ModalAddLocation handleSubmit={this.submitLocation} modal={this.state.modals.addLocation} countries={countries} states={states} cities={cities}/>
+          <ModalAddSummoner handleSubmit={this.submitSummoner} modal={this.state.modals.addSummoner}/>
           <Notification
             isActive={this.state.notifications.addSummonerSuccess}
             message={'Summoner added successfully'}
-            action={'dismiss'}
-          />
+            action={'dismiss'}/>
         </div>
       </div>
     )
@@ -210,16 +222,3 @@ export default class extends Component {
 }
 
 insertRule('* {padding: 0; margin: 0; box-sizing: border-box; font-family: Source Sans Pro, Helvetica Neue, Helvetica }')
-
-const styles = {
-  row: {
-    maxWidth: '900px',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    fontFamily: 'Source Sans Pro'
-  },
-
-  notification: {
-    backgroundColor: 'red'
-  }
-}

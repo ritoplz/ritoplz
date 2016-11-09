@@ -1,7 +1,7 @@
 'use strict'
 
 import React from 'react'
-import {style, merge} from 'next/css'
+import { style } from 'next/css'
 
 import Summoner from './summoner'
 

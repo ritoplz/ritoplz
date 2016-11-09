@@ -43,7 +43,6 @@ export default class extends Component {
             </fieldset>
 
             <button className='btn -secondary -large' type='submit'>Login</button>
-
           </form>
         </div>
       </div>
