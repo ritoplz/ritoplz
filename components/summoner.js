@@ -3,50 +3,6 @@
 import React, { Component } from 'react'
 import { style } from 'next/css'
 
-export default class Summoner extends Component {
-  constructor (props) {
-    super(props)
-  }
-
-  render () {
-    const check = this.props.checkmark ? '/static/checkmark.png' : '/static/errormark.png'
-
-    return (
-      <article className={style(styles.base)}>
-        <header className={style(styles.header)}>
-          <img className={style(styles.cover)} src={this.props.cover} alt="" />
-        </header>
-
-        <ul className={style(styles.info)}>
-          <li className={style(styles.item)}>
-            <h3 className={style(styles.title)}>Summoner</h3>
-            <span className={style(styles.subtitle)}>{this.props.name}</span>
-          </li>
-
-          <li className={style(styles.item)}>
-            <h3 className={style(styles.title)}>Code</h3>
-            <span className={style(styles.subtitle)}>{this.props.code}</span>
-          </li>
-
-          <li className={style(styles.item)}>
-            <h3 className={style(styles.title)}>Status</h3>
-            <span>
-              <img className={style(styles.checkmark)} src={check} alt=""/>
-            </span>
-          </li>
-        </ul> 
-      </article>
-    )
-  }
-  
-}
-
-Summoner.propTypes = {
-  cover: React.PropTypes.string,
-  name: React.PropTypes.string,
-  code: React.PropTypes.string
-}
-
 const styles = {
   base: {
     flexBasis: 'calc(50% - 30px)',
@@ -78,7 +34,6 @@ const styles = {
     paddingBottom: '20px'
   },
 
-
   title: {
     marginTop: 0,
     fontWeight: 400,
@@ -96,4 +51,48 @@ const styles = {
   checkmark: {
     verticalAlign: 'middle'
   }
+}
+
+export default class Summoner extends Component {
+  constructor (props) {
+    super(props)
+  }
+
+  render () {
+    const check = this.props.checkmark ? '/static/checkmark.png' : '/static/errormark.png'
+
+    return (
+      <article className={style(styles.base)}>
+        <header className={style(styles.header)}>
+          <img className={style(styles.cover)} src={this.props.cover} alt=""/>
+        </header>
+
+        <ul className={style(styles.info)}>
+          <li className={style(styles.item)}>
+            <h3 className={style(styles.title)}>Summoner</h3>
+            <span className={style(styles.subtitle)}>{this.props.name}</span>
+          </li>
+
+          <li className={style(styles.item)}>
+            <h3 className={style(styles.title)}>Code</h3>
+            <span className={style(styles.subtitle)}>{this.props.code}</span>
+          </li>
+
+          <li className={style(styles.item)}>
+            <h3 className={style(styles.title)}>Status</h3>
+            <span>
+              <img className={style(styles.checkmark)} src={check} alt=""/>
+            </span>
+          </li>
+        </ul>
+      </article>
+    )
+  }
+}
+
+Summoner.propTypes = {
+  cover: React.PropTypes.string,
+  name: React.PropTypes.string,
+  code: React.PropTypes.string,
+  checkmark: React.PropTypes.bool
 }

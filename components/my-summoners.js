@@ -1,27 +1,9 @@
 'use strict'
 
 import React from 'react'
-import {style, merge} from 'next/css'
+import { style } from 'next/css'
 
 import Summoner from './summoner'
-
-const MySummoners = props => (
-  <section className={style(styles.summoners)}>
-    <header className={style(styles.header)}>
-      <h2 className={style(styles.title)}>My Summoners</h2>
-      <button className={style(styles.btn)} onClick={props.openModalSummoner}>Add Summoner</button>
-    </header>
-
-    {props.summoners.map(summoner => {
-      return <Summoner key={summoner.id} cover='/static/ashe.png' name={summoner.name} code={summoner.code} state={summoner.state} />
-    })}
-  </section>
-)
-
-MySummoners.propTypes = {
-  openModalSummoner: React.PropTypes.func,
-  summoners: React.PropTypes.array
-}    
 
 const styles = {
   summoners: {
@@ -51,10 +33,26 @@ const styles = {
     marginTop: '-50px',
     fontWeight: '500',
     cursor: 'pointer',
-    background: '-moz-linear-gradient(left, #52bdab 0%, #6BB6D6 100%)',
-    background: '-webkit-linear-gradient(left, #52bdab 0%,#6BB6D6 100%)',
     background: 'linear-gradient(to right, #52bdab 0%,#6BB6D6 100%)'
   }
+}
+
+const MySummoners = props => (
+  <section className={style(styles.summoners)}>
+    <header className={style(styles.header)}>
+      <h2 className={style(styles.title)}>My Summoners</h2>
+      <button className={style(styles.btn)} onClick={props.handleModalSummoner}>Add Summoner</button>
+    </header>
+
+    {props.summoners.map(summoner => {
+      return <Summoner key={summoner.id} cover='/static/ashe.png' name={summoner.name} code={summoner.code} state={summoner.state}/>
+    })}
+  </section>
+)
+
+MySummoners.propTypes = {
+  handleModalSummoner: React.PropTypes.func,
+  summoners: React.PropTypes.array
 }
 
 export default MySummoners
