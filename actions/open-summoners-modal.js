@@ -7,4 +7,4 @@ function openSummonersModal (id) {
   }
 }
 
-module.exports = openSummonersModal
+export default openSummonersModal
