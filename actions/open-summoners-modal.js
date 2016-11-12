@@ -6,3 +6,5 @@ function openSummonersModal (id) {
     id
   }
 }
+
+module.exports = openSummonersModal
