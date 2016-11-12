@@ -1,8 +1,8 @@
 'use strict'
 
 export default (state = [], action) => {
-  switch(action.type) {
-    case 'OPEN_SUMMONERS_MODAL':
+  switch (action.type) {
+    case 'OPEN_MODAL':
       return state.map((modal, index) => {
         if (index === action.index) {
           return Object.assign({}, modal, {

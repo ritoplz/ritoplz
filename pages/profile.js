@@ -1,5 +1,7 @@
 'use strict'
 
+/* global localStorage: false */
+
 import React, { Component } from 'react'
 import axios from 'axios'
 import { style, insertRule } from 'next/css'
@@ -173,7 +175,7 @@ export default class extends Component {
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1"/>
           <link rel="stylesheet" href="https://unpkg.com/react-select/dist/react-select.css"/>
-          <meta charSet='utf-8'/>
+          <meta charSet="utf-8"/>
         </Head>
 
         <div className={style(styles.row)}>

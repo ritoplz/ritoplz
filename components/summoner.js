@@ -54,10 +54,6 @@ const styles = {
 }
 
 export default class Summoner extends Component {
-  constructor (props) {
-    super(props)
-  }
-
   render () {
     const check = this.props.checkmark ? '/static/checkmark.png' : '/static/errormark.png'
 

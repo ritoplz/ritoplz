@@ -1,5 +1,7 @@
 'use strict'
 
+/* global fetch: false */
+
 import React, {Component} from 'react'
 
 export default class SignUp extends Component {
@@ -26,7 +28,7 @@ export default class SignUp extends Component {
         email: this.state.email,
         password: this.state.password
       })
-    }).then(res => {
+    }).then(() => {
       this.props.url.pushTo('/login')
     })
   }
@@ -34,27 +36,27 @@ export default class SignUp extends Component {
   render () {
     return (
       <div>
-        <div className='row'>
-          <h2 className='title'>Sign Up</h2>
-          <p className='description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel lacus vel augue aliquet luctus. Ut urna libero.</p>
+        <div className="row">
+          <h2 className="title">Sign Up</h2>
+          <p className="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel lacus vel augue aliquet luctus. Ut urna libero.</p>
 
-          <form className='registration-form' onSubmit={this.handleSignup}>
-            <fieldset className='form-input'>
-              <label className='label'>Name</label>
-              <input className='input' type='text' name='name' onChange={this.handleChange}/>
+          <form className="registration-form" onSubmit={this.handleSignup}>
+            <fieldset className="form-input">
+              <label className="label">Name</label>
+              <input className="input" type="text" name="name" onChange={this.handleChange}/>
             </fieldset>
 
-            <fieldset className='form-input'>
-              <label className='label'>E-mail</label>
-              <input className='input' type='text' name='email' onChange={this.handleChange}/>
+            <fieldset className="form-input">
+              <label className="label">E-mail</label>
+              <input className="input" type="text" name="email" onChange={this.handleChange}/>
             </fieldset>
 
-            <fieldset className='form-input'>
-              <label className='label'>Password</label>
-              <input className='input' type='password' name='password' onChange={this.handleChange}/>
+            <fieldset className="form-input">
+              <label className="label">Password</label>
+              <input className="input" type="password" name="password" onChange={this.handleChange}/>
             </fieldset>
 
-            <button className='btn -secondary -large' type='submit'>Sign Up</button>
+            <button className="btn -secondary -large" type="submit">Sign Up</button>
           </form>
         </div>
       </div>
