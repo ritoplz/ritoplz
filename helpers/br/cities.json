@@ -1,0 +1,434 @@
+{
+  "states": [
+    {
+      "sigla": "AC",
+      "name": "Acre",
+      "cities": [
+        "Cruzeiro do Sul",
+        "Feijó",
+        "Rio Branco",
+        "Sena Madureira",
+        "Senador Guiomard",
+        "Tarauacá",
+        "Xapuri"
+      ]
+    },
+    {
+      "sigla": "AL",
+      "name": "Alagoas",
+      "cities": [
+        "Arapiraca",
+        "Coruripe",
+        "Maceió",
+        "Delmiro Gouveia",
+        "Ouro Branco",
+        "Palmeira dos Índios",
+        "Santana do Ipanema",
+        "São Miguel dos Campos"
+      ]
+    },
+    {
+      "sigla": "AM",
+      "name": "Amazonas",
+      "cities": [
+        "Manaus",
+        "Itacoatiara",
+        "Paritins",
+        "Tefé",
+        "Tabatinga",
+        "Presidente Figueiredo",
+        "Eirunepé"
+      ]
+    },
+    {
+      "sigla": "AP",
+      "name": "Amapá",
+      "cities": [
+        "Amapá",
+        "Macapá",
+        "Santana"
+      ]
+    },
+    {
+      "sigla": "BA",
+      "name": "Bahia",
+      "cities": [
+        "Salvador",
+        "Juazeiro",
+        "Barreiras",
+        "Alagoinhas",
+        "Ilhéus",
+        "Candeias",
+        "Itabuna",
+        "Feira de Santana",
+        "Eunápolis",
+        "Teixeira de Freitas",
+        "Guarajuba",
+        "Camaçari"
+      ]
+    },
+    {
+      "sigla": "CE",
+      "name": "Ceará",
+      "cities": [
+        "Fortaleza",
+        "Caucaia",
+        "Juazeiro do Norte",
+        "Maracanaú",
+        "Sobral",
+        "Crato",
+        "Itapipoca",
+        "Maranguape",
+        "Iguatu",
+        "Quixadá",
+        "Pacatuba"
+      ]
+    },
+    {
+      "sigla": "DF",
+      "name": "Distrito Federal",
+      "cities": [
+        "Brasília"
+      ]
+    },
+    {
+      "sigla": "ES",
+      "name": "Espírito Santo",
+      "cities": [
+        "Serra",
+        "Vila Velha",
+        "Cariacica",
+        "Vitória",
+        "Cachoeiro de Itapemirim",
+        "Linhares",
+        "São Mateus",
+        "Colatina",
+        "Guarapari",
+        "Aracruz"
+      ]
+    },
+    {
+      "sigla": "GO",
+      "name": "Goiás",
+      "cities": [
+        "Goiânia",
+        "Abadiânia",
+        "Rio Verde",
+        "Anápolis",
+        "Luziânia",
+        "Águas Lindas de Goiás",
+        "Valparaíso de Goiás",
+        "Trindade",
+        "Formosa",
+        "Novo Gama",
+        "Senador Canedo",
+        "Itumbiara",
+        "Catalão",
+        "Jataí",
+        "Planaltina",
+        "Caldas Novas"
+      ]
+    },
+    {
+      "sigla": "MA",
+      "name": "Maranhão",
+      "cities": [
+        "São Luís",
+        "Imperatriz",
+        "São José de Ribamar",
+        "Timon",
+        "Caxias",
+        "Codó",
+        "Paço do Lumiar",
+        "Açailândia",
+        "Bacabal",
+        "Chapadinha",
+        "Balsas",
+        "Barra do Corda",
+        "Santa Inês"
+      ]
+    },
+    {
+      "sigla": "MG",
+      "name": "Minas Gerais",
+      "cities": [
+        "Belo Horizonte",
+        "Uberlândia",
+        "Contagem",
+        "Juiz de Fora",
+        "Betim",
+        "Montes Claros",
+        "Ribeirão das Neves",
+        "Uberaba",
+        "Governador Valadares",
+        "Ipatinga",
+        "Sete Lagoas",
+        "Divinópolis",
+        "Santa Luzia",
+        "Lavras",
+        "Ibirité",
+        "Poços Caldas",
+        "Patos de Minas",
+        "Pouso Alegre",
+        "Teófilo Otoni",
+        "Barbacena",
+        "Sabará",
+        "Varginha",
+        "Vespasiano",
+        "Itabira"
+      ]
+    },
+    {
+      "sigla": "MS",
+      "name": "Mato Grosso do Sul",
+      "cities": [
+        "Campo Grande",
+        "Dourados",
+        "Três Lagoas",
+        "Corumbá",
+        "Ponta Porã",
+        "Sindrolândia",
+        "Naviraí"
+      ]
+    },
+    {
+      "sigla": "MT",
+      "name": "Mato Grosso",
+      "cities": [
+        "Cuiabá",
+        "Várzea Grande",
+        "Rondonópolis",
+        "Sinop",
+        "Tangará da Serra",
+        "Cáceres",
+        "Sorriso",
+        "Lucas do Rio Verde"
+      ]
+    },
+    {
+      "sigla": "PA",
+      "name": "Pará",
+      "cities": [
+        "Belém",
+        "Ananindeua",
+        "Santarém",
+        "Marabá",
+        "Parauapebas",
+        "Castanhal",
+        "Marituba",
+        "Bragança",
+        "Tucuruí",
+        "Barcarena",
+        "Altamira",
+        "Tailândia"
+      ]
+    },
+    {
+      "sigla": "PB",
+      "name": "Paraíba",
+      "cities": [
+        "Bayeux",
+        "Campina Grande",
+        "Santa Rita",
+        "Patos",
+        "Rio Tinto",
+        "Sapé",
+        "João Pessoa"
+      ]
+    },
+    {
+      "sigla": "PE",
+      "name": "Pernambuco",
+      "cities": [
+        "Recife",
+        "Jaboatão dos Guararapes",
+        "Olinda",
+        "Caruaru",
+        "Petrolina",
+        "Paulista",
+        "Cabo de Santo Agostinho",
+        "Camaragibe",
+        "Ipojuca",
+        "Camaragibe",
+        "Garanhuns"
+      ]
+    },
+    {
+      "sigla": "PI",
+      "name": "Piauí",
+      "cities": [
+        "Teresina",
+        "Parnaíba",
+        "Picos",
+        "Piripiri",
+        "Floriano"
+      ]
+    },
+    {
+      "sigla": "PR",
+      "name": "Paraná",
+      "cities": [
+        "Curitiba",
+        "Londrina",
+        "Maringá",
+        "Ponta Grossa",
+        "Cascavel",
+        "São José dos Pinhais",
+        "Foz do Iguaçu",
+        "Colombo",
+        "Toledo",
+        "Paranaguá"
+      ]
+    },
+    {
+      "sigla": "RJ",
+      "name": "Rio de Janeiro",
+      "cities": [
+        "Rio de Janeiro",
+        "São Gonçalo",
+        "Duque de Caxias",
+        "Nova Iguaçu",
+        "Niterói",
+        "Campos dos Goytacazes",
+        "Belford Roxo",
+        "São João de Meriti",
+        "Petrópolis",
+        "Volta Redonda",
+        "Magé",
+        "Macaé",
+        "Itaboraí",
+        "Cabo Frio",
+        "Angra dos Reis",
+        "Teresópolis"
+      ]
+    },
+    {
+      "sigla": "RN",
+      "name": "Rio Grande do Norte",
+      "cities": [
+        "Natal",
+        "Mossoró",
+        "Parnamirim",
+        "São Gonçalo do Amarante",
+        "Macaíba",
+        "Caicó"
+      ]
+    },
+    {
+      "sigla": "RO",
+      "name": "Rondônia",
+      "cities": [
+        "Porto Velho",
+        "Ji-Paraná",
+        "Ariquemes",
+        "Vilhena",
+        "Cacoal"
+      ]
+    },
+    {
+      "sigla": "RR",
+      "name": "Roraima",
+      "cities": [
+        "Alto Alegre",
+        "Amajari",
+        "Boa Vista",
+        "Bonfim",
+        "Cantá",
+        "Caracaraí",
+        "Caroebe",
+        "Iracema",
+        "Mucajaí",
+        "Normandia",
+        "Pacaraima",
+        "Rorainópolis",
+        "São João da Baliza",
+        "São Luiz",
+        "Uiramutã"
+      ]
+    },
+    {
+      "sigla": "RS",
+      "name": "Rio Grande do Sul",
+      "cities": [
+        "Porto Alegre",
+        "Caxias do Sul",
+        "Pelotas",
+        "Canoas",
+        "Santa Maria",
+        "Gravataí",
+        "Viamão",
+        "Novo Hamburgo",
+        "São Leopoldo",
+        "Rio Grande",
+        "Alvorada",
+        "Passo Fundo",
+        "Sapucaia do Sul",
+        "André da Rocha",
+        "Anta Gorda",
+        "Cachoeirinha",
+        "Erechim"
+      ]
+    },
+    {
+      "sigla": "SC",
+      "name": "Santa Catarina",
+      "cities": [
+        "Joinville",
+        "Florianópolis",
+        "Blumenau",
+        "São José",
+        "Chapecó",
+        "Criciúma",
+        "Criciúma",
+        "Itajaí",
+        "Palhoça",
+        "Balneário Camboriú",
+        "Anchieta",
+        "São Bento do Sul",
+        "Brusque",
+        "Tubarão"
+      ]
+    },
+    {
+      "sigla": "SE",
+      "name": "Sergipe",
+      "cities": [
+        "Aracaju",
+        "Nossa Senhora do Socorro",
+        "Lagarto",
+        "Itabaiana",
+        "Estância",
+        "São Cristóvão"
+      ]
+    },
+    {
+      "sigla": "SP",
+      "name": "São Paulo",
+      "cities": [
+        "São Paulo",
+        "Diadema",
+        "São Bernardo",
+        "Bauru",
+        "Santos",
+        "Bragança Paulista",
+        "Pinheiros",
+        "Atibaia",
+        "São Vicente",
+        "Osasco",
+        "Jundiaí",
+        "Itu",
+        "São José dos Campos"
+      ]
+    },
+    {
+      "sigla": "TO",
+      "name": "Tocantins",
+      "cities": [
+        "Palmas",
+        "Gurupi",
+        "Araguaína",
+        "Porto Nacional"
+      ]
+    }
+  ]
+}

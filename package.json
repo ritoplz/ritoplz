@@ -46,7 +46,6 @@
     "semicolon": false,
     "esnext": true,
     "rules": {
-      "jsx-quotes": 0,
       "space-before-function-paren": 0,
       "object-curly-spacing": 0
     }

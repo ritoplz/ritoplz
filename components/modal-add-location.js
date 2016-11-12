@@ -1,5 +1,7 @@
 'use strict'
 
+/* @flow */
+
 import React, { Component } from 'react'
 import { style } from 'next/css'
 import Modal from 'react-modal'
@@ -63,9 +65,18 @@ const customStyle = {
   }
 }
 
+type Props = {
+  handleSubmit: Function,
+  modal: boolean
+}
+
 export default class ModalAddLocation extends Component {
-  constructor () {
-    super()
+  state: {
+    location: Object
+  }
+
+  constructor (props: Props) {
+    super(props)
 
     this.handleCountryChange = this.handleCountryChange.bind(this)
     this.handleStateChange = this.handleStateChange.bind(this)
@@ -81,7 +92,7 @@ export default class ModalAddLocation extends Component {
     }
   }
 
-  handleCountryChange (e) {
+  handleCountryChange (e: Object) {
     const initialState = this.state.location
     const location = {
       country: e.value
@@ -91,7 +102,7 @@ export default class ModalAddLocation extends Component {
     this.setState({nextState})
   }
 
-  handleStateChange (e) {
+  handleStateChange (e: Object) {
     const initialState = this.state.location
     const location = {
       state: e.value
@@ -102,7 +113,7 @@ export default class ModalAddLocation extends Component {
     this.setState({nextState})
   }
 
-  handleCityChange (e) {
+  handleCityChange (e: Object) {
     const initialState = this.state.location
     const location = {
       city: e.value
@@ -112,7 +123,7 @@ export default class ModalAddLocation extends Component {
     this.setState({nextState})
   }
 
-  hadnleForm (e) {
+  handleForm (e: Object) {
     e.preventDefault()
 
     const data = this.state.location
