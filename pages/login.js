@@ -6,7 +6,7 @@ import axios from 'axios'
 export default class Login extends Component {
   constructor (props) {
     super(props)
-    this.submitLogin = this.submitLogin.bind(this)
+    this.handleLogin = this.handleLogin.bind(this)
   }
 
   handleLogin (e) {
@@ -26,25 +26,23 @@ export default class Login extends Component {
 
   render () {
     return (
-      <div>
-        <div className='row'>
-          <h2 className='title'>Login</h2>
-          <p className='description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel lacus vel augue aliquet luctus. Ut urna libero.</p>
+      <div className='row'>
+        <h2 className='title'>Login</h2>
+        <p className='description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel lacus vel augue aliquet luctus. Ut urna libero.</p>
 
-          <form className='registration-form' onSubmit={this.handleLogin}>
-            <fieldset className='form-input'>
-              <label className='label'>E-mail</label>
-              <input className='input' type='text' name='email' ref={input => {this.email = input}}/>
-            </fieldset>
+        <form className='registration-form' onSubmit={this.handleLogin}>
+          <fieldset className='form-input'>
+            <label className='label'>E-mail</label>
+            <input className='input' type='text' name='email' ref={input => {this.email = input}}/>
+          </fieldset>
 
-            <fieldset className='form-input'>
-              <label className='label'>Password</label>
-              <input className='input' type='password' name='password' ref={input => {this.password = input}}/>
-            </fieldset>
+          <fieldset className='form-input'>
+            <label className='label'>Password</label>
+            <input className='input' type='password' name='password' ref={input => {this.password = input}}/>
+          </fieldset>
 
-            <button className='btn -secondary -large' type='submit'>Login</button>
-          </form>
-        </div>
+          <button className='btn -secondary -large' type='submit'>Login</button>
+        </form>
       </div>
     )
   }

@@ -162,35 +162,7 @@ export default class extends Component {
     const countries = [
       {value: 'BR', label: 'Brazil'}
     ]
-    const states = [
-      {value: 'Acre', label: 'Acre'},
-      {value: 'Alagoas', label: 'Alagoas'},
-      {value: 'Amazonas', label: 'Amazonas'},
-      {value: 'Amapá', label: 'Amapá'},
-      {value: 'Bahia', label: 'Bahia'},
-      {value: 'Ceará', label: 'Ceará'},
-      {value: 'Distrito Federal', label: 'Distrito Federal'},
-      {value: 'Espírito Santo', label: 'Espírito Santo'},
-      {value: 'Goiás', label: 'Goiás'},
-      {value: 'Maranhão', label: 'Maranhão'},
-      {value: 'Minas Gerais', label: 'Minas Gerais'},
-      {value: 'Mato Grosso do Sul', label: 'Mato Grosso do Sul'},
-      {value: 'Mato Grosso', label: 'Mato Grosso'},
-      {value: 'Pará', label: 'Pará'},
-      {value: 'Paraíba', label: 'Paraíba'},
-      {value: 'Pernambuco', label: 'Pernambuco'},
-      {value: 'Piauí', label: 'Piauí'},
-      {value: 'Paraná', label: 'Paraná'},
-      {value: 'Rio de Janeiro', label: 'Rio de Janeiro'},
-      {value: 'Rio Grande do Norte', label: 'Rio Grande do Norte'},
-      {value: 'Rondônia', label: 'Rondônia'},
-      {value: 'Roraima', label: 'Roraima'},
-      {value: 'Rio Grande do Sul', label: 'Rio Grande do Sul'},
-      {value: 'Santa Catarina', label: 'Santa Catarina'},
-      {value: 'Sergipe', label: 'Sergipe'},
-      {value: 'São Paulo', label: 'São Paulo'},
-      {value: 'Tocantins', label: 'Tocantins'}
-    ]
+    const states = require('../helpers/br/cities.json')
 
     const cities = [
       {value: 'São Paulo', label: 'São Paulo'}

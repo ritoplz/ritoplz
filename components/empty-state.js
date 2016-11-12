@@ -1,5 +1,7 @@
 'use strict'
 
+/* @flow */
+
 import React from 'react'
 import { style } from 'next/css'
 
@@ -46,7 +48,11 @@ const styles = {
   }
 }
 
-const EmptyState = props => (
+type Props = {
+  handleModalSummoner: Function
+}
+
+const EmptyState = (props: Props) => (
   <section className={style(styles.base)}>
     <h2 className={style(styles.title)}>You dont have any Summoner yet</h2>
     <h3 className={style(styles.subtitle)}>To join the Ritoplz Ranking you must add your summoner</h3>
