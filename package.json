@@ -11,18 +11,17 @@
   "dependencies": {
     "ava": "^0.16.0",
     "axios": "^0.15.2",
-    "babel-register": "^6.18.0",
-    "enzyme": "^2.5.1",
     "eslint-config-xo-react": "^0.10.0",
     "eslint-plugin-react": "^6.6.0",
     "flow-bin": "^0.34.0",
-    "jsdom": "^9.8.3",
     "next": "^1.0.0",
     "react": "^15.3.2",
     "react-addons-test-utils": "^15.3.2",
     "react-modal": "^1.5.2",
     "react-notification": "^6.3.0",
+    "react-redux": "^4.4.5",
     "react-select": "^1.0.0-rc.2",
+    "redux": "^3.6.0",
     "xo": "^0.17.0"
   },
   "scripts": {
@@ -33,12 +32,6 @@
   "devDependencies": {
     "ava": "^0.16.0",
     "xo": "^0.17.0"
-  },
-  "ava": {
-    "babel": "inherit",
-    "require": [
-      "./__tests__/helpers/setup-test-env.js"
-    ]
   },
   "xo": {
     "extends": "xo-react",
