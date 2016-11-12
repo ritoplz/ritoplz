@@ -26,7 +26,7 @@
   },
   "scripts": {
     "start": "next",
-    "test": "xo && ava --verbose",
+    "test": "xo && ava --verbose && flow",
     "flow": "./node_modules/flow-bin/cli.js check"
   },
   "devDependencies": {
