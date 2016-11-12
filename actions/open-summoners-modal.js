@@ -1,9 +1,9 @@
 'use strict'
 
-function openSummonersModal (id) {
+function openSummonersModal (index) {
   return {
     type: 'OPEN_SUMMONERS_MODAL',
-    id
+    index
   }
 }
 
