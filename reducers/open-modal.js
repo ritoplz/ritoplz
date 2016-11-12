@@ -1,7 +1,7 @@
 'use strict'
 
 export default (state = [], action) => {
-  switch(action.type) {
+  switch (action.type) {
     case 'OPEN_SUMMONERS_MODAL':
       return state.map((modal, index) => {
         if (index === action.index) {
