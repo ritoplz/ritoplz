@@ -34,9 +34,7 @@
     "xo": "^0.17.0"
   },
   "ava": {
-    "require": [
-      "babel-register"
-    ]
+    "require": ["babel-register"]
   },
   "xo": {
     "extends": "xo-react",
