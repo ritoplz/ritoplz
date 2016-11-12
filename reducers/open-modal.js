@@ -2,7 +2,7 @@
 
 export default (state = [], action) => {
   switch (action.type) {
-    case 'OPEN_SUMMONERS_MODAL':
+    case 'OPEN_MODAL':
       return state.map((modal, index) => {
         if (index === action.index) {
           return Object.assign({}, modal, {
