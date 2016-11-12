@@ -11,6 +11,7 @@
   "dependencies": {
     "ava": "^0.16.0",
     "axios": "^0.15.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
     "eslint-config-xo-react": "^0.10.0",
     "eslint-plugin-react": "^6.6.0",
     "flow-bin": "^0.34.0",
