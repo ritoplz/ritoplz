@@ -4,6 +4,8 @@
 
 import React, {Component} from 'react'
 
+import configureStore from '../store/configureStore'
+
 export default class SignUp extends Component {
   constructor (props) {
     super(props)
@@ -34,8 +36,10 @@ export default class SignUp extends Component {
   }
 
   render () {
+    const store = configureStore()
+
     return (
-      <div>
+      <Provider store={store}>
         <div className="row">
           <h2 className="title">Sign Up</h2>
           <p className="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel lacus vel augue aliquet luctus. Ut urna libero.</p>
@@ -59,7 +63,7 @@ export default class SignUp extends Component {
             <button className="btn -secondary -large" type="submit">Sign Up</button>
           </form>
         </div>
-      </div>
+      </Provider>
     )
   }
 }
