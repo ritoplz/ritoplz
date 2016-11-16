@@ -1,6 +1,6 @@
 'use strict'
 
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import axios from 'axios'
 import thunk from 'redux-thunk'
 
@@ -10,7 +10,12 @@ const configureStore = initialState => {
   return createStore(
     rootReducer,
     initialState,
-    applyMiddleware(thunk)
+    compose(
+      applyMiddleware(thunk),
+      typeof window === 'object' && typeof window.devToolsExtension !== 'undefined'
+      ? window.devToolsExtension()
+      : f => f
+    )
   )
 }
 
