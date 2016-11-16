@@ -27,6 +27,7 @@
     "react-redux": "^4.4.5",
     "react-select": "^1.0.0-rc.2",
     "redux": "^3.6.0",
+    "redux-thunk": "^2.1.0",
     "xo": "^0.17.0"
   },
   "scripts": {
