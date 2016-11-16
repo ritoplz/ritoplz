@@ -2,8 +2,9 @@
 
 import test from 'ava'
 
-import FormSignUpAction from '../components/form-sign-up'
+import signUpAction from '../actions/sign-up'
 
 test('sign up', t => {
-  console.log(FormSignUpAction)
+  const data = {name: 'ritoplz', email: 'hi@ritoplz.com', password: 'monkey'}
+  signUpAction(data)
 })
