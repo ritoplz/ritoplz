@@ -6,7 +6,7 @@ import openModalReducer from '../reducers/open-modal'
 import openModalAction from '../actions/open-modal'
 
 test('reducer modal', t => {
-  const state = [{name: 'Add Summoners', open: false}, {name: 'Add Location', open: false}]
+  const state = Object.freeze([{name: 'Add Summoners', open: false}, {name: 'Add Location', open: false}])
   const index = 0
   const action = {type: 'OPEN_MODAL', index}
   const data = openModalReducer(state, action)
