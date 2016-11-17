@@ -1,7 +1,5 @@
 'use strict'
 
-/* global fetch: false */
-
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 

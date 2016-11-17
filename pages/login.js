@@ -1,7 +1,5 @@
 'use strict'
 
-/* global localStorage: false */
-
 import React from 'react'
 import { Provider } from 'react-redux'
 
