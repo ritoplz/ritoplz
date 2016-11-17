@@ -62,7 +62,7 @@ const EmptyState = (props: Props) => (
 )
 
 EmptyState.propTypes = {
-  handleModalSummoner: React.PropTypes.func
+  handleModalSummoner: React.PropTypes.func.isRequired
 }
 
 export default EmptyState
