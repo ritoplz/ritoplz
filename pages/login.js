@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import configureStore from '../store/configureStore'
 import FormLogin from '../containers/form-login'
 
-const Login = () => {
+const Login = props => {
   const store = configureStore()
 
   return (
@@ -15,7 +15,7 @@ const Login = () => {
         <h2 className="title">Login</h2>
         <p className="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel lacus vel augue aliquet luctus. Ut urna libero.</p>
 
-        <FormLogin />
+        <FormLogin routing={props}/>
       </div>
     </Provider>
   )

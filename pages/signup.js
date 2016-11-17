@@ -6,10 +6,6 @@ import { Provider } from 'react-redux'
 import configureStore from '../store/configureStore'
 import FormSignUp from '../containers/form-sign-up'
 
-const propTypes = {
-  routing: React.PropTypes.object.isRequired
-}
-
 const SignUp = props => {
   const store = configureStore()
 

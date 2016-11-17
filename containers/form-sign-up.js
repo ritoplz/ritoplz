@@ -26,8 +26,6 @@ class FormSignUp extends Component {
       password: this.password.value
     }
 
-    console.log(data)
-
     this.props.signUpRequest(data).then(() => {
       this.props.routing.url.pushTo('/login')
     })
@@ -59,16 +57,10 @@ class FormSignUp extends Component {
 
 FormSignUp.propTypes = propTypes
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    products: state
-  }
-}
-
 const mapDispatchToProps = dispatch => {
   return {
     signUpRequest: userData => dispatch(signUpRequest(userData))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(FormSignUp)
+export default connect(null, mapDispatchToProps)(FormSignUp)
