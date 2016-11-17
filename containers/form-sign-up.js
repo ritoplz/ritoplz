@@ -8,42 +8,28 @@ import signUpRequest from '../actions/sign-up'
 const FormSignUp = () => {
   const handleSignup = (e) => {
     e.preventDefault()
-
-    const data = {
-      //data yet
-    }
-
-    this.props.signUpRequest(data).then(() => {
-      this.props.routing.url.pushTo('/login')
-    })
   }
 
-  render () {
-    return (
-      <form className="registration-form" onSubmit={this.handleSignup}>
-        <fieldset className="form-input">
-          <label className="label">Name</label>
-          <input className="input" type="text"/>
-        </fieldset>
+  return (
+    <form className="registration-form">
+      <fieldset className="form-input">
+        <label className="label">Name</label>
+        <input className="input" type="text"/>
+      </fieldset>
 
-        <fieldset className="form-input">
-          <label className="label">E-mail</label>
-          <input className="input" type="text"/>
-        </fieldset>
+      <fieldset className="form-input">
+        <label className="label">E-mail</label>
+        <input className="input" type="text"/>
+      </fieldset>
 
-        <fieldset className="form-input">
-          <label className="label">Password</label>
-          <input className="input" type="password"/>
-        </fieldset>
+      <fieldset className="form-input">
+        <label className="label">Password</label>
+        <input className="input" type="password"/>
+      </fieldset>
 
-        <button className="btn -secondary -large" type="submit">Sign Up</button>
-      </form>
-    )
-  } 
-}
-
-FormSignUp.propTypes = {
-  url: React.PropTypes.object
+      <button className="btn -secondary -large" type="submit">Sign Up</button>
+    </form>
+  )
 }
 
 const mapStateToProps = (state, ownProps) => {
