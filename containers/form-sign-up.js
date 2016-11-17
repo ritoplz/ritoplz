@@ -5,27 +5,13 @@ import { connect } from 'react-redux'
 
 import signUpRequest from '../actions/sign-up'
 
-class FormSignUp extends Component {
-  constructor (props) {
-    super(props)
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSignup = this.handleSignup.bind(this)
-
-    this.state = {
-      name: '',
-      email: '',
-      password: ''
-    }
-  }
-
-  handleChange (e) {
-    this.setState({[e.target.name]: e.target.value})
-  }
-
-  handleSignup (e) {
+const FormSignUp = () => {
+  const handleSignup = (e) => {
     e.preventDefault()
 
-    const data = this.state
+    const data = {
+      //data yet
+    }
 
     this.props.signUpRequest(data).then(() => {
       this.props.routing.url.pushTo('/login')
@@ -37,17 +23,17 @@ class FormSignUp extends Component {
       <form className="registration-form" onSubmit={this.handleSignup}>
         <fieldset className="form-input">
           <label className="label">Name</label>
-          <input className="input" type="text" name="name" onChange={this.handleChange}/>
+          <input className="input" type="text"/>
         </fieldset>
 
         <fieldset className="form-input">
           <label className="label">E-mail</label>
-          <input className="input" type="text" name="email" onChange={this.handleChange}/>
+          <input className="input" type="text"/>
         </fieldset>
 
         <fieldset className="form-input">
           <label className="label">Password</label>
-          <input className="input" type="password" name="password" onChange={this.handleChange}/>
+          <input className="input" type="password"/>
         </fieldset>
 
         <button className="btn -secondary -large" type="submit">Sign Up</button>
