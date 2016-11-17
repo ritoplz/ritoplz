@@ -8,20 +8,19 @@ import { Provider } from 'react-redux'
 import configureStore from '../store/configureStore'
 import FormSignUp from '../containers/form-sign-up'
 
-export default class SignUp extends Component {
-  render () {
-    const store = configureStore()
+const SignUp = () => {
+  const store = configureStore()
 
-    return (
-      <Provider store={store}>
-        <div className="row">
-          <h2 className="title">Sign Up</h2>
-          <p className="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel lacus vel augue aliquet luctus. Ut urna libero.</p>
+  return (
+    <Provider store={store}>
+      <div className="row">
+        <h2 className="title">Sign Up</h2>
+        <p className="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel lacus vel augue aliquet luctus. Ut urna libero.</p>
 
-          <FormSignUp routing={this.props}/>
-        </div>
-      </Provider>
-    )
-  }
+        <FormSignUp routing={this.props}/>
+      </div>
+    </Provider>
+  )
 }
 
+export default SignUp
