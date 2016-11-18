@@ -5,6 +5,10 @@
 import React from 'react'
 import { style } from 'next/css'
 
+const propTypes = {
+  handleModalSummoner: React.PropTypes.func.isRequired
+}
+
 const styles = {
   base: {
     border: '1px solid #F3F5FB',
@@ -61,8 +65,6 @@ const EmptyState = (props: Props) => (
   </section>
 )
 
-EmptyState.propTypes = {
-  handleModalSummoner: React.PropTypes.func
-}
+EmptyState.propTypes = propTypes
 
 export default EmptyState

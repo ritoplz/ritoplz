@@ -5,27 +5,26 @@ import { connect } from 'react-redux'
 
 import signUpRequest from '../actions/sign-up'
 
+const propTypes = {
+  signUpRequest: React.PropTypes.func.isRequired,
+  routing: React.PropTypes.object.isRequired
+}
+
 class FormSignUp extends Component {
-  constructor (props) {
-    super(props)
-    this.handleChange = this.handleChange.bind(this)
+  constructor () {
+    super()
+
     this.handleSignup = this.handleSignup.bind(this)
-
-    this.state = {
-      name: '',
-      email: '',
-      password: ''
-    }
   }
 
-  handleChange (e) {
-    this.setState({[e.target.name]: e.target.value})
-  }
-
-  handleSignup (e) {
+  handleSignup(e) {
     e.preventDefault()
 
-    const data = this.state
+    const data = {
+      name: this.name.value,
+      email: this.email.value,
+      password: this.password.value
+    }
 
     this.props.signUpRequest(data).then(() => {
       this.props.routing.url.pushTo('/login')
@@ -37,34 +36,26 @@ class FormSignUp extends Component {
       <form className="registration-form" onSubmit={this.handleSignup}>
         <fieldset className="form-input">
           <label className="label">Name</label>
-          <input className="input" type="text" name="name" onChange={this.handleChange}/>
+          <input className="input" type="text" ref={input => this.name = input}/>
         </fieldset>
 
         <fieldset className="form-input">
           <label className="label">E-mail</label>
-          <input className="input" type="text" name="email" onChange={this.handleChange}/>
+          <input className="input" type="email" ref={input => this.email = input}/>
         </fieldset>
 
         <fieldset className="form-input">
           <label className="label">Password</label>
-          <input className="input" type="password" name="password" onChange={this.handleChange}/>
+          <input className="input" type="password" ref={input => this.password = input}/>
         </fieldset>
 
         <button className="btn -secondary -large" type="submit">Sign Up</button>
       </form>
     )
-  } 
-}
-
-FormSignUp.propTypes = {
-  url: React.PropTypes.object
-}
-
-const mapStateToProps = (state, ownProps) => {
-  return {
-    products: state
   }
 }
+
+FormSignUp.propTypes = propTypes
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -72,4 +63,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(FormSignUp)
+export default connect(null, mapDispatchToProps)(FormSignUp)

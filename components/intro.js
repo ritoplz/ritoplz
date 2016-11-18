@@ -2,28 +2,11 @@
 
 /* @flow */
 
-import React from 'react'
+import React, {Component} from 'react'
 import { style } from 'next/css'
+import { connect } from 'react-redux'
 
-type Props = {
-  user: string,
-  openModalLocation: Object,
-  location: Object
-}
-
-const Intro = (props: Props) => (
-  <header className={style(styles.base)}>
-    <h1 className={style(styles.title)}>Hello, <span className={style(styles.username)}>{props.user}</span>!</h1>
-    <h3 className={style(styles.location)} onClick={props.openModalLocation}>{props.location}</h3>
-    <hr className={style(styles.divider)}/>
-  </header>
-)
-
-Intro.propTypes = {
-  user: React.PropTypes.string,
-  location: React.PropTypes.string,
-  openModalLocation: React.PropTypes.func
-}
+import fetchUser from '../actions/fetch-user'
 
 const styles = {
   base: {
@@ -67,4 +50,26 @@ const styles = {
   }
 }
 
-export default Intro
+class Intro extends Component {
+  componentDidMount () {
+    const res = this.props.fetchUser
+    console.log(res)
+  }
+
+  render() {
+    return (
+    <header className={style(styles.base)}>
+      <h1 className={style(styles.title)}>Hello, <span className={style(styles.username)}>Bu Kinoshita</span>!</h1>
+      <h3 className={style(styles.location)}>Add Location</h3>
+      <hr className={style(styles.divider)}/>
+    </header>
+  )}
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchUser: () => dispatch(fetchUser())
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Intro)

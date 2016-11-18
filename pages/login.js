@@ -1,55 +1,24 @@
 'use strict'
 
-/* global localStorage: false */
+import React from 'react'
+import { Provider } from 'react-redux'
 
-import React, { Component } from 'react'
-import axios from 'axios'
+import configureStore from '../store/configureStore'
+import FormLogin from '../containers/form-login'
 
-export default class Login extends Component {
-  constructor (props) {
-    super(props)
-    this.handleLogin = this.handleLogin.bind(this)
-  }
+const Login = props => {
+  const store = configureStore()
 
-  handleLogin (e) {
-    e.preventDefault()
-
-    axios.post('http://localhost:3001/login', {
-      email: this.email.value,
-      password: this.password.value
-    }).then(res => {
-      const token = res.data.token
-      localStorage.setItem('token', token)
-      this.props.url.pushTo('/profile')
-    }).catch(err => {
-      console.log(err)
-    })
-  }
-
-  render () {
-    return (
+  return (
+    <Provider store={store}>
       <div className="row">
         <h2 className="title">Login</h2>
         <p className="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel lacus vel augue aliquet luctus. Ut urna libero.</p>
 
-        <form className="registration-form" onSubmit={this.handleLogin}>
-          <fieldset className="form-input">
-            <label className="label">E-mail</label>
-            <input className="input" type="text" name="email" ref={input => {this.email = input}}/>
-          </fieldset>
-
-          <fieldset className="form-input">
-            <label className="label">Password</label>
-            <input className="input" type="password" name="password" ref={input => {this.password = input}}/>
-          </fieldset>
-
-          <button className="btn -secondary -large" type="submit">Login</button>
-        </form>
+        <FormLogin routing={props}/>
       </div>
-    )
-  }
+    </Provider>
+  )
 }
 
-Login.propTypes = {
-  url: React.PropTypes.object
-}
+export default Login
