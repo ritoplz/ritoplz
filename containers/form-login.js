@@ -25,10 +25,7 @@ class FormLogin extends Component {
       password: this.password.value
     }
 
-    this.props.loginRequest(data).then(res => {
-      const token = res.data.token
-      localStorage.setItem('token', token)
-
+    this.props.loginRequest(data).then(() => {
       this.props.routing.url.pushTo('/profile')
     })
   }
