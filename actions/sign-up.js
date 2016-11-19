@@ -5,7 +5,9 @@ import axios from 'axios'
 import * as types from './../constants'
 
 function signupRequest () {
-  return {type: types.SIGNUP_REQUEST}
+  return {
+    type: types.SIGNUP_REQUEST
+  }
 }
 
 function signupSuccess (data) {
