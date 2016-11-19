@@ -2,13 +2,39 @@
 
 import axios from 'axios'
 
-function loginRequest (userData) {
-  return dispatch => {
-    return axios.post('http://localhost:3001/login', userData).then(res => {
-      const token = res.data.token
-      localStorage.setItem('token', token)
-    })
+import * as types from './../constants'
+
+function loginRequest () {
+  return {
+    type: types.LOGIN_REQUEST
   }
 }
 
-export default loginRequest
+function loginSuccess (data) {
+  return {
+    type: types.LOGIN_SUCCESS,
+    data
+  }
+}
+
+function loginError (data) {
+  return {
+    type: types.LOGIN_ERROR,
+    data
+  }
+}
+
+function handleLogin (userData) {
+  return dispatch => {
+    dispatch(loginRequest())
+    return axios.post('http://localhost:3001/login', userData)
+      .then(res => {
+        dispatch(loginSuccess(res.data))
+        const token = res.data.token
+        localStorage.setItem('token', token)
+      })
+      .catch(res => dispatch(loginError(res.data)))
+  }
+}
+
+export default handleLogin
