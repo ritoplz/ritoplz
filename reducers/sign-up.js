@@ -1,31 +1,36 @@
 'use strict'
 
-import * as types from './constants'
+import * as types from './../constants'
 
-export default (state = {}, action) => {
+const initialState = {
+  requesting: false,
+  requested: false,
+  data: [],
+  error: null
+}
+
+export default (state = initialState, action) => {
   switch(action.type) {
     case types.SIGNUP_REQUEST:
-      return Object.assign({}, state, {
-        isLoading: true,
-        isSigned: false,
-        error: false
-      })
+      return {
+        ...state,
+        requesting: true
+      }
 
     case types.SIGNUP_SUCCESS:
-      return Object.assign({}, state, {
-        isLoading: false,
-        isSigned: true,
-        data: action.data,
-        error: false
-      })
+      return {
+        ...state,
+        requesting: false,
+        requested: true,
+        data: action.data
+      }
 
     case types.SIGNUP_ERROR:
-      return Object.assign({}, state, {
-        isLoading: false,
-        isSigned: false,
-        data: action.data,
-        error: true
-      })
+      return {
+        ...state,
+        requesting: false,
+        error: action.data
+      }
 
     default:
       return state

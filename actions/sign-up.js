@@ -2,7 +2,7 @@
 
 import axios from 'axios'
 
-import * as types from './constants'
+import * as types from './../constants'
 
 function signupRequest () {
   return {type: types.SIGNUP_REQUEST}
