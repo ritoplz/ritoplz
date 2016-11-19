@@ -6,8 +6,6 @@ import React, {Component} from 'react'
 import { style } from 'next/css'
 import { connect } from 'react-redux'
 
-import fetchUser from '../actions/fetch-user'
-
 const styles = {
   base: {
     paddingTop: '50px',

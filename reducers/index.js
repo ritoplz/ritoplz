@@ -2,8 +2,8 @@
 
 import { combineReducers } from 'redux'
 
-import openModal from './open-modal'
+import signUp from './sign-up'
 
 export default combineReducers({
-  openModal
+  signUp
 })
