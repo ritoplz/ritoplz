@@ -11,14 +11,13 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch(action.type) {
-    case types.SIGNUP_REQUEST:
+    case types.LOGIN_REQUEST:
       return {
         ...state,
         requesting: true
       }
 
-    case types.SIGNUP_SUCCESS:
-      console.log(action.data)
+    case types.LOGIN_SUCCESS:
       return {
         ...state,
         requesting: false,
@@ -26,7 +25,7 @@ export default (state = initialState, action) => {
         data: action.data
       }
 
-    case types.SIGNUP_ERROR:
+    case types.LOGIN_ERROR:
       return {
         ...state,
         requesting: false,

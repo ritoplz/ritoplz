@@ -33,7 +33,7 @@ function handleLogin (userData) {
         const token = res.data.token
         localStorage.setItem('token', token)
       })
-      .catch(res => dispatch(loginError(res.data)))
+      .catch(res => dispatch(loginError(res.response.data.error.message)))
   }
 }
 
