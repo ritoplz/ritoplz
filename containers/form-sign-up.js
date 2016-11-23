@@ -26,9 +26,7 @@ class FormSignUp extends Component {
       password: this.password.value
     }
 
-    this.props.signUpRequest(data).then(() => {
-      this.props.routing.url.pushTo('/login')
-    })
+    this.props.signUpRequest(data)
   }
 
   render () {
