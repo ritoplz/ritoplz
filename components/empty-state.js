@@ -5,10 +5,6 @@
 import React from 'react'
 import { style } from 'next/css'
 
-const propTypes = {
-  handleModalSummoner: React.PropTypes.func.isRequired
-}
-
 const styles = {
   base: {
     border: '1px solid #F3F5FB',
@@ -52,19 +48,13 @@ const styles = {
   }
 }
 
-type Props = {
-  handleModalSummoner: Function
-}
-
 const EmptyState = (props: Props) => (
   <section className={style(styles.base)}>
     <h2 className={style(styles.title)}>You dont have any Summoner yet</h2>
     <h3 className={style(styles.subtitle)}>To join the Ritoplz Ranking you must add your summoner</h3>
 
-    <button className={style(styles.btn)} onClick={props.handleModalSummoner}>Add summoner</button>
+    <button className={style(styles.btn)}>Add summoner</button>
   </section>
 )
-
-EmptyState.propTypes = propTypes
 
 export default EmptyState

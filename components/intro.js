@@ -7,6 +7,7 @@ import { style } from 'next/css'
 import { connect } from 'react-redux'
 
 import fetchUser from '../actions/fetch-user'
+import EmptyState from './empty-state'
 
 const styles = {
   base: {
@@ -73,10 +74,10 @@ class Intro extends Component {
 
   render() {
     let profile = null
-    if (this.state.profile.requested) {
+    if (this.props.profile.requested) {
       profile = (
         <header className={style(styles.base)}>
-          <h1 className={style(styles.title)}>Hello, <span className={style(styles.username)}>{this.state.profile.data.user.name}</span>!</h1>
+          <h1 className={style(styles.title)}>Hello, <span className={style(styles.username)}>{this.props.profile.data.user.name}</span>!</h1>
           <h3 className={style(styles.location)}>Add Location</h3>
           <hr className={style(styles.divider)}/>
         </header>
@@ -86,14 +87,17 @@ class Intro extends Component {
     }
 
     return (
-      profile
+      <div>
+        {profile}
+        <EmptyState />
+      </div>
     )
   }
 }
 
 const mapStateToProps = state => {
   return {
-    user: state.user
+    profile: state.user
   }
 }
 
