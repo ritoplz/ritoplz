@@ -29,7 +29,7 @@ function handleSignup (userData) {
     dispatch(signupRequest())
     return axios.post('http://localhost:3001/signup', userData)
       .then(res => dispatch(signupSuccess(res.data)))
-      .catch(res => dispatch(signupError(res.data)))
+      .catch(res => dispatch(signupError(res.response.data.msg)))
   }
 }
 

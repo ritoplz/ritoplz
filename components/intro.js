@@ -6,6 +6,8 @@ import React, {Component} from 'react'
 import { style } from 'next/css'
 import { connect } from 'react-redux'
 
+import fetchUser from '../actions/fetch-user'
+
 const styles = {
   base: {
     paddingTop: '50px',
@@ -49,25 +51,56 @@ const styles = {
 }
 
 class Intro extends Component {
+  constructor () {
+    super()
+
+    this.state = {
+      profile: {
+        requested: false,
+        requesting: false
+      }
+    }
+  }
+
   componentDidMount () {
-    const res = this.props.fetchUser
-    console.log(res)
+    const localStorageRef = localStorage.getItem('token')
+    this.props.fetchUser(localStorageRef)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({profile: nextProps.user})
   }
 
   render() {
+    let profile = null
+    if (this.state.profile.requested) {
+      profile = (
+        <header className={style(styles.base)}>
+          <h1 className={style(styles.title)}>Hello, <span className={style(styles.username)}>{this.state.profile.data.user.name}</span>!</h1>
+          <h3 className={style(styles.location)}>Add Location</h3>
+          <hr className={style(styles.divider)}/>
+        </header>
+      )
+    } else {
+      profile = (<h1>Not Yet bro!</h1>)
+    }
+
     return (
-    <header className={style(styles.base)}>
-      <h1 className={style(styles.title)}>Hello, <span className={style(styles.username)}>Bu Kinoshita</span>!</h1>
-      <h3 className={style(styles.location)}>Add Location</h3>
-      <hr className={style(styles.divider)}/>
-    </header>
-  )}
+      profile
+    )
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchUser: () => dispatch(fetchUser())
+    fetchUser: token => dispatch(fetchUser(token))
   }
 }
 
-export default connect(null, mapDispatchToProps)(Intro)
+export default connect(mapStateToProps, mapDispatchToProps)(Intro)

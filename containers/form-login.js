@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import loginRequest from '../actions/login'
+import * as types from './../constants'
 
 const propTypes = {
   loginRequest: React.PropTypes.func.isRequired,
@@ -25,8 +26,15 @@ class FormLogin extends Component {
       password: this.password.value
     }
 
-    this.props.loginRequest(data).then(() => {
-      this.props.routing.url.pushTo('/profile')
+    this.props.loginRequest(data).then(res => {
+      console.log('For some weird reason res is returning undefined when success', res)
+      // if (res.type === types.LOGIN_SUCCESS) {
+        this.props.routing.url.pushTo('/profile')
+      // }
+
+      if (res.type === types.LOGIN_ERROR) {
+        console.log(res.data)
+      }
     })
   }
 

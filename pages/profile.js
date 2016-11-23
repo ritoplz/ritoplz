@@ -24,10 +24,16 @@ const styles = {
   }
 }
 
-export default class extends Component {
-  render () {
-    const store = configureStore()
+const store = configureStore()
 
+export default class extends Component {
+  constructor () {
+    super()
+
+    store.subscribe(() => store.getState())
+  }
+
+  render () {
     return (
       <Provider store={store}>
         <div>
