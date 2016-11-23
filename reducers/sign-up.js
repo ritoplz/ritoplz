@@ -18,7 +18,6 @@ export default (state = initialState, action) => {
       }
 
     case types.SIGNUP_SUCCESS:
-      console.log(action.data)
       return {
         ...state,
         requesting: false,

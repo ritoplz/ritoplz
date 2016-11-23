@@ -26,6 +26,7 @@ function userError(data) {
 
 function fetchUser(localStorageRef) {
   return dispatch => {
+    console.log('Local Storage', localStorageRef)
     dispatch(userRequest())
     return axios.get('http://localhost:3001/account', {
       headers: { 
@@ -34,7 +35,7 @@ function fetchUser(localStorageRef) {
       }
     })
     .then(res => dispatch(userSuccess(res.data)))
-    .catch(res => dispatch(userError(res.data)))
+    .catch(res => dispatch(userError(res)))
   }
 }
 

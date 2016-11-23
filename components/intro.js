@@ -76,7 +76,7 @@ class Intro extends Component {
     if (this.state.profile.requested) {
       profile = (
         <header className={style(styles.base)}>
-          <h1 className={style(styles.title)}>Hello, <span className={style(styles.username)}>{this.state.profile.user.name}</span>!</h1>
+          <h1 className={style(styles.title)}>Hello, <span className={style(styles.username)}>{this.state.profile.data.user.name}</span>!</h1>
           <h3 className={style(styles.location)}>Add Location</h3>
           <hr className={style(styles.divider)}/>
         </header>
