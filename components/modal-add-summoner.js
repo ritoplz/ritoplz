@@ -72,12 +72,12 @@ export default class ModalAddSummoner extends Component {
   handleForm (e) {
     e.preventDefault()
     const data = this.summoner.value
-    this.props.handleSubmit(data)
+    // this.props.handleSubmit(data)
   }
 
   render () {
     return (
-      <Modal isOpen={this.props.modal} style={customStyle}>
+      <Modal isOpen={this.props.open} style={customStyle}>
         <form onSubmit={this.handleForm}>
           <fieldset className={style(styles.formInput)}>
             <label className={style(styles.label)}>Summoner</label>
@@ -89,9 +89,4 @@ export default class ModalAddSummoner extends Component {
       </Modal>
     )
   }
-}
-
-ModalAddSummoner.propTypes = {
-  handleSubmit: React.PropTypes.func,
-  modal: React.PropTypes.bool
 }
