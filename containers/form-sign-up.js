@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import signUpRequest from '../actions/sign-up'
+import * as types from './../constants'
 
 const propTypes = {
   signUpRequest: React.PropTypes.func.isRequired,
@@ -26,7 +27,15 @@ class FormSignUp extends Component {
       password: this.password.value
     }
 
-    this.props.signUpRequest(data)
+    this.props.signUpRequest(data).then(res => {
+      if (res.type === types.SIGNUP_SUCCESS) {
+        this.props.routing.url.pushTo('/login')
+      }
+
+      if (res.type === types.SIGNUP_ERROR) {
+        console.log(res.data)
+      }
+    })
   }
 
   render () {
