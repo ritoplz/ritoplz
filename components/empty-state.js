@@ -4,6 +4,9 @@
 
 import React from 'react'
 import { style } from 'next/css'
+import { connect } from 'react-redux'
+
+import openModal from '../actions/modals'
 
 const styles = {
   base: {
@@ -57,4 +60,16 @@ const EmptyState = (props: Props) => (
   </section>
 )
 
-export default EmptyState
+const mapStateToProps = state => {
+  return {
+    modals: state.modals
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    openModal: modal => dispatch(openModal(modal))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EmptyState)
