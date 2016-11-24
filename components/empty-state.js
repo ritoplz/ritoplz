@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 
 import openModal from '../actions/modals'
 import ModalAddSummoner from './modal-add-summoner'
+import * as types from './../constants'
 
 const styles = {
   base: {
@@ -53,15 +54,35 @@ const styles = {
 }
 
 class EmptyState extends Component {
+  constructor () {
+    super()
+
+    this.handleOpenModal = this.handleOpenModal.bind(this)
+
+    this.state = {
+      modalAddSummoner: false
+    }
+  }
+
+  handleOpenModal (modalType) {
+    this.props.openModal(modalType)
+
+    this.props.modals.filter(modal => {
+      if (modal.title === modalType) {
+        this.setState({modalAddSummoner: modal.status})
+      }
+    })
+  }
+
   render () {
     return (
       <section className={style(styles.base)}>
         <h2 className={style(styles.title)}>You dont have any Summoner yet</h2>
         <h3 className={style(styles.subtitle)}>To join the Ritoplz Ranking you must add your summoner</h3>
 
-        <button className={style(styles.btn)}>Add summoner</button>
+        <button className={style(styles.btn)} onClick={() => this.handleOpenModal(types.MODAL_ADD_SUMMONER)}>Add summoner</button>
 
-        <ModalAddSummoner open={false}/>
+        <ModalAddSummoner open={this.state.modalAddSummoner}/>
       </section>
     )
   }

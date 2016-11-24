@@ -14,3 +14,6 @@ export const USER_ERROR = 'USER_ERROR'
 
 export const OPEN_MODAL = 'OPEN_MODAL'
 export const CLOSE_MODAL = 'CLOSE_MODAL'
+
+export const MODAL_ADD_SUMMONER = 'MODAL_ADD_SUMMONER'
+export const MODAL_ADD_LOCATION = 'MODAL_ADD_LOCATION'

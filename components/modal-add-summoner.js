@@ -63,22 +63,10 @@ const customStyle = {
 }
 
 export default class ModalAddSummoner extends Component {
-  constructor () {
-    super()
-
-    this.handleForm = this.handleForm.bind(this)
-  }
-
-  handleForm (e) {
-    e.preventDefault()
-    const data = this.summoner.value
-    // this.props.handleSubmit(data)
-  }
-
   render () {
     return (
       <Modal isOpen={this.props.open} style={customStyle}>
-        <form onSubmit={this.handleForm}>
+        <form>
           <fieldset className={style(styles.formInput)}>
             <label className={style(styles.label)}>Summoner</label>
             <input className={style(styles.input)} type="text" ref={node => this.summoner = node}/>
