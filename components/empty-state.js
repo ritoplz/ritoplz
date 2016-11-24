@@ -69,6 +69,11 @@ class EmptyState extends Component {
 
     this.props.modals.filter(modal => {
       if (modal.title === modalType) {
+        // filter all modals
+        // find the modal that has the same title
+        // and update the status state
+        // Ps: needs to click two times to open modal
+        // Ps2: I don't think this is the best way to do it
         this.setState({modalAddSummoner: modal.status})
       }
     })
