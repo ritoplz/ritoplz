@@ -35,7 +35,7 @@
   },
   "scripts": {
     "start": "./node_modules/.bin/next",
-    "test": "ava",
+    "test": "./node_modules/.bin/ava",
     "flow": "./node_modules/flow-bin/cli.js check"
   },
   "devDependencies": {
