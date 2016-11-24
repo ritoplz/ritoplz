@@ -57,5 +57,6 @@
       "space-before-function-paren": 0,
       "object-curly-spacing": 0
     }
-  }
+  },
+  "engine": { "node": "6.9.1"}
 }
