@@ -58,5 +58,5 @@
       "object-curly-spacing": 0
     }
   },
-  "engine": { "node": "6.9.1"}
+  "engines": { "node": "6.9.1"}
 }
