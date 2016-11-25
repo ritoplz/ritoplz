@@ -54,11 +54,15 @@ const customStyle = {
   content: {
     top: 100,
     bottom: 'auto',
-    left: 475,
-    right: 475,
+    left: '15px',
+    right: '15px',
     border: 'none',
+    marginLeft: 'auto',
+    marginRight: 'auto',
     padding: '50px',
-    boxShadow: '0 10px 50px rgba(0, 0, 0, .1)'
+    boxShadow: '0 10px 50px rgba(0, 0, 0, .1)',
+    maxWidth: '500px',
+    width: '90%'
   }
 }
 
