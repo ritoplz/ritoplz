@@ -45,7 +45,7 @@ const MySummoners = props => (
     </header>
 
     {props.summoners.map(summoner => {
-      return <Summoner key={summoner.id} cover="/static/ashe.png" name={summoner.name} code={summoner.code} state={summoner.state}/>
+      return <Summoner key={summoner._id} cover="/static/ashe.png" name={summoner.name} code={summoner.code} state={summoner.state}/>
     })}
   </section>
 )
