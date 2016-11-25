@@ -70,22 +70,29 @@ const customStyle = {
 }
 
 class ModalAddSummoner extends Component {
-  constructor () {
+  constructor (props) {
     super()
 
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.state = {
+      modalStatus: props.open
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({modalStatus: nextProps.open})
   }
 
   handleSubmit (e) {
     e.preventDefault()
 
     const summoner = {name: this.summoner.value}
-    this.props.addSummoner(summoner)
+    this.props.addSummoner(summoner).then(() => this.setState({modalStatus: false}))
   }
 
   render () {
     return (
-      <Modal isOpen={this.props.open} style={customStyle}>
+      <Modal isOpen={this.state.modalStatus} style={customStyle}>
         <form onSubmit={this.handleSubmit}>
           <fieldset className={style(styles.formInput)}>
             <label className={style(styles.label)}>Summoner</label>
