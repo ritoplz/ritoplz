@@ -41,7 +41,7 @@ const MySummoners = props => (
   <section className={style(styles.summoners)}>
     <header className={style(styles.header)}>
       <h2 className={style(styles.title)}>My Summoners</h2>
-      <button className={style(styles.btn)} onClick={props.handleModalSummoner}>Add Summoner</button>
+      <button className={style(styles.btn)}>Add Summoner</button>
     </header>
 
     {props.summoners.map(summoner => {
@@ -49,10 +49,5 @@ const MySummoners = props => (
     })}
   </section>
 )
-
-MySummoners.propTypes = {
-  handleModalSummoner: React.PropTypes.func,
-  summoners: React.PropTypes.array
-}
 
 export default MySummoners
