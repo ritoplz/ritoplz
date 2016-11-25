@@ -6,10 +6,16 @@ import { style } from 'next/css'
 import Summoner from './summoner'
 
 const styles = {
+  header: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
+
   title: {
     color: '#333',
     marginBottom: '50px',
-    fontWeight: 400
+    fontWeight: 400,
   },
 
   btn: {
@@ -38,7 +44,7 @@ const styles = {
 
 const MySummoners = props => (
   <section>
-    <header>
+    <header className={style(styles.header)}>
       <h2 className={style(styles.title)}>My Summoners</h2>
       <button className={style(styles.btn)}>Add Summoner</button>
     </header>
