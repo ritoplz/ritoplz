@@ -26,10 +26,19 @@ function addSummonerError (data) {
 
 function handleAddSummoner (summoner) {
   return dispatch => {
+    const localStorageRef = localStorage.getItem('token')
     dispatch(addSummonerRequest())
-    return axios.post('http://localhost:3001/summoner', summoner)
-      .then(res => dispatch(addSummonerSuccess(res)))
-      .catch(res => dispatch(addSummonerError(res)))
+    return axios({
+      method: 'post', 
+      url: 'http://localhost:3001/summoner',
+      data: summoner,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': localStorageRef
+      }
+    })
+    .then(res => dispatch(addSummonerSuccess(res.data)))
+    .catch(res => dispatch(addSummonerError(res.data)))
   }
 }
 

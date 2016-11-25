@@ -5,7 +5,7 @@ import * as types from './../constants'
 const initialState = {
   requesting: false,
   requested: false,
-  data: {},
+  data: '',
   error: null
 }
 

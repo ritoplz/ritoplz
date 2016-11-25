@@ -3,6 +3,9 @@
 import React, { Component } from 'react'
 import { style } from 'next/css'
 import Modal from 'react-modal'
+import { connect } from 'react-redux'
+
+import addSummoner from './../actions/add-summoner'
 
 const styles = {
   formInput: {
@@ -66,11 +69,24 @@ const customStyle = {
   }
 }
 
-export default class ModalAddSummoner extends Component {
+class ModalAddSummoner extends Component {
+  constructor () {
+    super()
+
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  handleSubmit (e) {
+    e.preventDefault()
+
+    const summoner = {name: this.summoner.value}
+    this.props.addSummoner(summoner)
+  }
+
   render () {
     return (
       <Modal isOpen={this.props.open} style={customStyle}>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <fieldset className={style(styles.formInput)}>
             <label className={style(styles.label)}>Summoner</label>
             <input className={style(styles.input)} type="text" ref={node => this.summoner = node}/>
@@ -82,3 +98,11 @@ export default class ModalAddSummoner extends Component {
     )
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addSummoner: summoner => dispatch(addSummoner(summoner))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(ModalAddSummoner)
