@@ -1,13 +1,7 @@
 'use strict'
 
-/* @flow */
-
-import React, {Component} from 'react'
+import React from 'react'
 import { style } from 'next/css'
-import { connect } from 'react-redux'
-
-import fetchUser from '../actions/fetch-user'
-import EmptyState from './empty-state'
 
 const styles = {
   base: {
@@ -51,60 +45,15 @@ const styles = {
   }
 }
 
-class Intro extends Component {
-  constructor () {
-    super()
+export default props => {
+  return (
+    <header className={style(styles.base)}>
+      <h1 className={style(styles.title)}>Hello, 
+        <span className={style(styles.username)}>{props.name}</span>!
+      </h1>
 
-    this.state = {
-      profile: {
-        requested: false,
-        requesting: false
-      }
-    }
-  }
-
-  componentDidMount () {
-    const localStorageRef = localStorage.getItem('token')
-    this.props.fetchUser(localStorageRef)
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({profile: nextProps.user})
-  }
-
-  render() {
-    let profile = null
-    if (this.props.profile.requested) {
-      profile = (
-        <header className={style(styles.base)}>
-          <h1 className={style(styles.title)}>Hello, <span className={style(styles.username)}>{this.props.profile.data.user.name}</span>!</h1>
-          <h3 className={style(styles.location)}>Add Location</h3>
-          <hr className={style(styles.divider)}/>
-        </header>
-      )
-    } else {
-      profile = (<h1>Not Yet bro!</h1>)
-    }
-
-    return (
-      <div>
-        {profile}
-        <EmptyState />
-      </div>
-    )
-  }
+      <h3 className={style(styles.location)}>Add Location</h3>
+      <hr className={style(styles.divider)}/>
+    </header>
+  )
 }
-
-const mapStateToProps = state => {
-  return {
-    profile: state.user
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchUser: token => dispatch(fetchUser(token))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Intro)
