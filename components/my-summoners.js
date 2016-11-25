@@ -6,17 +6,6 @@ import { style } from 'next/css'
 import Summoner from './summoner'
 
 const styles = {
-  summoners: {
-    display: 'flex',
-    flexFlow: 'row wrap',
-    alignItems: 'center',
-    justifyContent: 'space-between'
-  },
-
-  header: {
-    flexBasis: '100%'
-  },
-
   title: {
     color: '#333',
     marginBottom: '50px',
@@ -34,19 +23,31 @@ const styles = {
     fontWeight: '500',
     cursor: 'pointer',
     background: 'linear-gradient(to right, #52bdab 0%,#6BB6D6 100%)'
+  },
+
+  row: {
+    marginLeft: '-15px',
+    marginRight: '-15px',
+    display: 'flex',
+    display: 'flex',
+    flexFlow: 'row wrap',
+    alignItems: 'center',
+    justifyContent: 'space-between'
   }
 }
 
 const MySummoners = props => (
-  <section className={style(styles.summoners)}>
-    <header className={style(styles.header)}>
+  <section>
+    <header>
       <h2 className={style(styles.title)}>My Summoners</h2>
       <button className={style(styles.btn)}>Add Summoner</button>
     </header>
 
-    {props.summoners.map(summoner => {
-      return <Summoner key={summoner._id} cover="/static/ashe.png" name={summoner.name} code={summoner.code} state={summoner.state}/>
-    })}
+    <div className={style(styles.row)}>
+      {props.summoners.map(summoner => {
+        return <Summoner key={summoner._id} cover="/static/ashe.png" name={summoner.name} code={summoner.code} state={summoner.state}/>
+      })}
+    </div>
   </section>
 )
 
