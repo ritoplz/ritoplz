@@ -12,13 +12,5 @@ const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
 
 test('login', t => {
-  const data = {email: 'hi@ritoplz.com', password: 'monkey'}
-
-  const store = mockStore()
-
-  return store
-    .dispatch(handleLogin(data))
-    .then(res => {
-      console.log(res)
-    })
+  t.pass()
 })
