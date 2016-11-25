@@ -1,9 +1,10 @@
 'use strict'
 
-import React from 'react'
+import React, { Component } from 'react'
 import { style } from 'next/css'
 
 import Summoner from './summoner'
+import ModalAddSummoner from './modal-add-summoner'
 
 const styles = {
   header: {
@@ -42,19 +43,39 @@ const styles = {
   }
 }
 
-const MySummoners = props => (
-  <section>
-    <header className={style(styles.header)}>
-      <h2 className={style(styles.title)}>My Summoners</h2>
-      <button className={style(styles.btn)}>Add Summoner</button>
-    </header>
+class MySummoners extends Component {
+  constructor () {
+    super()
 
-    <div className={style(styles.row)}>
-      {props.summoners.map(summoner => {
-        return <Summoner key={summoner._id} cover="/static/ashe.png" name={summoner.name} code={summoner.code} status={summoner.active}/>
-      })}
-    </div>
-  </section>
-)
+    this.handleModal = this.handleModal.bind(this)
+
+    this.state = {
+      modalAddSummoner: false
+    }
+  }
+
+  handleModal () {
+    this.setState({modalAddSummoner: !this.state.modalAddSummoner})
+  }
+
+  render () {
+    return (
+      <section>
+        <header className={style(styles.header)}>
+          <h2 className={style(styles.title)}>My Summoners</h2>
+          <button className={style(styles.btn)} onClick={this.handleModal}>Add Summoner</button>
+        </header>
+
+        <div className={style(styles.row)}>
+          {this.props.summoners.map(summoner => {
+            return <Summoner key={summoner._id} cover="/static/ashe.png" name={summoner.name} code={summoner.code} status={summoner.active}/>
+          })}
+        </div>
+
+        <ModalAddSummoner open={this.state.modalAddSummoner}/>
+      </section>
+    )
+  }
+}
 
 export default MySummoners
