@@ -55,7 +55,7 @@ const styles = {
 
 export default class Summoner extends Component {
   render () {
-    const check = this.props.checkmark ? '/static/checkmark.png' : '/static/errormark.png'
+    const check = this.props.status ? '/static/checkmark.png' : '/static/errormark.png'
 
     return (
       <article className={style(styles.base)}>

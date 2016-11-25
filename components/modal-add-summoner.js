@@ -3,6 +3,9 @@
 import React, { Component } from 'react'
 import { style } from 'next/css'
 import Modal from 'react-modal'
+import { connect } from 'react-redux'
+
+import addSummoner from './../actions/add-summoner'
 
 const styles = {
   formInput: {
@@ -54,31 +57,43 @@ const customStyle = {
   content: {
     top: 100,
     bottom: 'auto',
-    left: 475,
-    right: 475,
+    left: '15px',
+    right: '15px',
     border: 'none',
+    marginLeft: 'auto',
+    marginRight: 'auto',
     padding: '50px',
-    boxShadow: '0 10px 50px rgba(0, 0, 0, .1)'
+    boxShadow: '0 10px 50px rgba(0, 0, 0, .1)',
+    maxWidth: '500px',
+    width: '90%'
   }
 }
 
-export default class ModalAddSummoner extends Component {
-  constructor () {
+class ModalAddSummoner extends Component {
+  constructor (props) {
     super()
 
-    this.handleForm = this.handleForm.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.state = {
+      modalStatus: props.open
+    }
   }
 
-  handleForm (e) {
+  componentWillReceiveProps(nextProps) {
+    this.setState({modalStatus: nextProps.open})
+  }
+
+  handleSubmit (e) {
     e.preventDefault()
-    const data = this.summoner.value
-    this.props.handleSubmit(data)
+
+    const summoner = {name: this.summoner.value}
+    this.props.addSummoner(summoner).then(() => this.setState({modalStatus: false}))
   }
 
   render () {
     return (
-      <Modal isOpen={this.props.modal} style={customStyle}>
-        <form onSubmit={this.handleForm}>
+      <Modal isOpen={this.state.modalStatus} style={customStyle}>
+        <form onSubmit={this.handleSubmit}>
           <fieldset className={style(styles.formInput)}>
             <label className={style(styles.label)}>Summoner</label>
             <input className={style(styles.input)} type="text" ref={node => this.summoner = node}/>
@@ -91,7 +106,10 @@ export default class ModalAddSummoner extends Component {
   }
 }
 
-ModalAddSummoner.propTypes = {
-  handleSubmit: React.PropTypes.func,
-  modal: React.PropTypes.bool
+const mapDispatchToProps = dispatch => {
+  return {
+    addSummoner: summoner => dispatch(addSummoner(summoner))
+  }
 }
+
+export default connect(null, mapDispatchToProps)(ModalAddSummoner)

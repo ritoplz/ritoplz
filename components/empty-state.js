@@ -2,12 +2,11 @@
 
 /* @flow */
 
-import React from 'react'
+import React, {Component} from 'react'
 import { style } from 'next/css'
+import { connect } from 'react-redux'
 
-const propTypes = {
-  handleModalSummoner: React.PropTypes.func.isRequired
-}
+import ModalAddSummoner from './modal-add-summoner'
 
 const styles = {
   base: {
@@ -52,19 +51,45 @@ const styles = {
   }
 }
 
-type Props = {
-  handleModalSummoner: Function
+class EmptyState extends Component {
+  constructor () {
+    super()
+
+    this.handleModal = this.handleModal.bind(this)
+
+    this.state = {
+      modalAddSummoner: false
+    }
+  }
+
+  handleModal () {
+    this.setState({modalAddSummoner: !this.state.modalAddSummoner})
+  }
+
+  render () {
+    return (
+      <section className={style(styles.base)}>
+        <h2 className={style(styles.title)}>You dont have any Summoner yet</h2>
+        <h3 className={style(styles.subtitle)}>To join the Ritoplz Ranking you must add your summoner</h3>
+
+        <button className={style(styles.btn)} onClick={this.handleModal}>Add summoner</button>
+
+        <ModalAddSummoner open={this.state.modalAddSummoner}/>
+      </section>
+    )
+  }
 }
 
-const EmptyState = (props: Props) => (
-  <section className={style(styles.base)}>
-    <h2 className={style(styles.title)}>You dont have any Summoner yet</h2>
-    <h3 className={style(styles.subtitle)}>To join the Ritoplz Ranking you must add your summoner</h3>
+const mapStateToProps = state => {
+  return {
+    modals: state.modals
+  }
+}
 
-    <button className={style(styles.btn)} onClick={props.handleModalSummoner}>Add summoner</button>
-  </section>
-)
+const mapDispatchToProps = dispatch => {
+  return {
+    openModal: modal => dispatch(openModal(modal))
+  }
+}
 
-EmptyState.propTypes = propTypes
-
-export default EmptyState
+export default connect(mapStateToProps, mapDispatchToProps)(EmptyState)

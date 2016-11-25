@@ -1,26 +1,22 @@
 'use strict'
 
-import React from 'react'
+import React, { Component } from 'react'
 import { style } from 'next/css'
 
 import Summoner from './summoner'
+import ModalAddSummoner from './modal-add-summoner'
 
 const styles = {
-  summoners: {
-    display: 'flex',
-    flexFlow: 'row wrap',
-    alignItems: 'center',
-    justifyContent: 'space-between'
-  },
-
   header: {
-    flexBasis: '100%'
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
 
   title: {
     color: '#333',
     marginBottom: '50px',
-    fontWeight: 400
+    fontWeight: 400,
   },
 
   btn: {
@@ -34,25 +30,52 @@ const styles = {
     fontWeight: '500',
     cursor: 'pointer',
     background: 'linear-gradient(to right, #52bdab 0%,#6BB6D6 100%)'
+  },
+
+  row: {
+    marginLeft: '-15px',
+    marginRight: '-15px',
+    display: 'flex',
+    display: 'flex',
+    flexFlow: 'row wrap',
+    alignItems: 'center',
+    justifyContent: 'space-between'
   }
 }
 
-const MySummoners = props => (
-  <section className={style(styles.summoners)}>
-    <header className={style(styles.header)}>
-      <h2 className={style(styles.title)}>My Summoners</h2>
-      <button className={style(styles.btn)} onClick={props.handleModalSummoner}>Add Summoner</button>
-    </header>
+class MySummoners extends Component {
+  constructor () {
+    super()
 
-    {props.summoners.map(summoner => {
-      return <Summoner key={summoner.id} cover="/static/ashe.png" name={summoner.name} code={summoner.code} state={summoner.state}/>
-    })}
-  </section>
-)
+    this.handleModal = this.handleModal.bind(this)
 
-MySummoners.propTypes = {
-  handleModalSummoner: React.PropTypes.func,
-  summoners: React.PropTypes.array
+    this.state = {
+      modalAddSummoner: false
+    }
+  }
+
+  handleModal () {
+    this.setState({modalAddSummoner: !this.state.modalAddSummoner})
+  }
+
+  render () {
+    return (
+      <section>
+        <header className={style(styles.header)}>
+          <h2 className={style(styles.title)}>My Summoners</h2>
+          <button className={style(styles.btn)} onClick={this.handleModal}>Add Summoner</button>
+        </header>
+
+        <div className={style(styles.row)}>
+          {this.props.summoners.map(summoner => {
+            return <Summoner key={summoner._id} cover="/static/ashe.png" name={summoner.name} code={summoner.code} status={summoner.active}/>
+          })}
+        </div>
+
+        <ModalAddSummoner open={this.state.modalAddSummoner}/>
+      </section>
+    )
+  }
 }
 
 export default MySummoners

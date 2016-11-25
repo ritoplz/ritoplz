@@ -26,7 +26,6 @@ function userError(data) {
 
 function fetchUser(localStorageRef) {
   return dispatch => {
-    console.log('Local Storage', localStorageRef)
     dispatch(userRequest())
     return axios.get('http://localhost:3001/account', {
       headers: { 

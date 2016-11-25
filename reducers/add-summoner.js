@@ -5,19 +5,19 @@ import * as types from './../constants'
 const initialState = {
   requesting: false,
   requested: false,
-  data: {},
+  data: '',
   error: null
 }
 
 export default (state = initialState, action) => {
   switch(action.type) {
-    case types.SIGNUP_REQUEST:
+    case types.ADD_SUMMONER_REQUEST:
       return {
         ...state,
         requesting: true
       }
 
-    case types.SIGNUP_SUCCESS:
+    case types.ADD_SUMMONER_SUCCESS:
       return {
         ...state,
         requesting: false,
@@ -25,11 +25,10 @@ export default (state = initialState, action) => {
         data: action.data
       }
 
-    case types.SIGNUP_ERROR:
+    case types.ADD_SUMMONER_ERROR:
       return {
         ...state,
         requesting: false,
-        requested: true,
         error: action.data
       }
 
