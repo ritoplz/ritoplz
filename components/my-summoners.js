@@ -51,7 +51,7 @@ const MySummoners = props => (
 
     <div className={style(styles.row)}>
       {props.summoners.map(summoner => {
-        return <Summoner key={summoner._id} cover="/static/ashe.png" name={summoner.name} code={summoner.code} state={summoner.state}/>
+        return <Summoner key={summoner._id} cover="/static/ashe.png" name={summoner.name} code={summoner.code} status={summoner.active}/>
       })}
     </div>
   </section>

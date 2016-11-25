@@ -48,9 +48,7 @@ const styles = {
 export default props => {
   return (
     <header className={style(styles.base)}>
-      <h1 className={style(styles.title)}>Hello, 
-        <span className={style(styles.username)}>{props.name}</span>!
-      </h1>
+      <h1 className={style(styles.title)}>Hello, <span className={style(styles.username)}>{props.name}</span>!</h1>
 
       <h3 className={style(styles.location)}>Add Location</h3>
       <hr className={style(styles.divider)}/>
