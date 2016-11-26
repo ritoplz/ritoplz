@@ -1,7 +1,9 @@
 'use strict'
 
-import React from 'react'
+import React, { Component } from 'react'
 import { style } from 'next/css'
+
+import ModalAddLocation from './modal-add-location'
 
 const styles = {
   base: {
@@ -45,13 +47,33 @@ const styles = {
   }
 }
 
-export default props => {
-  return (
-    <header className={style(styles.base)}>
-      <h1 className={style(styles.title)}>Hello, <span className={style(styles.username)}>{props.name}</span>!</h1>
+class Intro extends Component {
+  constructor () {
+    super()
 
-      <h3 className={style(styles.location)}>Add Location</h3>
-      <hr className={style(styles.divider)}/>
-    </header>
-  )
+    this.handleModal = this.handleModal.bind(this)
+
+    this.state = {
+      modalAddLocation: false
+    }
+  }
+
+  handleModal () {
+    this.setState({modalAddLocation: !this.state.modalAddLocation})
+  }
+
+  render () {
+    return (
+      <header className={style(styles.base)}>
+        <h1 className={style(styles.title)}>Hello, <span className={style(styles.username)}>{this.props.name}</span>!</h1>
+
+        <h3 className={style(styles.location)} onClick={this.handleModal}>Add Location</h3>
+        <hr className={style(styles.divider)}/>
+
+        <ModalAddLocation open={this.state.modalAddLocation}/>
+      </header>
+    )
+  }
 }
+
+export default Intro

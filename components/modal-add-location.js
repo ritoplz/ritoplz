@@ -6,6 +6,7 @@ import React, { Component } from 'react'
 import { style } from 'next/css'
 import Modal from 'react-modal'
 import Select from 'react-select'
+import { connect } from 'react-redux'
 
 const styles = {
   formInput: {
@@ -57,97 +58,79 @@ const customStyle = {
   content: {
     top: 100,
     bottom: 'auto',
-    left: 475,
-    right: 475,
+    left: '25%',
+    right: '25%',
     border: 'none',
     padding: '50px',
     boxShadow: '0 10px 50px rgba(0, 0, 0, .1)'
   }
 }
 
-type Props = {
-  handleSubmit: Function,
-  modal: boolean
-}
+class ModalAddLocation extends Component {
+  constructor (props) {
+    super()
 
-export default class ModalAddLocation extends Component {
-  state: {
-    location: Object
-  }
-
-  constructor (props: Props) {
-    super(props)
-
-    this.handleCountryChange = this.handleCountryChange.bind(this)
-    this.handleStateChange = this.handleStateChange.bind(this)
-    this.handleCityChange = this.handleCityChange.bind(this)
-    this.handleForm = this.handleForm.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleCountry = this.handleCountry.bind(this)
+    this.handleState = this.handleState.bind(this)
+    this.handleCity = this.handleCity.bind(this)
 
     this.state = {
-      location: {
-        country: '',
-        state: '',
-        city: ''
-      }
+      modalStatus: props.open,
+      country: null
     }
   }
 
-  handleCountryChange (e: Object) {
-    const initialState = this.state.location
-    const location = {
-      country: e.value
-    }
-
-    const nextState = Object.assign(initialState, location)
-    this.setState({nextState})
+  componentWillReceiveProps(nextProps) {
+    this.setState({modalStatus: nextProps.open})
   }
 
-  handleStateChange (e: Object) {
-    const initialState = this.state.location
-    const location = {
-      state: e.value
-    }
-
-    const nextState = Object.assign(initialState, location)
-
-    this.setState({nextState})
+  handleCountry (e) {
+    this.setState({country: e.label})
   }
 
-  handleCityChange (e: Object) {
-    const initialState = this.state.location
-    const location = {
-      city: e.value
-    }
-
-    const nextState = Object.assign(initialState, location)
-    this.setState({nextState})
+  handleState (e) {
+    this.setState({state: e.label})
   }
 
-  handleForm (e: Object) {
+  handleCity (e) {
+    this.setState({city: e.label})
+  }
+
+  handleSubmit (e) {
     e.preventDefault()
-
-    const data = this.state.location
-
-    this.props.handleSubmit(data)
   }
 
   render () {
+    const countryList = [
+      {value: 'Brazil', label: 'Brazil'},
+      {value: 'United States', label: 'United States'}
+    ]
+
+    const stateList = [
+      {value: 'São Paulo', label: 'São Paulo'},
+    ]
+
+    const cityList = [
+      {value: 'São Paulo', label: 'São Paulo'},
+    ]
+
     return (
-      <Modal isOpen={this.props.modal} style={customStyle}>
-        <form onSubmit={this.handleForm}>
+      <Modal isOpen={this.state.modalStatus} style={customStyle}>
+        <form onSubmit={this.handleSubmit}>
           <fieldset className={style(styles.formInput)}>
             <label className={style(styles.label)}>Country</label>
-            <Select options={this.props.countries} value={this.state.location.country} onChange={this.handleCountryChange}/>
+            <Select options={countryList} value={this.state.country} onChange={this.handleCountry}/>
           </fieldset>
 
           <fieldset className={style(styles.formInput)}>
             <label className={style(styles.label)}>State</label>
-            <Select options={this.props.states} value={this.state.location.state} onChange={this.handleStateChange}/>
+            <Select options={stateList} value={this.state.state} onChange={this.handleState}/>
           </fieldset>
 
           <fieldset className={style(styles.formInput)}>
             <label className={style(styles.label)}>City</label>
-            <Select options={this.props.cities} value={this.state.location.city} onChange={this.handleCityChange}/>
+            <Select options={cityList} value={this.state.city} onChange={this.handleCity}/>
           </fieldset>
 
           <button className={style(styles.btn)}>Add location</button>
@@ -157,10 +140,4 @@ export default class ModalAddLocation extends Component {
   }
 }
 
-ModalAddLocation.propTypes = {
-  handleSubmit: React.PropTypes.func,
-  modal: React.PropTypes.bool,
-  countries: React.PropTypes.array,
-  states: React.PropTypes.array,
-  cities: React.PropTypes.array
-}
+export default ModalAddLocation
