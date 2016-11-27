@@ -108,7 +108,7 @@ class ModalAddLocation extends Component {
       city: this.state.city
     }
 
-    this.props.editUser(data)
+    this.props.editUser(data).then(() => this.setState({modalStatus: false}))
   }
 
   render () {
@@ -118,11 +118,11 @@ class ModalAddLocation extends Component {
     ]
 
     const stateList = [
-      {value: 'São Paulo', label: 'São Paulo'},
+      {value: 'São Paulo', label: 'São Paulo'}
     ]
 
     const cityList = [
-      {value: 'São Paulo', label: 'São Paulo'},
+      {value: 'São Paulo', label: 'São Paulo'}
     ]
 
     return (
