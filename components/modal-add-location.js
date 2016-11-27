@@ -8,6 +8,8 @@ import Modal from 'react-modal'
 import Select from 'react-select'
 import { connect } from 'react-redux'
 
+import editUser from './../actions/edit-user'
+
 const styles = {
   formInput: {
     border: 'none',
@@ -86,24 +88,32 @@ class ModalAddLocation extends Component {
   }
 
   handleCountry (e) {
-    this.setState({country: e.label})
+    this.setState({country: e.value})
   }
 
   handleState (e) {
-    this.setState({state: e.label})
+    this.setState({state: e.value})
   }
 
   handleCity (e) {
-    this.setState({city: e.label})
+    this.setState({city: e.value})
   }
 
   handleSubmit (e) {
     e.preventDefault()
+
+    const data = {
+      country: this.state.country,
+      state: this.state.state,
+      city: this.state.city
+    }
+
+    this.props.editUser(data)
   }
 
   render () {
     const countryList = [
-      {value: 'Brazil', label: 'Brazil'},
+      {value: 'BR', label: 'Brazil'},
       {value: 'United States', label: 'United States'}
     ]
 
@@ -140,4 +150,11 @@ class ModalAddLocation extends Component {
   }
 }
 
-export default ModalAddLocation
+const mapDispatchToProps = dispatch => {
+  return {
+    editUser: user => dispatch(editUser(user))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(ModalAddLocation)
+
