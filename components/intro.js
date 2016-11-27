@@ -67,7 +67,7 @@ class Intro extends Component {
       <header className={style(styles.base)}>
         <h1 className={style(styles.title)}>Hello, <span className={style(styles.username)}>{this.props.name}</span>!</h1>
 
-        <h3 className={style(styles.location)} onClick={this.handleModal}>Add Location</h3>
+        <h3 className={style(styles.location)} onClick={this.handleModal}>{this.props.location}</h3>
         <hr className={style(styles.divider)}/>
 
         <ModalAddLocation open={this.state.modalAddLocation}/>

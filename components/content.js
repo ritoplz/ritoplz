@@ -37,7 +37,8 @@ class Content extends Component {
     let summoners = null
 
     if (this.props.profile.requested) {
-      profile = <Intro name={this.props.profile.data.user.name} />
+      const location = this.props.profile.data.user.country ? `${this.props.profile.data.user.city}, ${this.props.profile.data.user.state} ${this.props.profile.data.user.country}` : 'Add Location'
+      profile = <Intro name={this.props.profile.data.user.name} location={location}/>
 
       if (this.props.profile.data.summoners.length > 0) {
         summoners = <MySummoners summoners={this.props.profile.data.summoners} />
