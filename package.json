@@ -34,7 +34,9 @@
     "xo": "^0.17.0"
   },
   "scripts": {
-    "start": "./node_modules/.bin/next",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
     "test": "./node_modules/.bin/ava",
     "flow": "./node_modules/flow-bin/cli.js check"
   },
@@ -59,6 +61,6 @@
     }
   },
   "engines": {
-    "node": "6.9.1"
+    "node": "7.0.0"
   }
 }
