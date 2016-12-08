@@ -30,7 +30,7 @@ function handleAddSummoner (summoner) {
     dispatch(addSummonerRequest())
     return axios({
       method: 'post', 
-      url: 'http://35.164.57.55/summoner',
+      url: 'https://staging.ritoplz.com/summoner',
       data: summoner,
       headers: {
         'Content-Type': 'application/json',

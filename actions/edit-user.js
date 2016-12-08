@@ -30,7 +30,7 @@ function handleEditUser (user) {
     dispatch(editUser())
     return axios({
       method: 'put', 
-      url: 'http://35.164.57.55/account',
+      url: 'https://staging.ritoplz.com/account',
       data: user,
       headers: {
         'Content-Type': 'application/json',

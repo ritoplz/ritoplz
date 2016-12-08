@@ -27,7 +27,7 @@ function userError(data) {
 function fetchUser(localStorageRef) {
   return dispatch => {
     dispatch(userRequest())
-    return axios.get('http://35.164.57.55/account', {
+    return axios.get('https://staging.ritoplz.com/account', {
       headers: { 
         'Content-Type': 'application/json',
         'Authorization': localStorageRef
