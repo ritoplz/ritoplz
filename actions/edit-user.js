@@ -30,7 +30,7 @@ function handleEditUser (user) {
     dispatch(editUser())
     return axios({
       method: 'put', 
-      url: 'http://localhost:3001/account',
+      url: 'http://35.164.57.55/account',
       data: user,
       headers: {
         'Content-Type': 'application/json',

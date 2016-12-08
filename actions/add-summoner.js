@@ -30,7 +30,7 @@ function handleAddSummoner (summoner) {
     dispatch(addSummonerRequest())
     return axios({
       method: 'post', 
-      url: 'http://localhost:3001/summoner',
+      url: 'http://35.164.57.55/summoner',
       data: summoner,
       headers: {
         'Content-Type': 'application/json',

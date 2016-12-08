@@ -27,7 +27,7 @@ function loginError (data) {
 function handleLogin (userData) {
   return dispatch => {
     dispatch(loginRequest())
-    return axios.post('http://localhost:3001/login', userData)
+    return axios.post('http://35.164.57.55/login', userData)
       .then(res => {
         dispatch(loginSuccess(res.data))
         const token = res.data.token
