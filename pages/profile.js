@@ -16,7 +16,8 @@ const styles = {
     maxWidth: '900px',
     marginLeft: 'auto',
     marginRight: 'auto',
-    fontFamily: 'Source Sans Pro'
+    fontFamily: 'Source Sans Pro',
+    paddingBottom: '50px'
   },
 
   notification: {

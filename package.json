@@ -22,6 +22,7 @@
     "jsdom": "^9.8.3",
     "next": "^1.1.1",
     "nock": "^9.0.2",
+    "now-client": "^0.7.0",
     "react": "^15.3.2",
     "react-addons-test-utils": "^15.3.2",
     "react-modal": "^1.5.2",
@@ -31,7 +32,7 @@
     "redux": "^3.6.0",
     "redux-mock-store": "^1.2.1",
     "redux-thunk": "^2.1.0",
-    "xo": "^0.17.0"
+    "xo": "^0.17.1"
   },
   "scripts": {
     "dev": "next",
@@ -41,8 +42,7 @@
     "flow": "./node_modules/flow-bin/cli.js check"
   },
   "devDependencies": {
-    "ava": "^0.16.0",
-    "xo": "^0.17.0"
+    "ava": "^0.16.0"
   },
   "ava": {
     "require": [
