@@ -12,6 +12,7 @@ const Login = props => {
   return (
     <Provider store={store}>
       <div className="row">
+        <h1>Ritoplz</h1>
         <h2 className="title">Login</h2>
         <p className="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel lacus vel augue aliquet luctus. Ut urna libero.</p>
 

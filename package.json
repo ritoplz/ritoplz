@@ -32,7 +32,7 @@
     "redux": "^3.6.0",
     "redux-mock-store": "^1.2.1",
     "redux-thunk": "^2.1.0",
-    "xo": "^0.17.0"
+    "xo": "^0.17.1"
   },
   "scripts": {
     "dev": "next",
@@ -42,8 +42,7 @@
     "flow": "./node_modules/flow-bin/cli.js check"
   },
   "devDependencies": {
-    "ava": "^0.16.0",
-    "xo": "^0.17.0"
+    "ava": "^0.16.0"
   },
   "ava": {
     "require": [
