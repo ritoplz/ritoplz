@@ -11,6 +11,6 @@ export default () => (
     </header>
 
     <h1>Landing Page</h1>
-    <h2>Ritoplz 0.0.1</h2>
+    <h2>Ritoplz 0.0.2</h2>
   </main>
 )
