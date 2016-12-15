@@ -6,6 +6,7 @@ import Modal from 'react-modal'
 import { connect } from 'react-redux'
 
 import addSummoner from './../actions/add-summoner'
+import fetchUser from '../actions/fetch-user'
 
 const styles = {
   formInput: {
@@ -85,9 +86,13 @@ class ModalAddSummoner extends Component {
 
   handleSubmit (e) {
     e.preventDefault()
-
+    const localStorageRef = localStorage.getItem('token')
     const summoner = {name: this.summoner.value}
-    this.props.addSummoner(summoner).then(() => this.setState({modalStatus: false}))
+
+    this.props.addSummoner(summoner).then(() => {
+      this.setState({modalStatus: false})
+      this.props.fetchUser(localStorageRef)
+    })
   }
 
   render () {
@@ -108,7 +113,8 @@ class ModalAddSummoner extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addSummoner: summoner => dispatch(addSummoner(summoner))
+    addSummoner: summoner => dispatch(addSummoner(summoner)),
+    fetchUser: token => dispatch(fetchUser(token))
   }
 }
 
