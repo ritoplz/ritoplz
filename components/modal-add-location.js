@@ -8,6 +8,7 @@ import Modal from 'react-modal'
 import Select from 'react-select'
 import { connect } from 'react-redux'
 
+import fetchUser from '../actions/fetch-user'
 import editUser from './../actions/edit-user'
 
 const styles = {
@@ -105,14 +106,18 @@ class ModalAddLocation extends Component {
 
   handleSubmit (e) {
     e.preventDefault()
-
+    
+    const localStorageRef = localStorage.getItem('token')
     const data = {
       country: this.state.country,
       state: this.state.state,
       city: this.state.city
     }
 
-    this.props.editUser(data).then(() => this.setState({modalStatus: false}))
+    this.props.editUser(data).then(() => {
+      this.setState({modalStatus: false})
+      this.props.fetchUser(localStorageRef)
+    })
   }
 
   render () {
@@ -156,7 +161,8 @@ class ModalAddLocation extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    editUser: user => dispatch(editUser(user))
+    editUser: user => dispatch(editUser(user)),
+    fetchUser: token => dispatch(fetchUser(token))
   }
 }
 
