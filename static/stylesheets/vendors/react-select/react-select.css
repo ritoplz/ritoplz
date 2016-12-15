@@ -1,0 +1,14 @@
+.Select-control {
+  height: 50px;
+  border: 1px solid #ddd;
+}
+
+.Select-placeholder {
+  line-height: 50px;
+  color: #ccc;
+}
+
+.Select-placeholder,
+.Select--single > .Select-control .Select-value {
+  line-height: 50px;
+}
