@@ -11,6 +11,20 @@ import EmptyState from './empty-state'
 import Intro from './intro'
 import MySummoners from './my-summoners'
 
+const styles = {
+  loading: {
+    fontWeight: '100',
+    textAlign: 'center',
+    position: 'absolute',
+    top: '40%',
+    left: '0',
+    right: '0',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    color: '#444'
+  }
+}
+
 class Content extends Component {
   constructor () {
     super()
@@ -46,7 +60,7 @@ class Content extends Component {
         summoners = <EmptyState />
       }
     } else {
-      profile = (<h1>Not Yet bro!</h1>)
+      profile = (<h1 className={style(styles.loading)}>Loading...</h1>)
     }
     
     return (
