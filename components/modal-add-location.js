@@ -81,6 +81,7 @@ class ModalAddLocation extends Component {
     this.handleCountry = this.handleCountry.bind(this)
     this.handleState = this.handleState.bind(this)
     this.handleCity = this.handleCity.bind(this)
+    this.handleCloseModal = this.handleCloseModal.bind(this)
 
     this.state = {
       modalStatus: props.open,
@@ -104,6 +105,10 @@ class ModalAddLocation extends Component {
     this.setState({city: e.value})
   }
 
+  handleCloseModal () {
+    this.setState({modalStatus: false})
+  }
+
   handleSubmit (e) {
     e.preventDefault()
     
@@ -115,7 +120,7 @@ class ModalAddLocation extends Component {
     }
 
     this.props.editUser(data).then(() => {
-      this.setState({modalStatus: false})
+      this.handleCloseModal()
       this.props.fetchUser(localStorageRef)
     })
   }
@@ -135,7 +140,7 @@ class ModalAddLocation extends Component {
     ]
 
     return (
-      <Modal isOpen={this.state.modalStatus} style={customStyle}>
+      <Modal isOpen={this.state.modalStatus} onRequestClose={this.handleCloseModal} style={customStyle}>
         <form onSubmit={this.handleSubmit}>
           <fieldset className={style(styles.formInput)}>
             <label className={style(styles.label)}>Country</label>
