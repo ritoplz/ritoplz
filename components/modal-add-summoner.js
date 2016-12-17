@@ -84,20 +84,24 @@ class ModalAddSummoner extends Component {
     this.setState({modalStatus: nextProps.open})
   }
 
+  handleCloseModal () {
+    this.setState({modalStatus: false})
+  }
+
   handleSubmit (e) {
     e.preventDefault()
     const localStorageRef = localStorage.getItem('token')
     const summoner = {name: this.summoner.value}
 
     this.props.addSummoner(summoner).then(() => {
-      this.setState({modalStatus: false})
+      this.handleCloseModal()
       this.props.fetchUser(localStorageRef)
     })
   }
 
   render () {
     return (
-      <Modal isOpen={this.state.modalStatus} style={customStyle}>
+      <Modal isOpen={this.state.modalStatus} onRequestClose={this.handleCloseModal} style={customStyle}>
         <form onSubmit={this.handleSubmit}>
           <fieldset className={style(styles.formInput)}>
             <label className={style(styles.label)}>Summoner</label>
