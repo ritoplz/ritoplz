@@ -1,67 +1,63 @@
 'use strict'
 
 import React from 'react'
-
-import Header from './../components/header'
 import { style, insertRule } from 'next/css'
 import getTier from 'ritoplz-tier'
 
+import Header from './../components/header'
+import Featured from './../components/featured'
+
 const styles = {
-  rankings: {
+  ranking: {
     display: 'flex'
   },
 
-  user: {
-    textAlign: 'center',
+  rankingList: {
     flexBasis: '40%',
-    background: 'url(https://images.unsplash.com/photo-1477346611705-65d1883cee1e?dpr=1&auto=format&fit=crop&w=1500&h=1001&q=80&cs=tinysrgb&crop=) center center',
-    height: 'calc(100vh - 70px)',
-    paddingTop: '100px'
+    maxHeight: 'calc(100vh - 70px)',
+    overflow: 'auto'
   },
 
-  avatar: {
-    height: '125px',
-    width: '125px',
-    borderRadius: '20px'
+  rankingItem: {
+    display: 'flex',
+    height: '85px',
+    paddingLeft: '25px',
+    paddingRight: '25px',
+    borderBottom: '1px solid #f2f2f2'
   },
 
-  username: {
-    color: '#fff',
-    fontSize: '2.5rem',
-    fontWeight: '500',
-    marginTop: '30px'
-  },
-
-  summoner: {
-    color: '#fff',
-    fontSize: '1.25rem',
-    fontWeight: 400
+  position: {
+    lineHeight: '85px',
+    flexBasis: '10%',
+    color: '#333'
   },
 
   image: {
-    position: 'relative',
-    display: 'inline-block'
+    flexBasis: '20%',
+    marginTop: '15px'
   },
 
-  flag: {
-    position: 'absolute',
-    top: '-60px',
-    right: '-50px'
+  avatar: {
+    height: '50px',
+    width: '50px',
+    borderRadius: '5px'
   },
 
-  userInfo: {
-    display: 'inline-block',
-    margin: '75px'
+  rankingInfo: {
+    marginTop: '20px',
+    flexBasis: '50%'
   },
 
-  userTitle: {
-    color: '#fff',
+  username: {
+    fontSize: '1.25rem',
     fontWeight: '400',
-    marginBottom: '10px'
+    color: '#333'
   },
 
-  userSubtitle: {
-    color: '#fff'
+  summoner: {
+    fontSize: '1rem',
+    fontWeight: '400',
+    color: 'rgba(0, 0, 0, .5)'
   }
 }
 
@@ -72,31 +68,293 @@ export default () => {
     <div>
       <Header />
 
-      <section>
-        <ul className={style(styles.rankings)}>
-          <li className={style(styles.user)}>
-            <figure className={style(styles.image)}>
-              <span className={style(styles.flag)}>
-                <img src={flag} alt=""/>
-              </span>
+      <section className={style(styles.ranking)}>
+        <Featured />
 
+        <ul className={style(styles.rankingList)}>
+          <li className={style(styles.rankingItem)}>
+            <h4 className={style(styles.position)}>1.</h4>
+
+            <figure className={style(styles.image)}>
               <img className={style(styles.avatar)} src="https://s3.amazonaws.com/uifaces/faces/twitter/peterme/128.jpg" alt="" />
             </figure>
 
-            <h2 className={style(styles.username)}>Sue Dixon</h2>
-            <h3 className={style(styles.summoner)}>nicoleaniston</h3>
+            <div className={style(styles.rankingInfo)}>
+              <h2 className={style(styles.username)}>Sue Dixon</h2>
+              <h3 className={style(styles.summoner)}>nicoleaniston</h3>
+            </div>
 
-            <ul>
-              <li className={style(styles.userInfo)}>
-                <h3 className={style(styles.userTitle)}>Win/Loss</h3>
-                <span className={style(styles.userSubtitle)}>8/15</span>
-              </li>
+            <img className={style(styles.flag)} src={flag} alt="" />
+          </li>
 
-              <li className={style(styles.userInfo)}>
-                <h3 className={style(styles.userTitle)}>Elo</h3>
-                <span className={style(styles.userSubtitle)}>580</span>
-              </li>
-            </ul>
+          <li className={style(styles.rankingItem)}>
+            <h4 className={style(styles.position)}>1.</h4>
+
+            <figure className={style(styles.image)}>
+              <img className={style(styles.avatar)} src="https://s3.amazonaws.com/uifaces/faces/twitter/peterme/128.jpg" alt="" />
+            </figure>
+
+            <div className={style(styles.rankingInfo)}>
+              <h2 className={style(styles.username)}>Sue Dixon</h2>
+              <h3 className={style(styles.summoner)}>nicoleaniston</h3>
+            </div>
+
+            <img className={style(styles.flag)} src={flag} alt="" />
+          </li>
+
+          <li className={style(styles.rankingItem)}>
+            <h4 className={style(styles.position)}>1.</h4>
+
+            <figure className={style(styles.image)}>
+              <img className={style(styles.avatar)} src="https://s3.amazonaws.com/uifaces/faces/twitter/peterme/128.jpg" alt="" />
+            </figure>
+
+            <div className={style(styles.rankingInfo)}>
+              <h2 className={style(styles.username)}>Sue Dixon</h2>
+              <h3 className={style(styles.summoner)}>nicoleaniston</h3>
+            </div>
+
+            <img className={style(styles.flag)} src={flag} alt="" />
+          </li>
+
+          <li className={style(styles.rankingItem)}>
+            <h4 className={style(styles.position)}>1.</h4>
+
+            <figure className={style(styles.image)}>
+              <img className={style(styles.avatar)} src="https://s3.amazonaws.com/uifaces/faces/twitter/peterme/128.jpg" alt="" />
+            </figure>
+
+            <div className={style(styles.rankingInfo)}>
+              <h2 className={style(styles.username)}>Sue Dixon</h2>
+              <h3 className={style(styles.summoner)}>nicoleaniston</h3>
+            </div>
+
+            <img className={style(styles.flag)} src={flag} alt="" />
+          </li>
+
+          <li className={style(styles.rankingItem)}>
+            <h4 className={style(styles.position)}>1.</h4>
+
+            <figure className={style(styles.image)}>
+              <img className={style(styles.avatar)} src="https://s3.amazonaws.com/uifaces/faces/twitter/peterme/128.jpg" alt="" />
+            </figure>
+
+            <div className={style(styles.rankingInfo)}>
+              <h2 className={style(styles.username)}>Sue Dixon</h2>
+              <h3 className={style(styles.summoner)}>nicoleaniston</h3>
+            </div>
+
+            <img className={style(styles.flag)} src={flag} alt="" />
+          </li>
+
+          <li className={style(styles.rankingItem)}>
+            <h4 className={style(styles.position)}>1.</h4>
+
+            <figure className={style(styles.image)}>
+              <img className={style(styles.avatar)} src="https://s3.amazonaws.com/uifaces/faces/twitter/peterme/128.jpg" alt="" />
+            </figure>
+
+            <div className={style(styles.rankingInfo)}>
+              <h2 className={style(styles.username)}>Sue Dixon</h2>
+              <h3 className={style(styles.summoner)}>nicoleaniston</h3>
+            </div>
+
+            <img className={style(styles.flag)} src={flag} alt="" />
+          </li>
+
+          <li className={style(styles.rankingItem)}>
+            <h4 className={style(styles.position)}>1.</h4>
+
+            <figure className={style(styles.image)}>
+              <img className={style(styles.avatar)} src="https://s3.amazonaws.com/uifaces/faces/twitter/peterme/128.jpg" alt="" />
+            </figure>
+
+            <div className={style(styles.rankingInfo)}>
+              <h2 className={style(styles.username)}>Sue Dixon</h2>
+              <h3 className={style(styles.summoner)}>nicoleaniston</h3>
+            </div>
+
+            <img className={style(styles.flag)} src={flag} alt="" />
+          </li>
+
+          <li className={style(styles.rankingItem)}>
+            <h4 className={style(styles.position)}>1.</h4>
+
+            <figure className={style(styles.image)}>
+              <img className={style(styles.avatar)} src="https://s3.amazonaws.com/uifaces/faces/twitter/peterme/128.jpg" alt="" />
+            </figure>
+
+            <div className={style(styles.rankingInfo)}>
+              <h2 className={style(styles.username)}>Sue Dixon</h2>
+              <h3 className={style(styles.summoner)}>nicoleaniston</h3>
+            </div>
+
+            <img className={style(styles.flag)} src={flag} alt="" />
+          </li>
+
+          <li className={style(styles.rankingItem)}>
+            <h4 className={style(styles.position)}>1.</h4>
+
+            <figure className={style(styles.image)}>
+              <img className={style(styles.avatar)} src="https://s3.amazonaws.com/uifaces/faces/twitter/peterme/128.jpg" alt="" />
+            </figure>
+
+            <div className={style(styles.rankingInfo)}>
+              <h2 className={style(styles.username)}>Sue Dixon</h2>
+              <h3 className={style(styles.summoner)}>nicoleaniston</h3>
+            </div>
+
+            <img className={style(styles.flag)} src={flag} alt="" />
+          </li>
+
+          <li className={style(styles.rankingItem)}>
+            <h4 className={style(styles.position)}>1.</h4>
+
+            <figure className={style(styles.image)}>
+              <img className={style(styles.avatar)} src="https://s3.amazonaws.com/uifaces/faces/twitter/peterme/128.jpg" alt="" />
+            </figure>
+
+            <div className={style(styles.rankingInfo)}>
+              <h2 className={style(styles.username)}>Sue Dixon</h2>
+              <h3 className={style(styles.summoner)}>nicoleaniston</h3>
+            </div>
+
+            <img className={style(styles.flag)} src={flag} alt="" />
+          </li>
+
+          <li className={style(styles.rankingItem)}>
+            <h4 className={style(styles.position)}>1.</h4>
+
+            <figure className={style(styles.image)}>
+              <img className={style(styles.avatar)} src="https://s3.amazonaws.com/uifaces/faces/twitter/peterme/128.jpg" alt="" />
+            </figure>
+
+            <div className={style(styles.rankingInfo)}>
+              <h2 className={style(styles.username)}>Sue Dixon</h2>
+              <h3 className={style(styles.summoner)}>nicoleaniston</h3>
+            </div>
+
+            <img className={style(styles.flag)} src={flag} alt="" />
+          </li>
+
+          <li className={style(styles.rankingItem)}>
+            <h4 className={style(styles.position)}>1.</h4>
+
+            <figure className={style(styles.image)}>
+              <img className={style(styles.avatar)} src="https://s3.amazonaws.com/uifaces/faces/twitter/peterme/128.jpg" alt="" />
+            </figure>
+
+            <div className={style(styles.rankingInfo)}>
+              <h2 className={style(styles.username)}>Sue Dixon</h2>
+              <h3 className={style(styles.summoner)}>nicoleaniston</h3>
+            </div>
+
+            <img className={style(styles.flag)} src={flag} alt="" />
+          </li>
+
+          <li className={style(styles.rankingItem)}>
+            <h4 className={style(styles.position)}>1.</h4>
+
+            <figure className={style(styles.image)}>
+              <img className={style(styles.avatar)} src="https://s3.amazonaws.com/uifaces/faces/twitter/peterme/128.jpg" alt="" />
+            </figure>
+
+            <div className={style(styles.rankingInfo)}>
+              <h2 className={style(styles.username)}>Sue Dixon</h2>
+              <h3 className={style(styles.summoner)}>nicoleaniston</h3>
+            </div>
+
+            <img className={style(styles.flag)} src={flag} alt="" />
+          </li>
+
+          <li className={style(styles.rankingItem)}>
+            <h4 className={style(styles.position)}>1.</h4>
+
+            <figure className={style(styles.image)}>
+              <img className={style(styles.avatar)} src="https://s3.amazonaws.com/uifaces/faces/twitter/peterme/128.jpg" alt="" />
+            </figure>
+
+            <div className={style(styles.rankingInfo)}>
+              <h2 className={style(styles.username)}>Sue Dixon</h2>
+              <h3 className={style(styles.summoner)}>nicoleaniston</h3>
+            </div>
+
+            <img className={style(styles.flag)} src={flag} alt="" />
+          </li>
+
+          <li className={style(styles.rankingItem)}>
+            <h4 className={style(styles.position)}>1.</h4>
+
+            <figure className={style(styles.image)}>
+              <img className={style(styles.avatar)} src="https://s3.amazonaws.com/uifaces/faces/twitter/peterme/128.jpg" alt="" />
+            </figure>
+
+            <div className={style(styles.rankingInfo)}>
+              <h2 className={style(styles.username)}>Sue Dixon</h2>
+              <h3 className={style(styles.summoner)}>nicoleaniston</h3>
+            </div>
+
+            <img className={style(styles.flag)} src={flag} alt="" />
+          </li>
+
+          <li className={style(styles.rankingItem)}>
+            <h4 className={style(styles.position)}>1.</h4>
+
+            <figure className={style(styles.image)}>
+              <img className={style(styles.avatar)} src="https://s3.amazonaws.com/uifaces/faces/twitter/peterme/128.jpg" alt="" />
+            </figure>
+
+            <div className={style(styles.rankingInfo)}>
+              <h2 className={style(styles.username)}>Sue Dixon</h2>
+              <h3 className={style(styles.summoner)}>nicoleaniston</h3>
+            </div>
+
+            <img className={style(styles.flag)} src={flag} alt="" />
+          </li>
+
+          <li className={style(styles.rankingItem)}>
+            <h4 className={style(styles.position)}>1.</h4>
+
+            <figure className={style(styles.image)}>
+              <img className={style(styles.avatar)} src="https://s3.amazonaws.com/uifaces/faces/twitter/peterme/128.jpg" alt="" />
+            </figure>
+
+            <div className={style(styles.rankingInfo)}>
+              <h2 className={style(styles.username)}>Sue Dixon</h2>
+              <h3 className={style(styles.summoner)}>nicoleaniston</h3>
+            </div>
+
+            <img className={style(styles.flag)} src={flag} alt="" />
+          </li>
+
+          <li className={style(styles.rankingItem)}>
+            <h4 className={style(styles.position)}>1.</h4>
+
+            <figure className={style(styles.image)}>
+              <img className={style(styles.avatar)} src="https://s3.amazonaws.com/uifaces/faces/twitter/peterme/128.jpg" alt="" />
+            </figure>
+
+            <div className={style(styles.rankingInfo)}>
+              <h2 className={style(styles.username)}>Sue Dixon</h2>
+              <h3 className={style(styles.summoner)}>nicoleaniston</h3>
+            </div>
+
+            <img className={style(styles.flag)} src={flag} alt="" />
+          </li>
+
+          <li className={style(styles.rankingItem)}>
+            <h4 className={style(styles.position)}>1.</h4>
+
+            <figure className={style(styles.image)}>
+              <img className={style(styles.avatar)} src="https://s3.amazonaws.com/uifaces/faces/twitter/peterme/128.jpg" alt="" />
+            </figure>
+
+            <div className={style(styles.rankingInfo)}>
+              <h2 className={style(styles.username)}>Sue Dixon</h2>
+              <h3 className={style(styles.summoner)}>nicoleaniston</h3>
+            </div>
+
+            <img className={style(styles.flag)} src={flag} alt="" />
           </li>
         </ul>
       </section>
