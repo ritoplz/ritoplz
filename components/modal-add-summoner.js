@@ -6,7 +6,7 @@ import Modal from 'react-modal'
 import { connect } from 'react-redux'
 
 import addSummoner from './../actions/add-summoner'
-import fetchUser from '../actions/fetch-user'
+import fetchAccount from '../actions/fetch-account'
 
 const styles = {
   formInput: {
@@ -95,7 +95,7 @@ class ModalAddSummoner extends Component {
 
     this.props.addSummoner(summoner).then(() => {
       this.handleCloseModal()
-      this.props.fetchUser(localStorageRef)
+      this.props.fetchAccount(localStorageRef)
     })
   }
 
@@ -118,7 +118,7 @@ class ModalAddSummoner extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     addSummoner: summoner => dispatch(addSummoner(summoner)),
-    fetchUser: token => dispatch(fetchUser(token))
+    fetchAccount: token => dispatch(fetchAccount(token))
   }
 }
 

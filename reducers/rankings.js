@@ -11,13 +11,13 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch(action.type) {
-    case types.RANKING_REQUEST:
+    case types.RANKINGS_REQUEST:
       return {
         ...state,
         requesting: true
       }
 
-    case types.RANKING_SUCCESS:
+    case types.RANKINGS_SUCCESS:
       return {
         ...state,
         requesting: false,
@@ -25,7 +25,7 @@ export default (state = initialState, action) => {
         data: action.data
       }
 
-    case types.RANKING_ERROR:
+    case types.RANKINGS_ERROR:
       return {
         ...state,
         requesting: false,

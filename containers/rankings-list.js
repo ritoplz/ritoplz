@@ -11,10 +11,6 @@ import Featured from './../components/featured'
 import RankingUser from './../components/ranking-user'
 
 const styles = {
-  ranking: {
-    display: 'flex'
-  },
-
   rankingList: {
     flexBasis: '40%',
     maxHeight: 'calc(100vh - 70px)',
@@ -25,19 +21,38 @@ const styles = {
 class RankingsList extends Component {
   constructor() {
     super()
+
+    this.state = {
+      summoners: [],
+      fetched: false
+    }
   }
 
   componentDidMount() {
-    this.props.fetchRankings()
+    this.props.fetchRankings().then(() => {
+      this.setState({fetched: true})
+    })
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({summoners: nextProps.rankings.data.summoners})
   }
 
   render () {
     const flag = getTier('bronze').flag.small
-    const rankingList = <h1>NO USERS</h1>
+    let rankingList
+
+    if(this.state.fetched) {
+      rankingList = this.state.summoners.map((summoner, i) => {
+        return <RankingUser position={i + 1} avatar="ht" username="nice" summoner={summoner.name} flag={flag}/>
+      })
+    } else {
+      rankingList = <h1>NO USERS</h1>
+    }
 
     return (
-      <div>
-        <ul className={style(styles.rankingList)}>
+      <div className={style(styles.rankingList)}>
+        <ul>
           {rankingList}
         </ul>
       </div>
@@ -56,7 +71,5 @@ const mapDispatchToProps = dispatch => {
     fetchRankings: () => dispatch(fetchRankings())
   }
 }
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(RankingsList)

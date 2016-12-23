@@ -8,7 +8,7 @@ import Modal from 'react-modal'
 import Select from 'react-select'
 import { connect } from 'react-redux'
 
-import fetchUser from '../actions/fetch-user'
+import fetchAccount from '../actions/fetch-account'
 import editUser from './../actions/edit-user'
 
 const styles = {
@@ -121,7 +121,7 @@ class ModalAddLocation extends Component {
 
     this.props.editUser(data).then(() => {
       this.handleCloseModal()
-      this.props.fetchUser(localStorageRef)
+      this.props.fetchAccount(localStorageRef)
     })
   }
 
@@ -167,7 +167,7 @@ class ModalAddLocation extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     editUser: user => dispatch(editUser(user)),
-    fetchUser: token => dispatch(fetchUser(token))
+    fetchAccount: token => dispatch(fetchAccount(token))
   }
 }
 

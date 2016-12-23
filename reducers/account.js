@@ -11,13 +11,13 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch(action.type) {
-    case types.USER_REQUEST:
+    case types.ACCOUNT_REQUEST:
       return {
         ...state,
         requesting: true
       }
 
-    case types.USER_SUCCESS:
+    case types.ACCOUNT_SUCCESS:
       return {
         ...state,
         requesting: false,
@@ -25,7 +25,7 @@ export default (state = initialState, action) => {
         data: action.data
       }
 
-    case types.USER_ERROR:
+    case types.ACCOUNT_ERROR:
       return {
         ...state,
         requesting: false,
