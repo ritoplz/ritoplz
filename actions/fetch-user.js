@@ -24,17 +24,13 @@ function userError(data) {
   }
 }
 
-function fetchUser(localStorageRef) {
+function fetchUser(userId) {
   return dispatch => {
     dispatch(userRequest())
-    return axios.get('https://staging.ritoplz.com/account', {
-      headers: { 
-        'Content-Type': 'application/json',
-        'Authorization': localStorageRef
-      }
-    })
-    .then(res => dispatch(userSuccess(res.data)))
-    .catch(res => dispatch(userError(res)))
+
+    return axios.get(`http://localhost:3001/profile/${userId}`)
+      .then(({ data }) => dispatch(userSuccess(data)))
+      .catch(err => dispatch(userError(err)))
   }
 }
 

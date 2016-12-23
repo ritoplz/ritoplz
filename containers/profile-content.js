@@ -6,10 +6,10 @@ import React, { Component } from 'react'
 import { style } from 'next/css'
 import { connect } from 'react-redux'
 
-import fetchUser from '../actions/fetch-user'
-import EmptyState from './empty-state'
-import Intro from './intro'
-import MySummoners from './my-summoners'
+import fetchAccount from '../actions/fetch-account'
+import EmptyState from './../components/empty-state'
+import Intro from './../components/intro'
+import MySummoners from './../components/my-summoners'
 
 const styles = {
   loading: {
@@ -39,7 +39,7 @@ class Content extends Component {
 
   componentDidMount () {
     const localStorageRef = localStorage.getItem('token')
-    this.props.fetchUser(localStorageRef)
+    this.props.fetchAccount(localStorageRef)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -80,7 +80,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchUser: token => dispatch(fetchUser(token))
+    fetchAccount: token => dispatch(fetchAccount(token))
   }
 }
 
