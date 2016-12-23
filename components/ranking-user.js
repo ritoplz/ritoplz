@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { style } from 'next/css'
+import getTier from 'ritoplz-tier'
 
 const styles = {
   rankingItem: {
@@ -20,7 +21,7 @@ const styles = {
 
   image: {
     flexBasis: '20%',
-    marginTop: '15px'
+    marginTop: '18px'
   },
 
   avatar: {
@@ -44,10 +45,24 @@ const styles = {
     fontSize: '1rem',
     fontWeight: '400',
     color: 'rgba(0, 0, 0, .5)'
+  },
+
+  flag: {
+    flexBasis: '20%',
+    textAlign: 'right'
+  },
+
+  flagImage: {
+    width: '70px',
+    height: '65px',
+    marginTop: '10px'
   }
 }
 
 export default (props) => {
+  const tier = props.data.rankedSolo.tier
+  const flag = getTier(tier).flag.small
+
   return (
     <li className={style(styles.rankingItem)}>
       <h4 className={style(styles.position)}>{props.position}.</h4>
@@ -58,10 +73,12 @@ export default (props) => {
 
       <div className={style(styles.rankingInfo)}>
         <h2 className={style(styles.username)}>{props.username}</h2>
-        <h3 className={style(styles.summoner)}>{props.summoner}</h3>
+        <h3 className={style(styles.summoner)}>{props.data.name}</h3>
       </div>
 
-      <img className={style(styles.flag)} src={props.flag} alt="" />
+      <span className={style(styles.flag)}>
+        <img className={style(styles.flagImage)} src={flag} alt="" />
+      </span>
     </li>
   )
 }

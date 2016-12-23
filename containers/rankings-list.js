@@ -2,7 +2,6 @@
 
 import React, { Component } from 'react'
 import { style, insertRule } from 'next/css'
-import getTier from 'ritoplz-tier'
 import { connect } from 'react-redux'
 
 import fetchRankings from '../actions/fetch-rankings'
@@ -39,12 +38,11 @@ class RankingsList extends Component {
   }
 
   render () {
-    const flag = getTier('bronze').flag.small
     let rankingList
 
     if(this.state.fetched) {
       rankingList = this.state.summoners.map((summoner, i) => {
-        return <RankingUser position={i + 1} avatar="ht" username="nice" summoner={summoner.name} flag={flag}/>
+        return <RankingUser data={summoner} key={summoner._id} position={i + 1} avatar="https://s3.amazonaws.com/uifaces/faces/twitter/peterme/128.jpg" username="nice"/>
       })
     } else {
       rankingList = <h1>NO USERS</h1>
