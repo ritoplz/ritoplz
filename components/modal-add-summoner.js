@@ -6,7 +6,7 @@ import Modal from 'react-modal'
 import { connect } from 'react-redux'
 
 import addSummoner from './../actions/add-summoner'
-import fetchUser from '../actions/fetch-user'
+import fetchAccount from '../actions/fetch-account'
 
 const styles = {
   formInput: {
@@ -84,20 +84,24 @@ class ModalAddSummoner extends Component {
     this.setState({modalStatus: nextProps.open})
   }
 
+  handleCloseModal () {
+    this.setState({modalStatus: false})
+  }
+
   handleSubmit (e) {
     e.preventDefault()
     const localStorageRef = localStorage.getItem('token')
     const summoner = {name: this.summoner.value}
 
     this.props.addSummoner(summoner).then(() => {
-      this.setState({modalStatus: false})
-      this.props.fetchUser(localStorageRef)
+      this.handleCloseModal()
+      this.props.fetchAccount(localStorageRef)
     })
   }
 
   render () {
     return (
-      <Modal isOpen={this.state.modalStatus} style={customStyle}>
+      <Modal isOpen={this.state.modalStatus} onRequestClose={this.handleCloseModal} style={customStyle}>
         <form onSubmit={this.handleSubmit}>
           <fieldset className={style(styles.formInput)}>
             <label className={style(styles.label)}>Summoner</label>
@@ -114,7 +118,7 @@ class ModalAddSummoner extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     addSummoner: summoner => dispatch(addSummoner(summoner)),
-    fetchUser: token => dispatch(fetchUser(token))
+    fetchAccount: token => dispatch(fetchAccount(token))
   }
 }
 

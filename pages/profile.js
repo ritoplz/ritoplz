@@ -8,7 +8,7 @@ import { style, insertRule } from 'next/css'
 import Head from 'next/head'
 import { Provider } from 'react-redux'
 
-import Content from '../components/content'
+import ProfileContent from '../containers/profile-content'
 import configureStore from '../store/configureStore'
 
 const styles = {
@@ -46,7 +46,7 @@ export default class extends Component {
           </Head>
 
           <div className={style(styles.row)}>
-            <Content />
+            <ProfileContent />
           </div>
         </div>
       </Provider>
