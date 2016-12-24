@@ -10,6 +10,10 @@ import Featured from './../components/featured'
 import RankingUser from './../components/ranking-user'
 
 const styles = {
+  ranking: {
+    display: 'flex'
+  },
+
   rankingList: {
     flexBasis: '40%',
     maxHeight: 'calc(100vh - 70px)',
@@ -21,8 +25,11 @@ class RankingsList extends Component {
   constructor() {
     super()
 
+    this.handleFeatured = this.handleFeatured.bind(this)
+
     this.state = {
       summoners: [],
+      featured: {},
       fetched: false
     }
   }
@@ -35,22 +42,35 @@ class RankingsList extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({summoners: nextProps.rankings.data.summoners})
+    this.handleFeatured()
+  }
+
+  handleFeatured (index = 0) {
+    this.setState({
+      featured: this.state.summoners[index]
+    })
   }
 
   render () {
     let rankingList
+    let featured
 
     if(this.state.fetched) {
+      featured = <Featured data={this.state.featured}/>
+
       rankingList = this.state.summoners.map((summoner, i) => {
         return <RankingUser data={summoner} key={summoner._id} position={i + 1} avatar="https://s3.amazonaws.com/uifaces/faces/twitter/peterme/128.jpg" username="nice"/>
       })
+
     } else {
       rankingList = <h1>NO USERS</h1>
     }
 
     return (
-      <div className={style(styles.rankingList)}>
-        <ul>
+      <div className={style(styles.ranking)}>
+        {featured}
+
+        <ul className={style(styles.rankingList)}>
           {rankingList}
         </ul>
       </div>

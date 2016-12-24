@@ -10,18 +10,6 @@ import RankingUser from './../components/ranking-user'
 import RankingsList from './../containers/rankings-list'
 import configureStore from '../store/configureStore'
 
-const styles = {
-  ranking: {
-    display: 'flex'
-  },
-
-  rankingList: {
-    flexBasis: '40%',
-    maxHeight: 'calc(100vh - 70px)',
-    overflow: 'auto'
-  }
-}
-
 const store = configureStore()
 
 class Rankings extends Component {
@@ -37,9 +25,7 @@ class Rankings extends Component {
         <div>
           <Header />
 
-          <section className={style(styles.ranking)}>
-            <Featured />
-
+          <section>
             <RankingsList />
           </section>
         </div>
