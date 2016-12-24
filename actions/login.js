@@ -28,12 +28,12 @@ function handleLogin (userData) {
   return dispatch => {
     dispatch(loginRequest())
     return axios.post('https://staging.ritoplz.com/login', userData)
-      .then(res => {
-        dispatch(loginSuccess(res.data))
-        const token = res.data.token
+      .then(({ data }) => {
+        dispatch(loginSuccess(data))
+        const token = data.token
         localStorage.setItem('token', token)
       })
-      .catch(res => dispatch(loginError(res.response.data.error.message)))
+      .catch(err => dispatch(loginError(err.response.data.error.message)))
   }
 }
 

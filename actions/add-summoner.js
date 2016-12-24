@@ -37,8 +37,8 @@ function handleAddSummoner (summoner) {
         'Authorization': localStorageRef
       }
     })
-    .then(res => dispatch(addSummonerSuccess(res.data)))
-    .catch(res => dispatch(addSummonerError(res.data)))
+    .then(({ data }) => dispatch(addSummonerSuccess(data)))
+    .catch(err => dispatch(addSummonerError(err.data)))
   }
 }
 

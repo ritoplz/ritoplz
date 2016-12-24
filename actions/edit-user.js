@@ -37,8 +37,8 @@ function handleEditUser (user) {
         'Authorization': localStorageRef
       }
     })
-    .then(res => dispatch(editUserSuccess(res.data)))
-    .catch(res => dispatch(editUserError(res.data)))
+    .then(({ data }) => dispatch(editUserSuccess(data)))
+    .catch(err => dispatch(editUserError(err.data)))
   }
 }
 
