@@ -10,16 +10,6 @@ import Featured from './../components/featured'
 import RankingUser from './../components/ranking-user'
 
 const styles = {
-  ranking: {
-    display: 'flex'
-  },
-
-  rankingList: {
-    flexBasis: '40%',
-    maxHeight: 'calc(100vh - 70px)',
-    overflow: 'auto'
-  },
-
   loading: {
     fontWeight: '300',
     textAlign: 'center',

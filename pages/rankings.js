@@ -12,6 +12,14 @@ import configureStore from '../store/configureStore'
 
 const store = configureStore()
 
+const styles = {
+  row: {
+    maxWidth: '900px',
+    marginLeft: 'auto',
+    marginRight: 'auto'
+  }
+}
+
 class Rankings extends Component {
   constructor() {
     super()
@@ -25,7 +33,7 @@ class Rankings extends Component {
         <div>
           <Header />
 
-          <section>
+          <section className={style(styles.row)}>
             <RankingsList />
           </section>
         </div>

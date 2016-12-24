@@ -27,8 +27,8 @@ function accountError(data) {
 function fetchAccount(localStorageRef) {
   return dispatch => {
     dispatch(accountRequest())
-    return axios.get('https://staging.ritoplz.com/account', {
-      headers: { 
+    return axios.get('http://localhost:3001/account', {
+      headers: {
         'Content-Type': 'application/json',
         'Authorization': localStorageRef
       }

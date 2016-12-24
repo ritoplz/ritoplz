@@ -8,19 +8,22 @@ const styles = {
   rankingItem: {
     display: 'flex',
     height: '85px',
+    marginBottom: '20px',
+    border: '1px solid #F3F5FB',
+    borderRadius: '10px',
+    boxShadow: '0 10px 50px rgba(0, 0, 0, .025)',
     paddingLeft: '25px',
-    paddingRight: '25px',
-    borderBottom: '1px solid #f2f2f2'
+    paddingRight: '25px'
   },
 
   position: {
     lineHeight: '85px',
-    flexBasis: '10%',
+    flexBasis: '5%',
     color: '#333'
   },
 
   image: {
-    flexBasis: '20%',
+    flexBasis: '10%',
     marginTop: '18px'
   },
 
@@ -32,7 +35,7 @@ const styles = {
 
   rankingInfo: {
     marginTop: '20px',
-    flexBasis: '50%'
+    flexBasis: '65%'
   },
 
   username: {

@@ -27,7 +27,7 @@ function loginError (data) {
 function handleLogin (userData) {
   return dispatch => {
     dispatch(loginRequest())
-    return axios.post('https://staging.ritoplz.com/login', userData)
+    return axios.post('http://localhost:3001/login', userData)
       .then(({ data }) => {
         dispatch(loginSuccess(data))
         const token = data.token

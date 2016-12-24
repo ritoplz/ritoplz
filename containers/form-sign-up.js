@@ -6,11 +6,6 @@ import { connect } from 'react-redux'
 import signUpRequest from '../actions/sign-up'
 import * as types from './../constants'
 
-const propTypes = {
-  signUpRequest: React.PropTypes.func.isRequired,
-  routing: React.PropTypes.object.isRequired
-}
-
 class FormSignUp extends Component {
   constructor () {
     super()
@@ -26,6 +21,8 @@ class FormSignUp extends Component {
       email: this.email.value,
       password: this.password.value
     }
+
+    console.log(data)
 
     this.props.signUpRequest(data).then(res => {
       if (res.type === types.SIGNUP_SUCCESS) {
@@ -61,8 +58,6 @@ class FormSignUp extends Component {
     )
   }
 }
-
-FormSignUp.propTypes = propTypes
 
 const mapDispatchToProps = dispatch => {
   return {
