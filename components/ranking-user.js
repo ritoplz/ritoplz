@@ -72,7 +72,7 @@ export default (props) => {
       </figure>
 
       <div className={style(styles.rankingInfo)}>
-        <h2 className={style(styles.username)}>{props.username}</h2>
+        <h2 className={style(styles.username)}>{props.data.username}</h2>
         <h3 className={style(styles.summoner)}>{props.data.name}</h3>
       </div>
 
