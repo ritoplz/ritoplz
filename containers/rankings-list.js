@@ -59,7 +59,7 @@ class RankingsList extends Component {
       featured = <Featured data={this.state.featured}/>
 
       rankingList = this.state.summoners.map((summoner, i) => {
-        return <RankingUser data={summoner} key={summoner._id} position={i + 1} avatar="https://s3.amazonaws.com/uifaces/faces/twitter/peterme/128.jpg" username="nice"/>
+        return <RankingUser data={summoner} key={summoner._id} position={i + 1} avatar="https://s3.amazonaws.com/uifaces/faces/twitter/peterme/128.jpg" username="nice" handleShowFeatured={this.handleFeatured}/>
       })
 
     } else {

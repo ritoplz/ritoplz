@@ -68,8 +68,8 @@ const styles = {
   }
 }
 
-const Featured = props => {
-  const tier = props.data.rankedSolo.tier
+const Featured = ({ data }) => {
+  const tier = data.rankedSolo.tier
   const flag = getTier(tier).flag.small
 
   return (
@@ -83,8 +83,8 @@ const Featured = props => {
           <img className={style(styles.avatar)} src="https://s3.amazonaws.com/uifaces/faces/twitter/peterme/128.jpg" alt="" />
         </figure>
 
-        <h2 className={style(styles.username)}>{props.data.username}</h2>
-        <h3 className={style(styles.summoner)}>{props.data.name}</h3>
+        <h2 className={style(styles.username)}>{data.username}</h2>
+        <h3 className={style(styles.summoner)}>{data.name}</h3>
 
         <ul className={style(styles.userInfo)}>
           <li className={style(styles.userInfoItem)}>
@@ -93,12 +93,12 @@ const Featured = props => {
           </li>
 
           <li className={style(styles.userInfoItem)}>
-            <span className={style(styles.userSubtitle)}>{props.data.rankedSolo.wins}/{props.data.rankedSolo.losses}</span>
+            <span className={style(styles.userSubtitle)}>{data.rankedSolo.wins}/{data.rankedSolo.losses}</span>
             <h3 className={style(styles.userTitle)}>Win/Loss</h3>
           </li>
 
           <li className={style(styles.userInfoItem)}>
-            <span className={style(styles.userSubtitle)}>{props.data.rankedSolo.elo}</span>
+            <span className={style(styles.userSubtitle)}>{data.rankedSolo.elo}</span>
             <h3 className={style(styles.userTitle)}>Elo</h3>
           </li>
         </ul>
