@@ -47,6 +47,7 @@ class RankingsList extends Component {
 
   handleFeatured (index = 0) {
     this.setState({
+      featuredPosition: index + 1,
       featured: this.state.summoners[index]
     })
   }
@@ -56,7 +57,7 @@ class RankingsList extends Component {
     let featured
 
     if(this.state.fetched) {
-      featured = <Featured data={this.state.featured}/>
+      featured = <Featured data={this.state.featured} position={this.state.featuredPosition}/>
 
       rankingList = this.state.summoners.map((summoner, i) => {
         return <RankingUser data={summoner} key={summoner._id} position={i + 1} avatar="https://s3.amazonaws.com/uifaces/faces/twitter/peterme/128.jpg" username="nice" handleShowFeatured={this.handleFeatured}/>
