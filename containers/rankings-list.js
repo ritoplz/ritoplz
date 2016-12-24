@@ -18,6 +18,19 @@ const styles = {
     flexBasis: '40%',
     maxHeight: 'calc(100vh - 70px)',
     overflow: 'auto'
+  },
+
+  loading: {
+    fontWeight: '300',
+    textAlign: 'center',
+    position: 'absolute',
+    top: '40%',
+    left: '0',
+    right: '0',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    color: '#333',
+    fontSize: '2rem'
   }
 }
 
@@ -64,7 +77,7 @@ class RankingsList extends Component {
       })
 
     } else {
-      rankingList = <h1>NO USERS</h1>
+      rankingList = <h1 className={style(styles.loading)}>Loading...</h1>
     }
 
     return (
