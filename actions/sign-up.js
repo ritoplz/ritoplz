@@ -28,7 +28,7 @@ function handleSignup (userData) {
   return dispatch => {
     dispatch(signupRequest())
     return axios.post('http://localhost:3001/signup', userData)
-      .then(({ data }) => dispatch(signupSuccess(data)))
+      .then(res => dispatch(signupSuccess(res.data)))
       .catch(err => dispatch(signupError(err.response.data.msg)))
   }
 }

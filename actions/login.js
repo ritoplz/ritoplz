@@ -28,9 +28,9 @@ function handleLogin (userData) {
   return dispatch => {
     dispatch(loginRequest())
     return axios.post('http://localhost:3001/login', userData)
-      .then(({ data }) => {
-        dispatch(loginSuccess(data))
-        const token = data.token
+      .then(res => {
+        dispatch(loginSuccess(res.data))
+        const token = res.data.token
         localStorage.setItem('token', token)
       })
       .catch(err => dispatch(loginError(err.response.data.error.message)))

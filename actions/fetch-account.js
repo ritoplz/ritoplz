@@ -33,7 +33,7 @@ function fetchAccount(localStorageRef) {
         'Authorization': localStorageRef
       }
     })
-    .then(({ data }) => dispatch(accountSuccess(data)))
+    .then(res => dispatch(accountSuccess(res.data)))
     .catch(err => dispatch(accountError(err)))
   }
 }

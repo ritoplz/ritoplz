@@ -29,11 +29,11 @@ function fetchRankings() {
     dispatch(rankingsRequest())
 
     return axios.get('http://localhost:3001/rankings', {
-      params: { 
+      params: {
         country: 'BR'
       }
     })
-    .then(({ data }) => dispatch(rankingsSuccess(data)))
+    .then(data => dispatch(rankingsSuccess(res.data)))
     .catch(err => dispatch(rankingsError(err)))
   }
 }
