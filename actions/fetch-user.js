@@ -29,7 +29,7 @@ function fetchUser(userId) {
     dispatch(userRequest())
 
     return axios.get(`http://localhost:3001/profile/${userId}`)
-      .then(({ data }) => dispatch(userSuccess(data)))
+      .then(res) => dispatch(userSuccess(res.data)))
       .catch(err => dispatch(userError(err)))
   }
 }

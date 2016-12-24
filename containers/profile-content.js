@@ -21,7 +21,7 @@ const styles = {
     right: '0',
     marginLeft: 'auto',
     marginRight: 'auto',
-    color: '#444'
+    color: '#333'
   }
 }
 

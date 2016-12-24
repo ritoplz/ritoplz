@@ -29,7 +29,7 @@ function handleEditUser (user) {
     const localStorageRef = localStorage.getItem('token')
     dispatch(editUser())
     return axios({
-      method: 'put', 
+      method: 'put',
       url: 'https://staging.ritoplz.com/account',
       data: user,
       headers: {
@@ -38,7 +38,7 @@ function handleEditUser (user) {
       }
     })
     .then(res => dispatch(editUserSuccess(res.data)))
-    .catch(res => dispatch(editUserError(res.data)))
+    .catch(err => dispatch(editUserError(err.data)))
   }
 }
 

@@ -3,42 +3,33 @@
 import React from 'react'
 import { style, insertRule } from 'next/css'
 import getTier from 'ritoplz-tier'
+import ordinal from 'ordinal-numbers'
+import { Line } from 'rc-progress'
 
 const styles = {
   featured: {
-    flexBasis: '60%'
+    marginTop: '50px',
+    marginBottom: '50px'
   },
 
   user: {
     textAlign: 'center',
-    flexBasis: '60%',
     background: 'url(https://images.unsplash.com/photo-1477346611705-65d1883cee1e?dpr=1&auto=format&fit=crop&w=1500&h=1001&q=80&cs=tinysrgb&crop=) center center',
-    height: 'calc(100vh - 70px)',
-    paddingTop: '100px'
-  },
-
-  image: {
-    position: 'relative',
-    display: 'inline-block'
-  },
-
-  flag: {
-    position: 'absolute',
-    top: '-60px',
-    right: '-50px'
+    borderRadius: '10px',
+    textAlign: 'center',
+    padding: '50px 175px',
+    minWidth: '700px'
   },
 
   avatar: {
-    height: '125px',
-    width: '125px',
-    borderRadius: '20px'
+    width: '100px',
+    borderRadius: '50%'
   },
 
   username: {
     color: '#fff',
     fontSize: '2.5rem',
     fontWeight: '400',
-    marginTop: '30px'
   },
 
   summoner: {
@@ -46,12 +37,6 @@ const styles = {
     fontWeight: '300',
     marginTop: '5px',
     color: 'rgba(255, 255, 255, .5)'
-  },
-
-  userInfo: {
-    display: 'flex',
-    justifyContent: 'space-around',
-    marginTop: '50px'
   },
 
   userTitle: {
@@ -65,42 +50,48 @@ const styles = {
     color: '#fff',
     fontSize: '3rem',
     fontWeight: '300'
+  },
+
+  tierInfo: {
+    textAlign: 'left'
+  },
+
+  tier: {
+    color: '#fff',
+    marginTop: '30px',
+    marginBottom: '-20px',
+    fontWeight: '500'
+  },
+
+  lp: {
+    color: '#fff',
+    float: 'right',
+    marginBottom: '5px'
   }
 }
 
-const Featured = props => {
-  const flag = getTier('bronze').flag.small
+const Featured = (props) => {
+  const tier = props.data.rankedSolo.tier
+  const flag = getTier(tier).flag.small
+  const position = ordinal(props.position)
 
   return (
     <div className={style(styles.featured)}>
       <div className={style(styles.user)}>
         <figure className={style(styles.image)}>
-          <span className={style(styles.flag)}>
-            <img src={flag} alt=""/>
-          </span>
-
           <img className={style(styles.avatar)} src="https://s3.amazonaws.com/uifaces/faces/twitter/peterme/128.jpg" alt="" />
         </figure>
 
-        <h2 className={style(styles.username)}>Sue Dixon</h2>
-        <h3 className={style(styles.summoner)}>nicoleaniston</h3>
+        <div className={style(styles.info)}>
+          <h2 className={style(styles.username)}>{props.data.username}</h2>
+          <h3 className={style(styles.summoner)}>{props.data.name}</h3>
 
-        <ul className={style(styles.userInfo)}>
-          <li className={style(styles.userInfoItem)}>
-            <span className={style(styles.userSubtitle)}>1th</span>
-            <h3 className={style(styles.userTitle)}>Ranking</h3>
-          </li>
-
-          <li className={style(styles.userInfoItem)}>
-            <span className={style(styles.userSubtitle)}>8/15</span>
-            <h3 className={style(styles.userTitle)}>Win/Loss</h3>
-          </li>
-
-          <li className={style(styles.userInfoItem)}>
-            <span className={style(styles.userSubtitle)}>580</span>
-            <h3 className={style(styles.userTitle)}>Elo</h3>
-          </li>
-        </ul>
+          <div className={style(styles.tierInfo)}>
+            <h4 className={style(styles.tier)}>{props.data.rankedSolo.tier} {props.data.rankedSolo.division}</h4>
+            <span className={style(styles.lp)}>LP {props.data.rankedSolo.lp} / 100</span>
+            <Line percent="90" strokeWidth="1" strokeColor="#52bdab" trailWidth="1" trailColor="#fff" />
+          </div>
+        </div>
       </div>
     </div>
   )

@@ -6,11 +6,6 @@ import { connect } from 'react-redux'
 import loginRequest from '../actions/login'
 import * as types from './../constants'
 
-const propTypes = {
-  loginRequest: React.PropTypes.func.isRequired,
-  routing: React.PropTypes.object.isRequired
-}
-
 class FormLogin extends Component {
   constructor() {
     super()
@@ -56,8 +51,6 @@ class FormLogin extends Component {
     )
   }
 }
-
-FormLogin.propTypes = propTypes
 
 const mapDispatchToProps = dispatch => {
   return {
