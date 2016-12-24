@@ -4039,6 +4039,10 @@ optionator@^0.8.1, optionator@^0.8.2:
     type-check "~0.3.2"
     wordwrap "~1.0.0"
 
+ordinal-numbers:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/ordinal-numbers/-/ordinal-numbers-1.0.3.tgz#9619b0cb006a88f1001a04b73f9b34d715d18d21"
+
 original@>=0.0.5:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/original/-/original-1.0.0.tgz#9147f93fa1696d04be61e01bd50baeaca656bd3b"

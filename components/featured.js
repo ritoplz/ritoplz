@@ -3,6 +3,7 @@
 import React from 'react'
 import { style, insertRule } from 'next/css'
 import getTier from 'ritoplz-tier'
+import ordinal from 'ordinal-numbers'
 
 const styles = {
   featured: {
@@ -71,6 +72,7 @@ const styles = {
 const Featured = (props) => {
   const tier = props.data.rankedSolo.tier
   const flag = getTier(tier).flag.small
+  const position = ordinal(props.position)
 
   return (
     <div className={style(styles.featured)}>
@@ -88,7 +90,7 @@ const Featured = (props) => {
 
         <ul className={style(styles.userInfo)}>
           <li className={style(styles.userInfoItem)}>
-            <span className={style(styles.userSubtitle)}>{props.position}</span>
+            <span className={style(styles.userSubtitle)}>{position}</span>
             <h3 className={style(styles.userTitle)}>Ranking</h3>
           </li>
 
