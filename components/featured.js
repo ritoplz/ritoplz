@@ -89,7 +89,7 @@ const Featured = (props) => {
           <div className={style(styles.tierInfo)}>
             <h4 className={style(styles.tier)}>{props.data.rankedSolo.tier} {props.data.rankedSolo.division}</h4>
             <span className={style(styles.lp)}>LP {props.data.rankedSolo.lp} / 100</span>
-            <Line percent="90" strokeWidth="1" strokeColor="#52bdab" trailWidth="1" trailColor="#fff" />
+            <Line percent={props.data.rankedSolo.lp} strokeWidth="1" strokeColor="#52bdab" trailWidth="1" trailColor="#fff" />
           </div>
         </div>
       </div>
