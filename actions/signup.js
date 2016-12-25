@@ -2,24 +2,28 @@
 
 import axios from 'axios'
 
-import * as types from './../constants'
+import {
+  SIGNUP_REQUEST,
+  SIGNUP_SUCCESS,
+  SIGNUP_ERROR
+} from '../../constants'
 
 function signupRequest () {
   return {
-    type: types.SIGNUP_REQUEST
+    type: SIGNUP_REQUEST
   }
 }
 
 function signupSuccess (data) {
   return {
-    type: types.SIGNUP_SUCCESS,
+    type: SIGNUP_SUCCESS,
     data
   }
 }
 
 function signupError (data) {
   return {
-    type: types.SIGNUP_ERROR,
+    type: SIGNUP_ERROR,
     data
   }
 }
