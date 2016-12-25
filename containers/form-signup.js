@@ -3,10 +3,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import signUpRequest from '../actions/sign-up'
+import signupRequest from '../actions/signup'
 import * as types from './../constants'
 
-class FormSignUp extends Component {
+class FormSignup extends Component {
   constructor () {
     super()
 
@@ -22,9 +22,7 @@ class FormSignUp extends Component {
       password: this.password.value
     }
 
-    console.log(data)
-
-    this.props.signUpRequest(data).then(res => {
+    this.props.signupRequest(data).then(res => {
       if (res.type === types.SIGNUP_SUCCESS) {
         this.props.routing.url.pushTo('/login')
       }
@@ -61,8 +59,8 @@ class FormSignUp extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    signUpRequest: userData => dispatch(signUpRequest(userData))
+    signupRequest: userData => dispatch(signupRequest(userData))
   }
 }
 
-export default connect(null, mapDispatchToProps)(FormSignUp)
+export default connect(null, mapDispatchToProps)(FormSignup)

@@ -5,9 +5,9 @@ import { Provider } from 'react-redux'
 import Link from 'next/link'
 
 import configureStore from '../store/configureStore'
-import FormSignUp from '../containers/form-sign-up'
+import FormSignup from '../containers/form-signup'
 
-const SignUp = props => {
+const Signup = props => {
   const store = configureStore()
 
   return (
@@ -16,7 +16,7 @@ const SignUp = props => {
         <h2 className="title">Sign Up</h2>
         <p className="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel lacus vel augue aliquet luctus. Ut urna libero.</p>
 
-        <FormSignUp routing={props}/>
+        <FormSignup routing={props}/>
 
         <Link href="/">Home</Link>
         <Link href="/login">Login</Link>
@@ -25,4 +25,4 @@ const SignUp = props => {
   )
 }
 
-export default SignUp
+export default Signup
