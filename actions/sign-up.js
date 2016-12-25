@@ -27,9 +27,9 @@ function signupError (data) {
 function handleSignup (userData) {
   return dispatch => {
     dispatch(signupRequest())
-    return axios.post('https://staging.ritoplz.com/signup', userData)
+    return axios.post('http://localhost:3001', userData)
       .then(res => dispatch(signupSuccess(res.data)))
-      .catch(res => dispatch(signupError(res.response.data.msg)))
+      .catch(err => dispatch(signupError(err.response.data.msg)))
   }
 }
 

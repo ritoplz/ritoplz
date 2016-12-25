@@ -29,8 +29,8 @@ function handleAddSummoner (summoner) {
     const localStorageRef = localStorage.getItem('token')
     dispatch(addSummonerRequest())
     return axios({
-      method: 'post', 
-      url: 'https://staging.ritoplz.com/summoner',
+      method: 'post',
+      url: 'http://localhost:3001/summoner',
       data: summoner,
       headers: {
         'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ function handleAddSummoner (summoner) {
       }
     })
     .then(res => dispatch(addSummonerSuccess(res.data)))
-    .catch(res => dispatch(addSummonerError(res.data)))
+    .catch(err => dispatch(addSummonerError(err.data)))
   }
 }
 

@@ -29,7 +29,7 @@ function fetchRankings() {
     dispatch(rankingsRequest())
 
     return axios.get('http://localhost:3001/rankings', {
-      params: { 
+      params: {
         country: 'BR'
       }
     })

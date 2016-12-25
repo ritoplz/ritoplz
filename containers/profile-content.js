@@ -21,11 +21,11 @@ const styles = {
     right: '0',
     marginLeft: 'auto',
     marginRight: 'auto',
-    color: '#444'
+    color: '#333'
   }
 }
 
-class Content extends Component {
+class ProfileContent extends Component {
   constructor () {
     super()
 
@@ -62,7 +62,7 @@ class Content extends Component {
     } else {
       profile = (<h1 className={style(styles.loading)}>Loading...</h1>)
     }
-    
+
     return (
       <div>
         {profile}
@@ -74,7 +74,7 @@ class Content extends Component {
 
 const mapStateToProps = state => {
   return {
-    profile: state.user
+    profile: state.account
   }
 }
 
@@ -84,4 +84,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Content)
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileContent)
