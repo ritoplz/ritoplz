@@ -75,13 +75,14 @@ class ModalAddSummoner extends Component {
     super()
 
     this.handleSubmit = this.handleSubmit.bind(this)
+
     this.state = {
       modalStatus: props.open
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({modalStatus: nextProps.open})
+  componentWillReceiveProps({ open }) {
+    this.setState({modalStatus: open})
   }
 
   handleCloseModal () {
