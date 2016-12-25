@@ -44,6 +44,7 @@ class RankingsList extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log(nextProps)
     this.setState({summoners: nextProps.rankings.data.summoners})
     this.handleFeatured()
   }
