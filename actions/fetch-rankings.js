@@ -28,7 +28,7 @@ function fetchRankings() {
   return dispatch => {
     dispatch(rankingsRequest())
 
-    return axios.get('https://staging.ritoplz.com/rankings', {
+    return axios.get('http://localhost:3001/rankings', {
       params: {
         country: 'BR'
       }
