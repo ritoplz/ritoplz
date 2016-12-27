@@ -11,7 +11,8 @@ const styles = {
   registerForm: {
     maxWidth: '60%',
     marginLeft: 'auto',
-    marginRight: 'auto'
+    marginRight: 'auto',
+    paddingBottom: '50px'
   },
 
   formInput: {
