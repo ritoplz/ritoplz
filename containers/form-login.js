@@ -9,7 +9,7 @@ import * as types from './../constants'
 
 const styles = {
   loginForm: {
-    maxWidth: '70%',
+    maxWidth: '60%',
     marginLeft: 'auto',
     marginRight: 'auto'
   },
@@ -49,7 +49,7 @@ const styles = {
     borderRadius: '5px',
     padding: '10px 25px',
     fontSize: '.9rem',
-    height: '50px',
+    height: '55px',
     marginTop: '25px',
     fontWeight: '500',
     cursor: 'pointer',

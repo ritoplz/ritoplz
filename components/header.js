@@ -17,7 +17,7 @@ const styles = {
 
   logo: {
     float: 'left',
-    fontSize: '2.5rem',
+    fontSize: '2rem',
     fontWeight: '700'
   },
 
@@ -27,16 +27,38 @@ const styles = {
     lineHeight: '70px',
   },
 
-  profileLink: {
+  nav : {
+    lineHeight: '70px',
+    float: 'right'
+  },
+
+  navItem: {
+    display: 'inline-block',
+    marginLeft: '30px'
+  },
+
+  navLink: {
     color: '#ccc',
-    float: 'right',
-    fontSize: '1.15rem',
+    fontSize: '1rem',
     fontWeight: '400',
     transition: '.25s',
+    display: 'inline-block',
 
     ':hover': {
       color: '#333'
     }
+  },
+
+  btn: {
+    color: '#fff',
+    border: 'none',
+    borderRadius: '5px',
+    padding: '10px 25px',
+    fontSize: '.9rem',
+    fontWeight: '500',
+    cursor: 'pointer',
+    background: 'linear-gradient(to right, #52bdab 0%,#6BB6D6 100%)',
+    textDeconration: 'none'
   }
 }
 
@@ -50,11 +72,13 @@ export default () => {
           </h1>
         </Link>
 
-        <Link href="/profile">
-          <a className={style(styles.link)}>
-            <span className={style(styles.profileLink)}>Profile</span>
-          </a>
-        </Link>
+        <ul className={style(styles.nav)}>
+          <li className={style(styles.navItem)}>
+            <Link href="/signup">
+              <button className={style(styles.btn)}>Sign Up</button>
+            </Link>
+          </li>
+        </ul>
       </div>
     </header>
   )
