@@ -1,6 +1,10 @@
 'use strict'
 
-import * as types from './../constants'
+import {
+  SIGNUP_REQUEST,
+  SIGNUP_SUCCESS,
+  SIGNUP_ERROR
+} from './../constants'
 
 const initialState = {
   requesting: false,
@@ -11,27 +15,23 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch(action.type) {
-    case types.SIGNUP_REQUEST:
-      return {
-        ...state,
+    case SIGNUP_REQUEST:
+      return Object.assign({}, state, {
         requesting: true
-      }
+      })
 
-    case types.SIGNUP_SUCCESS:
-      return {
-        ...state,
+    case SIGNUP_SUCCESS:
+      return Object.assign({}, state, {
         requesting: false,
         requested: true,
         data: action.data
-      }
+      })
 
-    case types.SIGNUP_ERROR:
-      return {
-        ...state,
+    case SIGNUP_ERROR:
+      return Object.assign({}, state, {
         requesting: false,
-        requested: true,
         error: action.data
-      }
+      })
 
     default:
       return state
