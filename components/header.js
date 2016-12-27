@@ -62,7 +62,21 @@ const styles = {
   }
 }
 
-export default () => {
+export default props => {
+  let page
+  let linkToHref
+
+  if (props.page === 'signup') {
+    page = 'Login'
+    linkToHref = '/login'
+  } else if (props.page === 'login') {
+    page = 'Sign Up'
+    linkToHref = '/signup'
+  } else {
+    page = 'Profile'
+    linkToHref = '/profile'
+  }
+
   return (
     <header className={style(styles.header)}>
       <div className={style(styles.row)}>
@@ -74,8 +88,8 @@ export default () => {
 
         <ul className={style(styles.nav)}>
           <li className={style(styles.navItem)}>
-            <Link href="/signup">
-              <button className={style(styles.btn)}>Sign Up</button>
+            <Link href={linkToHref}>
+              <button className={style(styles.btn)}>{page}</button>
             </Link>
           </li>
         </ul>

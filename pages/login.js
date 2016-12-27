@@ -40,7 +40,7 @@ const Login = props => {
   return (
     <Provider store={store}>
       <div>
-        <Header />
+        <Header page="login"/>
 
         <section className={style(styles.row)}>
           <h1 className={style(styles.title)}>Nice to see you today!</h1>

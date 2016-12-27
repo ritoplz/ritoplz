@@ -31,7 +31,7 @@ class Rankings extends Component {
     return (
       <Provider store={store}>
         <div>
-          <Header />
+          <Header page="rankings"/>
 
           <section className={style(styles.row)}>
             <RankingsList />
