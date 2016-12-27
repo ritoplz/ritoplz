@@ -6,7 +6,7 @@ import {
   SIGNUP_REQUEST,
   SIGNUP_SUCCESS,
   SIGNUP_ERROR
-} from '../../constants'
+} from '../constants'
 
 function signupRequest () {
   return {

@@ -18,6 +18,7 @@
     "flow-bin": "^0.34.0",
     "jest": "^18.0.0",
     "next": "^1.1.1",
+    "nock": "^9.0.2",
     "ordinal-numbers": "^1.0.3",
     "rc-progress": "^2.0.3",
     "react": "^15.3.2",
@@ -26,6 +27,7 @@
     "react-redux": "^4.4.5",
     "react-select": "^1.0.0-rc.2",
     "redux": "^3.6.0",
+    "redux-mock-store": "^1.2.1",
     "redux-thunk": "^2.1.0",
     "ritoplz-tier": "^0.0.1",
     "xo": "^0.17.1"
