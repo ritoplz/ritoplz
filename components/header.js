@@ -46,7 +46,7 @@ export default () => {
       <div className={style(styles.row)}>
         <Link href="/">
           <h1 className={style(styles.logo)}>
-            <a className={style(styles.link)}>Ritoplz</a>
+            <span className={style(styles.link)}>Ritoplz</span>
           </h1>
         </Link>
 

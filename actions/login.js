@@ -6,7 +6,7 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_ERROR
-} from '../../constants'
+} from '../constants'
 
 function loginRequest () {
   return {

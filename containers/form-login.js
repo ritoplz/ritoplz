@@ -2,9 +2,60 @@
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { style } from 'next/css'
 
 import loginRequest from '../actions/login'
 import * as types from './../constants'
+
+const styles = {
+  loginForm: {
+    maxWidth: '70%',
+    marginLeft: 'auto',
+    marginRight: 'auto'
+  },
+
+  formInput: {
+    border: 'none',
+    marginBottom: '25px'
+  },
+
+  label: {
+    display: 'block',
+    fontSize: '1rem',
+    fontWeight: '500',
+    marginBottom: '10px'
+  },
+
+  input: {
+    width: '100%',
+    height: '55px',
+    borderRadius: '4px',
+    border: '1px solid #f2f2f2',
+    padding: '15px',
+    fontSize: '1.15rem',
+    outline: 'none',
+    color: '#333',
+    transition: '.25s',
+
+    ':focus': {
+      borderColor: '#ddd'
+    }
+  },
+
+  btn: {
+    width: '100%',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '5px',
+    padding: '10px 25px',
+    fontSize: '.9rem',
+    height: '50px',
+    marginTop: '25px',
+    fontWeight: '500',
+    cursor: 'pointer',
+    background: 'linear-gradient(to right, #52bdab 0%,#6BB6D6 100%)'
+  }
+}
 
 class FormLogin extends Component {
   constructor() {
@@ -35,18 +86,18 @@ class FormLogin extends Component {
 
   render() {
     return (
-      <form className="registration-form" onSubmit={this.handleLogin}>
-        <fieldset className="form-input">
-          <label className="label">E-mail</label>
-          <input className="input" type="text" name="email" ref={input => this.email = input}/>
+      <form className={style(styles.loginForm)} onSubmit={this.handleLogin}>
+        <fieldset className={style(styles.formInput)}>
+          <label className={style(styles.label)}>E-mail</label>
+          <input className={style(styles.input)} type="text" name="email" ref={input => this.email = input}/>
         </fieldset>
 
-        <fieldset className="form-input">
-          <label className="label">Password</label>
-          <input className="input" type="password" name="password" ref={input => this.password = input}/>
+        <fieldset className={style(styles.formInput)}>
+          <label className={style(styles.label)}>Password</label>
+          <input className={style(styles.input)} type="password" name="password" ref={input => this.password = input}/>
         </fieldset>
 
-        <button className="btn -secondary -large" type="submit">Login</button>
+        <button className={style(styles.btn)} type="submit">Login</button>
       </form>
     )
   }
