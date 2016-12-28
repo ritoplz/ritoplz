@@ -79,7 +79,7 @@ const Featured = (props) => {
     <div className={style(styles.featured)}>
       <div className={style(styles.user)}>
         <figure className={style(styles.image)}>
-          <img className={style(styles.avatar)} src="https://s3.amazonaws.com/uifaces/faces/twitter/peterme/128.jpg" alt="" />
+          <img className={style(styles.avatar)} src={`http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/${props.data.profileIconId}.png`} alt="" />
         </figure>
 
         <div className={style(styles.info)}>

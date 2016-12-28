@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { style } from 'next/css'
 
 import loginRequest from '../actions/login'
-import * as types from './../constants'
+import { LOGIN_SUCCESS, LOGIN_ERROR } from './../constants'
 
 const styles = {
   loginForm: {
@@ -75,11 +75,11 @@ class FormLogin extends Component {
 
     this.props.loginRequest(data).then(res => {
       console.log('For some weird reason res is returning undefined when success', res)
-      // if (res.type === types.LOGIN_SUCCESS) {
+      // if (res.type === LOGIN_SUCCESS) {
         this.props.routing.url.pushTo('/profile')
       // }
 
-      if (res.type === types.LOGIN_ERROR) {
+      if (res.type === LOGIN_ERROR) {
         console.log(res.data)
       }
     })
