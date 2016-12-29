@@ -36,11 +36,6 @@ const styles = {
 
 const Login = props => {
   const store = configureStore()
-  const browserStorage = (typeof localStorage === 'undefined') ? null : localStorage
-
-  if(browserStorage.token) {
-    props.url.pushTo('/profile')
-  }
 
   return (
     <Provider store={store}>

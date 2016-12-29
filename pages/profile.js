@@ -35,11 +35,6 @@ export default class extends Component {
   }
 
   render () {
-    const browserStorage = (typeof localStorage === 'undefined') ? null : localStorage
-    if(!browserStorage.token) {
-      this.props.url.pushTo('/login')
-    }
-
     return (
       <Provider store={store}>
         <div>
