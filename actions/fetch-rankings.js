@@ -33,7 +33,7 @@ function fetchRankings() {
         country: 'BR'
       }
     })
-    .then(data => dispatch(rankingsSuccess(res.data)))
+    .then(({ data }) => dispatch(rankingsSuccess(data)))
     .catch(err => dispatch(rankingsError(err)))
   }
 }

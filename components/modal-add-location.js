@@ -89,8 +89,8 @@ class ModalAddLocation extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({modalStatus: nextProps.open})
+  componentWillReceiveProps({ open }) {
+    this.setState({modalStatus: open})
   }
 
   handleCountry (e) {
@@ -111,7 +111,7 @@ class ModalAddLocation extends Component {
 
   handleSubmit (e) {
     e.preventDefault()
-    
+
     const localStorageRef = localStorage.getItem('token')
     const data = {
       country: this.state.country,
@@ -172,4 +172,3 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(null, mapDispatchToProps)(ModalAddLocation)
-

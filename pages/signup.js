@@ -3,26 +3,56 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import Link from 'next/link'
+import { style, insertRule } from 'next/css'
 
 import configureStore from '../store/configureStore'
-import FormSignUp from '../containers/form-sign-up'
+import FormSignup from '../containers/form-signup'
+import Header from '../components/header'
 
-const SignUp = props => {
+const styles = {
+  row: {
+    maxWidth: '900px',
+    marginLeft: 'auto',
+    marginRight: 'auto'
+  },
+
+  title: {
+    color: '#333',
+    fontWeight: '300',
+    fontSize: '3rem',
+    textAlign: 'center',
+    marginTop: '50px'
+  },
+
+  subtitle: {
+    color: '#ccc',
+    fontWeight: '300',
+    fontSize: '1.15rem',
+    textAlign: 'center',
+    marginBottom: '50px',
+    marginTop: '5px'
+  }
+}
+
+const Signup = props => {
   const store = configureStore()
 
   return (
     <Provider store={store}>
-      <div className="row">
-        <h2 className="title">Sign Up</h2>
-        <p className="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel lacus vel augue aliquet luctus. Ut urna libero.</p>
+      <div>
+        <Header page="signup"/>
 
-        <FormSignUp routing={props}/>
+        <section className={style(styles.row)}>
+          <h1 className={style(styles.title)}>Join our Ranking!</h1>
+          <h2 className={style(styles.subtitle)}>Enter your info below to sign up.</h2>
 
-        <Link href="/">Home</Link>
-        <Link href="/login">Login</Link>
+          <FormSignup routing={props}/>
+        </section>
       </div>
     </Provider>
   )
 }
 
-export default SignUp
+insertRule('* {padding: 0; margin: 0; box-sizing: border-box; font-family: Source Sans Pro, Helvetica Neue, Helvetica } li {list-style: none}')
+
+export default Signup
