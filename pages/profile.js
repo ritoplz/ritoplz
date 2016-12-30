@@ -43,6 +43,7 @@ export default class extends Component {
             <meta name="viewport" content="width=device-width, initial-scale=1"/>
             <link rel="stylesheet" href="https://unpkg.com/react-select/dist/react-select.css"/>
             <link rel="stylesheet" href="/static/stylesheets/vendors/react-select/react-select.css"/>
+            <link rel="stylesheet" href="/static/stylesheets/vendors/alert/alert.css"/>
             <meta charSet="utf-8"/>
           </Head>
 

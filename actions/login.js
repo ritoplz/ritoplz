@@ -33,7 +33,7 @@ function handleLogin (userData) {
     dispatch(loginRequest())
     return axios.post('http://localhost:3001/login', userData)
       .then(({ data }) => dispatch(loginSuccess(data)))
-      .catch(err => dispatch(loginError(err.response.data.error.message)))
+      .catch(err => dispatch(loginError(err.response.data)))
   }
 }
 

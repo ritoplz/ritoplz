@@ -2,24 +2,28 @@
 
 import axios from 'axios'
 
-import * as types from './../constants'
+import {
+  RANKINGS_REQUEST,
+  RANKINGS_SUCCESS,
+  RANKINGS_ERROR
+} from './../constants'
 
 function rankingsRequest() {
   return {
-    type: types.RANKINGS_REQUEST
+    type: RANKINGS_REQUEST
   }
 }
 
 function rankingsSuccess(data) {
   return {
-    type: types.RANKINGS_SUCCESS,
+    type: RANKINGS_SUCCESS,
     data
   }
 }
 
 function rankingsError(data) {
   return {
-    type: types.RANKINGS_ERROR,
+    type: RANKINGS_ERROR,
     data
   }
 }

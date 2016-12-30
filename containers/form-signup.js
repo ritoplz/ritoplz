@@ -3,6 +3,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { style } from 'next/css'
+import Alert from 'react-s-alert'
 
 import signupRequest from '../actions/signup'
 import { SIGNUP_SUCCESS, SIGNUP_ERROR } from './../constants'
@@ -80,7 +81,9 @@ class FormSignup extends Component {
       }
 
       if (type === SIGNUP_ERROR) {
-        console.log(data.response.data[0].msg)
+        const err = data[0].msg
+
+        Alert.error(err, {position: 'bottom-right'})
       }
     })
   }
@@ -104,6 +107,8 @@ class FormSignup extends Component {
         </fieldset>
 
         <button className={style(styles.btn)} type="submit">Sign Up</button>
+
+        <Alert effect="jelly" stack={{limit: 3}}/>
       </form>
     )
   }

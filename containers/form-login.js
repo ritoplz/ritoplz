@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { style } from 'next/css'
 import cookie from 'react-cookie'
+import Alert from 'react-s-alert'
 
 import loginRequest from '../actions/login'
 import { LOGIN_SUCCESS, LOGIN_ERROR } from './../constants'
@@ -84,7 +85,9 @@ class FormLogin extends Component {
       }
 
       if (type === LOGIN_ERROR) {
-        console.log(data)
+        const err = data[0].msg
+
+        Alert.error(err, {position: 'bottom-right'})
       }
     })
   }
@@ -103,6 +106,8 @@ class FormLogin extends Component {
         </fieldset>
 
         <button className={style(styles.btn)} type="submit">Login</button>
+
+        <Alert effect="jelly" stack={{limit: 3}}/>
       </form>
     )
   }

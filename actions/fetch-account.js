@@ -2,24 +2,28 @@
 
 import axios from 'axios'
 
-import * as types from './../constants'
+import {
+  ACCOUNT_REQUEST,
+  ACCOUNT_SUCCESS,
+  ACCOUNT_ERROR
+} from './../constants'
 
 function accountRequest() {
   return {
-    type: types.ACCOUNT_REQUEST
+    type: ACCOUNT_REQUEST
   }
 }
 
 function accountSuccess(data) {
   return {
-    type: types.ACCOUNT_SUCCESS,
+    type: ACCOUNT_SUCCESS,
     data
   }
 }
 
 function accountError(data) {
   return {
-    type: types.ACCOUNT_ERROR,
+    type: ACCOUNT_ERROR,
     data
   }
 }
