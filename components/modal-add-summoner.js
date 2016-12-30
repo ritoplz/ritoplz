@@ -4,9 +4,12 @@ import React, { Component } from 'react'
 import { style } from 'next/css'
 import Modal from 'react-modal'
 import { connect } from 'react-redux'
+import Alert from 'react-s-alert'
 
 import addSummoner from './../actions/add-summoner'
 import fetchAccount from '../actions/fetch-account'
+import { ADD_SUMMONER_SUCCESS, ADD_SUMMONER_ERROR } from './../constants'
+import { getToken } from './../services/auth'
 
 const styles = {
   formInput: {
@@ -91,13 +94,22 @@ class ModalAddSummoner extends Component {
 
   handleSubmit (e) {
     e.preventDefault()
-    const localStorageRef = localStorage.getItem('token')
+    const token = getToken()
     const summoner = {name: this.summoner.value}
 
-    this.props.addSummoner(summoner).then(() => {
-      this.handleCloseModal()
-      this.props.fetchAccount(localStorageRef)
-    })
+    this.props.addSummoner(token, summoner)
+      .then(({ data, type }) => {
+        if (type === ADD_SUMMONER_SUCCESS) {
+          this.handleCloseModal()
+          this.props.fetchAccount(token)
+        }
+
+        if (type === ADD_SUMMONER_ERROR) {
+          const err = data[0].msg
+
+          Alert.error(err, {position: 'bottom-right'})
+        }
+      })
   }
 
   render () {
@@ -111,6 +123,8 @@ class ModalAddSummoner extends Component {
 
           <button className={style(styles.btn)}>Add Summoner</button>
         </form>
+
+        <Alert effect="jelly" stack={{limit: 3}}/>
       </Modal>
     )
   }
@@ -118,7 +132,7 @@ class ModalAddSummoner extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addSummoner: summoner => dispatch(addSummoner(summoner)),
+    addSummoner: (token, summoner) => dispatch(addSummoner(token, summoner)),
     fetchAccount: token => dispatch(fetchAccount(token))
   }
 }

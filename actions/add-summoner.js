@@ -2,31 +2,34 @@
 
 import axios from 'axios'
 
-import * as types from './../constants'
+import {
+  ADD_SUMMONER_REQUEST,
+  ADD_SUMMONER_SUCCESS,
+  ADD_SUMMONER_ERROR
+} from './../constants'
 
 function addSummonerRequest () {
   return {
-    type: types.ADD_SUMMONER_REQUEST
+    type: ADD_SUMMONER_REQUEST
   }
 }
 
 function addSummonerSuccess (data) {
   return {
-    type: types.ADD_SUMMONER_SUCCESS,
+    type: ADD_SUMMONER_SUCCESS,
     data
   }
 }
 
 function addSummonerError (data) {
   return {
-    type: types.ADD_SUMMONER_ERROR,
+    type: ADD_SUMMONER_ERROR,
     data
   }
 }
 
-function handleAddSummoner (summoner) {
+function handleAddSummoner (token, summoner) {
   return dispatch => {
-    const localStorageRef = localStorage.getItem('token')
     dispatch(addSummonerRequest())
     return axios({
       method: 'post',
@@ -34,11 +37,11 @@ function handleAddSummoner (summoner) {
       data: summoner,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': localStorageRef
+        'Authorization': token
       }
     })
     .then(res => dispatch(addSummonerSuccess(res.data)))
-    .catch(err => dispatch(addSummonerError(err.data)))
+    .catch(err => dispatch(addSummonerError(err.response.data)))
   }
 }
 

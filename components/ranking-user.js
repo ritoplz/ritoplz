@@ -63,15 +63,11 @@ const styles = {
 }
 
 export default (props) => {
-  const handleFeatured = () => {
-    props.handleShowFeatured(props.position - 1)
-  }
-
   const tier = props.data.rankedSolo.tier
   const flag = getTier(tier).flag.small
 
   return (
-    <li className={style(styles.rankingItem)} onClick={handleFeatured}>
+    <li className={style(styles.rankingItem)}>
       <h4 className={style(styles.position)}>{props.position}.</h4>
 
       <figure className={style(styles.image)}>
