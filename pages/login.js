@@ -3,11 +3,13 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import Link from 'next/link'
+import Head from 'next/head'
 import { style, insertRule } from 'next/css'
 
 import configureStore from '../store/configureStore'
 import FormLogin from '../containers/form-login'
 import Header from '../components/header'
+import { isLogged } from './../services/auth'
 
 const styles = {
   row: {
@@ -36,15 +38,20 @@ const styles = {
 
 const Login = props => {
   const store = configureStore()
-  const browserStorage = (typeof localStorage === 'undefined') ? null : localStorage
 
-  if(browserStorage.token) {
-    props.url.pushTo('/profile')
+  if (isLogged()) {
+    props.url.replaceTo('/profile')
   }
 
   return (
     <Provider store={store}>
       <div>
+        <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1"/>
+          <link rel="stylesheet" href="/static/stylesheets/vendors/alert/alert.css"/>
+          <meta charSet="utf-8"/>
+        </Head>
+
         <Header page="login"/>
 
         <section className={style(styles.row)}>
@@ -58,6 +65,6 @@ const Login = props => {
   )
 }
 
-insertRule('* {padding: 0; margin: 0; box-sizing: border-box; font-family: Source Sans Pro, Helvetica Neue, Helvetica } li {list-style: none}')
+insertRule('* {padding: 0; margin: 0; box-sizing: border-box; font-family: Source Sans Pro, Helvetica Neue, Helvetica } li { list-style: none }')
 
 export default Login

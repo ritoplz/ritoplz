@@ -7,9 +7,11 @@ import { style } from 'next/css'
 import Modal from 'react-modal'
 import Select from 'react-select'
 import { connect } from 'react-redux'
+import Alert from 'react-s-alert'
 
 import fetchAccount from '../actions/fetch-account'
 import editUser from './../actions/edit-user'
+import { getToken } from './../services/auth'
 
 const styles = {
   formInput: {
@@ -112,16 +114,16 @@ class ModalAddLocation extends Component {
   handleSubmit (e) {
     e.preventDefault()
 
-    const localStorageRef = localStorage.getItem('token')
-    const data = {
+    const token = getToken()
+    const userData = {
       country: this.state.country,
       state: this.state.state,
       city: this.state.city
     }
 
-    this.props.editUser(data).then(() => {
+    this.props.editUser(token, userData).then(() => {
       this.handleCloseModal()
-      this.props.fetchAccount(localStorageRef)
+      this.props.fetchAccount(token)
     })
   }
 
@@ -159,6 +161,8 @@ class ModalAddLocation extends Component {
 
           <button className={style(styles.btn)}>Add location</button>
         </form>
+
+        <Alert effect="jelly" stack={{limit: 3}}/>
       </Modal>
     )
   }
@@ -166,7 +170,7 @@ class ModalAddLocation extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    editUser: user => dispatch(editUser(user)),
+    editUser: (token, user) => dispatch(editUser(token, user)),
     fetchAccount: token => dispatch(fetchAccount(token))
   }
 }

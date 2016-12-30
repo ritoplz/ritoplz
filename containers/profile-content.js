@@ -5,11 +5,13 @@
 import React, { Component } from 'react'
 import { style } from 'next/css'
 import { connect } from 'react-redux'
+import cookie from 'react-cookie'
 
 import fetchAccount from '../actions/fetch-account'
 import EmptyState from './../components/empty-state'
 import Intro from './../components/intro'
 import MySummoners from './../components/my-summoners'
+import { getToken } from './../services/auth'
 
 const styles = {
   loading: {
@@ -38,8 +40,9 @@ class ProfileContent extends Component {
   }
 
   componentDidMount () {
-    const localStorageRef = localStorage.getItem('token')
-    this.props.fetchAccount(localStorageRef)
+    const token = getToken()
+
+    this.props.fetchAccount(token)
   }
 
   componentWillReceiveProps(nextProps) {
