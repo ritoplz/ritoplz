@@ -9,6 +9,7 @@ import { style, insertRule } from 'next/css'
 import configureStore from '../store/configureStore'
 import FormSignup from '../containers/form-signup'
 import Header from '../components/header'
+import Footer from '../components/footer'
 
 const styles = {
   row: {
@@ -55,11 +56,13 @@ const Signup = props => {
 
           <FormSignup routing={props}/>
         </section>
+
+        <Footer />
       </div>
     </Provider>
   )
 }
 
-insertRule('* {padding: 0; margin: 0; box-sizing: border-box; font-family: Source Sans Pro, Helvetica Neue, Helvetica } li { list-style: none }')
+insertRule('* {padding: 0; margin: 0; box-sizing: border-box; font-family: Source Sans Pro, Helvetica Neue, Helvetica } li { list-style: none } a { text-decoration: none}')
 
 export default Signup
