@@ -3,9 +3,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { style } from 'next/css'
+import cookie from 'react-cookie'
 
 import loginRequest from '../actions/login'
 import { LOGIN_SUCCESS, LOGIN_ERROR } from './../constants'
+import { setToken } from './../services/auth'
 
 const styles = {
   loginForm: {
@@ -68,19 +70,21 @@ class FormLogin extends Component {
   handleLogin(e) {
     e.preventDefault()
 
-    const data = {
+    const userData = {
       email: this.email.value,
       password: this.password.value
     }
 
-    this.props.loginRequest(data).then(res => {
-      console.log('For some weird reason res is returning undefined when success', res)
-      // if (res.type === LOGIN_SUCCESS) {
-        this.props.routing.url.pushTo('/profile')
-      // }
+    this.props.loginRequest(userData).then(({ data, type }) => {
+      const token = data.token
 
-      if (res.type === LOGIN_ERROR) {
-        console.log(res.data)
+      if (type === LOGIN_SUCCESS) {
+        setToken(token)
+        this.props.routing.url.replaceTo('/profile')
+      }
+
+      if (type === LOGIN_ERROR) {
+        console.log(data)
       }
     })
   }

@@ -8,6 +8,7 @@ import { style, insertRule } from 'next/css'
 import configureStore from '../store/configureStore'
 import FormLogin from '../containers/form-login'
 import Header from '../components/header'
+import { isLogged } from './../services/auth'
 
 const styles = {
   row: {
@@ -37,6 +38,10 @@ const styles = {
 const Login = props => {
   const store = configureStore()
 
+  if (isLogged()) {
+    props.url.replaceTo('/profile')
+  }
+
   return (
     <Provider store={store}>
       <div>
@@ -53,6 +58,6 @@ const Login = props => {
   )
 }
 
-insertRule('* {padding: 0; margin: 0; box-sizing: border-box; font-family: Source Sans Pro, Helvetica Neue, Helvetica } li {list-style: none}')
+insertRule('* {padding: 0; margin: 0; box-sizing: border-box; font-family: Source Sans Pro, Helvetica Neue, Helvetica } li { list-style: none }')
 
 export default Login
