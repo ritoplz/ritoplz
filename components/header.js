@@ -72,6 +72,9 @@ export default props => {
   } else if (props.page === 'login') {
     page = 'Sign Up'
     linkToHref = '/signup'
+  } else if (props.page === 'profile') {
+    page = 'Go To Rankings'
+    linkToHref = '/rankings'
   } else {
     page = 'Profile'
     linkToHref = '/profile'

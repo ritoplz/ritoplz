@@ -74,13 +74,13 @@ class FormSignup extends Component {
       password: this.password.value
     }
 
-    this.props.signupRequest(data).then(res => {
-      if (res.type === SIGNUP_SUCCESS) {
+    this.props.signupRequest(data).then(({ data, type }) => {
+      if (type === SIGNUP_SUCCESS) {
         this.props.routing.url.pushTo('/login')
       }
 
-      if (res.type === SIGNUP_ERROR) {
-        console.log(res.data)
+      if (type === SIGNUP_ERROR) {
+        console.log(data.response.data[0].msg)
       }
     })
   }

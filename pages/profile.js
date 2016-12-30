@@ -47,7 +47,7 @@ export default class extends Component {
           </Head>
 
           <div>
-            <Header page="rankings"/>
+            <Header page="profile"/>
 
             <div className={style(styles.row)}>
               <ProfileContent/>
