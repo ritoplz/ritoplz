@@ -9,6 +9,7 @@ import Featured from './../components/featured'
 import RankingUser from './../components/ranking-user'
 import RankingsList from './../containers/rankings-list'
 import configureStore from '../store/configureStore'
+import Footer from '../components/footer'
 
 const store = configureStore()
 
@@ -36,6 +37,8 @@ class Rankings extends Component {
           <section className={style(styles.row)}>
             <RankingsList />
           </section>
+
+          <Footer />
         </div>
       </Provider>
     )

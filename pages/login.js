@@ -10,6 +10,7 @@ import configureStore from '../store/configureStore'
 import FormLogin from '../containers/form-login'
 import Header from '../components/header'
 import { isLogged } from './../services/auth'
+import Footer from '../components/footer'
 
 const styles = {
   row: {
@@ -60,11 +61,13 @@ const Login = props => {
 
           <FormLogin routing={props}/>
         </section>
+
+        <Footer />
       </div>
     </Provider>
   )
 }
 
-insertRule('* {padding: 0; margin: 0; box-sizing: border-box; font-family: Source Sans Pro, Helvetica Neue, Helvetica } li { list-style: none }')
+insertRule('* {padding: 0; margin: 0; box-sizing: border-box; font-family: Source Sans Pro, Helvetica Neue, Helvetica } li { list-style: none } a { text-decoration: none}')
 
 export default Login
