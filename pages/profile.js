@@ -10,6 +10,7 @@ import { Provider } from 'react-redux'
 
 import ProfileContent from '../containers/profile-content'
 import configureStore from '../store/configureStore'
+import Header from '../components/header'
 
 const styles = {
   row: {
@@ -35,11 +36,6 @@ export default class extends Component {
   }
 
   render () {
-    const browserStorage = (typeof localStorage === 'undefined') ? null : localStorage
-    if(!browserStorage.token) {
-      this.props.url.pushTo('/login')
-    }
-
     return (
       <Provider store={store}>
         <div>
@@ -47,11 +43,16 @@ export default class extends Component {
             <meta name="viewport" content="width=device-width, initial-scale=1"/>
             <link rel="stylesheet" href="https://unpkg.com/react-select/dist/react-select.css"/>
             <link rel="stylesheet" href="/static/stylesheets/vendors/react-select/react-select.css"/>
+            <link rel="stylesheet" href="/static/stylesheets/vendors/alert/alert.css"/>
             <meta charSet="utf-8"/>
           </Head>
 
-          <div className={style(styles.row)}>
-            <ProfileContent/>
+          <div>
+            <Header page="profile"/>
+
+            <div className={style(styles.row)}>
+              <ProfileContent/>
+            </div>
           </div>
         </div>
       </Provider>
@@ -59,4 +60,4 @@ export default class extends Component {
   }
 }
 
-insertRule('* {padding: 0; margin: 0; box-sizing: border-box; font-family: Source Sans Pro, Helvetica Neue, Helvetica }')
+insertRule('* {padding: 0; margin: 0; box-sizing: border-box; font-family: Source Sans Pro, Helvetica Neue, Helvetica } li { list-style: none }')

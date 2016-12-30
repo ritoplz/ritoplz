@@ -3,6 +3,7 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import Link from 'next/link'
+import Head from 'next/head'
 import { style, insertRule } from 'next/css'
 
 import configureStore from '../store/configureStore'
@@ -40,6 +41,12 @@ const Signup = props => {
   return (
     <Provider store={store}>
       <div>
+        <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1"/>
+          <link rel="stylesheet" href="/static/stylesheets/vendors/alert/alert.css"/>
+          <meta charSet="utf-8"/>
+        </Head>
+
         <Header page="signup"/>
 
         <section className={style(styles.row)}>
@@ -53,6 +60,6 @@ const Signup = props => {
   )
 }
 
-insertRule('* {padding: 0; margin: 0; box-sizing: border-box; font-family: Source Sans Pro, Helvetica Neue, Helvetica } li {list-style: none}')
+insertRule('* {padding: 0; margin: 0; box-sizing: border-box; font-family: Source Sans Pro, Helvetica Neue, Helvetica } li { list-style: none }')
 
 export default Signup

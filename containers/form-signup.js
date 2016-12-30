@@ -3,6 +3,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { style } from 'next/css'
+import Alert from 'react-s-alert'
 
 import signupRequest from '../actions/signup'
 import { SIGNUP_SUCCESS, SIGNUP_ERROR } from './../constants'
@@ -74,13 +75,15 @@ class FormSignup extends Component {
       password: this.password.value
     }
 
-    this.props.signupRequest(data).then(res => {
-      if (res.type === SIGNUP_SUCCESS) {
+    this.props.signupRequest(data).then(({ data, type }) => {
+      if (type === SIGNUP_SUCCESS) {
         this.props.routing.url.pushTo('/login')
       }
 
-      if (res.type === SIGNUP_ERROR) {
-        console.log(res.data)
+      if (type === SIGNUP_ERROR) {
+        const err = data[0].msg
+
+        Alert.error(err, {position: 'bottom-right'})
       }
     })
   }
@@ -104,6 +107,8 @@ class FormSignup extends Component {
         </fieldset>
 
         <button className={style(styles.btn)} type="submit">Sign Up</button>
+
+        <Alert effect="jelly" stack={{limit: 3}}/>
       </form>
     )
   }
