@@ -33,11 +33,20 @@ const styles = {
   },
 
   summoner: {
-    fontSize: '1.25rem',
-    fontWeight: '300',
+    fontSize: '16px',
+    fontWeight: '500',
     marginTop: '5px',
     color: 'rgba(255, 255, 255, .5)'
   },
+
+  summonerName: {
+    marginRight: '10px'
+  },
+
+  summonerStatus: {
+    marginLeft: '10px'
+  },
+
 
   userTitle: {
     color: 'rgba(255, 255, 255, .5)',
@@ -71,7 +80,8 @@ const styles = {
 }
 
 const Featured = (props) => {
-  const tier = props.data.rankedSolo.tier
+  const { data: { username, name, rankedSolo, profileIconId } } = props
+  const tier = rankedSolo.tier
   const flag = getTier(tier).flag.small
   const position = ordinal(props.position)
 
@@ -79,16 +89,20 @@ const Featured = (props) => {
     <div className={style(styles.featured)}>
       <div className={style(styles.user)}>
         <figure className={style(styles.image)}>
-          <img className={style(styles.avatar)} src={`http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/${props.data.profileIconId}.png`} alt="" />
+          <img className={style(styles.avatar)} src={`http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/${profileIconId}.png`} alt="" />
         </figure>
 
         <div className={style(styles.info)}>
-          <h2 className={style(styles.username)}>{props.data.username}</h2>
-          <h3 className={style(styles.summoner)}>{props.data.name}</h3>
+          <h2 className={style(styles.username)}>{username}</h2>
+          <h3 className={style(styles.summoner)}>
+            <span className={style(styles.summonerName)}>{name}</span>
+            •
+            <span className={style(styles.summonerStatus)}>W: {rankedSolo.wins} / L: {rankedSolo.losses}</span>
+          </h3>
 
           <div className={style(styles.tierInfo)}>
-            <h4 className={style(styles.tier)}>{props.data.rankedSolo.tier} {props.data.rankedSolo.division}</h4>
-            <span className={style(styles.lp)}>LP {props.data.rankedSolo.lp} / 100</span>
+            <h4 className={style(styles.tier)}>{rankedSolo.tier} {rankedSolo.division}</h4>
+            <span className={style(styles.lp)}>LP {rankedSolo.lp} / 100</span>
             <Line percent={props.data.rankedSolo.lp} strokeWidth="1" strokeColor="#52bdab" trailWidth="1" trailColor="#fff" />
           </div>
         </div>
