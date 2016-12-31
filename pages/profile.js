@@ -11,6 +11,7 @@ import { Provider } from 'react-redux'
 import ProfileContent from '../containers/profile-content'
 import configureStore from '../store/configureStore'
 import Header from '../components/header'
+import Footer from '../components/footer'
 
 const styles = {
   row: {
@@ -53,6 +54,8 @@ export default class extends Component {
             <div className={style(styles.row)}>
               <ProfileContent/>
             </div>
+
+            <Footer />
           </div>
         </div>
       </Provider>
@@ -60,4 +63,4 @@ export default class extends Component {
   }
 }
 
-insertRule('* {padding: 0; margin: 0; box-sizing: border-box; font-family: Source Sans Pro, Helvetica Neue, Helvetica } li { list-style: none }')
+insertRule('* {padding: 0; margin: 0; box-sizing: border-box; font-family: Source Sans Pro, Helvetica Neue, Helvetica } li { list-style: none } a { text-decoration: none}')

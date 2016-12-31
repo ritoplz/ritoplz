@@ -9,6 +9,7 @@ import Featured from './../components/featured'
 import RankingUser from './../components/ranking-user'
 import RankingsList from './../containers/rankings-list'
 import configureStore from '../store/configureStore'
+import Footer from '../components/footer'
 
 const store = configureStore()
 
@@ -36,12 +37,14 @@ class Rankings extends Component {
           <section className={style(styles.row)}>
             <RankingsList />
           </section>
+
+          <Footer />
         </div>
       </Provider>
     )
   }
 }
 
-insertRule('* {padding: 0; margin: 0; box-sizing: border-box; font-family: Source Sans Pro, Helvetica Neue, Helvetica } li { list-style: none }')
+insertRule('* {padding: 0; margin: 0; box-sizing: border-box; font-family: Source Sans Pro, Helvetica Neue, Helvetica } li { list-style: none } a { text-decoration: none}')
 
 export default Rankings

@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react'
 import { style } from 'next/css'
+import summonerCover from 'ritoplz-summoner'
 
 import Summoner from './summoner'
 import ModalAddSummoner from './modal-add-summoner'
@@ -68,7 +69,9 @@ class MySummoners extends Component {
 
         <div className={style(styles.row)}>
           {this.props.summoners.map(summoner => {
-            return <Summoner key={summoner._id} cover="/static/ashe.png" name={summoner.name} code={summoner.code} status={summoner.active}/>
+            const cover = summonerCover()
+
+            return <Summoner key={summoner._id} cover={cover} name={summoner.name} code={summoner.code} status={summoner.active}/>
           })}
         </div>
 
