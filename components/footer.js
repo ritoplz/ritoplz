@@ -68,13 +68,13 @@ export default props => {
 
             <li className={style(styles.item)}>
               <Link href="">
-                <span className={style(styles.link)}>Terms of Service</span>
+                <span className={style(styles.link)}>FAQ</span>
               </Link>
             </li>
 
             <li className={style(styles.item)}>
               <Link href="">
-                <span className={style(styles.link)}>FAQ</span>
+                <span className={style(styles.link)}>Terms of Service</span>
               </Link>
             </li>
 
