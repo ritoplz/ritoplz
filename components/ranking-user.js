@@ -3,6 +3,7 @@
 import React from 'react'
 import { style } from 'next/css'
 import getTier from 'ritoplz-tier'
+import { Line } from 'rc-progress'
 
 const styles = {
   rankingItem: {
@@ -35,7 +36,7 @@ const styles = {
 
   rankingInfo: {
     marginTop: '20px',
-    flexBasis: '65%'
+    flexBasis: '30%'
   },
 
   username: {
@@ -46,7 +47,7 @@ const styles = {
 
   summoner: {
     fontSize: '1rem',
-    fontWeight: '400',
+    fontWeight: '600',
     color: 'rgba(0, 0, 0, .5)'
   },
 
@@ -59,11 +60,33 @@ const styles = {
     width: '70px',
     height: '65px',
     marginTop: '10px'
+  },
+
+  tierInfo: {
+    flexBasis: '40%',
+    textAlign: 'left'
+  },
+
+  tier: {
+    color: '#333',
+    marginTop: '26px',
+    marginBottom: '-22px',
+    fontWeight: '600',
+    fontSize: '.9rem'
+  },
+
+  lp: {
+    color: '#333',
+    float: 'right',
+    marginBottom: '5px',
+    fontSize: '14px',
+    fontWeight: '600'
   }
 }
 
 export default (props) => {
-  const tier = props.data.rankedSolo.tier
+  const { data: { username, name, rankedSolo, profileIconId } } = props
+  const tier = rankedSolo.tier
   const flag = getTier(tier).flag.small
 
   return (
@@ -71,12 +94,18 @@ export default (props) => {
       <h4 className={style(styles.position)}>{props.position}.</h4>
 
       <figure className={style(styles.image)}>
-        <img className={style(styles.avatar)} src={`http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/${props.data.profileIconId}.png`} alt="" />
+        <img className={style(styles.avatar)} src={`http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/${profileIconId}.png`} alt="" />
       </figure>
 
       <div className={style(styles.rankingInfo)}>
-        <h2 className={style(styles.username)}>{props.data.username}</h2>
-        <h3 className={style(styles.summoner)}>{props.data.name}</h3>
+        <h2 className={style(styles.username)}>{username}</h2>
+        <h3 className={style(styles.summoner)}>{name}</h3>
+      </div>
+
+      <div className={style(styles.tierInfo)}>
+        <h4 className={style(styles.tier)}>{rankedSolo.tier} {rankedSolo.division}</h4>
+        <span className={style(styles.lp)}>LP {rankedSolo.lp} / 100</span>
+        <Line percent={rankedSolo.lp} strokeWidth="1.5" strokeColor="#52bdab" trailWidth="1.5" trailColor="#eee" />
       </div>
 
       <span className={style(styles.flag)}>
