@@ -29,6 +29,7 @@
     "react-s-alert": "^1.2.2",
     "react-select": "^1.0.0-rc.2",
     "redux": "^3.6.0",
+    "redux-logger": "^2.7.4",
     "redux-mock-store": "^1.2.1",
     "redux-thunk": "^2.1.0",
     "ritoplz-summoner": "^0.0.2",
@@ -54,6 +55,6 @@
     }
   },
   "engines": {
-    "node": "7.0.0"
+    "node": "6.9.1"
   }
 }
