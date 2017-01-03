@@ -1,9 +1,10 @@
 'use strict'
 
 import React, { Component } from 'react'
-import { style, insertRule } from 'next/css'
+import { style } from 'next/css'
 import { Provider } from 'react-redux'
 
+import Meta from '../components/meta'
 import Header from './../components/header'
 import Featured from './../components/featured'
 import RankingUser from './../components/ranking-user'
@@ -32,6 +33,8 @@ class Rankings extends Component {
     return (
       <Provider store={store}>
         <div>
+          <Meta />
+
           <Header page="rankings"/>
 
           <section className={style(styles.row)}>
@@ -44,7 +47,5 @@ class Rankings extends Component {
     )
   }
 }
-
-insertRule('* {padding: 0; margin: 0; box-sizing: border-box; font-family: Source Sans Pro, Helvetica Neue, Helvetica } li { list-style: none } a { text-decoration: none}')
 
 export default Rankings

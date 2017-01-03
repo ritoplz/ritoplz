@@ -17,7 +17,7 @@
     "eslint-plugin-react": "^6.6.0",
     "flow-bin": "^0.34.0",
     "jest": "^18.0.0",
-    "next": "^1.1.1",
+    "next": "latest",
     "nock": "^9.0.2",
     "ordinal-numbers": "^1.0.3",
     "rc-progress": "^2.0.3",

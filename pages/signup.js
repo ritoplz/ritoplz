@@ -4,8 +4,9 @@ import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import Link from 'next/link'
 import Head from 'next/head'
-import { style, insertRule } from 'next/css'
+import { style } from 'next/css'
 
+import Meta from '../components/meta'
 import configureStore from '../store/configureStore'
 import FormSignup from '../containers/form-signup'
 import Header from '../components/header'
@@ -42,11 +43,7 @@ const Signup = props => {
   return (
     <Provider store={store}>
       <div>
-        <Head>
-          <meta name="viewport" content="width=device-width, initial-scale=1"/>
-          <link rel="stylesheet" href="/static/stylesheets/vendors/alert/alert.css"/>
-          <meta charSet="utf-8"/>
-        </Head>
+        <Meta />
 
         <Header page="signup"/>
 
@@ -62,7 +59,5 @@ const Signup = props => {
     </Provider>
   )
 }
-
-insertRule('* {padding: 0; margin: 0; box-sizing: border-box; font-family: Source Sans Pro, Helvetica Neue, Helvetica } li { list-style: none } a { text-decoration: none}')
 
 export default Signup
