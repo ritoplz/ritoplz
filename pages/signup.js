@@ -6,6 +6,7 @@ import Link from 'next/link'
 import Head from 'next/head'
 import { style, insertRule } from 'next/css'
 
+import Meta from '../components/meta'
 import configureStore from '../store/configureStore'
 import FormSignup from '../containers/form-signup'
 import Header from '../components/header'
@@ -42,11 +43,7 @@ const Signup = props => {
   return (
     <Provider store={store}>
       <div>
-        <Head>
-          <meta name="viewport" content="width=device-width, initial-scale=1"/>
-          <link rel="stylesheet" href="/static/stylesheets/vendors/alert/alert.css"/>
-          <meta charSet="utf-8"/>
-        </Head>
+        <Meta />
 
         <Header page="signup"/>
 

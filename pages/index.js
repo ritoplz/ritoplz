@@ -3,8 +3,12 @@
 import React from 'react'
 import Link from 'next/link'
 
+import Meta from '../components/meta'
+
 export default () => (
   <main>
+    <Meta />
+
     <header>
       <Link href="/login">Login</Link>
       <Link href="/signup">Sign Up</Link>
