@@ -17,12 +17,8 @@ const styles = {
   loading: {
     fontWeight: '100',
     textAlign: 'center',
-    position: 'absolute',
-    top: '40%',
-    left: '0',
-    right: '0',
-    marginLeft: 'auto',
-    marginRight: 'auto',
+    height: 'calc(100vh - 200px)',
+    lineHeight: '70vh',
     color: '#333'
   }
 }
