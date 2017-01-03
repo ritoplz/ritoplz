@@ -3,8 +3,9 @@
 import React from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
-import { style, insertRule } from 'next/css'
+import { style } from 'next/css'
 
+import Meta from '../components/meta'
 import Header from '../components/header'
 import Footer from '../components/footer'
 
@@ -51,11 +52,7 @@ const styles = {
 const Faq = props => {
   return (
       <div>
-        <Head>
-          <meta name="viewport" content="width=device-width, initial-scale=1"/>
-          <link rel="stylesheet" href="/static/stylesheets/vendors/alert/alert.css"/>
-          <meta charSet="utf-8"/>
-        </Head>
+        <Meta />
 
         <Header page="signup"/>
 
@@ -80,7 +77,5 @@ const Faq = props => {
       </div>
   )
 }
-
-insertRule('* {padding: 0; margin: 0; box-sizing: border-box; font-family: Source Sans Pro, Helvetica Neue, Helvetica } li { list-style: none } a { text-decoration: none}')
 
 export default Faq

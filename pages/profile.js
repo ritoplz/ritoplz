@@ -4,10 +4,11 @@
 
 import React, { Component } from 'react'
 import axios from 'axios'
-import { style, insertRule } from 'next/css'
+import { style } from 'next/css'
 import Head from 'next/head'
 import { Provider } from 'react-redux'
 
+import Meta from '../components/meta'
 import ProfileContent from '../containers/profile-content'
 import configureStore from '../store/configureStore'
 import Header from '../components/header'
@@ -46,13 +47,7 @@ export default class extends Component {
     return (
       <Provider store={store}>
         <div>
-          <Head>
-            <meta name="viewport" content="width=device-width, initial-scale=1"/>
-            <link rel="stylesheet" href="https://unpkg.com/react-select/dist/react-select.css"/>
-            <link rel="stylesheet" href="/static/stylesheets/vendors/react-select/react-select.css"/>
-            <link rel="stylesheet" href="/static/stylesheets/vendors/alert/alert.css"/>
-            <meta charSet="utf-8"/>
-          </Head>
+          <Meta />
 
           <div>
             <Header page="profile"/>
@@ -68,5 +63,3 @@ export default class extends Component {
     )
   }
 }
-
-insertRule('* {padding: 0; margin: 0; box-sizing: border-box; font-family: Source Sans Pro, Helvetica Neue, Helvetica } li { list-style: none } a { text-decoration: none}')
