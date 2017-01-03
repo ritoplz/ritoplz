@@ -13,6 +13,7 @@ import ProfileContent from '../containers/profile-content'
 import configureStore from '../store/configureStore'
 import Header from '../components/header'
 import Footer from '../components/footer'
+import { isLogged } from './../services/auth'
 
 const styles = {
   row: {
@@ -38,6 +39,11 @@ export default class extends Component {
   }
 
   render () {
+    if (!isLogged()) {
+      console.log('should')
+      this.props.url.replaceTo('/login')
+    }
+
     return (
       <Provider store={store}>
         <div>
