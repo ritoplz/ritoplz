@@ -1,7 +1,7 @@
 'use strict'
 
 import React, { Component } from 'react'
-import { style, insertRule } from 'next/css'
+import { style } from 'next/css'
 import { Provider } from 'react-redux'
 
 import Meta from '../components/meta'
@@ -47,7 +47,5 @@ class Rankings extends Component {
     )
   }
 }
-
-insertRule('* {padding: 0; margin: 0; box-sizing: border-box; font-family: Source Sans Pro, Helvetica Neue, Helvetica } li { list-style: none } a { text-decoration: none}')
 
 export default Rankings

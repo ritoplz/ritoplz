@@ -4,7 +4,7 @@ import React from 'react'
 import { Provider } from 'react-redux'
 import Link from 'next/link'
 import Head from 'next/head'
-import { style, insertRule } from 'next/css'
+import { style } from 'next/css'
 
 import Meta from '../components/meta'
 import configureStore from '../store/configureStore'
@@ -64,7 +64,5 @@ const Login = props => {
     </Provider>
   )
 }
-
-insertRule('* {padding: 0; margin: 0; box-sizing: border-box; font-family: Source Sans Pro, Helvetica Neue, Helvetica } li { list-style: none } a { text-decoration: none}')
 
 export default Login

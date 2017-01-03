@@ -3,7 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
-import { style, insertRule } from 'next/css'
+import { style } from 'next/css'
 
 import Meta from '../components/meta'
 import Header from '../components/header'
@@ -75,7 +75,5 @@ const Terms = props => {
       </div>
   )
 }
-
-insertRule('* {padding: 0; margin: 0; box-sizing: border-box; font-family: Source Sans Pro, Helvetica Neue, Helvetica } li { list-style: none } a { text-decoration: none}')
 
 export default Terms

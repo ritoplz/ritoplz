@@ -4,7 +4,7 @@
 
 import React, { Component } from 'react'
 import axios from 'axios'
-import { style, insertRule } from 'next/css'
+import { style } from 'next/css'
 import Head from 'next/head'
 import { Provider } from 'react-redux'
 
@@ -57,5 +57,3 @@ export default class extends Component {
     )
   }
 }
-
-insertRule('* {padding: 0; margin: 0; box-sizing: border-box; font-family: Source Sans Pro, Helvetica Neue, Helvetica } li { list-style: none } a { text-decoration: none}')
