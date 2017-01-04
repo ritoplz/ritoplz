@@ -79,8 +79,8 @@ export default props => {
             </li>
 
             <li className={style(styles.item)}>
-              <a href="mailto:ritoplz@gmail.com">
-                <span className={style(styles.link)}>ritoplz@gmail.com</span>
+              <a href="mailto:ritoplzteam@gmail.com">
+                <span className={style(styles.link)}>ritoplzteam@gmail.com</span>
               </a>
             </li>
           </ul>
