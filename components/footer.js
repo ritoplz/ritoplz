@@ -7,7 +7,12 @@ import { style } from 'next/css'
 const styles = {
   footer: {
     paddingTop: '20px',
-    paddingBottom: '20px'
+    paddingBottom: '20px',
+
+    '@media (max-width: 750px)': {
+      paddingTop: '30px',
+      paddingBottom: '30px',
+    }
   },
 
   row: {
@@ -15,12 +20,25 @@ const styles = {
     marginLeft: 'auto',
     marginRight: 'auto',
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
+
+    '@media (max-width: 750px)': {
+      textAlign: 'center'
+    }
   },
 
   copyright: {
     color: '#666',
-    fontSize: '14px'
+    fontSize: '14px',
+
+    '@media (max-width: 750px)': {
+      textAlign: 'center',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      order: '2',
+      marginTop: '20px'
+    }
   },
 
   item: {
@@ -30,7 +48,11 @@ const styles = {
     marginRight: '15px',
     height: '20px',
     lineHeight: '20px',
-    paddingRight: '15px'
+    paddingRight: '15px',
+
+    '@media (max-width: 750px)': {
+      marginBottom: '10px'
+    }
   },
 
   link: {
