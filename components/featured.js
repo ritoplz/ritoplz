@@ -24,7 +24,7 @@ const styles = {
     '@media (max-width: 750px)': {
       minWidth: '100%',
       padding: '30px',
-      borderRadius: 0
+      borderRadius: '5px'
     }
   },
 
