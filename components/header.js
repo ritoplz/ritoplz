@@ -8,7 +8,12 @@ const styles = {
   row: {
     maxWidth: '900px',
     marginLeft: 'auto',
-    marginRight: 'auto'
+    marginRight: 'auto',
+
+    '@media (max-width: 750px)': {
+      paddingLeft: '20px',
+      paddingRight: '20px'
+    }
   },
 
   header: {

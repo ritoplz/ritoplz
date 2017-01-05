@@ -21,7 +21,12 @@ const styles = {
     marginLeft: 'auto',
     marginRight: 'auto',
     fontFamily: 'Source Sans Pro',
-    paddingBottom: '50px'
+    paddingBottom: '50px',
+
+    '@media (max-width: 750px)': {
+      paddingLeft: '20px',
+      paddingRight: '20px'
+    }
   },
 
   notification: {

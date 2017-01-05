@@ -8,24 +8,41 @@ import { Line } from 'rc-progress'
 const styles = {
   rankingItem: {
     display: 'flex',
-    height: '85px',
+    minHeight: '85px',
     marginBottom: '20px',
     border: '1px solid #F3F5FB',
     borderRadius: '10px',
     boxShadow: '0 10px 50px rgba(0, 0, 0, .025)',
     paddingLeft: '25px',
-    paddingRight: '25px'
+    paddingRight: '25px',
+    flexWrap: 'wrap',
+
+    '@media (max-width: 750px)': {
+      textAlign: 'center'
+    }
   },
 
   position: {
     lineHeight: '85px',
     flexBasis: '5%',
-    color: '#333'
+    color: '#333',
+
+    '@media (max-width: 750px)': {
+      flexBasis: '100%',
+      order: '2',
+      lineHeight: '1',
+      marginTop: '5px'
+    }
   },
 
   image: {
     flexBasis: '10%',
-    marginTop: '18px'
+    marginTop: '18px',
+
+    '@media (max-width: 750px)': {
+      flexBasis: '100%',
+      order: '1'
+    }
   },
 
   avatar: {
@@ -36,7 +53,13 @@ const styles = {
 
   rankingInfo: {
     marginTop: '20px',
-    flexBasis: '30%'
+    flexBasis: '30%',
+
+    '@media (max-width: 750px)': {
+      flexBasis: '100%',
+      order: '3',
+      marginTop: '10px'
+    }
   },
 
   username: {
@@ -53,7 +76,11 @@ const styles = {
 
   flag: {
     flexBasis: '20%',
-    textAlign: 'right'
+    textAlign: 'right',
+
+    '@media (max-width: 750px)': {
+      display: 'none'
+    }
   },
 
   flagImage: {
@@ -64,7 +91,13 @@ const styles = {
 
   tierInfo: {
     flexBasis: '40%',
-    textAlign: 'left'
+    textAlign: 'left',
+
+    '@media (max-width: 750px)': {
+      flexBasis: '100%',
+      order: '4',
+      paddingBottom: '18px'
+    }
   },
 
   tier: {
