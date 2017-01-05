@@ -15,9 +15,9 @@ const styles = {
     boxShadow: '0 10px 50px rgba(0, 0, 0, .025)',
     paddingLeft: '25px',
     paddingRight: '25px',
-    flexWrap: 'wrap',
 
     '@media (max-width: 750px)': {
+      flexWrap: 'wrap',
       textAlign: 'center'
     }
   },

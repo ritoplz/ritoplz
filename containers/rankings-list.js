@@ -1,13 +1,14 @@
 'use strict'
 
 import React, { Component } from 'react'
-import { style, insertRule } from 'next/css'
+import { style } from 'next/css'
 import { connect } from 'react-redux'
 
 import fetchRankings from '../actions/fetch-rankings'
 import Header from './../components/header'
 import Featured from './../components/featured'
 import RankingUser from './../components/ranking-user'
+import Filter from './../components/filter'
 
 const styles = {
   loading: {
@@ -72,6 +73,8 @@ class RankingsList extends Component {
     return (
       <div className={style(styles.ranking)}>
         {featured}
+
+        <Filter />
 
         <ul className={style(styles.rankingList)}>
           {rankingList}
