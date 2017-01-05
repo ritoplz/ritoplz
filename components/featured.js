@@ -18,18 +18,35 @@ const styles = {
     borderRadius: '10px',
     textAlign: 'center',
     padding: '50px 175px',
-    minWidth: '700px'
+    minWidth: '700px',
+    maxWidth: '100%',
+
+    '@media (max-width: 750px)': {
+      minWidth: '100%',
+      padding: '30px',
+      borderRadius: 0
+    }
   },
 
   avatar: {
     width: '100px',
-    borderRadius: '50%'
+    height: '75px',
+    borderRadius: '50%',
+
+    '@media (max-width: 750px)': {
+      width: '75px',
+      height: '75px'
+    }
   },
 
   username: {
     color: '#fff',
     fontSize: '2.5rem',
     fontWeight: '400',
+
+    '@media (max-width: 750px)': {
+      fontSize: '2rem'
+    }
   },
 
   summoner: {
@@ -69,13 +86,21 @@ const styles = {
     color: '#fff',
     marginTop: '30px',
     marginBottom: '-20px',
-    fontWeight: '500'
+    fontWeight: '500',
+
+    '@media (max-width: 750px)': {
+      fontSize: '.85rem'
+    }
   },
 
   lp: {
     color: '#fff',
     float: 'right',
-    marginBottom: '5px'
+    marginBottom: '5px',
+
+    '@media (max-width: 750px)': {
+      fontSize: '.85rem'
+    }
   }
 }
 
