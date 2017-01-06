@@ -3,6 +3,8 @@
 import React, { Component } from 'react'
 import Select from 'react-select'
 import { style } from 'next/css'
+import { connect } from 'react-redux'
+
 import { countries, locations } from '../services/places'
 
 const styles = {
@@ -40,6 +42,10 @@ class Filter extends Component {
       country: e.value,
       stateList: locations[e.value]
     })
+
+    const params = {country: this.state.country}
+
+    this.props.fetchRankings(params)
   }
 
   handleState (e) {
@@ -49,10 +55,25 @@ class Filter extends Component {
       state: e.value,
       cityList: city[0].cities
     })
+
+    const params = {
+      country: this.state.country,
+      state: this.state.state
+    }
+
+    this.props.fetchRankings(params)
   }
 
   handleCity (e) {
     this.setState({city: e.value})
+
+    const params = {
+      country: this.state.country,
+      state: this.state.state,
+      city: this.state.city
+    }
+
+    this.props.fetchRankings(params)
   }
 
   render () {

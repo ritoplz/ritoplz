@@ -64,7 +64,7 @@ class RankingsList extends Component {
         <div>
           <Featured data={this.state.featured} position={this.state.featuredPosition}/>
 
-          <Filter/>
+          <Filter fetchRankings={this.props.fetchRankings}/>
 
           <ul className={style(styles.rankingList)}>
             {this.state.summoners.map((summoner, i) => {
