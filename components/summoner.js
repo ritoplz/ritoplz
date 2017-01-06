@@ -6,7 +6,11 @@ import { style } from 'next/css'
 const styles = {
   base: {
     flexBasis: 'calc(50% - 30px)',
-    margin: '15px'
+    margin: '15px',
+
+    '@media (max-width: 750px)': {
+      flexBasis: '100%'
+    }
   },
 
   cover: {
@@ -39,13 +43,21 @@ const styles = {
     fontWeight: 400,
     fontSize: '.9rem',
     color: '#ccc',
-    marginBottom: '5px'
+    marginBottom: '5px',
+
+    '@media (max-width: 750px)': {
+      fontSize: '.8rem'
+    }
   },
 
   subtitle: {
     fontSize: '1.2rem',
     fontWeight: 600,
-    color: '#333'
+    color: '#333',
+
+    '@media (max-width: 750px)': {
+      fontSize: '.9rem'
+    }
   },
 
   checkmark: {
