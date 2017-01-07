@@ -3,10 +3,13 @@
 import React from 'react'
 import Link from 'next/link'
 import { style } from 'next/css'
+import { Provider } from 'react-redux'
 
 import Meta from '../components/meta'
 import Footer from '../components/footer'
 import TopPlayers from '../containers/top-players'
+import Header from '../components/header'
+import configureStore from '../store/configureStore'
 
 const styles = {
   row: {
@@ -87,37 +90,43 @@ const styles = {
 }
 
 export default () => {
+  const store = configureStore()
   const items = [
     {name: 'Rankings', link: 'rankings', type: 'item'},
     {name: 'FAQ', link: 'faq', type: 'item'},
     {name: 'Login', link: 'login', type: 'button'}
   ]
+
+  store.subscribe(() => store.getState())
+
   return (
-    <div>
-      <Meta />
+    <Provider store={store}>
+      <div>
+        <Meta />
 
-      <Header items={items} />
+        <Header items={items} />
 
-      <main className={style(styles.cover)}>
-        <div className={style(styles.row)}>
-          <h1 className={style(styles.title)}>Make sure you are on top</h1>
-          <h2 className={style(styles.subtitle)}>The first worldwide League of Legends Rankings. <br/>See who’s the best player of your region.</h2>
+        <main className={style(styles.cover)}>
+          <div className={style(styles.row)}>
+            <h1 className={style(styles.title)}>Make sure you are on top</h1>
+            <h2 className={style(styles.subtitle)}>The first worldwide League of Legends Rankings. <br/>See who’s the best player of your region.</h2>
 
-          <Link href="/signup">
-            <span className={style(styles.btn)}>Join Ritoplz</span>
-          </Link>
+            <Link href="/signup">
+              <span className={style(styles.btn)}>Join Ritoplz</span>
+            </Link>
 
-          <Link href="/rankings">
-            <span className={style(styles.btnLink)}>See Rankings</span>
-          </Link>
+            <Link href="/rankings">
+              <span className={style(styles.btnLink)}>See Rankings</span>
+            </Link>
 
-          <img className={style(styles.card)} src="static/card.png" alt=""/>
-        </div>
-      </main>
+            <img className={style(styles.card)} src="static/card.png" alt=""/>
+          </div>
+        </main>
 
-      <TopPlayers />
+        <TopPlayers />
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </Provider>
   )
 }

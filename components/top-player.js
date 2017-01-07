@@ -10,7 +10,7 @@ const styles = {
     borderRadius: '10px',
     boxShadow: '0 10px 40px rgba(0, 0, 0, .1)',
     flexBasis: '28%',
-    marginBottom: '30px',
+    marginBottom: '50px',
     textAlign: 'center'
   },
 
@@ -65,19 +65,23 @@ const styles = {
   }
 }
 
-export default () => (
-  <li className={style(styles.topPlayersItem)}>
-    <article className={style(styles.topPlayersCard)}>
-      <img className={style(styles.topPlayersAvatar)} src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/775.png" alt="" />
+export default (props) => {
+  const { data: { username, name, rankedSolo, profileIconId } } = props
 
-      <h3 className={style(styles.topPlayersName)}>Bu Kinoshita</h3>
-      <h4 className={style(styles.topPlayersSummoner)}>coldz • W:127/L:97</h4>
+  return (
+    <li className={style(styles.topPlayersItem)}>
+      <article className={style(styles.topPlayersCard)}>
+        <img className={style(styles.topPlayersAvatar)} src={`http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/${profileIconId}.png`} alt="" />
 
-      <div className={style(styles.tierInfo)}>
-        <h4 className={style(styles.tier)}>Platinum V</h4>
-        <span className={style(styles.lp)}>LP 60 / 100</span>
-        <Line percent={60} strokeWidth="1.5" strokeColor="#52bdab" trailWidth="1.5" trailColor="#eee" />
-      </div>
-    </article>
-  </li>
-)
+        <h3 className={style(styles.topPlayersName)}>{username}</h3>
+        <h4 className={style(styles.topPlayersSummoner)}>{name} • W: {rankedSolo.wins} / L: {rankedSolo.losses}</h4>
+
+        <div className={style(styles.tierInfo)}>
+          <h4 className={style(styles.tier)}>{rankedSolo.tier} {rankedSolo.division}</h4>
+          <span className={style(styles.lp)}>LP {rankedSolo.lp} / 100</span>
+          <Line percent={rankedSolo.lp} strokeWidth="1.5" strokeColor="#52bdab" trailWidth="1.5" trailColor="#eee" />
+        </div>
+      </article>
+    </li>
+  )
+}
