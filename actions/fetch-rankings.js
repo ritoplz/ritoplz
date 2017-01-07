@@ -28,19 +28,16 @@ function rankingsError(data) {
   }
 }
 
-function fetchRankings(params = { country: 'BR', state: undefined, city: undefined }) {
+function fetchRankings(params = {country: 'BR'}) {
   return dispatch => {
     dispatch(rankingsRequest())
 
-    return axios.get('https://staging.ritoplz.com/rankings', {
-      headers: {
-        'Accept-Language': 'utf-8, iso-8859-1',
-        'Content-type': 'application/json; charset=utf-8'
-      },
+    return axios.get('https://localhost:3001/rankings', {
       params: {
         country: params.country,
         state: params.state,
-        city: params.city
+        city: params.city,
+        limit: params.limit
       }
     })
     .then(({ data }) => dispatch(rankingsSuccess(data)))

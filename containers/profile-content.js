@@ -11,17 +11,8 @@ import fetchAccount from '../actions/fetch-account'
 import EmptyState from './../components/empty-state'
 import Intro from './../components/intro'
 import MySummoners from './../components/my-summoners'
+import Loading from './../components/loading'
 import { getToken } from './../services/auth'
-
-const styles = {
-  loading: {
-    fontWeight: '100',
-    textAlign: 'center',
-    height: 'calc(100vh - 200px)',
-    lineHeight: '70vh',
-    color: '#333'
-  }
-}
 
 class ProfileContent extends Component {
   constructor () {
@@ -59,7 +50,7 @@ class ProfileContent extends Component {
         summoners = <EmptyState />
       }
     } else {
-      profile = (<h1 className={style(styles.loading)}>Loading...</h1>)
+      profile = <Loading />
     }
 
     return (
