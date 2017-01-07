@@ -77,13 +77,13 @@ export default props => {
         <nav className={style(styles.footerLinks)}>
           <ul>
             <li className={style(styles.item)}>
-              <Link href="">
+              <Link href="https://github.com/ritoplz">
                 <img src="/static/github.svg"/>
               </Link>
             </li>
 
             <li className={style(styles.item)}>
-              <Link href="">
+              <Link href="https://twitter.com/ritoplzrankings">
                 <img src="/static/twitter.svg"/>
               </Link>
             </li>
