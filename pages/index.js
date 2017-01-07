@@ -5,12 +5,15 @@ import Link from 'next/link'
 import { style } from 'next/css'
 
 import Meta from '../components/meta'
+import Footer from '../components/footer'
+import TopPlayers from '../containers/top-players'
 
 const styles = {
   row: {
-    maxWidth: '900px',
+    maxWidth: '1000px',
     marginLeft: 'auto',
     marginRight: 'auto',
+    position: 'relative',
 
     '@media (max-width: 750px)': {
       paddingLeft: '20px',
@@ -69,31 +72,28 @@ const styles = {
   },
 
   cover: {
-    textAlign: 'center',
-    paddingTop: '100px',
-    paddingBottom: '100px'
+    background: 'url("static/bg.png") center center',
+    backgroundSize: 'cover',
+    height: '100vh',
+    paddingTop: '110px',
+    paddingBottom: '75px'
   },
 
   title: {
     color: '#333',
-    fontSize: '2rem',
-    textTransform: 'uppercase'
+    fontSize: '4rem',
+    textTransform: 'uppercase',
+    maxWidth: '500px'
   },
 
   subtitle: {
-    color: '#333',
-    fontSize: '3.5rem',
-    fontWeight: '300',
-    lineHeight: '4rem',
-    marginTop: '10px',
-    marginBottom: '15px'
-  },
-
-  tagline: {
     color: '#999',
     fontSize: '1.5rem',
-    fontWeight: '100',
-    marginBottom: '75px'
+    lineHeight: '2.5rem',
+    marginTop: '10px',
+    fontWeight: '400',
+    marginBottom: '15px',
+    marginBottom: '70px'
   },
 
   btn: {
@@ -103,12 +103,32 @@ const styles = {
     padding: '14px 28px',
     fontSize: '1rem',
     height: '55px',
-    marginTop: '25px',
     fontWeight: '500',
     cursor: 'pointer',
     background: 'linear-gradient(to right, #52bdab 0%,#6BB6D6 100%)',
-    marginLeft: '15px',
     marginRight: '15px'
+  },
+
+  btnLink: {
+    color: '#52bdab',
+    background: 'transparent',
+    textAlign: 'center',
+    padding: '14px 28px',
+    height: '55px',
+    fontSize: '1rem',
+    border: 'none',
+    fontWeight: '500',
+    cursor: 'pointer'
+  },
+
+  card: {
+    position: 'absolute',
+    top: '20px',
+    right: '-100px',
+
+    '@media (max-width: 750px)': {
+      display: 'none'
+    }
   }
 }
 
@@ -135,17 +155,24 @@ export default () => (
     </header>
 
     <main className={style(styles.cover)}>
-      <h1 className={style(styles.title)}>Ritoplz</h1>
-      <h2 className={style(styles.subtitle)}>Do you want to be the best?</h2>
-      <h3 className={style(styles.tagline)}>Join the League of Legends rankings and make sure you are on top.</h3>
+      <div className={style(styles.row)}>
+        <h1 className={style(styles.title)}>Make sure you are on top</h1>
+        <h2 className={style(styles.subtitle)}>The first worldwide League of Legends Rankings. <br/>See who’s the best player of your region.</h2>
 
-      <Link href="/signup">
-        <span className={style(styles.btn)}>Join Ritoplz</span>
-      </Link>
+        <Link href="/signup">
+          <span className={style(styles.btn)}>Join Ritoplz</span>
+        </Link>
 
-      <Link href="/rankings">
-        <span className={style(styles.btn)}>See Rankings</span>
-      </Link>
+        <Link href="/rankings">
+          <span className={style(styles.btnLink)}>See Rankings</span>
+        </Link>
+
+        <img className={style(styles.card)} src="static/card.png" alt=""/>
+      </div>
     </main>
+
+    <TopPlayers />
+
+    <Footer />
   </div>
 )
