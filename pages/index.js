@@ -25,52 +25,6 @@ const styles = {
     height: '70px'
   },
 
-  logo: {
-    float: 'left',
-    fontSize: '2rem',
-    fontWeight: '700'
-  },
-
-  link: {
-    color: '#333',
-    textDecoration: 'none',
-    lineHeight: '70px',
-  },
-
-  btnHeader: {
-    color: '#fff',
-    border: 'none',
-    borderRadius: '5px',
-    padding: '10px 25px',
-    fontSize: '.9rem',
-    fontWeight: '500',
-    cursor: 'pointer',
-    background: 'linear-gradient(to right, #52bdab 0%,#6BB6D6 100%)',
-    textDeconration: 'none'
-  },
-
-  nav : {
-    lineHeight: '70px',
-    float: 'right'
-  },
-
-  navItem: {
-    display: 'inline-block',
-    marginLeft: '30px'
-  },
-
-  navLink: {
-    color: '#ccc',
-    fontSize: '1rem',
-    fontWeight: '400',
-    transition: '.25s',
-    display: 'inline-block',
-
-    ':hover': {
-      color: '#333'
-    }
-  },
-
   cover: {
     background: 'url("static/bg.png") center center',
     backgroundSize: 'cover',
@@ -132,47 +86,38 @@ const styles = {
   }
 }
 
-export default () => (
-  <div>
-    <Meta />
+export default () => {
+  const items = [
+    {name: 'Rankings', link: 'rankings', type: 'item'},
+    {name: 'FAQ', link: 'faq', type: 'item'},
+    {name: 'Login', link: 'login', type: 'button'}
+  ]
+  return (
+    <div>
+      <Meta />
 
-    <header className={style(styles.header)}>
-      <div className={style(styles.row)}>
-        <Link href="/">
-          <h1 className={style(styles.logo)}>
-            <span className={style(styles.link)}>Ritoplz</span>
-          </h1>
-        </Link>
+      <Header items={items} />
 
-        <ul className={style(styles.nav)}>
-          <li className={style(styles.navItem)}>
-            <Link href="/login">
-              <button className={style(styles.btnHeader)}>Login</button>
-            </Link>
-          </li>
-        </ul>
-      </div>
-    </header>
+      <main className={style(styles.cover)}>
+        <div className={style(styles.row)}>
+          <h1 className={style(styles.title)}>Make sure you are on top</h1>
+          <h2 className={style(styles.subtitle)}>The first worldwide League of Legends Rankings. <br/>See who’s the best player of your region.</h2>
 
-    <main className={style(styles.cover)}>
-      <div className={style(styles.row)}>
-        <h1 className={style(styles.title)}>Make sure you are on top</h1>
-        <h2 className={style(styles.subtitle)}>The first worldwide League of Legends Rankings. <br/>See who’s the best player of your region.</h2>
+          <Link href="/signup">
+            <span className={style(styles.btn)}>Join Ritoplz</span>
+          </Link>
 
-        <Link href="/signup">
-          <span className={style(styles.btn)}>Join Ritoplz</span>
-        </Link>
+          <Link href="/rankings">
+            <span className={style(styles.btnLink)}>See Rankings</span>
+          </Link>
 
-        <Link href="/rankings">
-          <span className={style(styles.btnLink)}>See Rankings</span>
-        </Link>
+          <img className={style(styles.card)} src="static/card.png" alt=""/>
+        </div>
+      </main>
 
-        <img className={style(styles.card)} src="static/card.png" alt=""/>
-      </div>
-    </main>
+      <TopPlayers />
 
-    <TopPlayers />
-
-    <Footer />
-  </div>
-)
+      <Footer />
+    </div>
+  )
+}

@@ -68,11 +68,17 @@ const styles = {
 }
 
 const Terms = props => {
+  const items = [
+    {name: 'Rankings', link: 'rankings', type: 'item'},
+    {name: 'FAQ', link: 'faq', type: 'item'},
+    {name: 'Login', link: 'login', type: 'button'}
+  ]
+
   return (
       <div>
         <Meta />
 
-        <Header page="signup"/>
+        <Header items={items} />
 
         <section className={style(styles.row)}>
           <h1 className={style(styles.title)}>Terms of Services</h1>
