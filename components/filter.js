@@ -4,7 +4,9 @@ import React, { Component } from 'react'
 import Select from 'react-select'
 import { style } from 'next/css'
 import { connect } from 'react-redux'
+import Alert from 'react-s-alert'
 
+import { RANKINGS_ERROR } from './../constants'
 import { countries, locations } from '../services/places'
 
 const styles = {
@@ -46,6 +48,11 @@ class Filter extends Component {
     const params = {country: e.value}
 
     this.props.fetchRankings(params)
+      .then(res => {
+        if (res.type === RANKINGS_ERROR) {
+          Alert.error('No users found', {position: 'bottom-right'})
+        }
+      })
   }
 
   handleState (e) {
@@ -62,6 +69,11 @@ class Filter extends Component {
     }
 
     this.props.fetchRankings(params)
+      .then(res => {
+        if (res.type === RANKINGS_ERROR) {
+          Alert.error('No users found', {position: 'bottom-right'})
+        }
+      })
   }
 
   handleCity (e) {
@@ -74,6 +86,11 @@ class Filter extends Component {
     }
 
     this.props.fetchRankings(params)
+      .then(res => {
+        if (res.type === RANKINGS_ERROR) {
+          Alert.error('No users found', {position: 'bottom-right'})
+        }
+      })
   }
 
   render () {
@@ -90,6 +107,8 @@ class Filter extends Component {
         <div className={style(styles.input)}>
           <Select options={this.state.cityList} value={this.state.city} onChange={this.handleCity} placeholder="Select city..."/>
         </div>
+
+        <Alert effect="jelly" stack={{limit: 3}}/>
       </section>
     )
   }
