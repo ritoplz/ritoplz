@@ -45,9 +45,12 @@ export default class extends Component {
 
   render () {
     if (!isLogged()) {
-      console.log('should')
       this.props.url.replaceTo('/login')
     }
+
+    const items = [
+      {name: 'Rankings', link: 'rankings', type: 'item'}
+    ]
 
     return (
       <Provider store={store}>
@@ -55,7 +58,7 @@ export default class extends Component {
           <Meta />
 
           <div>
-            <Header page="profile"/>
+            <Header items={items} />
 
             <div className={style(styles.row)}>
               <ProfileContent/>
