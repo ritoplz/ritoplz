@@ -93,7 +93,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchRankings: () => dispatch(fetchRankings())
+    fetchRankings: params => dispatch(fetchRankings(params))
   }
 }
 

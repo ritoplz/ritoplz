@@ -43,7 +43,7 @@ class Filter extends Component {
       stateList: locations[e.value]
     })
 
-    const params = {country: this.state.country}
+    const params = {country: e.value}
 
     this.props.fetchRankings(params)
   }
@@ -58,7 +58,7 @@ class Filter extends Component {
 
     const params = {
       country: this.state.country,
-      state: this.state.state
+      state: e.label
     }
 
     this.props.fetchRankings(params)
@@ -70,7 +70,7 @@ class Filter extends Component {
     const params = {
       country: this.state.country,
       state: this.state.state,
-      city: this.state.city
+      city: e.label
     }
 
     this.props.fetchRankings(params)

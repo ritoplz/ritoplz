@@ -33,6 +33,10 @@ function fetchRankings(params = { country: 'BR', state: undefined, city: undefin
     dispatch(rankingsRequest())
 
     return axios.get('https://staging.ritoplz.com/rankings', {
+      headers: {
+        'Accept-Language': 'utf-8, iso-8859-1',
+        'Content-type': 'application/json; charset=utf-8'
+      },
       params: {
         country: params.country,
         state: params.state,

@@ -40,6 +40,10 @@ const styles = {
 
 const Login = props => {
   const store = configureStore()
+  const items = [
+    {name: 'Rankings', link: 'rankings', type: 'item'},
+    {name: 'Signup', link: 'signup', type: 'item'}
+  ]
 
   if (isLogged()) {
     props.url.replaceTo('/profile')
@@ -50,7 +54,7 @@ const Login = props => {
       <div>
         <Meta />
 
-        <Header page="login"/>
+        <Header items={items} />
 
         <section className={style(styles.row)}>
           <h1 className={style(styles.title)}>Nice to see you today!</h1>

@@ -35,12 +35,16 @@ class Rankings extends Component {
   }
 
   render () {
+    const items = [
+      {name: 'Login', link: 'login', type: 'item'}
+    ]
+
     return (
       <Provider store={store}>
         <div>
           <Meta />
 
-          <Header page="rankings"/>
+          <Header items={items} />
 
           <section className={style(styles.row)}>
             <RankingsList />
