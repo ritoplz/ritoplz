@@ -11,7 +11,11 @@ const styles = {
     boxShadow: '0 10px 40px rgba(0, 0, 0, .1)',
     flexBasis: '28%',
     marginBottom: '50px',
-    textAlign: 'center'
+    textAlign: 'center',
+
+    '@media (max-width: 750px)': {
+      flexBasis: '100%'
+    }
   },
 
   topPlayersCard: {
