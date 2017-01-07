@@ -39,13 +39,17 @@ const styles = {
 
 const Signup = props => {
   const store = configureStore()
+  const items = [
+    {name: 'Rankings', link: 'rankings', type: 'item'},
+    {name: 'Login', link: 'login', type: 'item'}
+  ]
 
   return (
     <Provider store={store}>
       <div>
         <Meta />
 
-        <Header page="signup"/>
+        <Header items={items} />
 
         <section className={style(styles.row)}>
           <h1 className={style(styles.title)}>Join our Ranking!</h1>
