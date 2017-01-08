@@ -11,11 +11,20 @@ import RankingUser from './../components/ranking-user'
 import Filter from './../components/filter'
 import Loading from './../components/loading'
 
+const styles = {
+  title: {
+    textAlign: 'center',
+    fontWeight: '300',
+    fontSize: '3rem',
+    color: '#333',
+    paddingTop: '75px',
+    paddingBottom: '75px'
+  }
+}
+
 class RankingsList extends Component {
   constructor() {
     super()
-
-    this.handleFeatured = this.handleFeatured.bind(this)
 
     this.state = {
       summoners: [],
@@ -25,24 +34,13 @@ class RankingsList extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchRankings().then(() => {
+    this.props.fetchRankings().then(res => {
       this.setState({fetched: true})
     })
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({summoners: nextProps.rankings.data.summoners})
-
-    if(this.state.summoners.length > 0) {
-      this.handleFeatured()
-    }
-  }
-
-  handleFeatured (index = 0) {
-    this.setState({
-      featuredPosition: index + 1,
-      featured: this.state.summoners[index]
-    })
   }
 
   render () {
@@ -52,9 +50,7 @@ class RankingsList extends Component {
     if(this.state.fetched) {
       rankingList = (
         <div>
-          <Featured data={this.state.featured} position={this.state.featuredPosition}/>
-
-          <Filter fetchRankings={this.props.fetchRankings}/>
+          <Filter fetchRankings={this.props.fetchRankings} summoners={this.state.summoners}/>
 
           <ul>
             {this.state.summoners.map((summoner, i) => {
@@ -69,6 +65,7 @@ class RankingsList extends Component {
 
     return (
       <div>
+        <h2 className={style(styles.title)}>Rankings</h2>
         {rankingList}
       </div>
     )

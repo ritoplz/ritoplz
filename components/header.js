@@ -68,9 +68,9 @@ const styles = {
 }
 
 export default props => {
-  const navItems = props.items.map(item => {
+  const navItems = props.items.map((item, i) => {
     return (
-      <li className={style(styles.navItem)}>
+      <li className={style(styles.navItem)} key={i}>
         <Link href={item.link}>
           <span className={style(styles.navLink)}>{item.name}</span>
         </Link>
