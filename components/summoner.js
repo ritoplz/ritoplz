@@ -62,6 +62,24 @@ const styles = {
 
   checkmark: {
     verticalAlign: 'middle'
+  },
+
+  confirm: {
+    width: '100%',
+    border: '1px solid #F3F5FB',
+    backgroundColor: 'transparent',
+    padding: '20px',
+    fontSize: '1rem',
+    border: 'none',
+    borderTop: '1px solid #F3F5FB',
+    color: '#ccc',
+    cursor: 'pointer',
+    transition: '.25s ease-in-out',
+    outline: 'none',
+
+    ':hover': {
+      color: '#333'
+    }
   }
 }
 
@@ -92,15 +110,10 @@ export default class Summoner extends Component {
               <img className={style(styles.checkmark)} src={check} alt=""/>
             </span>
           </li>
+
+          <button className={style(styles.confirm)} onClick={summoner => this.props.confirmSummoner(this.props.name)}>Confirm summoner</button>
         </ul>
       </article>
     )
   }
-}
-
-Summoner.propTypes = {
-  cover: React.PropTypes.string,
-  name: React.PropTypes.string,
-  code: React.PropTypes.string,
-  checkmark: React.PropTypes.bool
 }
