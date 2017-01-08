@@ -24,12 +24,6 @@ const styles = {
 }
 
 class RankingsList extends Component {
-  static async getInitialProps () {
-    const res = await this.props.fetchRankings()
-
-    return { rankingz: res.data }
-  }
-
   constructor() {
     super()
 
