@@ -11,6 +11,7 @@ import RankingUser from './../components/ranking-user'
 import RankingsList from './../containers/rankings-list'
 import configureStore from '../store/configureStore'
 import Footer from '../components/footer'
+import { isLogged } from './../services/auth'
 
 const store = configureStore()
 
@@ -35,9 +36,17 @@ class Rankings extends Component {
   }
 
   render () {
-    const items = [
-      {name: 'Login', link: 'login', type: 'item'}
-    ]
+    let items
+
+    if (isLogged()) {
+      items = [
+        {name: 'Profile', link: 'profile', type: 'button'}
+      ]
+    } else {
+      items = [
+        {name: 'Login', link: 'login', type: 'button'}
+      ]
+    }
 
     return (
       <Provider store={store}>

@@ -8,6 +8,7 @@ import { style } from 'next/css'
 import Meta from '../components/meta'
 import Header from '../components/header'
 import Footer from '../components/footer'
+import { isLogged } from './../services/auth'
 
 const styles = {
   row: {
@@ -73,11 +74,19 @@ const styles = {
 }
 
 const Terms = props => {
-  const items = [
-    {name: 'Rankings', link: 'rankings', type: 'item'},
-    {name: 'FAQ', link: 'faq', type: 'item'},
-    {name: 'Login', link: 'login', type: 'button'}
-  ]
+  let items
+
+  if (isLogged()) {
+    items = [
+      {name: 'Rankings', link: 'rankings', type: 'item'},
+      {name: 'Profile', link: 'profile', type: 'button'}
+    ]
+  } else {
+    items = [
+      {name: 'Rankings', link: 'rankings', type: 'item'},
+      {name: 'Login', link: 'login', type: 'button'}
+    ]
+  }
 
   return (
       <div>
