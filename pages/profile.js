@@ -49,7 +49,8 @@ export default class extends Component {
     }
 
     const items = [
-      {name: 'Rankings', link: 'rankings', type: 'item'}
+      {name: 'Rankings', link: 'rankings', type: 'item'},
+      {name: 'Logout', link: 'logout', type: 'item'}
     ]
 
     return (

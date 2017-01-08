@@ -10,6 +10,10 @@ export const setToken = token => {
   return cookie.save('token', token, {path: '/'})
 }
 
+export const logout = () => {
+  return cookie.remove('token', {path: '/'})
+}
+
 export const isLogged = () => {
   const token = getToken()
 
