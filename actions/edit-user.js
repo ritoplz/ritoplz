@@ -41,7 +41,7 @@ function handleEditUser (token, user) {
       }
     })
     .then(res => dispatch(editUserSuccess(res.data)))
-    .catch(err => dispatch(editUserError(err.data)))
+    .catch(err => dispatch(editUserError(err)))
   }
 }
 
