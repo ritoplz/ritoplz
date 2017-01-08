@@ -36,16 +36,14 @@ class Rankings extends Component {
   }
 
   render () {
-    let items
+    let items = []
 
     if (isLogged()) {
-      items = [
-        {name: 'Profile', link: 'profile', type: 'button'}
-      ]
+      const item = {name: 'Profile', link: 'profile', type: 'button'}
+      items.push(item)
     } else {
-      items = [
-        {name: 'Login', link: 'login', type: 'button'}
-      ]
+      const item = {name: 'Profile', link: 'profile', type: 'button'}
+      items.push(item)
     }
 
     return (

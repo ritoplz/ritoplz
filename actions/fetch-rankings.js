@@ -21,18 +21,19 @@ function rankingsSuccess(data) {
   }
 }
 
-function rankingsError(data) {
+function rankingsError(err) {
   return {
     type: RANKINGS_ERROR,
-    data
+    err
   }
 }
 
-function fetchRankings(params = {country: 'BR'}) {
+function fetchRankings(params = { country: 'BR', state: undefined, city: undefined, limit: 100 }) {
   return dispatch => {
     dispatch(rankingsRequest())
 
-    return axios.get('http://localhost:3001/rankings', {
+    return axios({
+      url: 'http://localhost:3001/rankings',
       params: {
         country: params.country,
         state: params.state,
