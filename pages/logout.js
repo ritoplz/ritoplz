@@ -23,6 +23,6 @@ export default (props) => {
   }
 
   return (
-    <h1 className={style(styles.message)}>Bye! :(h1>
+    <h1 className={style(styles.message)}>Bye! :(</h1>
   )
 }
