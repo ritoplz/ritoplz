@@ -60,6 +60,7 @@ class Filter extends Component {
 
     this.setState({
       state: e.value,
+      stateParam: e.label,
       cityList: city[0].cities
     })
 
@@ -73,7 +74,7 @@ class Filter extends Component {
         if (res.type === RANKINGS_ERROR) {
           Alert.error('No users found', {position: 'bottom-right'})
         }
-      })
+      }).catch(err => console.log('err', err))
   }
 
   handleCity (e) {
@@ -81,7 +82,7 @@ class Filter extends Component {
 
     const params = {
       country: this.state.country,
-      state: this.state.state,
+      state: this.state.stateParam,
       city: e.label
     }
 
@@ -90,7 +91,7 @@ class Filter extends Component {
         if (res.type === RANKINGS_ERROR) {
           Alert.error('No users found', {position: 'bottom-right'})
         }
-      })
+      }).catch(err => console.log('err', err))
   }
 
   render () {

@@ -68,10 +68,10 @@ class MySummoners extends Component {
         </header>
 
         <div className={style(styles.row)}>
-          {this.props.summoners.map(summoner => {
+          {this.props.summoners.map((summoner, i) => {
             const cover = summonerCover()
 
-            return <Summoner key={summoner._id} cover={cover} name={summoner.name} code={summoner.code} status={summoner.active}/>
+            return <Summoner key={i} cover={cover} name={summoner.name} code={summoner.code} status={summoner.active}/>
           })}
         </div>
 

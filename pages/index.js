@@ -10,6 +10,7 @@ import Footer from '../components/footer'
 import TopPlayers from '../containers/top-players'
 import Header from '../components/header'
 import configureStore from '../store/configureStore'
+import { isLogged } from './../services/auth'
 
 const styles = {
   row: {
@@ -91,11 +92,21 @@ const styles = {
 
 export default () => {
   const store = configureStore()
-  const items = [
-    {name: 'Rankings', link: 'rankings', type: 'item'},
-    {name: 'FAQ', link: 'faq', type: 'item'},
-    {name: 'Login', link: 'login', type: 'button'}
-  ]
+  let items
+
+  if (isLogged()) {
+    items = [
+      {name: 'Rankings', link: 'rankings', type: 'item'},
+      {name: 'FAQ', link: 'faq', type: 'item'},
+      {name: 'Profile', link: 'profile', type: 'button'}
+    ]
+  } else {
+    items = [
+      {name: 'Rankings', link: 'rankings', type: 'item'},
+      {name: 'FAQ', link: 'faq', type: 'item'},
+      {name: 'Login', link: 'login', type: 'button'}
+    ]
+  }
 
   store.subscribe(() => store.getState())
 
