@@ -97,7 +97,7 @@ class FormLogin extends Component {
       <form className={style(styles.loginForm)} onSubmit={this.handleLogin}>
         <fieldset className={style(styles.formInput)}>
           <label className={style(styles.label)}>E-mail</label>
-          <input className={style(styles.input)} type="text" name="email" ref={input => this.email = input}/>
+          <input className={style(styles.input)} type="email" name="email" ref={input => this.email = input}/>
         </fieldset>
 
         <fieldset className={style(styles.formInput)}>

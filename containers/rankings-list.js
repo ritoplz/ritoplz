@@ -7,7 +7,6 @@ import { connect } from 'react-redux'
 
 import fetchRankings from '../actions/fetch-rankings'
 import Header from './../components/header'
-import Featured from './../components/featured'
 import RankingUser from './../components/ranking-user'
 import Filter from './../components/filter'
 import Loading from './../components/loading'
@@ -29,7 +28,6 @@ class RankingsList extends Component {
 
     this.state = {
       summoners: [],
-      featured: {},
       fetched: false
     }
   }
@@ -46,7 +44,6 @@ class RankingsList extends Component {
 
   render () {
     let rankingList
-    let featured
 
     if(this.state.fetched) {
       rankingList = (

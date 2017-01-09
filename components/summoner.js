@@ -86,6 +86,7 @@ const styles = {
 export default class Summoner extends Component {
   render () {
     const check = this.props.status ? '/static/checkmark.png' : '/static/errormark.png'
+    const confirm = this.props.status ? '' : <button className={style(styles.confirm)} onClick={summoner => this.props.confirmSummoner(this.props.name)}>Confirm summoner</button>
 
     return (
       <article className={style(styles.base)}>
@@ -111,7 +112,7 @@ export default class Summoner extends Component {
             </span>
           </li>
 
-          <button className={style(styles.confirm)} onClick={summoner => this.props.confirmSummoner(this.props.name)}>Confirm summoner</button>
+          {confirm}
         </ul>
       </article>
     )
