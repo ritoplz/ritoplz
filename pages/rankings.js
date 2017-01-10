@@ -1,16 +1,14 @@
 'use strict'
 
 import React, { Component } from 'react'
-import { style } from 'next/css'
+import { style, insertRule } from 'next/css'
 import { Provider } from 'react-redux'
 
-import Meta from '../components/meta'
 import Header from './../components/header'
+import Featured from './../components/featured'
 import RankingUser from './../components/ranking-user'
 import RankingsList from './../containers/rankings-list'
 import configureStore from '../store/configureStore'
-import Footer from '../components/footer'
-import { isLogged } from './../services/auth'
 
 const store = configureStore()
 
@@ -18,12 +16,7 @@ const styles = {
   row: {
     maxWidth: '900px',
     marginLeft: 'auto',
-    marginRight: 'auto',
-
-    '@media (max-width: 750px)': {
-      paddingLeft: '20px',
-      paddingRight: '20px'
-    }
+    marginRight: 'auto'
   }
 }
 
@@ -35,32 +28,21 @@ class Rankings extends Component {
   }
 
   render () {
-    let items = []
-
-    if (isLogged()) {
-      const item = {name: 'Profile', link: 'profile', type: 'button'}
-      items.push(item)
-    } else {
-      const item = {name: 'Profile', link: 'profile', type: 'button'}
-      items.push(item)
-    }
-
     return (
       <Provider store={store}>
         <div>
-          <Meta />
-
-          <Header items={items} />
+          <Header />
 
           <section className={style(styles.row)}>
             <RankingsList />
           </section>
-
-          <Footer />
         </div>
       </Provider>
     )
   }
 }
+
+
+insertRule('* {padding: 0; margin: 0; box-sizing: border-box; font-family: Source Sans Pro, Helvetica Neue, Helvetica } li {list-style: none}')
 
 export default Rankings

@@ -2,28 +2,24 @@
 
 import axios from 'axios'
 
-import {
-  LOGIN_REQUEST,
-  LOGIN_SUCCESS,
-  LOGIN_ERROR
-} from '../constants'
+import * as types from './../constants'
 
 function loginRequest () {
   return {
-    type: LOGIN_REQUEST
+    type: types.LOGIN_REQUEST
   }
 }
 
 function loginSuccess (data) {
   return {
-    type: LOGIN_SUCCESS,
+    type: types.LOGIN_SUCCESS,
     data
   }
 }
 
 function loginError (data) {
   return {
-    type: LOGIN_ERROR,
+    type: types.LOGIN_ERROR,
     data
   }
 }
@@ -31,9 +27,13 @@ function loginError (data) {
 function handleLogin (userData) {
   return dispatch => {
     dispatch(loginRequest())
-    return axios.post('https://staging.ritoplz.com/login', userData)
-      .then(({ data }) => dispatch(loginSuccess(data)))
-      .catch(err => dispatch(loginError(err.response.data)))
+    return axios.post('http://localhost:3001/login', userData)
+      .then(res => {
+        dispatch(loginSuccess(res.data))
+        const token = res.data.token
+        localStorage.setItem('token', token)
+      })
+      .catch(err => dispatch(loginError(err.response.data.error.message)))
   }
 }
 

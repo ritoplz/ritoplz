@@ -2,46 +2,43 @@
 
 import axios from 'axios'
 
-import {
-  ADD_SUMMONER_REQUEST,
-  ADD_SUMMONER_SUCCESS,
-  ADD_SUMMONER_ERROR
-} from './../constants'
+import * as types from './../constants'
 
 function addSummonerRequest () {
   return {
-    type: ADD_SUMMONER_REQUEST
+    type: types.ADD_SUMMONER_REQUEST
   }
 }
 
 function addSummonerSuccess (data) {
   return {
-    type: ADD_SUMMONER_SUCCESS,
+    type: types.ADD_SUMMONER_SUCCESS,
     data
   }
 }
 
 function addSummonerError (data) {
   return {
-    type: ADD_SUMMONER_ERROR,
+    type: types.ADD_SUMMONER_ERROR,
     data
   }
 }
 
-function handleAddSummoner (token, summoner) {
+function handleAddSummoner (summoner) {
   return dispatch => {
+    const localStorageRef = localStorage.getItem('token')
     dispatch(addSummonerRequest())
     return axios({
       method: 'post',
-      url: 'https://staging.ritoplz.com/summoner',
+      url: 'http://localhost:3001/summoner',
       data: summoner,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': token
+        'Authorization': localStorageRef
       }
     })
     .then(res => dispatch(addSummonerSuccess(res.data)))
-    .catch(err => dispatch(addSummonerError(err.response.data)))
+    .catch(err => dispatch(addSummonerError(err.data)))
   }
 }
 
