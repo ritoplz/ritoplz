@@ -6,7 +6,11 @@ import { style } from 'next/css'
 const styles = {
   base: {
     flexBasis: 'calc(50% - 30px)',
-    margin: '15px'
+    margin: '15px',
+
+    '@media (max-width: 750px)': {
+      flexBasis: '100%'
+    }
   },
 
   cover: {
@@ -39,23 +43,50 @@ const styles = {
     fontWeight: 400,
     fontSize: '.9rem',
     color: '#ccc',
-    marginBottom: '5px'
+    marginBottom: '5px',
+
+    '@media (max-width: 750px)': {
+      fontSize: '.8rem'
+    }
   },
 
   subtitle: {
     fontSize: '1.2rem',
     fontWeight: 600,
-    color: '#333'
+    color: '#333',
+
+    '@media (max-width: 750px)': {
+      fontSize: '.9rem'
+    }
   },
 
   checkmark: {
     verticalAlign: 'middle'
+  },
+
+  confirm: {
+    width: '100%',
+    border: '1px solid #F3F5FB',
+    backgroundColor: 'transparent',
+    padding: '20px',
+    fontSize: '1rem',
+    border: 'none',
+    borderTop: '1px solid #F3F5FB',
+    color: '#ccc',
+    cursor: 'pointer',
+    transition: '.25s ease-in-out',
+    outline: 'none',
+
+    ':hover': {
+      color: '#333'
+    }
   }
 }
 
 export default class Summoner extends Component {
   render () {
     const check = this.props.status ? '/static/checkmark.png' : '/static/errormark.png'
+    const confirm = this.props.status ? '' : <button className={style(styles.confirm)} onClick={summoner => this.props.confirmSummoner(this.props.name)}>Confirm summoner</button>
 
     return (
       <article className={style(styles.base)}>
@@ -80,15 +111,10 @@ export default class Summoner extends Component {
               <img className={style(styles.checkmark)} src={check} alt=""/>
             </span>
           </li>
+
+          {confirm}
         </ul>
       </article>
     )
   }
-}
-
-Summoner.propTypes = {
-  cover: React.PropTypes.string,
-  name: React.PropTypes.string,
-  code: React.PropTypes.string,
-  checkmark: React.PropTypes.bool
 }

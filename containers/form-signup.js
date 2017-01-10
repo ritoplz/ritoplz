@@ -3,15 +3,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { style } from 'next/css'
-import cookie from 'react-cookie'
 import Alert from 'react-s-alert'
 
-import loginRequest from '../actions/login'
-import { LOGIN_SUCCESS, LOGIN_ERROR } from './../constants'
-import { setToken } from './../services/auth'
+import signupRequest from '../actions/signup'
+import { SIGNUP_SUCCESS, SIGNUP_ERROR } from './../constants'
 
 const styles = {
-  loginForm: {
+  registerForm: {
     maxWidth: '60%',
     marginLeft: 'auto',
     marginRight: 'auto',
@@ -61,30 +59,28 @@ const styles = {
   }
 }
 
-class FormLogin extends Component {
-  constructor() {
+class FormSignup extends Component {
+  constructor () {
     super()
 
-    this.handleLogin = this.handleLogin.bind(this)
+    this.handleSignup = this.handleSignup.bind(this)
   }
 
-  handleLogin(e) {
+  handleSignup(e) {
     e.preventDefault()
 
-    const userData = {
+    const data = {
+      name: this.name.value,
       email: this.email.value,
       password: this.password.value
     }
 
-    this.props.loginRequest(userData).then(({ data, type }) => {
-      const token = data.token
-
-      if (type === LOGIN_SUCCESS) {
-        setToken(token)
-        this.props.routing.url.replaceTo('/profile')
+    this.props.signupRequest(data).then(({ data, type }) => {
+      if (type === SIGNUP_SUCCESS) {
+        this.props.routing.url.pushTo('/login')
       }
 
-      if (type === LOGIN_ERROR) {
+      if (type === SIGNUP_ERROR) {
         const err = data[0].msg
 
         Alert.error(err, {position: 'bottom-right'})
@@ -92,20 +88,25 @@ class FormLogin extends Component {
     })
   }
 
-  render() {
+  render () {
     return (
-      <form className={style(styles.loginForm)} onSubmit={this.handleLogin}>
+      <form className={style(styles.registerForm)} onSubmit={this.handleSignup}>
+        <fieldset className={style(styles.formInput)}>
+          <label className={style(styles.label)}>Name</label>
+          <input className={style(styles.input)} type="text" ref={input => this.name = input}/>
+        </fieldset>
+
         <fieldset className={style(styles.formInput)}>
           <label className={style(styles.label)}>E-mail</label>
-          <input className={style(styles.input)} type="email" name="email" ref={input => this.email = input}/>
+          <input className={style(styles.input)} type="email" ref={input => this.email = input}/>
         </fieldset>
 
         <fieldset className={style(styles.formInput)}>
           <label className={style(styles.label)}>Password</label>
-          <input className={style(styles.input)} type="password" name="password" ref={input => this.password = input}/>
+          <input className={style(styles.input)} type="password" ref={input => this.password = input}/>
         </fieldset>
 
-        <button className={style(styles.btn)} type="submit">Login</button>
+        <button className={style(styles.btn)} type="submit">Sign Up</button>
 
         <Alert effect="jelly" stack={{limit: 3}}/>
       </form>
@@ -115,8 +116,8 @@ class FormLogin extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    loginRequest: userData => dispatch(loginRequest(userData))
+    signupRequest: userData => dispatch(signupRequest(userData))
   }
 }
 
-export default connect(null, mapDispatchToProps)(FormLogin)
+export default connect(null, mapDispatchToProps)(FormSignup)

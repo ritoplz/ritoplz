@@ -1,26 +1,24 @@
+
 'use strict'
 
 import React, { Component } from 'react'
-import { style, insertRule } from 'next/css'
+import { style } from 'next/css'
 import { connect } from 'react-redux'
 
 import fetchRankings from '../actions/fetch-rankings'
 import Header from './../components/header'
-import Featured from './../components/featured'
 import RankingUser from './../components/ranking-user'
+import Filter from './../components/filter'
+import Loading from './../components/loading'
 
 const styles = {
-  loading: {
-    fontWeight: '300',
+  title: {
     textAlign: 'center',
-    position: 'absolute',
-    top: '40%',
-    left: '0',
-    right: '0',
-    marginLeft: 'auto',
-    marginRight: 'auto',
+    fontWeight: '300',
+    fontSize: '3rem',
     color: '#333',
-    fontSize: '2rem'
+    paddingTop: '75px',
+    paddingBottom: '75px'
   }
 }
 
@@ -28,58 +26,45 @@ class RankingsList extends Component {
   constructor() {
     super()
 
-    this.handleFeatured = this.handleFeatured.bind(this)
-
     this.state = {
       summoners: [],
-      featured: {},
       fetched: false
     }
   }
 
   componentDidMount() {
-    this.props.fetchRankings().then(() => {
+    this.props.fetchRankings().then(res => {
       this.setState({fetched: true})
     })
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({summoners: nextProps.rankings.data.summoners})
-
-    if(this.state.summoners.length > 0) {
-      this.handleFeatured()
-    }
-  }
-
-  handleFeatured (index = 0) {
-    this.setState({
-      featuredPosition: index + 1,
-      featured: this.state.summoners[index]
-    })
   }
 
   render () {
     let rankingList
-    let featured
 
     if(this.state.fetched) {
-      featured = <Featured data={this.state.featured} position={this.state.featuredPosition}/>
+      rankingList = (
+        <div>
+          <Filter fetchRankings={this.props.fetchRankings} summoners={this.state.summoners}/>
 
-      rankingList = this.state.summoners.map((summoner, i) => {
-        return <RankingUser data={summoner} key={summoner._id} position={i + 1} avatar="https://s3.amazonaws.com/uifaces/faces/twitter/peterme/128.jpg" username="nice" handleShowFeatured={this.handleFeatured}/>
-      })
-
+          <ul>
+            {this.state.summoners.map((summoner, i) => {
+              return <RankingUser data={summoner} key={summoner._id} position={i + 1}/>
+            })}
+          </ul>
+        </div>
+      )
     } else {
-      rankingList = <h1 className={style(styles.loading)}>Loading...</h1>
+      rankingList = <Loading />
     }
 
     return (
-      <div className={style(styles.ranking)}>
-        {featured}
-
-        <ul className={style(styles.rankingList)}>
-          {rankingList}
-        </ul>
+      <div>
+        <h2 className={style(styles.title)}>Rankings</h2>
+        {rankingList}
       </div>
     )
   }
@@ -93,7 +78,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchRankings: () => dispatch(fetchRankings())
+    fetchRankings: params => dispatch(fetchRankings(params))
   }
 }
 

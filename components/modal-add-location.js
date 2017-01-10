@@ -7,9 +7,12 @@ import { style } from 'next/css'
 import Modal from 'react-modal'
 import Select from 'react-select'
 import { connect } from 'react-redux'
+import Alert from 'react-s-alert'
 
 import fetchAccount from '../actions/fetch-account'
 import editUser from './../actions/edit-user'
+import { getToken } from './../services/auth'
+import { countries, locations } from '../services/places'
 
 const styles = {
   formInput: {
@@ -85,20 +88,32 @@ class ModalAddLocation extends Component {
 
     this.state = {
       modalStatus: props.open,
-      country: null
+      countryList: countries,
+      stateList: null,
+      cityList: null,
+      country: null,
+      state: null,
+      city: null,
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({modalStatus: nextProps.open})
+  componentWillReceiveProps({ open }) {
+    this.setState({modalStatus: open})
   }
 
   handleCountry (e) {
-    this.setState({country: e.value})
+    this.setState({
+      country: e.value,
+      stateList: locations[e.value]
+    })
   }
 
   handleState (e) {
-    this.setState({state: e.value})
+    const city = locations[this.state.country].filter(state => state.value === e.value)
+    this.setState({
+      state: e.label,
+      cityList: city[0].cities
+    })
   }
 
   handleCity (e) {
@@ -111,54 +126,43 @@ class ModalAddLocation extends Component {
 
   handleSubmit (e) {
     e.preventDefault()
-    
-    const localStorageRef = localStorage.getItem('token')
-    const data = {
+
+    const token = getToken()
+    const userData = {
       country: this.state.country,
       state: this.state.state,
       city: this.state.city
     }
 
-    this.props.editUser(data).then(() => {
+    this.props.editUser(token, userData).then(() => {
       this.handleCloseModal()
-      this.props.fetchAccount(localStorageRef)
+      this.props.fetchAccount(token)
     })
   }
 
   render () {
-    const countryList = [
-      {value: 'BR', label: 'Brazil'},
-      {value: 'United States', label: 'United States'}
-    ]
-
-    const stateList = [
-      {value: 'São Paulo', label: 'São Paulo'}
-    ]
-
-    const cityList = [
-      {value: 'São Paulo', label: 'São Paulo'}
-    ]
-
     return (
       <Modal isOpen={this.state.modalStatus} onRequestClose={this.handleCloseModal} style={customStyle}>
         <form onSubmit={this.handleSubmit}>
           <fieldset className={style(styles.formInput)}>
             <label className={style(styles.label)}>Country</label>
-            <Select options={countryList} value={this.state.country} onChange={this.handleCountry}/>
+            <Select options={this.state.countryList} value={this.state.country} onChange={this.handleCountry}/>
           </fieldset>
 
           <fieldset className={style(styles.formInput)}>
             <label className={style(styles.label)}>State</label>
-            <Select options={stateList} value={this.state.state} onChange={this.handleState}/>
+            <Select options={this.state.stateList} value={this.state.state} onChange={this.handleState}/>
           </fieldset>
 
           <fieldset className={style(styles.formInput)}>
             <label className={style(styles.label)}>City</label>
-            <Select options={cityList} value={this.state.city} onChange={this.handleCity}/>
+            <Select options={this.state.cityList} value={this.state.city} onChange={this.handleCity}/>
           </fieldset>
 
           <button className={style(styles.btn)}>Add location</button>
         </form>
+
+        <Alert effect="jelly" stack={{limit: 3}}/>
       </Modal>
     )
   }
@@ -166,10 +170,9 @@ class ModalAddLocation extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    editUser: user => dispatch(editUser(user)),
+    editUser: (token, user) => dispatch(editUser(token, user)),
     fetchAccount: token => dispatch(fetchAccount(token))
   }
 }
 
 export default connect(null, mapDispatchToProps)(ModalAddLocation)
-
