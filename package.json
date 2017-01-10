@@ -33,7 +33,7 @@
     "redux-mock-store": "^1.2.1",
     "redux-thunk": "^2.1.0",
     "ritoplz-summoner": "^0.0.2",
-    "ritoplz-tier": "^0.0.1",
+    "ritoplz-tier": "0.0.3",
     "xo": "^0.17.1"
   },
   "scripts": {

@@ -5,7 +5,6 @@
 import React, { Component } from 'react'
 import { style } from 'next/css'
 import { connect } from 'react-redux'
-import cookie from 'react-cookie'
 import Alert from 'react-s-alert'
 
 import fetchAccount from '../actions/fetch-account'
@@ -43,7 +42,12 @@ class ProfileContent extends Component {
   handleConfirmSummoner (summoner) {
     this.props.confirmSummoner(summoner)
       .then(res => {
-        if (!res.data) {
+        if (res.data) {
+          const token = getToken()
+
+          Alert.success('Summoner confirmed!', {position: 'bottom-right'})
+          this.props.fetchAccount(token)
+        } else {
           Alert.error('Summoner not confirmed yet.', {position: 'bottom-right'})
         }
       })

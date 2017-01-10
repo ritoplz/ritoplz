@@ -75,7 +75,7 @@ export default (props) => {
   return (
     <li className={style(styles.topPlayersItem)}>
       <article className={style(styles.topPlayersCard)}>
-        <img className={style(styles.topPlayersAvatar)} src={`http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/${profileIconId}.png`} alt="" />
+        <img className={style(styles.topPlayersAvatar)} src={`https://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/${profileIconId}.png`} alt="" />
 
         <h3 className={style(styles.topPlayersName)}>{username}</h3>
         <h4 className={style(styles.topPlayersSummoner)}>{name} • W: {rankedSolo.wins} / L: {rankedSolo.losses}</h4>
