@@ -1,23 +1,27 @@
 'use strict'
 
-import * as types from './../constants'
+import {
+  CONFIRM_SUMMONER_REQUEST,
+  CONFIRM_SUMMONER_SUCCESS,
+  CONFIRM_SUMMONER_ERROR
+} from './../constants'
 
 const initialState = {
   requesting: false,
   requested: false,
-  data: {},
+  data: '',
   error: null
 }
 
 export default (state = initialState, action) => {
   switch(action.type) {
-    case types.SIGNUP_REQUEST:
+    case CONFIRM_SUMMONER_REQUEST:
       return {
         ...state,
         requesting: true
       }
 
-    case types.SIGNUP_SUCCESS:
+    case CONFIRM_SUMMONER_SUCCESS:
       return {
         ...state,
         requesting: false,
@@ -25,11 +29,10 @@ export default (state = initialState, action) => {
         data: action.data
       }
 
-    case types.SIGNUP_ERROR:
+    case CONFIRM_SUMMONER_ERROR:
       return {
         ...state,
         requesting: false,
-        requested: true,
         error: action.data
       }
 

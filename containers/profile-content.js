@@ -5,29 +5,21 @@
 import React, { Component } from 'react'
 import { style } from 'next/css'
 import { connect } from 'react-redux'
+import Alert from 'react-s-alert'
 
 import fetchAccount from '../actions/fetch-account'
+import confirmSummoner from '../actions/confirm-summoner'
 import EmptyState from './../components/empty-state'
 import Intro from './../components/intro'
 import MySummoners from './../components/my-summoners'
-
-const styles = {
-  loading: {
-    fontWeight: '100',
-    textAlign: 'center',
-    position: 'absolute',
-    top: '40%',
-    left: '0',
-    right: '0',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    color: '#333'
-  }
-}
+import Loading from './../components/loading'
+import { getToken } from './../services/auth'
 
 class ProfileContent extends Component {
   constructor () {
     super()
+
+    this.handleConfirmSummoner = this.handleConfirmSummoner.bind(this)
 
     this.state = {
       profile: {
@@ -38,12 +30,27 @@ class ProfileContent extends Component {
   }
 
   componentDidMount () {
-    const localStorageRef = localStorage.getItem('token')
-    this.props.fetchAccount(localStorageRef)
+    const token = getToken()
+
+    this.props.fetchAccount(token)
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({profile: nextProps.user})
+  }
+
+  handleConfirmSummoner (summoner) {
+    this.props.confirmSummoner(summoner)
+      .then(res => {
+        if (res.data) {
+          const token = getToken()
+
+          Alert.success('Summoner confirmed!', {position: 'bottom-right'})
+          this.props.fetchAccount(token)
+        } else {
+          Alert.error('Summoner not confirmed yet.', {position: 'bottom-right'})
+        }
+      })
   }
 
   render() {
@@ -55,18 +62,19 @@ class ProfileContent extends Component {
       profile = <Intro name={this.props.profile.data.user.name} location={location}/>
 
       if (this.props.profile.data.summoners.length > 0) {
-        summoners = <MySummoners summoners={this.props.profile.data.summoners} />
+        summoners = <MySummoners summoners={this.props.profile.data.summoners} confirmSummoner={this.handleConfirmSummoner}/>
       } else {
         summoners = <EmptyState />
       }
     } else {
-      profile = (<h1 className={style(styles.loading)}>Loading...</h1>)
+      profile = <Loading />
     }
 
     return (
       <div>
         {profile}
         {summoners}
+        <Alert effect="jelly" stack={{limit: 3}}/>
       </div>
     )
   }
@@ -80,7 +88,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchAccount: token => dispatch(fetchAccount(token))
+    fetchAccount: token => dispatch(fetchAccount(token)),
+    confirmSummoner: summoner => dispatch(confirmSummoner(summoner))
   }
 }
 

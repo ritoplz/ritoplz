@@ -1,6 +1,10 @@
 'use strict'
 
-import * as types from './../constants'
+import {
+  LOGIN_REQUEST,
+  LOGIN_SUCCESS,
+  LOGIN_ERROR
+} from './../constants'
 
 const initialState = {
   requesting: false,
@@ -11,26 +15,23 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch(action.type) {
-    case types.LOGIN_REQUEST:
-      return {
-        ...state,
+    case LOGIN_REQUEST:
+      return Object.assign({}, state, {
         requesting: true
-      }
+      })
 
-    case types.LOGIN_SUCCESS:
-      return {
-        ...state,
+    case LOGIN_SUCCESS:
+      return Object.assign({}, state, {
         requesting: false,
         requested: true,
         data: action.data
-      }
+      })
 
-    case types.LOGIN_ERROR:
-      return {
-        ...state,
+    case LOGIN_ERROR:
+      return Object.assign({}, state, {
         requesting: false,
         error: action.data
-      }
+      })
 
     default:
       return state
