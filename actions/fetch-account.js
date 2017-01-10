@@ -2,39 +2,35 @@
 
 import axios from 'axios'
 
-import {
-  ACCOUNT_REQUEST,
-  ACCOUNT_SUCCESS,
-  ACCOUNT_ERROR
-} from './../constants'
+import * as types from './../constants'
 
 function accountRequest() {
   return {
-    type: ACCOUNT_REQUEST
+    type: types.ACCOUNT_REQUEST
   }
 }
 
 function accountSuccess(data) {
   return {
-    type: ACCOUNT_SUCCESS,
+    type: types.ACCOUNT_SUCCESS,
     data
   }
 }
 
 function accountError(data) {
   return {
-    type: ACCOUNT_ERROR,
+    type: types.ACCOUNT_ERROR,
     data
   }
 }
 
-function fetchAccount(token) {
+function fetchAccount(localStorageRef) {
   return dispatch => {
     dispatch(accountRequest())
-    return axios.get('https://staging.ritoplz.com/account', {
+    return axios.get('http://localhost:3001/account', {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': token
+        'Authorization': localStorageRef
       }
     })
     .then(res => dispatch(accountSuccess(res.data)))

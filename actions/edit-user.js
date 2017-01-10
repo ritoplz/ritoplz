@@ -2,46 +2,43 @@
 
 import axios from 'axios'
 
-import {
-  EDIT_USER_REQUEST,
-  EDIT_USER_SUCCESS,
-  EDIT_USER_ERROR
-} from './../constants'
+import * as types from './../constants'
 
 function editUser () {
   return {
-    type: EDIT_USER_REQUEST
+    type: types.EDIT_USER_REQUEST
   }
 }
 
 function editUserSuccess (data) {
   return {
-    type: EDIT_USER_SUCCESS,
+    type: types.EDIT_USER_SUCCESS,
     data
   }
 }
 
 function editUserError (data) {
   return {
-    type: EDIT_USER_ERROR,
+    type: types.EDIT_USER_ERROR,
     data
   }
 }
 
-function handleEditUser (token, user) {
+function handleEditUser (user) {
   return dispatch => {
+    const localStorageRef = localStorage.getItem('token')
     dispatch(editUser())
     return axios({
       method: 'put',
-      url: 'https://staging.ritoplz.com/account',
+      url: 'http://localhost:3001/account',
       data: user,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': token
+        'Authorization': localStorageRef
       }
     })
     .then(res => dispatch(editUserSuccess(res.data)))
-    .catch(err => dispatch(editUserError(err)))
+    .catch(err => dispatch(editUserError(err.data)))
   }
 }
 
