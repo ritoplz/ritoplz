@@ -127,7 +127,7 @@ export default (props) => {
       <h4 className={style(styles.position)}>{props.position}.</h4>
 
       <figure className={style(styles.image)}>
-        <img className={style(styles.avatar)} src={`http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/${profileIconId}.png`} alt="" />
+        <img className={style(styles.avatar)} src={`https://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/${profileIconId}.png`} alt="" />
       </figure>
 
       <div className={style(styles.rankingInfo)}>
