@@ -69,7 +69,7 @@ class EmptyState extends Component {
   render () {
     return (
       <section className={style(styles.base)}>
-        <h2 className={style(styles.title)}>You don't have any Summoner yet</h2>
+        <h2 className={style(styles.title)}>You dont have any Summoner yet</h2>
         <h3 className={style(styles.subtitle)}>To join the Ritoplz Ranking you must add your summoner</h3>
 
         <button className={style(styles.btn)} onClick={this.handleModal}>Add summoner</button>

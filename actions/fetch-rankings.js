@@ -2,43 +2,35 @@
 
 import axios from 'axios'
 
-import {
-  RANKINGS_REQUEST,
-  RANKINGS_SUCCESS,
-  RANKINGS_ERROR
-} from './../constants'
+import * as types from './../constants'
 
 function rankingsRequest() {
   return {
-    type: RANKINGS_REQUEST
+    type: types.RANKINGS_REQUEST
   }
 }
 
 function rankingsSuccess(data) {
   return {
-    type: RANKINGS_SUCCESS,
+    type: types.RANKINGS_SUCCESS,
     data
   }
 }
 
-function rankingsError(err) {
+function rankingsError(data) {
   return {
-    type: RANKINGS_ERROR,
-    err
+    type: types.RANKINGS_ERROR,
+    data
   }
 }
 
-function fetchRankings(params = { country: 'BR', state: undefined, city: undefined, limit: 100 }) {
+function fetchRankings() {
   return dispatch => {
     dispatch(rankingsRequest())
 
-    return axios({
-      url: 'https://staging.ritoplz.com/rankings',
+    return axios.get('http://localhost:3001/rankings', {
       params: {
-        country: params.country,
-        state: params.state,
-        city: params.city,
-        limit: params.limit
+        country: 'BR'
       }
     })
     .then(({ data }) => dispatch(rankingsSuccess(data)))
