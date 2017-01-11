@@ -10,9 +10,9 @@ import { connect } from 'react-redux'
 import Alert from 'react-s-alert'
 
 import fetchAccount from '../actions/fetch-account'
+import { countries, locations } from '../services/places'
 import editUser from './../actions/edit-user'
 import { getToken } from './../services/auth'
-import { countries, locations } from '../services/places'
 
 const styles = {
   formInput: {
@@ -93,7 +93,7 @@ class ModalAddLocation extends Component {
       cityList: null,
       country: null,
       state: null,
-      city: null,
+      city: null
     }
   }
 

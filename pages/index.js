@@ -50,7 +50,6 @@ const styles = {
     lineHeight: '2.5rem',
     marginTop: '10px',
     fontWeight: '400',
-    marginBottom: '15px',
     marginBottom: '70px'
   },
 
@@ -113,9 +112,9 @@ export default () => {
   return (
     <Provider store={store}>
       <div>
-        <Meta />
+        <Meta/>
 
-        <Header items={items} />
+        <Header items={items}/>
 
         <main className={style(styles.cover)}>
           <div className={style(styles.row)}>
@@ -134,9 +133,9 @@ export default () => {
           </div>
         </main>
 
-        <TopPlayers />
+        <TopPlayers/>
 
-        <Footer />
+        <Footer/>
       </div>
     </Provider>
   )

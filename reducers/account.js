@@ -1,6 +1,10 @@
 'use strict'
 
-import * as types from './../constants'
+import {
+  ACCOUNT_REQUEST,
+  ACCOUNT_SUCCESS,
+  ACCOUNT_ERROR
+} from './../constants'
 
 const initialState = {
   requesting: false,
@@ -10,14 +14,14 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
-  switch(action.type) {
-    case types.ACCOUNT_REQUEST:
+  switch (action.type) {
+    case ACCOUNT_REQUEST:
       return {
         ...state,
         requesting: true
       }
 
-    case types.ACCOUNT_SUCCESS:
+    case ACCOUNT_SUCCESS:
       return {
         ...state,
         requesting: false,
@@ -25,7 +29,7 @@ export default (state = initialState, action) => {
         data: action.data
       }
 
-    case types.ACCOUNT_ERROR:
+    case ACCOUNT_ERROR:
       return {
         ...state,
         requesting: false,

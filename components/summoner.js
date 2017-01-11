@@ -66,7 +66,6 @@ const styles = {
 
   confirm: {
     width: '100%',
-    border: '1px solid #F3F5FB',
     backgroundColor: 'transparent',
     padding: '20px',
     fontSize: '1rem',

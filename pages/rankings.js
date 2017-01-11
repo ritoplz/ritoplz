@@ -5,11 +5,10 @@ import { style } from 'next/css'
 import { Provider } from 'react-redux'
 
 import Meta from '../components/meta'
-import Header from './../components/header'
-import RankingUser from './../components/ranking-user'
-import RankingsList from './../containers/rankings-list'
-import configureStore from '../store/configureStore'
 import Footer from '../components/footer'
+import configureStore from '../store/configureStore'
+import Header from './../components/header'
+import RankingsList from './../containers/rankings-list'
 import { isLogged } from './../services/auth'
 
 const store = configureStore()
@@ -48,15 +47,15 @@ class Rankings extends Component {
     return (
       <Provider store={store}>
         <div>
-          <Meta />
+          <Meta/>
 
-          <Header items={items} />
+          <Header items={items}/>
 
           <section className={style(styles.row)}>
-            <RankingsList />
+            <RankingsList/>
           </section>
 
-          <Footer />
+          <Footer/>
         </div>
       </Provider>
     )

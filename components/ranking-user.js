@@ -117,7 +117,7 @@ const styles = {
   }
 }
 
-export default (props) => {
+export default props => {
   const { data: { username, name, rankedSolo, profileIconId } } = props
   const tier = rankedSolo.tier
   const flag = getTier(tier).flag.small
@@ -127,7 +127,7 @@ export default (props) => {
       <h4 className={style(styles.position)}>{props.position}.</h4>
 
       <figure className={style(styles.image)}>
-        <img className={style(styles.avatar)} src={`https://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/${profileIconId}.png`} alt="" />
+        <img className={style(styles.avatar)} src={`https://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/${profileIconId}.png`} alt=""/>
       </figure>
 
       <div className={style(styles.rankingInfo)}>
@@ -138,11 +138,11 @@ export default (props) => {
       <div className={style(styles.tierInfo)}>
         <h4 className={style(styles.tier)}>{rankedSolo.tier} {rankedSolo.division}</h4>
         <span className={style(styles.lp)}>LP {rankedSolo.lp} / 100</span>
-        <Line percent={rankedSolo.lp} strokeWidth="1.5" strokeColor="#52bdab" trailWidth="1.5" trailColor="#eee" />
+        <Line percent={rankedSolo.lp} strokeWidth="1.5" strokeColor="#52bdab" trailWidth="1.5" trailColor="#eee"/>
       </div>
 
       <span className={style(styles.flag)}>
-        <img className={style(styles.flagImage)} src={flag} alt="" />
+        <img className={style(styles.flagImage)} src={flag} alt=""/>
       </span>
     </li>
   )

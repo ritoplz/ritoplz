@@ -14,7 +14,7 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case SIGNUP_REQUEST:
       return Object.assign({}, state, {
         requesting: true

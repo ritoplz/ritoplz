@@ -11,7 +11,7 @@ const styles = {
 
     '@media (max-width: 750px)': {
       paddingTop: '30px',
-      paddingBottom: '30px',
+      paddingBottom: '30px'
     }
   },
 
@@ -60,7 +60,6 @@ const styles = {
     textDecoration: 'none',
     fontSize: '12px',
     transition: 'all .2s ease',
-    textDecoration: 'none',
 
     ':hover': {
       color: '#ccc'
@@ -68,7 +67,7 @@ const styles = {
   }
 }
 
-export default props => {
+export default () => {
   return (
     <footer className={style(styles.footer)}>
       <div className={style(styles.row)}>
