@@ -71,7 +71,7 @@ const styles = {
   }
 }
 
-const Terms = props => {
+const Terms = () => {
   let items
 
   if (isLogged()) {

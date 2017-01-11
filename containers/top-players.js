@@ -53,7 +53,7 @@ const styles = {
     marginLeft: 'auto',
     marginRight: 'auto',
     marginTop: '30px'
-  },
+  }
 }
 
 class TopPlayers extends Component {
@@ -81,16 +81,16 @@ class TopPlayers extends Component {
   render () {
     let rankingList
 
-    if(this.state.fetched) {
+    if (this.state.fetched) {
       rankingList = (
         <ul className={style(styles.topPlayersList)}>
-          {this.state.summoners.map((summoner, i) => {
-            return <TopPlayer data={summoner} key={summoner._id} />
+          {this.state.summoners.map(summoner => {
+            return <TopPlayer data={summoner} key={summoner._id}/>
           })}
         </ul>
       )
     } else {
-      rankingList = <Loading />
+      rankingList = <Loading/>
     }
 
     return (
