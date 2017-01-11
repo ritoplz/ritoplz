@@ -1,6 +1,10 @@
 'use strict'
 
-import * as types from './../constants'
+import {
+  RANKINGS_REQUEST,
+  RANKINGS_SUCCESS,
+  RANKINGS_ERROR
+} from './../constants'
 
 const initialState = {
   requesting: false,
@@ -10,14 +14,14 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
-  switch(action.type) {
-    case types.RANKINGS_REQUEST:
+  switch (action.type) {
+    case RANKINGS_REQUEST:
       return {
         ...state,
         requesting: true
       }
 
-    case types.RANKINGS_SUCCESS:
+    case RANKINGS_SUCCESS:
       return {
         ...state,
         requesting: false,
@@ -25,7 +29,7 @@ export default (state = initialState, action) => {
         data: action.data
       }
 
-    case types.RANKINGS_ERROR:
+    case RANKINGS_ERROR:
       return {
         ...state,
         requesting: false,

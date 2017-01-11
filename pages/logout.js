@@ -15,7 +15,7 @@ const styles = {
   }
 }
 
-export default (props) => {
+export default props => {
   logout()
 
   if (!isLogged()) {

@@ -41,7 +41,7 @@ function handleConfirmSummoner (summoner) {
       data,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': token
+        Authorization: token
       }
     })
     .then(res => dispatch(confirmSummonerSuccess(res.data.confirmed)))

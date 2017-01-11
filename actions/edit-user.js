@@ -37,7 +37,7 @@ function handleEditUser (token, user) {
       data: user,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': token
+        Authorization: token
       }
     })
     .then(res => dispatch(editUserSuccess(res.data)))

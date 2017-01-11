@@ -17,7 +17,7 @@ const styles = {
   title: {
     color: '#333',
     marginBottom: '50px',
-    fontWeight: 400,
+    fontWeight: 400
   },
 
   btn: {
@@ -36,7 +36,6 @@ const styles = {
   row: {
     marginLeft: '-15px',
     marginRight: '-15px',
-    display: 'flex',
     display: 'flex',
     flexFlow: 'row wrap',
     alignItems: 'center',

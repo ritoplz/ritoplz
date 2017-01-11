@@ -29,10 +29,10 @@ const styles = {
   link: {
     color: '#333',
     textDecoration: 'none',
-    lineHeight: '70px',
+    lineHeight: '70px'
   },
 
-  nav : {
+  nav: {
     lineHeight: '70px',
     float: 'right'
   },

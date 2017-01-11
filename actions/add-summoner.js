@@ -37,7 +37,7 @@ function handleAddSummoner (token, summoner) {
       data: summoner,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': token
+        Authorization: token
       }
     })
     .then(res => dispatch(addSummonerSuccess(res.data)))
