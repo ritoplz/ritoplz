@@ -64,7 +64,10 @@ class MySummoners extends Component {
   }
 
   handleModal () {
-    this.setState({modalAddSummoner: !this.state.modalAddSummoner})
+    this.setState({
+      modalAddSummoner: !this.state.modalAddSummoner,
+      modalTutorial: false
+    })
   }
 
   render () {
