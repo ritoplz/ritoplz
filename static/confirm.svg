@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="520px" height="186px" viewBox="0 0 520 186" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>Tablet Portrait</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="-12.7093012%" y1="16.7547385%" x2="121.376839%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#52BDAB" offset="0%"></stop>
+            <stop stop-color="#6BB6D6" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Tablet-Portrait">
+            <g id="Group-4" transform="translate(107.000000, 77.000000)">
+                <rect id="Rectangle-5" fill="url(#linearGradient-1)" x="0" y="0" width="306" height="50" rx="5"></rect>
+                <text id="Confirm-summoner" font-family="SourceSansPro-Semibold, Source Sans Pro" font-size="18" font-weight="500" fill="#FFFFFF">
+                    <tspan x="77.877" y="31">Confirm summoner</tspan>
+                </text>
+            </g>
+            <g id="Group-5" transform="translate(19.000000, 21.000000)" stroke-width="4">
+                <polyline id="Path-2" stroke="#59BCB5" stroke-linecap="round" stroke-linejoin="round" points="56 0 67 8 58 16 69 22 63 32"></polyline>
+                <circle id="Oval" stroke="#D14775" cx="7.5" cy="59.5" r="7.5"></circle>
+                <polygon id="Triangle" stroke="#59BCB5" stroke-linecap="round" stroke-linejoin="round" transform="translate(48.000000, 131.181818) rotate(-14.000000) translate(-48.000000, -131.181818) " points="48 123 58 139.363636 38 139.363636"></polygon>
+            </g>
+            <g id="Group-6" transform="translate(431.000000, 14.000000)" stroke-width="4">
+                <polyline id="Path-2" stroke="#59BCB5" stroke-linecap="round" stroke-linejoin="round" transform="translate(40.500000, 129.000000) scale(-1, 1) translate(-40.500000, -129.000000) " points="34 113 45 121 36 129 47 135 41 145"></polyline>
+                <circle id="Oval" stroke="#59BCB5" cx="7.5" cy="7.5" r="7.5"></circle>
+                <polygon id="Triangle" stroke="#D14775" stroke-linecap="round" stroke-linejoin="round" transform="translate(48.682318, 55.358002) rotate(36.000000) translate(-48.682318, -55.358002) " points="48.6823182 47.176184 58.6823182 63.5398204 38.6823182 63.5398204"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>
