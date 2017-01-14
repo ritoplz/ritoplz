@@ -37,7 +37,7 @@ function handleConfirmSummoner (summoner) {
     dispatch(confirmSummonerRequest())
     return axios({
       method: 'post',
-      url: 'https://staging.ritoplz.com/summoner/confirm',
+      url: 'http://localhost:3001/summoner/confirm',
       data,
       headers: {
         'Content-Type': 'application/json',
