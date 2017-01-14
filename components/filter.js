@@ -3,11 +3,10 @@
 import React, { Component } from 'react'
 import Select from 'react-select'
 import { style } from 'next/css'
-import { connect } from 'react-redux'
 import Alert from 'react-s-alert'
 
-import { RANKINGS_ERROR } from './../constants'
 import { countries, locations } from '../services/places'
+import { RANKINGS_ERROR } from './../constants'
 
 const styles = {
   filter: {
@@ -31,7 +30,7 @@ class Filter extends Component {
       cityList: null,
       country: null,
       state: null,
-      city: null,
+      city: null
     }
 
     this.handleCountry = this.handleCountry.bind(this)

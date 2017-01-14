@@ -6,7 +6,6 @@ import { style } from 'next/css'
 import { connect } from 'react-redux'
 
 import fetchRankings from '../actions/fetch-rankings'
-import Header from './../components/header'
 import RankingUser from './../components/ranking-user'
 import Filter from './../components/filter'
 import Loading from './../components/loading'
@@ -33,7 +32,7 @@ class RankingsList extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchRankings().then(res => {
+    this.props.fetchRankings().then(() => {
       this.setState({fetched: true})
     })
   }
@@ -45,7 +44,7 @@ class RankingsList extends Component {
   render () {
     let rankingList
 
-    if(this.state.fetched) {
+    if (this.state.fetched) {
       rankingList = (
         <div>
           <Filter fetchRankings={this.props.fetchRankings} summoners={this.state.summoners}/>
@@ -58,7 +57,7 @@ class RankingsList extends Component {
         </div>
       )
     } else {
-      rankingList = <Loading />
+      rankingList = <Loading/>
     }
 
     return (

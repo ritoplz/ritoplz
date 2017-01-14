@@ -10,11 +10,11 @@ describe('login reducer', () => {
     expect(
       reducer(undefined, {})
     ).toEqual({
-        requesting: false,
-        requested: false,
-        data: {},
-        error: null
-      })
+      requesting: false,
+      requested: false,
+      data: {},
+      error: null
+    })
   })
 
   it('should handle LOGIN_REQUEST', () => {

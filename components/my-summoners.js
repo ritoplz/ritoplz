@@ -6,6 +6,7 @@ import summonerCover from 'ritoplz-summoner'
 
 import Summoner from './summoner'
 import ModalAddSummoner from './modal-add-summoner'
+import ModalTutorial from './modal-tutorial'
 
 const styles = {
   header: {
@@ -17,7 +18,7 @@ const styles = {
   title: {
     color: '#333',
     marginBottom: '50px',
-    fontWeight: 400,
+    fontWeight: 400
   },
 
   btn: {
@@ -37,7 +38,6 @@ const styles = {
     marginLeft: '-15px',
     marginRight: '-15px',
     display: 'flex',
-    display: 'flex',
     flexFlow: 'row wrap',
     alignItems: 'center',
     justifyContent: 'space-between'
@@ -49,14 +49,25 @@ class MySummoners extends Component {
     super()
 
     this.handleModal = this.handleModal.bind(this)
+    this.openTutorial = this.openTutorial.bind(this)
 
     this.state = {
-      modalAddSummoner: false
+      modalAddSummoner: false,
+      modalTutorial: false
     }
   }
 
+  openTutorial () {
+    this.setState({
+      modalTutorial: true
+    })
+  }
+
   handleModal () {
-    this.setState({modalAddSummoner: !this.state.modalAddSummoner})
+    this.setState({
+      modalAddSummoner: !this.state.modalAddSummoner,
+      modalTutorial: false
+    })
   }
 
   render () {
@@ -75,7 +86,8 @@ class MySummoners extends Component {
           })}
         </div>
 
-        <ModalAddSummoner open={this.state.modalAddSummoner}/>
+        <ModalAddSummoner open={this.state.modalAddSummoner} tutorial={this.openTutorial}/>
+        <ModalTutorial open={this.state.modalTutorial}/>
       </section>
     )
   }

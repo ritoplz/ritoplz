@@ -34,7 +34,7 @@ function fetchAccount(token) {
     return axios.get('https://api.ritoplz.com/account', {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': token
+        Authorization: token
       }
     })
     .then(res => dispatch(accountSuccess(res.data)))

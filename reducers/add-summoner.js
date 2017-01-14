@@ -1,6 +1,10 @@
 'use strict'
 
-import * as types from './../constants'
+import {
+  ADD_SUMMONER_REQUEST,
+  ADD_SUMMONER_SUCCESS,
+  ADD_SUMMONER_ERROR
+} from './../constants'
 
 const initialState = {
   requesting: false,
@@ -10,14 +14,14 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
-  switch(action.type) {
-    case types.ADD_SUMMONER_REQUEST:
+  switch (action.type) {
+    case ADD_SUMMONER_REQUEST:
       return {
         ...state,
         requesting: true
       }
 
-    case types.ADD_SUMMONER_SUCCESS:
+    case ADD_SUMMONER_SUCCESS:
       return {
         ...state,
         requesting: false,
@@ -25,7 +29,7 @@ export default (state = initialState, action) => {
         data: action.data
       }
 
-    case types.ADD_SUMMONER_ERROR:
+    case ADD_SUMMONER_ERROR:
       return {
         ...state,
         requesting: false,

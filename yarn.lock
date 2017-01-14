@@ -1403,6 +1403,10 @@ camelcase@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-3.0.0.tgz#32fc4b9fcdaf845fcdf7e73bb97cac2261f0ab0a"
 
+can-use-dom@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/can-use-dom/-/can-use-dom-0.1.0.tgz#22cc4a34a0abc43950f42c6411024a3f6366b45a"
+
 capture-stack-trace@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/capture-stack-trace/-/capture-stack-trace-1.0.0.tgz#4a6fa07399c26bba47f0b2496b4d0fb408c5550d"
@@ -1474,7 +1478,7 @@ circular-json@^0.3.0:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/circular-json/-/circular-json-0.3.1.tgz#be8b36aefccde8b3ca7aa2d6afc07a37242c0d2d"
 
-classnames@^2.2.4:
+classnames@^2.2.4, classnames@^2.2.5:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.5.tgz#fb3801d453467649ef3603c7d61a02bd129bde6d"
 
@@ -1895,6 +1899,10 @@ enhanced-resolve@~0.9.0:
     graceful-fs "^4.1.2"
     memory-fs "^0.2.0"
     tapable "^0.1.8"
+
+enquire.js@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/enquire.js/-/enquire.js-2.1.1.tgz#56ba08cb7c896839eda0c00e9fb0d40339e91c3f"
 
 errno@^0.1.3, "errno@>=0.1.1 <0.2.0-0":
   version "0.1.4"
@@ -3308,6 +3316,10 @@ jodid25519@^1.0.0:
   dependencies:
     jsbn "~0.1.0"
 
+jquery@>=1.7.2:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.1.1.tgz#347c1c21c7e004115e0a4da32cece041fad3c8a3"
+
 js-tokens@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-2.0.0.tgz#79903f5563ee778cc1162e6dcf1a0027c97f9cb5"
@@ -3377,6 +3389,12 @@ json-stable-stringify@^1.0.0, json-stable-stringify@^1.0.1:
 json-stringify-safe@^5.0.1, json-stringify-safe@~5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
+
+json2mq@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/json2mq/-/json2mq-0.2.0.tgz#b637bd3ba9eabe122c83e9720483aeb10d2c904a"
+  dependencies:
+    string-convert "^0.2.0"
 
 json5@^0.5.0:
   version "0.5.0"
@@ -4553,6 +4571,14 @@ react-redux@^4.4.5:
     lodash "^4.2.0"
     loose-envify "^1.1.0"
 
+react-responsive-mixin@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/react-responsive-mixin/-/react-responsive-mixin-0.4.0.tgz#9504218a17d49346d9a09a1f5945f629afdb624b"
+  dependencies:
+    can-use-dom "^0.1.0"
+    enquire.js "^2.1.1"
+    json2mq "^0.2.0"
+
 react-s-alert:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/react-s-alert/-/react-s-alert-1.2.2.tgz#3a2e8521fdff68622c397a42c49e1885e71b346e"
@@ -4565,6 +4591,16 @@ react-select@^1.0.0-rc.2:
   dependencies:
     classnames "^2.2.4"
     react-input-autosize "^1.1.0"
+
+react-slick:
+  version "0.14.5"
+  resolved "https://registry.yarnpkg.com/react-slick/-/react-slick-0.14.5.tgz#29e2e2d73653a786ac38de379c6e6f27ffa0b029"
+  dependencies:
+    classnames "^2.2.5"
+    json2mq "^0.2.0"
+    object-assign "^4.1.0"
+    react-responsive-mixin "^0.4.0"
+    slick-carousel "^1.6.0"
 
 react@^15.3.2:
   version "15.3.2"
@@ -5044,6 +5080,12 @@ slice-ansi@0.0.4:
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/slice-ansi/-/slice-ansi-0.0.4.tgz#edbf8903f66f7ce2f8eafd6ceed65e264c831b35"
 
+slick-carousel, slick-carousel@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/slick-carousel/-/slick-carousel-1.6.0.tgz#780f378e470f4e6f6bec1aa2bae0475f4f9eb085"
+  dependencies:
+    jquery ">=1.7.2"
+
 slide@^1.1.5:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/slide/-/slide-1.1.6.tgz#56eb027d65b4d2dce6cb2e2d32c4d4afc9e1d707"
@@ -5145,6 +5187,10 @@ stream-consume@^0.1.0:
 string_decoder@~0.10.25, string_decoder@~0.10.x:
   version "0.10.31"
   resolved "https://registry.yarnpkg.com/string_decoder/-/string_decoder-0.10.31.tgz#62e203bc41766c6c28c9fc84301dab1c5310fa94"
+
+string-convert@^0.2.0:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/string-convert/-/string-convert-0.2.1.tgz#6982cc3049fbb4cd85f8b24568b9d9bf39eeff97"
 
 string-width@^1.0.1, string-width@^1.0.2:
   version "1.0.2"
