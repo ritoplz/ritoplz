@@ -14,6 +14,7 @@ import Intro from './../components/intro'
 import MySummoners from './../components/my-summoners'
 import Loading from './../components/loading'
 import { getToken } from './../services/auth'
+import ModalTutorial from './../components/modal-tutorial'
 
 class ProfileContent extends Component {
   constructor () {
@@ -22,6 +23,7 @@ class ProfileContent extends Component {
     this.handleConfirmSummoner = this.handleConfirmSummoner.bind(this)
 
     this.state = {
+      modalTutorial: false,
       profile: {
         requested: false,
         requesting: false
@@ -49,6 +51,7 @@ class ProfileContent extends Component {
           this.props.fetchAccount(token)
         } else {
           Alert.error('Summoner not confirmed yet.', {position: 'bottom-right'})
+          this.setState({modalTutorial: true})
         }
       })
   }
@@ -75,6 +78,7 @@ class ProfileContent extends Component {
         {profile}
         {summoners}
         <Alert effect="jelly" stack={{limit: 3}}/>
+        <ModalTutorial open={this.state.modalTutorial}/>
       </div>
     )
   }
