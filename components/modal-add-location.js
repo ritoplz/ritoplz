@@ -112,6 +112,7 @@ class ModalAddLocation extends Component {
     const city = locations[this.state.country].filter(state => state.value === e.value)
     this.setState({
       state: e.label,
+      stateParam: e.value,
       cityList: city[0].cities
     })
   }
@@ -151,7 +152,7 @@ class ModalAddLocation extends Component {
 
           <fieldset className={style(styles.formInput)}>
             <label className={style(styles.label)}>State</label>
-            <Select options={this.state.stateList} value={this.state.state} onChange={this.handleState}/>
+            <Select options={this.state.stateList} value={this.state.stateParam} onChange={this.handleState}/>
           </fieldset>
 
           <fieldset className={style(styles.formInput)}>
