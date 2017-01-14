@@ -85,8 +85,9 @@ class ModalAddSummoner extends Component {
     }
   }
 
-  componentWillReceiveProps({ open }) {
-    this.setState({modalStatus: open})
+  componentWillReceiveProps(props) {
+    console.log(props)
+    this.setState({modalStatus: props.open})
   }
 
   handleCloseModal () {
@@ -102,9 +103,6 @@ class ModalAddSummoner extends Component {
       .then(({ data, type }) => {
         if (type === ADD_SUMMONER_SUCCESS) {
           this.handleCloseModal()
-          if (!tutorialStatus()) {
-            this.props.tutorial()
-          }
           this.props.fetchAccount(token)
         }
 
