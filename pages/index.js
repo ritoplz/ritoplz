@@ -86,6 +86,66 @@ const styles = {
     '@media (max-width: 750px)': {
       display: 'none'
     }
+  },
+
+  tier: {
+    paddingBottom: '100px',
+  },
+
+  tierTitle: {
+    textAlign: 'center',
+    fontSize: '3rem',
+    color: '#333'
+  },
+
+  tierSubtitle: {
+    textAlign: 'center',
+    fontSize: '1.5rem',
+    color: '#999',
+    fontWeight: '300',
+    marginTop: '20px',
+    marginBottom: '75px'
+  },
+
+  tierDrop: {
+    background: 'url(static/tierdrop.png) center center',
+    backgroundSize: 'cover',
+    minHeight: '700px'
+  },
+
+  tierList: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    maxWidth: '100%',
+    overflowX: 'auto',
+    marginTop: '100px'
+  },
+
+  tierItem: {
+    textAlign: 'center'
+  },
+
+  tierItemTitle: {
+    fontWeight: '400',
+    color: '#ccc',
+    fontSize: '1rem'
+  },
+
+  joinBtn: {
+    textAlign: 'center',
+    marginRop: '150px',
+    display: 'block',
+    backgroundColor: 'red',
+    padding: '18px 20px',
+    fontSize: '1.25rem',
+    borderRadius: '4px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    width: '100%',
+    maxWidth: '400px',
+    background: 'linear-gradient(to right, #52bdab 0%,#6BB6D6 100%)',
+    marginTop: '100px',
+    color: '#fff'
   }
 }
 
@@ -134,6 +194,56 @@ export default () => {
         </main>
 
         <TopPlayers/>
+
+        <section className={style(styles.tier)}>
+          <h2 className={style(styles.tierTitle)}>Compete with players of your region</h2>
+          <h3 className={style(styles.tierSubtitle)}>Rankings per regions, per champion, per elo, per victory streak.</h3>
+
+          <div className={style(styles.tierDrop)}></div>
+
+          <div className={style(styles.row)}>
+            <Link href="/signup">
+              <span className={style(styles.joinBtn)}>Join Ritoplz</span>
+            </Link>
+
+            <ul className={style(styles.tierList)}>
+              <li className={style(styles.tierItem)}>
+                <img src="https://ritoplz-tier.now.sh/bronze_small.png" alt=""/>
+                <h3 className={style(styles.tierItemTitle)}>Bronze</h3>
+              </li>
+
+              <li className={style(styles.tierItem)}>
+                <img src="https://ritoplz-tier.now.sh/silver_small.png" alt=""/>
+                <h3 className={style(styles.tierItemTitle)}>Silver</h3>
+              </li>
+
+              <li className={style(styles.tierItem)}>
+                <img src="https://ritoplz-tier.now.sh/gold_small.png" alt=""/>
+                <h3 className={style(styles.tierItemTitle)}>Gold</h3>
+              </li>
+
+              <li className={style(styles.tierItem)}>
+                <img src="https://ritoplz-tier.now.sh/platinum_small.png" alt=""/>
+                <h3 className={style(styles.tierItemTitle)}>Platinum</h3>
+              </li>
+
+              <li className={style(styles.tierItem)}>
+                <img src="https://ritoplz-tier.now.sh/diamond_small.png" alt=""/>
+                <h3 className={style(styles.tierItemTitle)}>Diamond</h3>
+              </li>
+
+              <li className={style(styles.tierItem)}>
+                <img src="https://ritoplz-tier.now.sh/master_small.png" alt=""/>
+                <h3 className={style(styles.tierItemTitle)}>Master</h3>
+              </li>
+
+              <li className={style(styles.tierItem)}>
+                <img src="https://ritoplz-tier.now.sh/challenger_small.png" alt=""/>
+                <h3 className={style(styles.tierItemTitle)}>Challenger</h3>
+              </li>
+            </ul>
+          </div>
+        </section>
 
         <Footer/>
       </div>

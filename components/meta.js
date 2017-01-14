@@ -7,6 +7,7 @@ import { insertRule } from 'next/css'
 export default () => (
   <div>
     <Head>
+      <title>Ritoplz - Worldwide League of Legends Rankings</title>
       <meta name="viewport" content="width=device-width, initial-scale=1"/>
       <meta charSet="utf-8"/>
       <meta name="description" content="The first worldwide League of Legends Rankings. See who’s the best player of your region."/>
@@ -29,6 +30,22 @@ export default () => (
       <link rel="stylesheet" href="/static/stylesheets/vendors/alert/alert.css"/>
       <link rel="stylesheet" href="https://unpkg.com/react-select/dist/react-select.css"/>
       <link rel="stylesheet" href="/static/stylesheets/vendors/react-select/react-select.css"/>
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
+
+      <link rel="apple-touch-icon" sizes="57x57" href="static/apple-icon-57x57.png"/>
+      <link rel="apple-touch-icon" sizes="60x60" href="static/apple-icon-60x60.png"/>
+      <link rel="apple-touch-icon" sizes="72x72" href="static/apple-icon-72x72.png"/>
+      <link rel="apple-touch-icon" sizes="76x76" href="static/apple-icon-76x76.png"/>
+      <link rel="apple-touch-icon" sizes="114x114" href="static/apple-icon-114x114.png"/>
+      <link rel="apple-touch-icon" sizes="120x120" href="static/apple-icon-120x120.png"/>
+      <link rel="apple-touch-icon" sizes="144x144" href="static/apple-icon-144x144.png"/>
+      <link rel="apple-touch-icon" sizes="152x152" href="static/apple-icon-152x152.png"/>
+      <link rel="apple-touch-icon" sizes="180x180" href="static/apple-icon-180x180.png"/>
+      <link rel="icon" type="image/png" sizes="192x192"  href="static/android-icon-192x192.png"/>
+      <link rel="icon" type="image/png" sizes="32x32" href="static/favicon-32x32.png"/>
+      <link rel="icon" type="image/png" sizes="96x96" href="static/favicon-96x96.png"/>
+      <link rel="icon" type="image/png" sizes="16x16" href="static/favicon-16x16.png"/>
     </Head>
   </div>
 )

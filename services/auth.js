@@ -19,3 +19,15 @@ export const isLogged = () => {
 
   return !!token
 }
+
+export const tutorialStatus = () => {
+  return cookie.load('tutorial')
+}
+
+export const toggleTutorial = (checker) => {
+  if (checker) {
+    cookie.save('tutorial', true, {path: '/'})
+  } else {
+    cookie.remove('tutorial', {path: '/'})
+  }
+}
