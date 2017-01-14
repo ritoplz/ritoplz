@@ -9,7 +9,7 @@ import Alert from 'react-s-alert'
 import addSummoner from './../actions/add-summoner'
 import fetchAccount from '../actions/fetch-account'
 import { ADD_SUMMONER_SUCCESS, ADD_SUMMONER_ERROR } from './../constants'
-import { tutorialStatus, getToken } from './../services/auth'
+import { getToken } from './../services/auth'
 
 const styles = {
   formInput: {
@@ -85,8 +85,8 @@ class ModalAddSummoner extends Component {
     }
   }
 
-  componentWillReceiveProps({ open }) {
-    this.setState({modalStatus: open})
+  componentWillReceiveProps(props) {
+    this.setState({modalStatus: props.open})
   }
 
   handleCloseModal () {
@@ -102,9 +102,6 @@ class ModalAddSummoner extends Component {
       .then(({ data, type }) => {
         if (type === ADD_SUMMONER_SUCCESS) {
           this.handleCloseModal()
-          if (!tutorialStatus()) {
-            this.props.tutorial()
-          }
           this.props.fetchAccount(token)
         }
 

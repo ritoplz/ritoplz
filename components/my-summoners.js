@@ -6,7 +6,6 @@ import summonerCover from 'ritoplz-summoner'
 
 import Summoner from './summoner'
 import ModalAddSummoner from './modal-add-summoner'
-import ModalTutorial from './modal-tutorial'
 
 const styles = {
   header: {
@@ -52,8 +51,7 @@ class MySummoners extends Component {
     this.openTutorial = this.openTutorial.bind(this)
 
     this.state = {
-      modalAddSummoner: false,
-      modalTutorial: false
+      modalAddSummoner: false
     }
   }
 
@@ -86,8 +84,7 @@ class MySummoners extends Component {
           })}
         </div>
 
-        <ModalAddSummoner open={this.state.modalAddSummoner} tutorial={this.openTutorial}/>
-        <ModalTutorial open={this.state.modalTutorial}/>
+        <ModalAddSummoner open={this.state.modalAddSummoner}/>
       </section>
     )
   }
