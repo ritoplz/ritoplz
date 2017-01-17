@@ -41,10 +41,7 @@ function fetchRankings(params = { country: 'BR', state: undefined, city: undefin
         limit: params.limit
       }
     })
-    .then(({ data }) => {
-      dispatch(rankingsSuccess(data))
-      console.log(data)
-    })
+    .then(({ data }) => dispatch(rankingsSuccess(data)))
     .catch(err => dispatch(rankingsError(err)))
   }
 }
