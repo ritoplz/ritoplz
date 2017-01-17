@@ -31,7 +31,7 @@ function accountError(data) {
 function fetchAccount(token) {
   return dispatch => {
     dispatch(accountRequest())
-    return axios.get('https://api.ritoplz.com/account', {
+    return axios.get('https://staging.ritoplz.com/account', {
       headers: {
         'Content-Type': 'application/json',
         Authorization: token

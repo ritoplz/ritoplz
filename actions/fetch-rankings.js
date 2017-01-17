@@ -33,7 +33,7 @@ function fetchRankings(params = { country: 'BR', state: undefined, city: undefin
     dispatch(rankingsRequest())
 
     return axios({
-      url: 'https://api.ritoplz.com/rankings',
+      url: 'https://staging.ritoplz.com/rankings',
       params: {
         country: params.country,
         state: params.state,
