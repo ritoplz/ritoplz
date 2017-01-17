@@ -13,7 +13,6 @@ import EmptyState from './../components/empty-state'
 import Intro from './../components/intro'
 import MySummoners from './../components/my-summoners'
 import Loading from './../components/loading'
-import { getToken } from './../services/auth'
 import ModalTutorial from './../components/modal-tutorial'
 
 class ProfileContent extends Component {
@@ -32,9 +31,7 @@ class ProfileContent extends Component {
   }
 
   componentDidMount () {
-    const token = getToken()
-
-    this.props.fetchAccount(token)
+    this.props.fetchAccount()
   }
 
   componentWillReceiveProps(nextProps) {
@@ -45,10 +42,8 @@ class ProfileContent extends Component {
     this.props.confirmSummoner(summoner)
       .then(res => {
         if (res.data) {
-          const token = getToken()
-
           Alert.success('Summoner confirmed!', {position: 'bottom-right'})
-          this.props.fetchAccount(token)
+          this.props.fetchAccount()
         } else {
           Alert.error('Summoner not confirmed yet.', {position: 'bottom-right'})
           this.setState({modalTutorial: true})
@@ -92,7 +87,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchAccount: token => dispatch(fetchAccount(token)),
+    fetchAccount: () => dispatch(fetchAccount()),
     confirmSummoner: summoner => dispatch(confirmSummoner(summoner))
   }
 }
