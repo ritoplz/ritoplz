@@ -1,6 +1,6 @@
 'use strict'
 
-import axios from 'axios'
+import api from '../services/api'
 
 import {
   SIGNUP_REQUEST,
@@ -31,8 +31,8 @@ function signupError (data) {
 function handleSignup (userData) {
   return dispatch => {
     dispatch(signupRequest())
-    return axios.post('https://api.ritoplz.com/signup', userData)
-      .then(({ data }) => dispatch(signupSuccess(data)))
+    return api.post('/signup', userData)
+      .then(res => dispatch(signupSuccess(res)))
       .catch(err => dispatch(signupError(err.response.data)))
   }
 }

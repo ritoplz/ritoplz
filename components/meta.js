@@ -18,7 +18,7 @@ export default () => (
       <meta name="twitter:creator" content="@ritoplzrankings"/>
       <meta name="twitter:title" content="Ritoplz"/>
       <meta name="twitter:description" content="The first worldwide League of Legends Rankings. See who’s the best player of your region."/>
-      <meta property="twitter:image:src" content="static/cover.png"/>
+      <meta property="twitter:image:src" content="https://ritoplz.com/static/cover.png"/>
 
       <meta property="og:url" content="http://ritoplz.com"/>
       <meta property="og:type" content="website"/>
@@ -32,6 +32,8 @@ export default () => (
       <link rel="stylesheet" href="/static/stylesheets/vendors/react-select/react-select.css"/>
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
+      <script src="static/drift.js"></script>
+      <script src="static/analytics.js"></script>
 
       <link rel="apple-touch-icon" sizes="57x57" href="static/apple-icon-57x57.png"/>
       <link rel="apple-touch-icon" sizes="60x60" href="static/apple-icon-60x60.png"/>

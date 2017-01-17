@@ -1,6 +1,6 @@
 'use strict'
 
-import axios from 'axios'
+import api from '../services/api'
 
 import {
   ADD_SUMMONER_REQUEST,
@@ -28,19 +28,15 @@ function addSummonerError (data) {
   }
 }
 
-function handleAddSummoner (token, summoner) {
+function handleAddSummoner (summoner) {
   return dispatch => {
     dispatch(addSummonerRequest())
-    return axios({
+    return api({
       method: 'post',
-      url: 'https://api.ritoplz.com/summoner',
-      data: summoner,
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: token
-      }
+      url: '/summoner',
+      data: summoner
     })
-    .then(res => dispatch(addSummonerSuccess(res.data)))
+    .then(res => dispatch(addSummonerSuccess(res)))
     .catch(err => dispatch(addSummonerError(err.response.data)))
   }
 }

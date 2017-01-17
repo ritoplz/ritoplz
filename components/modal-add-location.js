@@ -12,7 +12,6 @@ import Alert from 'react-s-alert'
 import fetchAccount from '../actions/fetch-account'
 import { countries, locations } from '../services/places'
 import editUser from './../actions/edit-user'
-import { getToken } from './../services/auth'
 
 const styles = {
   formInput: {
@@ -128,16 +127,15 @@ class ModalAddLocation extends Component {
   handleSubmit (e) {
     e.preventDefault()
 
-    const token = getToken()
     const userData = {
       country: this.state.country,
       state: this.state.state,
       city: this.state.city
     }
 
-    this.props.editUser(token, userData).then(() => {
+    this.props.editUser(userData).then(() => {
       this.handleCloseModal()
-      this.props.fetchAccount(token)
+      this.props.fetchAccount()
     })
   }
 
@@ -171,8 +169,8 @@ class ModalAddLocation extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    editUser: (token, user) => dispatch(editUser(token, user)),
-    fetchAccount: token => dispatch(fetchAccount(token))
+    editUser: (user) => dispatch(editUser(user)),
+    fetchAccount: () => dispatch(fetchAccount())
   }
 }
 

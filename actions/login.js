@@ -1,6 +1,6 @@
 'use strict'
 
-import axios from 'axios'
+import api from '../services/api'
 
 import {
   LOGIN_REQUEST,
@@ -31,8 +31,8 @@ function loginError (data) {
 function handleLogin (userData) {
   return dispatch => {
     dispatch(loginRequest())
-    return axios.post('https://api.ritoplz.com/login', userData)
-      .then(({ data }) => dispatch(loginSuccess(data)))
+    return api.post('/login', userData)
+      .then(res => dispatch(loginSuccess(res)))
       .catch(err => dispatch(loginError(err.response.data)))
   }
 }

@@ -1,6 +1,6 @@
 'use strict'
 
-import axios from 'axios'
+import api from '../services/api'
 
 import {
   ACCOUNT_REQUEST,
@@ -28,16 +28,11 @@ function accountError(data) {
   }
 }
 
-function fetchAccount(token) {
+function fetchAccount() {
   return dispatch => {
     dispatch(accountRequest())
-    return axios.get('https://api.ritoplz.com/account', {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: token
-      }
-    })
-    .then(res => dispatch(accountSuccess(res.data)))
+    return api.get('/account')
+    .then(res => dispatch(accountSuccess(res)))
     .catch(err => dispatch(accountError(err)))
   }
 }

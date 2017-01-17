@@ -1,7 +1,6 @@
 'use strict'
 
-import axios from 'axios'
-import { getToken } from '../services/auth'
+import api from '../services/api'
 
 import {
   CONFIRM_SUMMONER_REQUEST,
@@ -31,20 +30,15 @@ function confirmSummonerError (data) {
 
 function handleConfirmSummoner (summoner) {
   const data = {name: summoner}
-  const token = getToken()
 
   return dispatch => {
     dispatch(confirmSummonerRequest())
-    return axios({
+    return api({
       method: 'post',
-      url: 'https://api.ritoplz.com/summoner/confirm',
-      data,
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: token
-      }
+      url: '/summoner/confirm',
+      data
     })
-    .then(res => dispatch(confirmSummonerSuccess(res.data.confirmed)))
+    .then(res => dispatch(confirmSummonerSuccess(res.confirmed)))
     .catch(err => dispatch(confirmSummonerError(err)))
   }
 }

@@ -1,6 +1,6 @@
 'use strict'
 
-import axios from 'axios'
+import api from '../services/api'
 
 import {
   RANKINGS_REQUEST,
@@ -32,8 +32,8 @@ function fetchRankings(params = { country: 'BR', state: undefined, city: undefin
   return dispatch => {
     dispatch(rankingsRequest())
 
-    return axios({
-      url: 'https://api.ritoplz.com/rankings',
+    return api({
+      url: '/rankings',
       params: {
         country: params.country,
         state: params.state,
@@ -41,7 +41,7 @@ function fetchRankings(params = { country: 'BR', state: undefined, city: undefin
         limit: params.limit
       }
     })
-    .then(({ data }) => dispatch(rankingsSuccess(data)))
+    .then(res => dispatch(rankingsSuccess(res)))
     .catch(err => dispatch(rankingsError(err)))
   }
 }
