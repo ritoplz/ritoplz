@@ -66,11 +66,25 @@ const styles = {
     marginBottom: '5px',
     fontSize: '14px',
     fontWeight: '600'
+  },
+
+  location: {
+    fontSize: '.9rem',
+    fontWeight: '400',
+    color: '#999',
+    marginTop: '10px'
+  },
+
+  pin: {
+    width: '10px',
+    marginRight: '5px',
+    verticalAlign: 'middle'
   }
 }
 
 export default props => {
-  const { data: { username, name, rankedSolo, profileIconId } } = props
+  const { data: { username, name, rankedSolo, profileIconId, country, city, state } } = props
+  const location = `${city}, ${state} — ${country}`
 
   return (
     <li className={style(styles.topPlayersItem)}>
@@ -79,6 +93,10 @@ export default props => {
 
         <h3 className={style(styles.topPlayersName)}>{username}</h3>
         <h4 className={style(styles.topPlayersSummoner)}>{name} • W: {rankedSolo.wins} / L: {rankedSolo.losses}</h4>
+        <h4 className={style(styles.location)}>
+          <img className={style(styles.pin)}src="static/location-pin.svg" alt=""/>
+          {location}
+        </h4>
 
         <div className={style(styles.tierInfo)}>
           <h4 className={style(styles.tier)}>{rankedSolo.tier} {rankedSolo.division}</h4>
