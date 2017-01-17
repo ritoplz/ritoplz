@@ -51,8 +51,7 @@ class MySummoners extends Component {
     this.openTutorial = this.openTutorial.bind(this)
 
     this.state = {
-      modalAddSummoner: false,
-      modalTutorial: false
+      modalAddSummoner: false
     }
   }
 
