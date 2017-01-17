@@ -1,6 +1,6 @@
 'use strict'
 
-import axios from 'axios'
+import api from '../services/api'
 
 import {
   EDIT_USER_REQUEST,
@@ -28,19 +28,15 @@ function editUserError (data) {
   }
 }
 
-function handleEditUser (token, user) {
+function handleEditUser (user) {
   return dispatch => {
     dispatch(editUser())
-    return axios({
+    return api({
       method: 'put',
-      url: 'https://staging.ritoplz.com/account',
-      data: user,
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: token
-      }
+      url: '/account',
+      data: user
     })
-    .then(res => dispatch(editUserSuccess(res.data)))
+    .then(res => dispatch(editUserSuccess(res)))
     .catch(err => dispatch(editUserError(err)))
   }
 }
