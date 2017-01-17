@@ -127,6 +127,11 @@ const styles = {
     width: '10px',
     marginRight: '5px',
     verticalAlign: 'middle'
+  },
+  
+  streak: {
+    marginLeft: '10px',
+    position: 'relative'
   }
 }
 
@@ -135,6 +140,7 @@ export default props => {
   const tier = rankedSolo.tier
   const flag = getTier(tier).flag.small
   const location = `${city}, ${state} — ${country}`
+  const streak = rankedSolo.isHotStreak ? '🔥' : ''
 
   return (
     <li className={style(styles.rankingItem)}>
@@ -155,7 +161,11 @@ export default props => {
 
       <div className={style(styles.tierInfo)}>
         <h4 className={style(styles.tier)}>{rankedSolo.tier} {rankedSolo.division}</h4>
-        <span className={style(styles.lp)}>LP {rankedSolo.lp} / 100</span>
+        <span className={style(styles.lp)}>
+          LP {rankedSolo.lp} / 100
+          <span className={style(styles.streak)} title="Hot streak">{streak}</span>
+        </span>
+
         <Line percent={rankedSolo.lp} strokeWidth="1.5" strokeColor="#52bdab" trailWidth="1.5" trailColor="#eee"/>
       </div>
 
