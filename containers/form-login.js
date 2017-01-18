@@ -76,20 +76,19 @@ class FormLogin extends Component {
       password: this.password.value
     }
 
-    this.props.loginRequest(userData).then(({ data, type }) => {
-      const token = data.token
+    this.props.loginRequest(userData)
+      .then(({ data, type }) => {
+        const token = data.token
 
-      if (type === LOGIN_SUCCESS) {
-        setToken(token)
-        this.props.routing.url.replaceTo('/profile')
-      }
+        if (type === LOGIN_SUCCESS) {
+          setToken(token)
+          this.props.routing.url.replaceTo('/profile')
+        }
 
-      if (type === LOGIN_ERROR) {
-        const err = data[0].msg
-
-        Alert.error(err, {position: 'bottom-right'})
-      }
-    })
+        if (type === LOGIN_ERROR) {
+          Alert.error(data, {position: 'top-right'})
+        }
+      })
   }
 
   render() {

@@ -12,6 +12,7 @@ import Alert from 'react-s-alert'
 import fetchAccount from '../actions/fetch-account'
 import { countries, locations } from '../services/places'
 import editUser from './../actions/edit-user'
+import { EDIT_USER_SUCCESS, EDIT_USER_ERROR } from './../constants'
 
 const styles = {
   formInput: {
@@ -133,10 +134,17 @@ class ModalAddLocation extends Component {
       city: this.state.city
     }
 
-    this.props.editUser(userData).then(() => {
-      this.handleCloseModal()
-      this.props.fetchAccount()
-    })
+    this.props.editUser(userData)
+      .then(({ data, type }) => {
+        if (type === EDIT_USER_SUCCESS) {
+          this.handleCloseModal()
+          this.props.fetchAccount()
+        }
+
+        if (type === EDIT_USER_ERROR) {
+          Alert.error(data, {position: 'top-right'})
+        }
+      })
   }
 
   render () {

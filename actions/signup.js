@@ -33,7 +33,7 @@ function handleSignup (userData) {
     dispatch(signupRequest())
     return api.post('/signup', userData)
       .then(res => dispatch(signupSuccess(res)))
-      .catch(err => dispatch(signupError(err.response.data)))
+      .catch(err => dispatch(signupError(err.message)))
   }
 }
 
