@@ -11,7 +11,7 @@ import Loading from './../components/loading'
 
 const styles = {
   row: {
-    maxWidth: '1000px',
+    maxWidth: '900px',
     marginLeft: 'auto',
     marginRight: 'auto',
     position: 'relative',
