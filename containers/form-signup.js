@@ -7,6 +7,7 @@ import Alert from 'react-s-alert'
 
 import signupRequest from '../actions/signup'
 import { SIGNUP_SUCCESS, SIGNUP_ERROR } from './../constants'
+import { setToken } from './../services/auth'
 
 const styles = {
   registerForm: {
@@ -75,15 +76,19 @@ class FormSignup extends Component {
       password: this.password.value
     }
 
-    this.props.signupRequest(data).then(({ data, type }) => {
-      if (type === SIGNUP_SUCCESS) {
-        this.props.routing.url.pushTo('/login')
-      }
+    this.props.signupRequest(data)
+      .then(({ data, type }) => {
+        const token = data.token
 
-      if (type === SIGNUP_ERROR) {
-        Alert.error(data, {position: 'top-right'})
-      }
-    })
+        if (type === SIGNUP_SUCCESS) {
+          setToken(token)
+          this.props.routing.url.pushTo('/login')
+        }
+
+        if (type === SIGNUP_ERROR) {
+          Alert.error(data, {position: 'top-right'})
+        }
+      })
   }
 
   render () {
