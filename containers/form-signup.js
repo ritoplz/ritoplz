@@ -81,9 +81,7 @@ class FormSignup extends Component {
       }
 
       if (type === SIGNUP_ERROR) {
-        const err = data[0].msg
-
-        Alert.error(err, {position: 'bottom-right'})
+        Alert.error(data, {position: 'top-right'})
       }
     })
   }

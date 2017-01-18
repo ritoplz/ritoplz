@@ -33,7 +33,7 @@ function handleLogin (userData) {
     dispatch(loginRequest())
     return api.post('/login', userData)
       .then(res => dispatch(loginSuccess(res)))
-      .catch(err => dispatch(loginError(err.response.data)))
+      .catch(err => dispatch(loginError(err.message)))
   }
 }
 
