@@ -14,7 +14,7 @@ import { isLogged } from './../services/auth'
 
 const styles = {
   row: {
-    maxWidth: '1000px',
+    maxWidth: '900px',
     marginLeft: 'auto',
     marginRight: 'auto',
     position: 'relative',
@@ -80,8 +80,8 @@ const styles = {
 
   card: {
     position: 'absolute',
-    top: '20px',
-    right: '-100px',
+    top: '30px',
+    right: '-135px',
 
     '@media (max-width: 750px)': {
       display: 'none'

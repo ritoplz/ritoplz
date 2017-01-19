@@ -14,6 +14,7 @@ import Intro from './../components/intro'
 import MySummoners from './../components/my-summoners'
 import Loading from './../components/loading'
 import ModalTutorial from './../components/modal-tutorial'
+import { CONFIRM_SUMMONER_SUCCESS, CONFIRM_SUMMONER_ERROR } from './../constants'
 
 class ProfileContent extends Component {
   constructor () {
@@ -40,13 +41,13 @@ class ProfileContent extends Component {
 
   handleConfirmSummoner (summoner) {
     this.props.confirmSummoner(summoner)
-      .then(res => {
-        if (res.data) {
-          Alert.success('Summoner confirmed!', {position: 'bottom-right'})
+      .then(({ data, type }) => {
+        if (data) {
+          Alert.success('Summoner confirmed!', {position: 'top-right'})
           this.props.fetchAccount()
         } else {
-          Alert.error('Summoner not confirmed yet.', {position: 'bottom-right'})
-          this.setState({modalTutorial: true})
+          Alert.error('Summoner not confirmed yet.', {position: 'top-right'})
+          this.setState({ modalTutorial: true })
         }
       })
   }

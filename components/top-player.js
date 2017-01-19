@@ -9,8 +9,8 @@ const styles = {
     backgroundColor: '#fff',
     borderRadius: '10px',
     boxShadow: '0 10px 40px rgba(0, 0, 0, .1)',
-    flexBasis: '28%',
-    marginBottom: '50px',
+    flexBasis: '31%',
+    marginBottom: '30px',
     textAlign: 'center',
 
     '@media (max-width: 750px)': {
@@ -19,7 +19,7 @@ const styles = {
   },
 
   topPlayersCard: {
-    padding: '50px 30px 30px'
+    padding: '50px 20px 30px'
   },
 
   topPlayersAvatar: {
@@ -72,7 +72,8 @@ const styles = {
     fontSize: '.9rem',
     fontWeight: '400',
     color: '#999',
-    marginTop: '10px'
+    marginTop: '10px',
+    lineHeight: '1.25rem'
   },
 
   pin: {

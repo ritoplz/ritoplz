@@ -104,9 +104,7 @@ class ModalAddSummoner extends Component {
         }
 
         if (type === ADD_SUMMONER_ERROR) {
-          const err = data[0].msg
-
-          Alert.error(err, {position: 'bottom-right'})
+          Alert.error(data, {position: 'top-right'})
         }
       })
   }
