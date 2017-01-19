@@ -95,7 +95,7 @@ class FormSignup extends Component {
     return (
       <form className={style(styles.registerForm)} onSubmit={this.handleSignup}>
         <fieldset className={style(styles.formInput)}>
-          <label className={style(styles.label)}>Name</label>
+          <label className={style(styles.label)}>Your name</label>
           <input className={style(styles.input)} type="text" ref={input => this.name = input}/>
         </fieldset>
 
