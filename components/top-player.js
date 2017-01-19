@@ -86,6 +86,14 @@ const styles = {
 export default props => {
   const { data: { username, name, rankedSolo, profileIconId, country, city, state } } = props
   const location = `${city}, ${state} — ${country}`
+  let maxLp
+  let userLp
+  if (rankedSolo.tier === 'CHALLENGER' || rankedSolo.tier === 'MASTER') {
+    userLp = 100
+  } else {
+    userLp = rankedSolo.lp
+    maxLp = (<span>/ 100</span>)
+  }
 
   return (
     <li className={style(styles.topPlayersItem)}>
@@ -101,8 +109,8 @@ export default props => {
 
         <div className={style(styles.tierInfo)}>
           <h4 className={style(styles.tier)}>{rankedSolo.tier} {rankedSolo.division}</h4>
-          <span className={style(styles.lp)}>LP {rankedSolo.lp} / 100</span>
-          <Line percent={rankedSolo.lp} strokeWidth="1.5" strokeColor="#52bdab" trailWidth="1.5" trailColor="#eee"/>
+          <span className={style(styles.lp)}>LP {rankedSolo.lp} { maxLp }</span>
+          <Line percent={userLp} strokeWidth="1.5" strokeColor="#52bdab" trailWidth="1.5" trailColor="#eee"/>
         </div>
       </article>
     </li>

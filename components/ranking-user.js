@@ -142,7 +142,13 @@ export default props => {
   const location = `${city}, ${state} — ${country}`
   const streak = rankedSolo.isHotStreak ? '🔥' : ''
   let maxLp
-  (tier === 'CHALLENGER' || tier === 'MASTER') ? maxLp = (<span></span>) : maxLp = (<span>/ 100</span>)
+  let userLp
+  if (tier === 'CHALLENGER' || tier === 'MASTER') {
+    userLp = 100
+  } else {
+    userLp = rankedSolo.lp
+    maxLp = (<span>/ 100</span>)
+  }
 
   return (
     <li className={style(styles.rankingItem)}>
@@ -168,7 +174,7 @@ export default props => {
           <span className={style(styles.streak)} title="Hot streak">{streak}</span>
         </span>
 
-        <Line percent={rankedSolo.lp} strokeWidth="1.5" strokeColor="#52bdab" trailWidth="1.5" trailColor="#eee"/>
+        <Line percent={userLp} strokeWidth="1.5" strokeColor="#52bdab" trailWidth="1.5" trailColor="#eee"/>
       </div>
 
       <span className={style(styles.flag)}>
