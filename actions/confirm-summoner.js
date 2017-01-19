@@ -39,7 +39,7 @@ function handleConfirmSummoner (summoner) {
       data
     })
     .then(res => dispatch(confirmSummonerSuccess(res.confirmed)))
-    .catch(err => dispatch(confirmSummonerError(err)))
+    .catch(err => dispatch(confirmSummonerError(err.message)))
   }
 }
 

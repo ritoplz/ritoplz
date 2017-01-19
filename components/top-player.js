@@ -9,8 +9,8 @@ const styles = {
     backgroundColor: '#fff',
     borderRadius: '10px',
     boxShadow: '0 10px 40px rgba(0, 0, 0, .1)',
-    flexBasis: '28%',
-    marginBottom: '50px',
+    flexBasis: '31%',
+    marginBottom: '30px',
     textAlign: 'center',
 
     '@media (max-width: 750px)': {
@@ -19,7 +19,7 @@ const styles = {
   },
 
   topPlayersCard: {
-    padding: '50px 30px 30px'
+    padding: '50px 20px 30px'
   },
 
   topPlayersAvatar: {
@@ -72,7 +72,8 @@ const styles = {
     fontSize: '.9rem',
     fontWeight: '400',
     color: '#999',
-    marginTop: '10px'
+    marginTop: '10px',
+    lineHeight: '1.25rem'
   },
 
   pin: {
@@ -85,6 +86,14 @@ const styles = {
 export default props => {
   const { data: { username, name, rankedSolo, profileIconId, country, city, state } } = props
   const location = `${city}, ${state} — ${country}`
+  let maxLp
+  let userLp
+  if (rankedSolo.tier === 'CHALLENGER' || rankedSolo.tier === 'MASTER') {
+    userLp = 100
+  } else {
+    userLp = rankedSolo.lp
+    maxLp = (<span>/ 100</span>)
+  }
 
   return (
     <li className={style(styles.topPlayersItem)}>
@@ -100,8 +109,8 @@ export default props => {
 
         <div className={style(styles.tierInfo)}>
           <h4 className={style(styles.tier)}>{rankedSolo.tier} {rankedSolo.division}</h4>
-          <span className={style(styles.lp)}>LP {rankedSolo.lp} / 100</span>
-          <Line percent={rankedSolo.lp} strokeWidth="1.5" strokeColor="#52bdab" trailWidth="1.5" trailColor="#eee"/>
+          <span className={style(styles.lp)}>LP {rankedSolo.lp} { maxLp }</span>
+          <Line percent={userLp} strokeWidth="1.5" strokeColor="#52bdab" trailWidth="1.5" trailColor="#eee"/>
         </div>
       </article>
     </li>

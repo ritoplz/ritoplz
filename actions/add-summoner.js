@@ -37,7 +37,7 @@ function handleAddSummoner (summoner) {
       data: summoner
     })
     .then(res => dispatch(addSummonerSuccess(res)))
-    .catch(err => dispatch(addSummonerError(err.response.data)))
+    .catch(err => dispatch(addSummonerError(err.message)))
   }
 }
 

@@ -47,9 +47,9 @@ class Filter extends Component {
     const params = {country: e.value}
 
     this.props.fetchRankings(params)
-      .then(res => {
-        if (res.type === RANKINGS_ERROR) {
-          Alert.error('No users found', {position: 'bottom-right'})
+      .then(({ type }) => {
+        if (type === RANKINGS_ERROR) {
+          Alert.error('No users found', {position: 'top-right'})
         }
       })
   }

@@ -8,7 +8,7 @@ import { Line } from 'rc-progress'
 const styles = {
   rankingItem: {
     display: 'flex',
-    minHeight: '85px',
+    minHeight: '100px',
     marginBottom: '20px',
     border: '1px solid #F3F5FB',
     borderRadius: '10px',
@@ -23,7 +23,7 @@ const styles = {
   },
 
   position: {
-    lineHeight: '85px',
+    lineHeight: '100px',
     flexBasis: '5%',
     color: '#333',
 
@@ -37,7 +37,7 @@ const styles = {
 
   image: {
     flexBasis: '10%',
-    marginTop: '18px',
+    marginTop: '24px',
 
     '@media (max-width: 750px)': {
       flexBasis: '100%',
@@ -52,8 +52,8 @@ const styles = {
   },
 
   rankingInfo: {
-    marginTop: '5px',
-    flexBasis: '30%',
+    marginTop: '14px',
+    flexBasis: '35%',
 
     '@media (max-width: 750px)': {
       flexBasis: '100%',
@@ -75,7 +75,7 @@ const styles = {
   },
 
   flag: {
-    flexBasis: '20%',
+    flexBasis: '15%',
     textAlign: 'right',
 
     '@media (max-width: 750px)': {
@@ -86,7 +86,7 @@ const styles = {
   flagImage: {
     width: '70px',
     height: '65px',
-    marginTop: '10px'
+    marginTop: '18px'
   },
 
   tierInfo: {
@@ -102,7 +102,7 @@ const styles = {
 
   tier: {
     color: '#333',
-    marginTop: '26px',
+    marginTop: '34px',
     marginBottom: '-22px',
     fontWeight: '600',
     fontSize: '.9rem'
@@ -128,7 +128,7 @@ const styles = {
     marginRight: '5px',
     verticalAlign: 'middle'
   },
-  
+
   streak: {
     marginLeft: '10px',
     position: 'relative'
@@ -141,6 +141,14 @@ export default props => {
   const flag = getTier(tier).flag.small
   const location = `${city}, ${state} — ${country}`
   const streak = rankedSolo.isHotStreak ? '🔥' : ''
+  let maxLp
+  let userLp
+  if (tier === 'CHALLENGER' || tier === 'MASTER') {
+    userLp = 100
+  } else {
+    userLp = rankedSolo.lp
+    maxLp = (<span>/ 100</span>)
+  }
 
   return (
     <li className={style(styles.rankingItem)}>
@@ -162,11 +170,11 @@ export default props => {
       <div className={style(styles.tierInfo)}>
         <h4 className={style(styles.tier)}>{rankedSolo.tier} {rankedSolo.division}</h4>
         <span className={style(styles.lp)}>
-          LP {rankedSolo.lp} / 100
+          LP {rankedSolo.lp} { maxLp }
           <span className={style(styles.streak)} title="Hot streak">{streak}</span>
         </span>
 
-        <Line percent={rankedSolo.lp} strokeWidth="1.5" strokeColor="#52bdab" trailWidth="1.5" trailColor="#eee"/>
+        <Line percent={userLp} strokeWidth="1.5" strokeColor="#52bdab" trailWidth="1.5" trailColor="#eee"/>
       </div>
 
       <span className={style(styles.flag)}>
