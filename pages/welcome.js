@@ -2,11 +2,10 @@
 
 import React, { Component } from 'react'
 import { style } from 'next/css'
-import Head from 'next/head'
 import { Provider } from 'react-redux'
 
 import Meta from '../components/meta'
-import ProfileContent from '../containers/profile-content'
+import Onboard from '../containers/onboard'
 import configureStore from '../store/configureStore'
 import Header from '../components/header'
 import Footer from '../components/footer'
@@ -24,10 +23,6 @@ const styles = {
       paddingLeft: '20px',
       paddingRight: '20px'
     }
-  },
-
-  notification: {
-    backgroundColor: 'red'
   }
 }
 
@@ -41,14 +36,13 @@ export default class extends Component {
   }
 
   render () {
-    if (!isLogged()) {
-      this.props.url.replaceTo('/login')
-    }
-
     const items = [
-      {name: 'Rankings', link: 'rankings', type: 'item'},
-      {name: 'Logout', link: 'logout', type: 'item'}
+      {name: 'Rankings', link: 'rankings', type: 'item'}
     ]
+
+    if (!isLogged()) {
+      this.props.url.replaceTo('/signup')
+    }
 
     return (
       <Provider store={store}>
@@ -59,7 +53,7 @@ export default class extends Component {
             <Header items={items} />
 
             <div className={style(styles.row)}>
-              <ProfileContent/>
+              <Onboard routing={this.props}/>
             </div>
 
             <Footer />

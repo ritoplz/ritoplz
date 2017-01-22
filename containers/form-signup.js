@@ -82,7 +82,7 @@ class FormSignup extends Component {
 
         if (type === SIGNUP_SUCCESS) {
           setToken(token)
-          this.props.routing.url.pushTo('/login')
+          this.props.routing.url.pushTo('/welcome')
         }
 
         if (type === SIGNUP_ERROR) {

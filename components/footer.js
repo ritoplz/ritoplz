@@ -100,6 +100,12 @@ export default () => {
             </li>
 
             <li className={style(styles.item)}>
+              <Link href="/privacy">
+                <span className={style(styles.link)}>Privacy Policy</span>
+              </Link>
+            </li>
+
+            <li className={style(styles.item)}>
               <a href="mailto:ritoplzteam@gmail.com">
                 <span className={style(styles.link)}>ritoplzteam@gmail.com</span>
               </a>
