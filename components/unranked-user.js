@@ -15,7 +15,11 @@ const styles = {
     paddingRight: '25px',
     textAlign: 'center',
     padding: '15px 25px 30px',
-    flexBasis: '32%'
+    flexBasis: '32%',
+
+    '@media (max-width: 750px)': {
+      flexBasis: '100%'
+    }
   },
 
   image: {
