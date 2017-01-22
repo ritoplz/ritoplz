@@ -3,7 +3,7 @@
 import React, { Component } from 'react'
 import { style } from 'next/css'
 
-import ModalAddLocation from './modal-add-location'
+import ModalAddLocation from './../containers/modal-add-location'
 
 const styles = {
   base: {
