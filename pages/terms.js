@@ -94,7 +94,7 @@ const Terms = () => {
 
       <section className={style(styles.row)}>
         <h1 className={style(styles.title)}>Terms of Services</h1>
-        <h3 className={style(styles.subtitle)}>Last updated: Jan 3, 2016</h3>
+        <h3 className={style(styles.subtitle)}>Last updated: Jan 3, 2017</h3>
 
         <h2 className={style(styles.exhibit)}>1. Acceptance of Terms.</h2>
         <p className={style(styles.text)}>1.1. Ritoplz ("Company" or "we") provides its Service (as defined below) to you through its web site and platform located at <Link href="https://ritoplz.com"><span className={style(styles.linked)}>https://ritoplz.com</span></Link> (the "Site"), subject to this Terms of Service agreement ("TOS"). By accepting this TOS or by accessing or using the Service or Site, you acknowledge that you have read, understood, and agree to be bound by this TOS. If you are entering into this TOS on behalf of a company, business or other legal entity, you represent that you have the authority to bind such entity and its affiliates to this TOS, in which case the terms "you" or "your" shall refer to such entity and its affiliates. If you do not have such authority, or if you do not agree with this TOS, you must not accept this TOS and may not use the Service.</p>

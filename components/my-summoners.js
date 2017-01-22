@@ -5,7 +5,7 @@ import { style } from 'next/css'
 import summonerCover from 'ritoplz-summoner'
 
 import Summoner from './summoner'
-import ModalAddSummoner from './modal-add-summoner'
+import ModalAddSummoner from './../containers/modal-add-summoner'
 
 const styles = {
   header: {

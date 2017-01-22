@@ -2,15 +2,15 @@
 
 import React, { Component } from 'react'
 import { style } from 'next/css'
-import Head from 'next/head'
 import { Provider } from 'react-redux'
 
 import Meta from '../components/meta'
-import ProfileContent from '../containers/profile-content'
+import Onboard from '../containers/onboard'
 import configureStore from '../store/configureStore'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import { isLogged } from './../services/auth'
+import Alert from 'react-s-alert'
 
 const styles = {
   row: {
@@ -24,10 +24,6 @@ const styles = {
       paddingLeft: '20px',
       paddingRight: '20px'
     }
-  },
-
-  notification: {
-    backgroundColor: 'red'
   }
 }
 
@@ -37,18 +33,22 @@ export default class extends Component {
   constructor () {
     super()
 
+    this.throwError = this.throwError.bind(this)
     store.subscribe(() => store.getState())
   }
 
-  render () {
-    if (!isLogged()) {
-      this.props.url.replaceTo('/login')
-    }
+  throwError (message) {
+    Alert.error(message, {position: 'top-right'})
+  }
 
+  render () {
     const items = [
-      {name: 'Rankings', link: 'rankings', type: 'item'},
-      {name: 'Logout', link: 'logout', type: 'item'}
+      {name: 'Rankings', link: 'rankings', type: 'item'}
     ]
+
+    if (!isLogged()) {
+      this.props.url.replaceTo('/signup')
+    }
 
     return (
       <Provider store={store}>
@@ -59,10 +59,12 @@ export default class extends Component {
             <Header items={items} />
 
             <div className={style(styles.row)}>
-              <ProfileContent/>
+              <Onboard routing={this.props} throwError={this.throwError}/>
             </div>
 
             <Footer />
+
+            <Alert effect="jelly" stack={{limit: 3}}/>
           </div>
         </div>
       </Provider>

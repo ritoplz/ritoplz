@@ -25,17 +25,6 @@ const styles = {
     lineHeight: '2rem'
   },
 
-  checkbox: {
-    float: 'left',
-    marginTop: '75px'
-  },
-
-  checkboxLabel: {
-    color: '#999',
-    marginLeft: '10px',
-    verticalAlign: 'middle'
-  },
-
   btn: {
     color: '#52bdab',
     borderRadius: '5px',
@@ -59,7 +48,15 @@ const styles = {
     display: 'inline-block',
     width: '90%',
     marginLeft: 'auto',
-    marginRight: 'auto'
+    marginRight: 'auto',
+
+    '@media (max-width: 750px)': {
+      maxWidth: '100%'
+    }
+  },
+
+  image: {
+    maxWidth: '100%'
   }
 }
 
@@ -127,7 +124,7 @@ class ModalTutorial extends Component {
             <h1 className={style(styles.title)}>Learn how to confirm your summoner</h1>
             <h2 className={style(styles.subtitle)}>To participate on Ritoplz Rankings you must confirm your summoner</h2>
 
-            <img src="static/placeholder.svg" alt=""/>
+            <img className={style(styles.image)} src="static/placeholder.svg" alt=""/>
           </div>
 
           <div>
@@ -149,11 +146,6 @@ class ModalTutorial extends Component {
             <h2 className={style(styles.subtitle)}>After creating your mastery page with the code, you need to confirm your summoner by clicking "confirm summoner" above your summoner card</h2>
 
             <img className={style(styles.slickImage)} src="static/confirm.svg" alt=""/>
-
-            <label className={style(styles.checkbox)}>
-              <input type="checkbox" onChange={this.setCookie} value={this.state.checker}/>
-              <span className={style(styles.checkboxLabel)}>Don't open this anymore</span>
-            </label>
 
             <button className={style(styles.btn)} onClick={this.handleCloseModal}>Done</button>
           </div>

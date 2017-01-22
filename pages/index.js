@@ -156,13 +156,11 @@ export default () => {
   if (isLogged()) {
     items = [
       {name: 'Rankings', link: 'rankings', type: 'item'},
-      {name: 'FAQ', link: 'faq', type: 'item'},
       {name: 'Profile', link: 'profile', type: 'button'}
     ]
   } else {
     items = [
       {name: 'Rankings', link: 'rankings', type: 'item'},
-      {name: 'FAQ', link: 'faq', type: 'item'},
       {name: 'Login', link: 'login', type: 'button'}
     ]
   }
