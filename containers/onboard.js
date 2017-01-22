@@ -7,13 +7,21 @@ import { style } from 'next/css'
 import Slider from 'react-slick'
 import Alert from 'react-s-alert'
 
+import fetchAccount from '../actions/fetch-account'
 import editUser from './../actions/edit-user'
 import addSummoner from './../actions/add-summoner'
 import confirmSummoner from '../actions/confirm-summoner'
 import { countries, locations } from '../services/places'
-import { EDIT_USER_SUCCESS, EDIT_USER_ERROR } from './../constants'
-import { ADD_SUMMONER_SUCCESS, ADD_SUMMONER_ERROR } from './../constants'
-import { CONFIRM_SUMMONER_SUCCESS, CONFIRM_SUMMONER_ERROR } from './../constants'
+import {
+  EDIT_USER_SUCCESS,
+  EDIT_USER_ERROR,
+  ADD_SUMMONER_SUCCESS,
+  ADD_SUMMONER_ERROR,
+  CONFIRM_SUMMONER_SUCCESS,
+  CONFIRM_SUMMONER_ERROR,
+  ACCOUNT_SUCCESS,
+  ACCOUNT_ERROR
+} from './../constants'
 
 const styles = {
   formInput: {
@@ -192,7 +200,7 @@ class Onboard extends Component {
       state: null,
       city: null,
       code: null,
-      summoner: null
+      account: {}
     }
   }
 
@@ -250,10 +258,13 @@ class Onboard extends Component {
       .then(({ data, type }) => {
         if (type === ADD_SUMMONER_SUCCESS) {
           this.nextSlide()
-          this.setState({
-            summoner: summoner.name,
-            code: data.code
-          })
+          this.setState({code: data.code})
+          this.props.fetchAccount()
+            .then(({ data, type }) => {
+              if (type === ACCOUNT_SUCCESS) {
+                this.setState({account: data})
+              }
+            })
         }
 
         if (type === ADD_SUMMONER_ERROR) {
@@ -263,8 +274,8 @@ class Onboard extends Component {
   }
 
   confirmSummoner () {
-    const summoner = this.state.summoner
-    this.props.confirmSummoner(summoner.toLowerCase())
+    const summoner = this.state.account.summoners[0].name
+    this.props.confirmSummoner(summoner)
       .then(({ data, type }) => {
         if (data) {
           Alert.success('Summoner confirmed!', {position: 'top-right'})
@@ -382,6 +393,7 @@ class Onboard extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
+    fetchAccount: () => dispatch(fetchAccount()),
     editUser: (user) => dispatch(editUser(user)),
     addSummoner: summoner => dispatch(addSummoner(summoner)),
     confirmSummoner: summoner => dispatch(confirmSummoner(summoner))
