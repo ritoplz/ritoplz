@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import Select from 'react-select'
 import { style } from 'next/css'
 import Slider from 'react-slick'
-import Alert from 'react-s-alert'
 
 import fetchAccount from '../actions/fetch-account'
 import editUser from './../actions/edit-user'
@@ -246,7 +245,7 @@ class Onboard extends Component {
         }
 
         if (type === EDIT_USER_ERROR) {
-          Alert.error(data, {position: 'top-right'})
+          this.props.throwError(data)
         }
       })
   }
@@ -268,7 +267,7 @@ class Onboard extends Component {
         }
 
         if (type === ADD_SUMMONER_ERROR) {
-          Alert.error(data, {position: 'top-right'})
+          this.props.throwError(data)
         }
       })
   }
@@ -278,10 +277,9 @@ class Onboard extends Component {
     this.props.confirmSummoner(summoner)
       .then(({ data, type }) => {
         if (data) {
-          Alert.success('Summoner confirmed!', {position: 'top-right'})
           this.props.routing.url.pushTo('/profile')
         } else {
-          Alert.error('Summoner not confirmed yet.', {position: 'top-right'})
+          this.props.throwError('Summoner not confirmed yet')
         }
       })
   }
@@ -384,8 +382,6 @@ class Onboard extends Component {
           <button className={style(styles.btnPrev)} onClick={this.previousSlide}>Previous</button>
           <button className={style(styles.btnNext)} onClick={this.confirmSummoner}>Confirm Summoner</button>
         </div>
-
-        <Alert effect="jelly" stack={{limit: 3}}/>
       </Slider>
     )
   }
