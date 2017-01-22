@@ -57,48 +57,6 @@ const styles = {
     color: 'rgba(0, 0, 0, .5)'
   },
 
-  flag: {
-    flexBasis: '15%',
-    textAlign: 'right',
-
-    '@media (max-width: 750px)': {
-      display: 'none'
-    }
-  },
-
-  flagImage: {
-    width: '70px',
-    height: '65px',
-    marginTop: '18px'
-  },
-
-  tierInfo: {
-    flexBasis: '40%',
-    textAlign: 'left',
-
-    '@media (max-width: 750px)': {
-      flexBasis: '100%',
-      order: '4',
-      paddingBottom: '18px'
-    }
-  },
-
-  tier: {
-    color: '#333',
-    marginTop: '34px',
-    marginBottom: '-22px',
-    fontWeight: '600',
-    fontSize: '.9rem'
-  },
-
-  lp: {
-    color: '#333',
-    float: 'right',
-    marginBottom: '5px',
-    fontSize: '14px',
-    fontWeight: '600'
-  },
-
   location: {
     fontSize: '.9rem',
     fontWeight: '400',
