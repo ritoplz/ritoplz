@@ -6,7 +6,7 @@ import React, {Component} from 'react'
 import { style } from 'next/css'
 import { connect } from 'react-redux'
 
-import ModalAddSummoner from './modal-add-summoner'
+import ModalAddSummoner from './../containers/modal-add-summoner'
 
 const styles = {
   base: {
