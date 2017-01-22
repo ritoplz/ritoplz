@@ -10,6 +10,7 @@ import configureStore from '../store/configureStore'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import { isLogged } from './../services/auth'
+import Alert from 'react-s-alert'
 
 const styles = {
   row: {
@@ -32,7 +33,12 @@ export default class extends Component {
   constructor () {
     super()
 
+    this.throwError = this.throwError.bind(this)
     store.subscribe(() => store.getState())
+  }
+
+  throwError (message) {
+    Alert.error(message, {position: 'top-right'})
   }
 
   render () {
@@ -53,10 +59,12 @@ export default class extends Component {
             <Header items={items} />
 
             <div className={style(styles.row)}>
-              <Onboard routing={this.props}/>
+              <Onboard routing={this.props} throwError={this.throwError}/>
             </div>
 
             <Footer />
+
+            <Alert effect="jelly" stack={{limit: 3}}/>
           </div>
         </div>
       </Provider>
