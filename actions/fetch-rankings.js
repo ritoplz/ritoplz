@@ -28,7 +28,7 @@ function rankingsError(err) {
   }
 }
 
-function fetchRankings(params = { country: 'BR', state: undefined, city: undefined, limit: 100 }) {
+function fetchRankings(params = { country: 'BR', state: undefined, city: undefined }) {
   return dispatch => {
     dispatch(rankingsRequest())
 
@@ -37,8 +37,7 @@ function fetchRankings(params = { country: 'BR', state: undefined, city: undefin
       params: {
         country: params.country,
         state: params.state,
-        city: params.city,
-        limit: params.limit
+        city: params.city
       }
     })
     .then(res => dispatch(rankingsSuccess(res)))
