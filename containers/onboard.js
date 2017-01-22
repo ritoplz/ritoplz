@@ -245,15 +245,13 @@ class Onboard extends Component {
 
   submitSummoner () {
     const summoner = {name: this.summoner.value}
-    console.log('Adding summoner: ', summoner)
 
     this.props.addSummoner(summoner)
       .then(({ data, type }) => {
         if (type === ADD_SUMMONER_SUCCESS) {
           this.nextSlide()
-          console.log('DAta', data)
           this.setState({
-            summoner,
+            summoner: summoner.name,
             code: data.code
           })
         }
@@ -266,12 +264,11 @@ class Onboard extends Component {
 
   confirmSummoner () {
     const summoner = this.state.summoner
-    console.log('Sending summoner to be confirmed: ', summoner)
-    this.props.confirmSummoner(summoner)
+    this.props.confirmSummoner(summoner.toLowerCase())
       .then(({ data, type }) => {
         if (data) {
           Alert.success('Summoner confirmed!', {position: 'top-right'})
-          // this.props.routing.url.pushTo('/profile')
+          this.props.routing.url.pushTo('/profile')
         } else {
           Alert.error('Summoner not confirmed yet.', {position: 'top-right'})
         }
