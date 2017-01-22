@@ -240,8 +240,6 @@ class Onboard extends Component {
 
     this.props.editUser(userData)
       .then(({ data, type }) => {
-        console.log('DATA', data)
-        console.log('TYPE', type)
         if (type === EDIT_USER_SUCCESS) {
           this.nextSlide()
         }
