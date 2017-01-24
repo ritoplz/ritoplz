@@ -12,7 +12,7 @@ api.interceptors.request.use(config => {
   const token = getToken()
 
   if (isLogged()) {
-    config.headers['authorization'] = token
+    config.headers.authorization = token
   }
 
   return config
@@ -21,15 +21,15 @@ api.interceptors.request.use(config => {
 api.interceptors.response.use(response => {
   if (response.data) {
     return response.data
-  } else {
-    return response
   }
+
+  return response
 }, error => {
   if (error.response && error.response.data) {
     return Promise.reject(error.response.data.error)
-  } else {
-    return Promise.reject(error)
   }
+
+  return Promise.reject(error)
 })
 
 export default api

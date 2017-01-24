@@ -9,7 +9,7 @@ import Meta from '../components/meta'
 import Footer from '../components/footer'
 import TopPlayers from '../containers/top-players'
 import Header from '../components/header'
-import configureStore from '../store/configureStore'
+import configureStore from '../store/configure-store'
 import { isLogged } from './../services/auth'
 
 const styles = {
@@ -89,7 +89,7 @@ const styles = {
   },
 
   tier: {
-    paddingBottom: '100px',
+    paddingBottom: '100px'
   },
 
   tierTitle: {
@@ -197,7 +197,7 @@ export default () => {
           <h2 className={style(styles.tierTitle)}>Compete with players of your region</h2>
           <h3 className={style(styles.tierSubtitle)}>Rankings per regions, per champion, per elo, per victory streak.</h3>
 
-          <div className={style(styles.tierDrop)}></div>
+          <div className={style(styles.tierDrop)}/>
 
           <div className={style(styles.row)}>
             <Link href="/signup">

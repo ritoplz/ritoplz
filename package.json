@@ -59,7 +59,8 @@
     "rules": {
       "space-before-function-paren": 0,
       "object-curly-spacing": 0,
-      "react/prop-types": 0
+      "react/prop-types": 0,
+      "react/no-unescaped-entities": 0
     },
     "ignores": [
       "__tests__/**/*.js",

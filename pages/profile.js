@@ -2,12 +2,11 @@
 
 import React, { Component } from 'react'
 import { style } from 'next/css'
-import Head from 'next/head'
 import { Provider } from 'react-redux'
 
 import Meta from '../components/meta'
 import ProfileContent from '../containers/profile-content'
-import configureStore from '../store/configureStore'
+import configureStore from '../store/configure-store'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import { isLogged } from './../services/auth'
@@ -53,16 +52,16 @@ export default class extends Component {
     return (
       <Provider store={store}>
         <div>
-          <Meta />
+          <Meta/>
 
           <div>
-            <Header items={items} />
+            <Header items={items}/>
 
             <div className={style(styles.row)}>
               <ProfileContent/>
             </div>
 
-            <Footer />
+            <Footer/>
           </div>
         </div>
       </Provider>

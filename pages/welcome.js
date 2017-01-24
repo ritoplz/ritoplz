@@ -3,14 +3,14 @@
 import React, { Component } from 'react'
 import { style } from 'next/css'
 import { Provider } from 'react-redux'
+import Alert from 'react-s-alert'
 
 import Meta from '../components/meta'
 import Onboard from '../containers/onboard'
-import configureStore from '../store/configureStore'
+import configureStore from '../store/configure-store'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import { isLogged } from './../services/auth'
-import Alert from 'react-s-alert'
 
 const styles = {
   row: {
@@ -53,16 +53,16 @@ export default class extends Component {
     return (
       <Provider store={store}>
         <div>
-          <Meta />
+          <Meta/>
 
           <div>
-            <Header items={items} />
+            <Header items={items}/>
 
             <div className={style(styles.row)}>
               <Onboard routing={this.props} throwError={this.throwError}/>
             </div>
 
-            <Footer />
+            <Footer/>
 
             <Alert effect="jelly" stack={{limit: 3}}/>
           </div>

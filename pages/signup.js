@@ -1,13 +1,11 @@
 'use strict'
 
-import React, { Component } from 'react'
+import React from 'react'
 import { Provider } from 'react-redux'
-import Link from 'next/link'
-import Head from 'next/head'
 import { style } from 'next/css'
 
 import Meta from '../components/meta'
-import configureStore from '../store/configureStore'
+import configureStore from '../store/configure-store'
 import FormSignup from '../containers/form-signup'
 import Header from '../components/header'
 import Footer from '../components/footer'
@@ -47,9 +45,9 @@ const Signup = props => {
   return (
     <Provider store={store}>
       <div>
-        <Meta />
+        <Meta/>
 
-        <Header items={items} />
+        <Header items={items}/>
 
         <section className={style(styles.row)}>
           <h1 className={style(styles.title)}>Join our Ranking!</h1>
@@ -58,7 +56,7 @@ const Signup = props => {
           <FormSignup routing={props}/>
         </section>
 
-        <Footer />
+        <Footer/>
       </div>
     </Provider>
   )

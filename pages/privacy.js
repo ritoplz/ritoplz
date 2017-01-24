@@ -1,7 +1,6 @@
 'use strict'
 
 import React from 'react'
-import Link from 'next/link'
 import { style } from 'next/css'
 
 import Meta from '../components/meta'

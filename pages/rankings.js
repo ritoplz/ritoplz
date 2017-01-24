@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 
 import Meta from '../components/meta'
 import Footer from '../components/footer'
-import configureStore from '../store/configureStore'
+import configureStore from '../store/configure-store'
 import Header from './../components/header'
 import RankingsList from './../containers/rankings-list'
 import { isLogged } from './../services/auth'
@@ -34,7 +34,7 @@ class Rankings extends Component {
   }
 
   render () {
-    let items = []
+    const items = []
 
     if (isLogged()) {
       const item = {name: 'Profile', link: 'profile', type: 'button'}

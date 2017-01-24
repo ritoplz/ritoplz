@@ -2,16 +2,14 @@
 
 import React from 'react'
 import { Provider } from 'react-redux'
-import Link from 'next/link'
-import Head from 'next/head'
 import { style } from 'next/css'
 
 import Meta from '../components/meta'
-import configureStore from '../store/configureStore'
+import configureStore from '../store/configure-store'
 import FormLogin from '../containers/form-login'
 import Header from '../components/header'
-import { isLogged } from './../services/auth'
 import Footer from '../components/footer'
+import { isLogged } from './../services/auth'
 
 const styles = {
   row: {
@@ -52,9 +50,9 @@ const Login = props => {
   return (
     <Provider store={store}>
       <div>
-        <Meta />
+        <Meta/>
 
-        <Header items={items} />
+        <Header items={items}/>
 
         <section className={style(styles.row)}>
           <h1 className={style(styles.title)}>Nice to see you today!</h1>
@@ -63,7 +61,7 @@ const Login = props => {
           <FormLogin routing={props}/>
         </section>
 
-        <Footer />
+        <Footer/>
       </div>
     </Provider>
   )

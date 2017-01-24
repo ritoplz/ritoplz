@@ -3,7 +3,6 @@
 /* @flow */
 
 import React, { Component } from 'react'
-import { style } from 'next/css'
 import { connect } from 'react-redux'
 import Alert from 'react-s-alert'
 
@@ -14,7 +13,6 @@ import Intro from './../components/intro'
 import MySummoners from './../components/my-summoners'
 import Loading from './../components/loading'
 import ModalTutorial from './../components/modal-tutorial'
-import { CONFIRM_SUMMONER_SUCCESS, CONFIRM_SUMMONER_ERROR } from './../constants'
 
 class ProfileContent extends Component {
   constructor () {
@@ -41,7 +39,7 @@ class ProfileContent extends Component {
 
   handleConfirmSummoner (summoner) {
     this.props.confirmSummoner(summoner)
-      .then(({ data, type }) => {
+      .then(({ data }) => {
         if (data) {
           Alert.success('Summoner confirmed!', {position: 'top-right'})
           this.props.fetchAccount()
@@ -61,12 +59,12 @@ class ProfileContent extends Component {
       profile = <Intro name={this.props.profile.data.user.name} location={location}/>
 
       if (this.props.profile.data.summoners.length > 0) {
-        summoners = <MySummoners summoners={this.props.profile.data.summoners} confirmSummoner={this.handleConfirmSummoner}/>
+        summoners = <MySummoners summoners={this.props.profile.data.summoners} onConfirmSummoner={this.handleConfirmSummoner}/>
       } else {
-        summoners = <EmptyState />
+        summoners = <EmptyState/>
       }
     } else {
-      profile = <Loading />
+      profile = <Loading/>
     }
 
     return (
