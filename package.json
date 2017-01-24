@@ -9,7 +9,6 @@
   "author": "Bu Kinoshita <bukinoshita@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "ava": "^0.16.0",
     "axios": "^0.15.2",
     "babel-jest": "^18.0.0",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
@@ -47,9 +46,9 @@
     "build": "next build",
     "start": "next start",
     "test": "yarn lint && yarn unit && yarn flow",
-    "test:watch": "yarn test -- --watch",
     "lint": "./node_modules/.bin/xo",
     "unit": "./node_modules/.bin/jest",
+    "unit:watch": "yarn unit -- --watch",
     "flow": "./node_modules/flow-bin/cli.js check"
   },
   "xo": {

@@ -246,17 +246,6 @@ auto-bind@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/auto-bind/-/auto-bind-0.1.0.tgz#7a29efc8c2388d3d578e02fc2df531c81ffc1ee1"
 
-ava-files@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/ava-files/-/ava-files-0.1.1.tgz#18abb6f4b87029c32fc35f2053fecd3a55f1d2b0"
-  dependencies:
-    arr-flatten "^1.0.1"
-    bluebird "^3.4.1"
-    globby "^5.0.0"
-    ignore-by-default "^1.0.1"
-    multimatch "^2.1.0"
-    slash "^1.0.0"
-
 ava-files@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/ava-files/-/ava-files-0.2.0.tgz#c7b8b6e2e0cea63b57a6e27e0db145c7c19cfe20"
@@ -279,82 +268,6 @@ ava-init@^0.1.0:
     read-pkg-up "^1.0.1"
     the-argv "^1.0.0"
     write-pkg "^1.0.0"
-
-ava@^0.16.0:
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/ava/-/ava-0.16.0.tgz#07d7e06c627820115a84d7ee346f0bb165730454"
-  dependencies:
-    arr-flatten "^1.0.1"
-    array-union "^1.0.1"
-    array-uniq "^1.0.2"
-    arrify "^1.0.0"
-    ava-files "^0.1.1"
-    ava-init "^0.1.0"
-    babel-code-frame "^6.7.5"
-    babel-core "^6.3.21"
-    babel-plugin-ava-throws-helper "^0.1.0"
-    babel-plugin-detective "^2.0.0"
-    babel-plugin-espower "^2.2.0"
-    babel-plugin-transform-runtime "^6.3.13"
-    babel-preset-es2015 "^6.3.13"
-    babel-preset-stage-2 "^6.3.13"
-    babel-runtime "^6.3.19"
-    bluebird "^3.0.0"
-    caching-transform "^1.0.0"
-    chalk "^1.0.0"
-    chokidar "^1.4.2"
-    clean-yaml-object "^0.1.0"
-    cli-cursor "^1.0.2"
-    cli-spinners "^0.1.2"
-    cli-truncate "^0.2.0"
-    co-with-promise "^4.6.0"
-    common-path-prefix "^1.0.0"
-    convert-source-map "^1.2.0"
-    core-assert "^0.2.0"
-    currently-unhandled "^0.4.1"
-    debug "^2.2.0"
-    empower-core "^0.6.1"
-    figures "^1.4.0"
-    find-cache-dir "^0.1.1"
-    fn-name "^2.0.0"
-    has-flag "^2.0.0"
-    ignore-by-default "^1.0.0"
-    is-ci "^1.0.7"
-    is-generator-fn "^1.0.0"
-    is-obj "^1.0.0"
-    is-observable "^0.2.0"
-    is-promise "^2.1.0"
-    last-line-stream "^1.0.0"
-    lodash.debounce "^4.0.3"
-    lodash.difference "^4.3.0"
-    loud-rejection "^1.2.0"
-    matcher "^0.1.1"
-    max-timeout "^1.0.0"
-    md5-hex "^1.2.0"
-    meow "^3.7.0"
-    ms "^0.7.1"
-    not-so-shallow "^0.1.3"
-    object-assign "^4.0.1"
-    observable-to-promise "^0.4.0"
-    option-chain "^0.1.0"
-    package-hash "^1.1.0"
-    pkg-conf "^1.0.1"
-    plur "^2.0.0"
-    power-assert-context-formatter "^1.0.4"
-    power-assert-renderer-assertion "^1.0.1"
-    power-assert-renderer-succinct "^1.0.1"
-    pretty-ms "^2.0.0"
-    repeating "^2.0.0"
-    require-precompiled "^0.1.0"
-    resolve-cwd "^1.0.0"
-    set-immediate-shim "^1.0.1"
-    source-map-support "^0.4.0"
-    stack-utils "^0.4.0"
-    strip-ansi "^3.0.1"
-    strip-bom "^2.0.0"
-    time-require "^0.1.2"
-    unique-temp-dir "^1.0.0"
-    update-notifier "^1.0.0"
 
 ava@^0.17.0:
   version "0.17.0"
@@ -450,7 +363,7 @@ axios:
   dependencies:
     follow-redirects "0.0.7"
 
-babel-code-frame@^6.16.0, babel-code-frame@^6.7.5:
+babel-code-frame@^6.16.0:
   version "6.16.0"
   resolved "https://registry.yarnpkg.com/babel-code-frame/-/babel-code-frame-6.16.0.tgz#f90e60da0862909d3ce098733b5d3987c97cb8de"
   dependencies:
@@ -498,7 +411,7 @@ babel-core@^6.0.0, babel-core@^6.17.0:
     slash "^1.0.0"
     source-map "^0.5.0"
 
-babel-core@^6.18.0, babel-core@^6.3.21:
+babel-core@^6.18.0:
   version "6.18.2"
   resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.18.2.tgz#d8bb14dd6986fa4f3566a26ceda3964fa0e04e5b"
   dependencies:
@@ -846,7 +759,7 @@ babel-plugin-detective@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-detective/-/babel-plugin-detective-2.0.0.tgz#6e642e83c22a335279754ebe2d754d2635f49f13"
 
-babel-plugin-espower@^2.2.0, babel-plugin-espower@^2.3.1:
+babel-plugin-espower@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/babel-plugin-espower/-/babel-plugin-espower-2.3.1.tgz#d15e904bc9949b14ac233b7965c2a5dc7a19a6a9"
   dependencies:
@@ -1400,7 +1313,7 @@ babel-plugin-transform-regenerator@^6.22.0:
   dependencies:
     regenerator-transform "0.9.8"
 
-babel-plugin-transform-runtime@^6.15.0, babel-plugin-transform-runtime@^6.3.13:
+babel-plugin-transform-runtime@^6.15.0:
   version "6.15.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-runtime/-/babel-plugin-transform-runtime-6.15.0.tgz#3d75b4d949ad81af157570273846fb59aeb0d57c"
   dependencies:
@@ -1426,7 +1339,7 @@ babel-plugin-transform-strict-mode@^6.22.0:
     babel-runtime "^6.22.0"
     babel-types "^6.22.0"
 
-babel-preset-es2015, babel-preset-es2015@^6.16.0, babel-preset-es2015@^6.3.13:
+babel-preset-es2015, babel-preset-es2015@^6.16.0:
   version "6.18.0"
   resolved "https://registry.yarnpkg.com/babel-preset-es2015/-/babel-preset-es2015-6.18.0.tgz#b8c70df84ec948c43dcf2bf770e988eb7da88312"
   dependencies:
@@ -1515,7 +1428,7 @@ babel-preset-react@6.22.0:
     babel-plugin-transform-react-jsx-self "^6.22.0"
     babel-plugin-transform-react-jsx-source "^6.22.0"
 
-babel-preset-stage-2@^6.17.0, babel-preset-stage-2@^6.3.13:
+babel-preset-stage-2@^6.17.0:
   version "6.18.0"
   resolved "https://registry.yarnpkg.com/babel-preset-stage-2/-/babel-preset-stage-2-6.18.0.tgz#9eb7bf9a8e91c68260d5ba7500493caaada4b5b5"
   dependencies:
@@ -1558,7 +1471,7 @@ babel-register@^6.22.0:
     mkdirp "^0.5.1"
     source-map-support "^0.4.2"
 
-babel-runtime@^6.0.0, babel-runtime@^6.11.6, babel-runtime@^6.3.19, babel-runtime@^6.9.0, babel-runtime@^6.9.1:
+babel-runtime@^6.0.0, babel-runtime@^6.11.6, babel-runtime@^6.9.0, babel-runtime@^6.9.1:
   version "6.18.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.18.0.tgz#0f4177ffd98492ef13b9f823e9994a02584c9078"
   dependencies:
@@ -1825,10 +1738,6 @@ bser@^1.0.2:
 buf-compare@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/buf-compare/-/buf-compare-1.0.1.tgz#fef28da8b8113a0a0db4430b0b6467b69730b34a"
-
-buffer-equals@^1.0.3:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/buffer-equals/-/buffer-equals-1.0.4.tgz#0353b54fd07fd9564170671ae6f66b9cf10d27f5"
 
 buffer-shims@^1.0.0:
   version "1.0.0"
@@ -4820,12 +4729,6 @@ normalize-package-data@^2.3.2, normalize-package-data@^2.3.4:
 normalize-path@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/normalize-path/-/normalize-path-2.0.1.tgz#47886ac1662760d4261b7d979d241709d3ce3f7a"
-
-not-so-shallow@^0.1.3:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/not-so-shallow/-/not-so-shallow-0.1.4.tgz#e8c7f7b9c9b9f069594344368330cbcea387c3c7"
-  dependencies:
-    buffer-equals "^1.0.3"
 
 npm-run-path@^2.0.0:
   version "2.0.2"
