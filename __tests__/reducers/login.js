@@ -1,3 +1,5 @@
+/* global it, expect, describe */
+
 import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
