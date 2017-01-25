@@ -54,15 +54,9 @@ export default class extends Component {
         <div>
           <Meta/>
 
-          <div>
-            <Header items={items}/>
+          <ProfileContent/>
 
-            <div className={style(styles.row)}>
-              <ProfileContent/>
-            </div>
-
-            <Footer/>
-          </div>
+          <Footer/>
         </div>
       </Provider>
     )

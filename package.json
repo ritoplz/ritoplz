@@ -20,6 +20,7 @@
     "jest": "^18.0.0",
     "next": "^2.0.0-beta",
     "nock": "^9.0.2",
+    "nprogress": "^0.2.0",
     "ordinal-numbers": "^1.0.3",
     "rc-progress": "^2.0.3",
     "react": "^15.4.2",
@@ -49,6 +50,7 @@
     "lint": "./node_modules/.bin/xo",
     "unit": "./node_modules/.bin/jest",
     "unit:watch": "yarn unit -- --watch",
+    "unit:coverage": "yarn unit -- --coverage",
     "flow": "./node_modules/flow-bin/cli.js check"
   },
   "xo": {

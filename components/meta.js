@@ -3,6 +3,12 @@
 import React from 'react'
 import Head from 'next/head'
 import { insertRule } from 'next/css'
+import NProgress from 'nprogress'
+import Router from 'next/router'
+
+Router.onRouteChangeStart = () => NProgress.start()
+Router.onRouteChangeComplete = () => NProgress.done()
+Router.onRouteChangeError = () => NProgress.done()
 
 export default () => (
   <div>
@@ -49,7 +55,54 @@ export default () => (
       <link rel="icon" type="image/png" sizes="96x96" href="static/favicon-96x96.png"/>
       <link rel="icon" type="image/png" sizes="16x16" href="static/favicon-16x16.png"/>
     </Head>
+
+    <style jsx global>{`
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: Open Sans, Helvetica Neue, Helvetica
+      }
+
+      li {
+        list-style: none
+      }
+
+      a {
+        text-decoration: none
+      }
+
+      svg,
+      img {
+        vertical-align: middle;
+      }
+
+      #nprogress {
+        pointer-events: none;
+      }
+
+      #nprogress .bar {
+        background: #ff9300;
+        position: fixed;
+        z-index: 1031;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+      }
+
+      #nprogress .peg {
+        display: block;
+        position: absolute;
+        right: 0px;
+        width: 100px;
+        height: 100%;
+        box-shadow: 0 0 10px #ff9300, 0 0 5px #ff9300;
+        opacity: 1.0;
+        transform: rotate(3deg) translate(0px, -4px);
+      }
+    `}</style>
   </div>
 )
 
-insertRule('* {padding: 0; margin: 0; box-sizing: border-box; font-family: Source Sans Pro, Helvetica Neue, Helvetica } li { list-style: none } a { text-decoration: none}')
+insertRule('')
