@@ -34,6 +34,14 @@ const styles = {
     textAlign: 'center',
     marginBottom: '50px',
     marginTop: '5px'
+  },
+
+  disclaimer: {
+    color: 'red',
+    marginTop: '-30px',
+    marginBottom: '50px',
+    opacity: '.5',
+    textAlign: 'center'
   }
 }
 
@@ -56,6 +64,8 @@ const Signup = props => {
           <h2 className={style(styles.subtitle)}>Enter your info below to sign up.</h2>
 
           <FormSignup routing={props}/>
+
+          <p className={style(styles.disclaimer)}>*We will never ask for any League of Legends credentials.</p>
         </section>
 
         <Footer />
