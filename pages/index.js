@@ -176,7 +176,7 @@ export default () => {
 
         <main className={style(styles.cover)}>
           <div className={style(styles.row)}>
-            <h1 className={style(styles.title)}>Sempre esteja no topo</h1>
+            <h1 className={style(styles.title)}>Esteja sempre no topo</h1>
             <h2 className={style(styles.subtitle)}>O primeiro Ranking mundial de League of Legends. <br/>Veja quem é o melhor jogador da sua região.</h2>
 
             <Link href="/signup">
