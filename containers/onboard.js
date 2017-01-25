@@ -326,7 +326,7 @@ class Onboard extends Component {
             </fieldset>
           </div>
 
-          <button className={style(styles.btnPrev)} onClick={this.previousSlide}>Anterios</button>
+          <button className={style(styles.btnPrev)} onClick={this.previousSlide}>Anterior</button>
           <button className={style(styles.btnNext)} onClick={this.submitLocation}>Próximo</button>
         </div>
 
