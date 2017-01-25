@@ -100,11 +100,11 @@ class FormLogin extends Component {
         </fieldset>
 
         <fieldset className={style(styles.formInput)}>
-          <label className={style(styles.label)}>Password</label>
+          <label className={style(styles.label)}>Senha</label>
           <input className={style(styles.input)} type="password" name="password" ref={input => this.password = input}/>
         </fieldset>
 
-        <button className={style(styles.btn)} type="submit">Login</button>
+        <button className={style(styles.btn)} type="submit">Entrar</button>
 
         <Alert effect="jelly" stack={{limit: 3}}/>
       </form>

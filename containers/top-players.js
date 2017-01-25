@@ -96,12 +96,12 @@ class TopPlayers extends Component {
     return (
       <section className={style(styles.topPlayers)}>
         <div className={style(styles.row)}>
-          <h2 className={style(styles.topPlayersTitle)}>Top players in Brazil</h2>
+          <h2 className={style(styles.topPlayersTitle)}>Top players do Brazil</h2>
 
           {rankingList}
 
           <Link href="/rankings">
-            <span className={style(styles.btnLink)}>See full rankings</span>
+            <span className={style(styles.btnLink)}>Veja o Ranking completo</span>
           </Link>
         </div>
       </section>

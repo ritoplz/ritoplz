@@ -34,6 +34,14 @@ const styles = {
     textAlign: 'center',
     marginBottom: '50px',
     marginTop: '5px'
+  },
+
+  disclaimer: {
+    color: 'red',
+    marginTop: '-30px',
+    marginBottom: '50px',
+    opacity: '.5',
+    textAlign: 'center'
   }
 }
 
@@ -52,10 +60,12 @@ const Signup = props => {
         <Header items={items} />
 
         <section className={style(styles.row)}>
-          <h1 className={style(styles.title)}>Join our Ranking!</h1>
-          <h2 className={style(styles.subtitle)}>Enter your info below to sign up.</h2>
+          <h1 className={style(styles.title)}>Entre no nosso Rankings!</h1>
+          <h2 className={style(styles.subtitle)}>Preencha os campos abaixo para se cadastrar</h2>
 
           <FormSignup routing={props}/>
+
+          <p className={style(styles.disclaimer)}>*Nós nunca iremos pedir nenhuma informação credencial do League of Legends.</p>
         </section>
 
         <Footer />

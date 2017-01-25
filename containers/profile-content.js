@@ -43,10 +43,10 @@ class ProfileContent extends Component {
     this.props.confirmSummoner(summoner)
       .then(({ data, type }) => {
         if (data) {
-          Alert.success('Summoner confirmed!', {position: 'top-right'})
+          Alert.success('Invocador confirmado!', {position: 'top-right'})
           this.props.fetchAccount()
         } else {
-          Alert.error('Summoner not confirmed yet.', {position: 'top-right'})
+          Alert.error('Invocador não confimador ainda', {position: 'top-right'})
           this.setState({ modalTutorial: true })
         }
       })
@@ -57,7 +57,7 @@ class ProfileContent extends Component {
     let summoners = null
 
     if (this.props.profile.requested) {
-      const location = this.props.profile.data.user.country ? `${this.props.profile.data.user.city}, ${this.props.profile.data.user.state} ${this.props.profile.data.user.country}` : 'Add Location'
+      const location = this.props.profile.data.user.country ? `${this.props.profile.data.user.city}, ${this.props.profile.data.user.state} ${this.props.profile.data.user.country}` : 'Adicionar Localização'
       profile = <Intro name={this.props.profile.data.user.name} location={location}/>
 
       if (this.props.profile.data.summoners.length > 0) {

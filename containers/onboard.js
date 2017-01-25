@@ -279,7 +279,7 @@ class Onboard extends Component {
         if (data) {
           this.props.routing.url.pushTo('/profile')
         } else {
-          this.props.throwError('Summoner not confirmed yet')
+          this.props.throwError('Invocador não confirmado ainda')
         }
       })
   }
@@ -299,57 +299,57 @@ class Onboard extends Component {
         <div>
           <img className={style(styles.slickImage)} src="static/placeholder.svg" alt=""/>
 
-          <h1 className={style(styles.title)}>Welcome to Ritoplz</h1>
-          <h2 className={style(styles.subtitle)}>We will guide you to configure your account</h2>
+          <h1 className={style(styles.title)}>Bem vindo ao Ritoplz</h1>
+          <h2 className={style(styles.subtitle)}>Vamos ajudar você a configurar sua conta</h2>
 
-          <button className={style(styles.btnNext)} onClick={this.nextSlide}>Next</button>
+          <button className={style(styles.btnNext)} onClick={this.nextSlide}>Próximo</button>
         </div>
 
         <div>
-          <h1 className={style(styles.title)}>Choose your location</h1>
-          <h2 className={style(styles.subtitle)}>This is the location you will join.</h2>
+          <h1 className={style(styles.title)}>Escolha sua localização your location</h1>
+          <h2 className={style(styles.subtitle)}>Essa será sua localização no Rankings</h2>
 
           <div className={style(styles.form)}>
             <fieldset className={style(styles.formInput)}>
-              <label className={style(styles.label)}>Country</label>
+              <label className={style(styles.label)}>País</label>
               <Select options={this.state.countryList} value={this.state.country} onChange={this.handleCountry}/>
             </fieldset>
 
             <fieldset className={style(styles.formInput)}>
-              <label className={style(styles.label)}>State</label>
+              <label className={style(styles.label)}>Estado</label>
               <Select options={this.state.stateList} value={this.state.stateParam} onChange={this.handleState}/>
             </fieldset>
 
             <fieldset className={style(styles.formInput)}>
-              <label className={style(styles.label)}>City</label>
+              <label className={style(styles.label)}>Cidade</label>
               <Select options={this.state.cityList} value={this.state.city} onChange={this.handleCity}/>
             </fieldset>
           </div>
 
-          <button className={style(styles.btnPrev)} onClick={this.previousSlide}>Previous</button>
-          <button className={style(styles.btnNext)} onClick={this.submitLocation}>Next</button>
+          <button className={style(styles.btnPrev)} onClick={this.previousSlide}>Anterios</button>
+          <button className={style(styles.btnNext)} onClick={this.submitLocation}>Próximo</button>
         </div>
 
         <div>
           <div className={style(styles.summoner)}>
-            <h1 className={style(styles.title)}>Let's add your summoner now</h1>
-            <h2 className={style(styles.subtitle)}>Your League of Legends summoner name</h2>
+            <h1 className={style(styles.title)}>Vamos adicionar seu invocador</h1>
+            <h2 className={style(styles.subtitle)}>Nome do seu invocador</h2>
 
             <div className={style(styles.form)}>
               <fieldset className={style(styles.formInput)}>
-                <label className={style(styles.label)}>Summoner name</label>
+                <label className={style(styles.label)}>Invocador</label>
                 <input className={style(styles.input)} type="text" ref={node => this.summoner = node}/>
               </fieldset>
             </div>
           </div>
 
-          <button className={style(styles.btnPrev)} onClick={this.previousSlide}>Previous</button>
-          <button className={style(styles.btnNext)} onClick={this.submitSummoner}>Next</button>
+          <button className={style(styles.btnPrev)} onClick={this.previousSlide}>Anterior</button>
+          <button className={style(styles.btnNext)} onClick={this.submitSummoner}>Próximo</button>
         </div>
 
         <div>
-          <h1 className={style(styles.title)}>Confirm your summoner</h1>
-          <h2 className={style(styles.subtitle)}>Copy the code below to confirm your summoner</h2>
+          <h1 className={style(styles.title)}>Confirme seu invocador</h1>
+          <h2 className={style(styles.subtitle)}>Copie o código abaixo para confirmar seu invocador</h2>
 
           <div className={style(styles.steps)}>
             <div className={style(styles.stepImage)}>
@@ -358,29 +358,29 @@ class Onboard extends Component {
 
             <ul className={style(styles.stepList)}>
               <li className={style(styles.step)}>
-                <span className={style(styles.stepNumber)}>Step 1.</span>
-                <span className={style(styles.stepText)}>Create or Edit a Mastery Page or a Runes Page</span>
+                <span className={style(styles.stepNumber)}>Passo 1.</span>
+                <span className={style(styles.stepText)}>Crie ou edite uma Página de Talentos ou Página de Runas</span>
               </li>
 
               <li className={style(styles.step)}>
-                <span className={style(styles.stepNumber)}>Step 2.</span>
-                <span className={style(styles.stepText)}>Use this code ("{this.state.code}") as the page name</span>
+                <span className={style(styles.stepNumber)}>Passo 2.</span>
+                <span className={style(styles.stepText)}>Use esse código ("{this.state.code}") como nome da página</span>
               </li>
 
               <li className={style(styles.step)}>
-                <span className={style(styles.stepNumber)}>Step 3.</span>
-                <span className={style(styles.stepText)}>Click on confirm your summoner</span>
+                <span className={style(styles.stepNumber)}>Passo 3.</span>
+                <span className={style(styles.stepText)}>Clique em confirmar invocador abaixo</span>
               </li>
             </ul>
           </div>
 
           <div className={style(styles.codeCase)}>
             <p className={style(styles.code)}>{this.state.code}</p>
-            <button className={style(styles.codeBtn)}>Your code</button>
+            <button className={style(styles.codeBtn)}>Seu código</button>
           </div>
 
-          <button className={style(styles.btnPrev)} onClick={this.previousSlide}>Previous</button>
-          <button className={style(styles.btnNext)} onClick={this.confirmSummoner}>Confirm Summoner</button>
+          <button className={style(styles.btnPrev)} onClick={this.previousSlide}>Anterior</button>
+          <button className={style(styles.btnNext)} onClick={this.confirmSummoner}>Confirmar Invocador</button>
         </div>
       </Slider>
     )

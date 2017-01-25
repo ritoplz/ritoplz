@@ -95,13 +95,13 @@ export default () => {
 
             <li className={style(styles.item)}>
               <Link href="/terms">
-                <span className={style(styles.link)}>Terms of Service</span>
+                <span className={style(styles.link)}>Termos de Serviço</span>
               </Link>
             </li>
 
             <li className={style(styles.item)}>
               <Link href="/privacy">
-                <span className={style(styles.link)}>Privacy Policy</span>
+                <span className={style(styles.link)}>Política de Privacidade</span>
               </Link>
             </li>
 

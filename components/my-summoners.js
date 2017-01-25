@@ -72,8 +72,8 @@ class MySummoners extends Component {
     return (
       <section>
         <header className={style(styles.header)}>
-          <h2 className={style(styles.title)}>My Summoners</h2>
-          <button className={style(styles.btn)} onClick={this.handleModal}>Add Summoner</button>
+          <h2 className={style(styles.title)}>Meus Invocadores</h2>
+          <button className={style(styles.btn)} onClick={this.handleModal}>Adicionar Invocador</button>
         </header>
 
         <div className={style(styles.row)}>

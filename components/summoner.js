@@ -95,12 +95,12 @@ export default class Summoner extends Component {
 
         <ul className={style(styles.info)}>
           <li className={style(styles.item)}>
-            <h3 className={style(styles.title)}>Summoner</h3>
+            <h3 className={style(styles.title)}>Invocador</h3>
             <span className={style(styles.subtitle)}>{this.props.name}</span>
           </li>
 
           <li className={style(styles.item)}>
-            <h3 className={style(styles.title)}>Code</h3>
+            <h3 className={style(styles.title)}>Código</h3>
             <span className={style(styles.subtitle)}>{this.props.code}</span>
           </li>
 

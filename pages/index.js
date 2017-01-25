@@ -176,15 +176,15 @@ export default () => {
 
         <main className={style(styles.cover)}>
           <div className={style(styles.row)}>
-            <h1 className={style(styles.title)}>Make sure you are on top</h1>
-            <h2 className={style(styles.subtitle)}>The first worldwide League of Legends Rankings. <br/>See who’s the best player of your region.</h2>
+            <h1 className={style(styles.title)}>Sempre esteja no topo</h1>
+            <h2 className={style(styles.subtitle)}>O primeiro Ranking mundial de League of Legends. <br/>Veja quem é o melhor jogador da sua região.</h2>
 
             <Link href="/signup">
-              <span className={style(styles.btn)}>Join Ritoplz</span>
+              <span className={style(styles.btn)}>Entrar no Ritoplz</span>
             </Link>
 
             <Link href="/rankings">
-              <span className={style(styles.btnLink)}>See Rankings</span>
+              <span className={style(styles.btnLink)}>Veja o Rankings</span>
             </Link>
 
             <img className={style(styles.card)} src="static/card.png" alt=""/>
@@ -194,14 +194,14 @@ export default () => {
         <TopPlayers/>
 
         <section className={style(styles.tier)}>
-          <h2 className={style(styles.tierTitle)}>Compete with players of your region</h2>
-          <h3 className={style(styles.tierSubtitle)}>Rankings per regions, per champion, per elo, per victory streak.</h3>
+          <h2 className={style(styles.tierTitle)}>Compita com jogadores da sua região</h2>
+          <h3 className={style(styles.tierSubtitle)}>Rankings por região, campeão, elo e vitórias.</h3>
 
           <div className={style(styles.tierDrop)}></div>
 
           <div className={style(styles.row)}>
             <Link href="/signup">
-              <span className={style(styles.joinBtn)}>Join Ritoplz</span>
+              <span className={style(styles.joinBtn)}>Entre no Ritoplz</span>
             </Link>
 
             <ul className={style(styles.tierList)}>

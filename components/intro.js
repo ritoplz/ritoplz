@@ -67,7 +67,7 @@ class Intro extends Component {
 
     return (
       <header className={style(styles.base)}>
-        <h1 className={style(styles.title)}>Hello, <span className={style(styles.username)}>{name}</span>!</h1>
+        <h1 className={style(styles.title)}>Olá, <span className={style(styles.username)}>{name}</span>!</h1>
 
         <h3 className={style(styles.location)} onClick={this.handleModal}>{location}</h3>
         <hr className={style(styles.divider)}/>
