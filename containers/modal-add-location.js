@@ -152,21 +152,21 @@ class ModalAddLocation extends Component {
       <Modal isOpen={this.state.modalStatus} onRequestClose={this.handleCloseModal} style={customStyle}>
         <form onSubmit={this.handleSubmit}>
           <fieldset className={style(styles.formInput)}>
-            <label className={style(styles.label)}>Country</label>
+            <label className={style(styles.label)}>País</label>
             <Select options={this.state.countryList} value={this.state.country} onChange={this.handleCountry}/>
           </fieldset>
 
           <fieldset className={style(styles.formInput)}>
-            <label className={style(styles.label)}>State</label>
+            <label className={style(styles.label)}>Estado</label>
             <Select options={this.state.stateList} value={this.state.stateParam} onChange={this.handleState}/>
           </fieldset>
 
           <fieldset className={style(styles.formInput)}>
-            <label className={style(styles.label)}>City</label>
+            <label className={style(styles.label)}>Cidade</label>
             <Select options={this.state.cityList} value={this.state.city} onChange={this.handleCity}/>
           </fieldset>
 
-          <button className={style(styles.btn)}>Add location</button>
+          <button className={style(styles.btn)}>Adicionar localização</button>
         </form>
 
         <Alert effect="jelly" stack={{limit: 3}}/>

@@ -95,7 +95,7 @@ class FormSignup extends Component {
     return (
       <form className={style(styles.registerForm)} onSubmit={this.handleSignup}>
         <fieldset className={style(styles.formInput)}>
-          <label className={style(styles.label)}>Your name</label>
+          <label className={style(styles.label)}>Seu nome</label>
           <input className={style(styles.input)} type="text" ref={input => this.name = input}/>
         </fieldset>
 
@@ -105,11 +105,11 @@ class FormSignup extends Component {
         </fieldset>
 
         <fieldset className={style(styles.formInput)}>
-          <label className={style(styles.label)}>Password</label>
+          <label className={style(styles.label)}>Senha</label>
           <input className={style(styles.input)} type="password" ref={input => this.password = input}/>
         </fieldset>
 
-        <button className={style(styles.btn)} type="submit">Sign Up</button>
+        <button className={style(styles.btn)} type="submit">Cadastrar</button>
 
         <Alert effect="jelly" stack={{limit: 3}}/>
       </form>

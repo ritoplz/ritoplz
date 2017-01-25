@@ -121,33 +121,33 @@ class ModalTutorial extends Component {
       <Modal isOpen={this.state.modalStatus} onRequestClose={this.handleCloseModal} style={customStyle}>
         <Slider {...settings}>
           <div>
-            <h1 className={style(styles.title)}>Learn how to confirm your summoner</h1>
-            <h2 className={style(styles.subtitle)}>To participate on Ritoplz Rankings you must confirm your summoner</h2>
+            <h1 className={style(styles.title)}>Aprendar como confirmar seu Invocador</h1>
+            <h2 className={style(styles.subtitle)}>Para participar do Ritoplz Rankings você precisa adicionar um Invocador</h2>
 
             <img className={style(styles.image)} src="static/placeholder.svg" alt=""/>
           </div>
 
           <div>
-            <h1 className={style(styles.title)}>Receive a new code</h1>
-            <h2 className={style(styles.subtitle)}>You will get a code for each summoner you add</h2>
+            <h1 className={style(styles.title)}>Receba o código</h1>
+            <h2 className={style(styles.subtitle)}>Você receberá um código quando adicionar seu invocador</h2>
 
             <img className={style(styles.slickImage)} src="static/code.png" alt=""/>
           </div>
 
           <div>
-            <h1 className={style(styles.title)}>Mastery Pages in League of Legends</h1>
-            <h2 className={style(styles.subtitle)}>Create a new Mastery Page and name it with the code</h2>
+            <h1 className={style(styles.title)}>Página de Talentos no League of Legends</h1>
+            <h2 className={style(styles.subtitle)}>Crie uma página de talentos e use o código recebido como nome da página</h2>
 
             <img className={style(styles.slickImage)} src="static/mastery.svg" alt=""/>
           </div>
 
           <div>
-            <h1 className={style(styles.title)}>Confirm your summoner</h1>
-            <h2 className={style(styles.subtitle)}>After creating your mastery page with the code, you need to confirm your summoner by clicking "confirm summoner" above your summoner card</h2>
+            <h1 className={style(styles.title)}>Confirme seu invocador</h1>
+            <h2 className={style(styles.subtitle)}>Após criar sua página de talentos com o código, você precisa confirmar seu invocador clicando em "Confirmar Invocador"</h2>
 
             <img className={style(styles.slickImage)} src="static/confirm.svg" alt=""/>
 
-            <button className={style(styles.btn)} onClick={this.handleCloseModal}>Done</button>
+            <button className={style(styles.btn)} onClick={this.handleCloseModal}>Pronto</button>
           </div>
         </Slider>
       </Modal>

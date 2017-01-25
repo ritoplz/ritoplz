@@ -42,7 +42,7 @@ const Login = props => {
   const store = configureStore()
   const items = [
     {name: 'Rankings', link: 'rankings', type: 'item'},
-    {name: 'Signup', link: 'signup', type: 'item'}
+    {name: 'Cadastrar', link: 'signup', type: 'item'}
   ]
 
   if (isLogged()) {
@@ -57,8 +57,8 @@ const Login = props => {
         <Header items={items} />
 
         <section className={style(styles.row)}>
-          <h1 className={style(styles.title)}>Nice to see you today!</h1>
-          <h2 className={style(styles.subtitle)}>Enter your info below to login.</h2>
+          <h1 className={style(styles.title)}>Que bom te ver hoje!</h1>
+          <h2 className={style(styles.subtitle)}>Entre no Ritoplz Rankings</h2>
 
           <FormLogin routing={props}/>
         </section>
