@@ -279,7 +279,7 @@ class Onboard extends Component {
         if (data) {
           this.props.routing.url.pushTo('/profile')
         } else {
-          this.props.throwError('Invocador não confirmado ainda')
+          this.props.throwError('Invocador não confirmado ainda, tente novamente em alguns segundos')
         }
       })
   }
