@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { Provider } from 'react-redux'
-import { style } from 'next/css'
 
 import Meta from '../components/meta'
 import configureStore from '../store/configure-store'
@@ -10,31 +9,6 @@ import FormLogin from '../containers/form-login'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import { isLogged } from './../services/auth'
-
-const styles = {
-  row: {
-    maxWidth: '900px',
-    marginLeft: 'auto',
-    marginRight: 'auto'
-  },
-
-  title: {
-    color: '#333',
-    fontWeight: '300',
-    fontSize: '3rem',
-    textAlign: 'center',
-    marginTop: '50px'
-  },
-
-  subtitle: {
-    color: '#ccc',
-    fontWeight: '300',
-    fontSize: '1.15rem',
-    textAlign: 'center',
-    marginBottom: '50px',
-    marginTop: '5px'
-  }
-}
 
 const Login = props => {
   const store = configureStore()
@@ -62,6 +36,31 @@ const Login = props => {
         </section>
 
         <Footer/>
+
+        <style jsx>{`
+          .row: {
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+          }
+
+          .title: {
+            color: #333;
+            font-weight: 300;
+            font-size: 3rem;
+            text-align: center;
+            margin-top: 50px;
+          }
+
+          .subtitle: {
+            color: #ccc;
+            font-weight: 300;
+            font-size: 1.15rem;
+            text-align: center;
+            margin-bottom: 50px;
+            margin-top: 5px;
+          }
+        `}</style>
       </div>
     </Provider>
   )
