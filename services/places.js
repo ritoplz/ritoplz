@@ -298,6 +298,11 @@ export const locations = {
         {"value": "Macaé", "label": "Macaé"},
         {"value": "Itaboraí", "label": "Itaboraí"},
         {"value": "Cabo Frio", "label": "Cabo Frio"},
+        {"value": "Resende", "label": "Resende"},
+        {"value": "Mendes", "label": "Mendes"},
+        {"value": "Japeri", "label": "Japeri"},
+        {"value": "Itaguaí", "label": "Itaguaí"},
+        {"value": "Araruama", "label": "Araruama"},
         {"value": "Angra dos Reis", "label": "Angra dos Reis"},
         {"value": "Teresópolis", "label": "Teresópolis"}
       ]
