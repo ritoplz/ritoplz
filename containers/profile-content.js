@@ -46,7 +46,7 @@ class ProfileContent extends Component {
           Alert.success('Invocador confirmado!', {position: 'top-right'})
           this.props.fetchAccount()
         } else {
-          Alert.error('Invocador não confimador ainda', {position: 'top-right'})
+          Alert.error('Invocador não confirmado ainda, tente novamente em alguns segundos', {position: 'top-right'})
           this.setState({ modalTutorial: true })
         }
       })
