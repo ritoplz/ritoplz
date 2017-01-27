@@ -24,6 +24,7 @@ class ProfileContent extends Component {
 
     this.state = {
       modalTutorial: false,
+      requesting: false,
       profile: {
         requested: false,
         requesting: false
@@ -40,8 +41,12 @@ class ProfileContent extends Component {
   }
 
   handleConfirmSummoner (summoner) {
+    this.setState({requesting: true})
+
     this.props.confirmSummoner(summoner)
       .then(({ data, type }) => {
+        this.setState({requesting: false})
+
         if (data) {
           Alert.success('Invocador confirmado!', {position: 'top-right'})
           this.props.fetchAccount()
@@ -61,7 +66,7 @@ class ProfileContent extends Component {
       profile = <Intro name={this.props.profile.data.user.name} location={location}/>
 
       if (this.props.profile.data.summoners.length > 0) {
-        summoners = <MySummoners summoners={this.props.profile.data.summoners} confirmSummoner={this.handleConfirmSummoner}/>
+        summoners = <MySummoners summoners={this.props.profile.data.summoners} confirmSummoner={this.handleConfirmSummoner} requesting={this.state.requesting}/>
       } else {
         summoners = <EmptyState />
       }

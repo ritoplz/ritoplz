@@ -218,8 +218,9 @@ class Onboard extends Component {
       country: null,
       state: null,
       city: null,
-      code: 'We love you',
-      account: {}
+      account: {},
+      requesting: false,
+      code: 'We love you'
     }
   }
 
@@ -252,6 +253,7 @@ class Onboard extends Component {
   }
 
   submitLocation () {
+    this.setState({requesting: true})
     const userData = {
       country: this.state.country,
       state: this.state.state,
@@ -260,6 +262,8 @@ class Onboard extends Component {
 
     this.props.editUser(userData)
       .then(({ data, type }) => {
+        this.setState({requesting: false})
+
         if (type === EDIT_USER_SUCCESS) {
           this.props.throwSuccess('Localização atualizada')
           this.nextSlide()
@@ -273,9 +277,12 @@ class Onboard extends Component {
 
   submitSummoner () {
     const summoner = {name: this.summoner.value}
+    this.setState({requesting: true})
 
     this.props.addSummoner(summoner)
       .then(({ data, type }) => {
+        this.setState({requesting: false})
+
         if (type === ADD_SUMMONER_SUCCESS) {
           this.props.throwSuccess('Invocador adicionado')
           this.nextSlide()
@@ -296,8 +303,12 @@ class Onboard extends Component {
 
   confirmSummoner () {
     const summoner = this.state.account.summoners[0].name
+    this.setState({requesting: true})
+
     this.props.confirmSummoner(summoner)
       .then(({ data, type }) => {
+        this.setState({requesting: false})
+
         if (data) {
           this.props.throwSuccess('Localização confirmado')
           this.props.routing.url.pushTo('/profile')
@@ -354,7 +365,7 @@ class Onboard extends Component {
           </div>
 
           <button className={style(styles.btnPrev)} onClick={this.previousSlide}>Anterior</button>
-          <button className={style(styles.btnNext)} onClick={this.submitLocation}>Próximo</button>
+          <button className={style(styles.btnNext)} onClick={this.submitLocation} disabled={this.state.requesting}>Próximo</button>
         </div>
 
         <div>
@@ -364,14 +375,14 @@ class Onboard extends Component {
 
             <div className={style(styles.form)}>
               <fieldset className={style(styles.formInput)}>
-                <label className={style(styles.label)}>Invocador</label>
+                <label className={style(styles.label)}>Nome do Invocador</label>
                 <input className={style(styles.input)} type="text" ref={node => this.summoner = node}/>
               </fieldset>
             </div>
           </div>
 
           <button className={style(styles.btnPrev)} onClick={this.previousSlide}>Anterior</button>
-          <button className={style(styles.btnNext)} onClick={this.submitSummoner}>Próximo</button>
+          <button className={style(styles.btnNext)} onClick={this.submitSummoner} disabled={this.state.requesting}>Próximo</button>
         </div>
 
         <div>
@@ -410,7 +421,7 @@ class Onboard extends Component {
           </div>
 
           <button className={style(styles.btnPrev)} onClick={this.previousSlide}>Anterior</button>
-          <button className={style(styles.btnNext)} onClick={this.confirmSummoner}>Confirmar Invocador</button>
+          <button className={style(styles.btnNext)} onClick={this.confirmSummoner} disabled={this.state.requesting}>Confirmar Invocador</button>
         </div>
       </Slider>
     )
