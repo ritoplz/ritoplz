@@ -234,6 +234,8 @@ export const locations = {
       "label": "Paraíba",
       "cities": [
         {"value": "Campina Grande", "label": "Campina Grande"},
+        {"value": "Bayeux", "label": "Bayeux"},
+        {"value": "Santa Rita", "label": "Santa Rita"},
         {"value": "João Pessoa", "label": "João Pessoa"}
       ]
     },{
@@ -249,7 +251,8 @@ export const locations = {
         {"value": "Cabo de Santo Agostinho", "label": "Cabo de Santo Agostinho"},
         {"value": "Camaragibe", "label": "Camaragibe"},
         {"value": "Ipojuca", "label": "Ipojuca"},
-        {"value": "Camaragibe", "label": "Camaragibe"},
+        {"value": "Cedro", "label": "Cedro"},
+        {"value": "Palmares", "label": "Palmares"},
         {"value": "Garanhuns", "label": "Garanhuns"}
       ]
     },
@@ -384,13 +387,24 @@ export const locations = {
         {"value": "São José", "label": "São José"},
         {"value": "Chapecó", "label": "Chapecó"},
         {"value": "Criciúma", "label": "Criciúma"},
-        {"value": "Criciúma", "label": "Criciúma"},
         {"value": "Itajaí", "label": "Itajaí"},
         {"value": "Palhoça", "label": "Palhoça"},
         {"value": "Balneário Camboriú", "label": "Balneário Camboriú"},
         {"value": "Anchieta", "label": "Anchieta"},
         {"value": "São Bento do Sul", "label": "São Bento do Sul"},
         {"value": "Brusque", "label": "Brusque"},
+        {"value": "Jaraguá do Sul", "label": "Jaraguá do Sul"},
+        {"value": "Lages", "label": "Lages"},
+        {"value": "Navegantes", "label": "Navegantes"},
+        {"value": "Camboriú", "label": "Camboriú"},
+        {"value": "Concórdia", "label": "Concórdia"},
+        {"value": "Araranguá", "label": "Araranguá"},
+        {"value": "Gaspar", "label": "Gaspar"},
+        {"value": "Mafra", "label": "Mafra"},
+        {"value": "Canoinhas", "label": "Canoinhas"},
+        {"value": "Joaçaba", "label": "Joaçaba"},
+        {"value": "Videira", "label": "Videira"},
+        {"value": "São Franciso do Sul", "label": "São Franciso do Sul"},
         {"value": "Tubarão", "label": "Tubarão"}
       ]
     },
@@ -440,7 +454,22 @@ export const locations = {
         {"value": "Salto", "label": "Salto"},
         {"value": "Ribeirão Pires", "label": "Ribeirão Pires"},
         {"value": "Jaguariúna", "label": "Jaguariúna"},
-        {"value": "Itu", "label": "Itu"},
+        {"value": "Cachoeira Paulista", "label": "Cachoeira Paulista"},
+        {"value": "Campinas", "label": "Campinas"},
+        {"value": "Suzano", "label": "Suzano"},
+        {"value": "Taboão da Serra", "label": "Taboão da Serra"},
+        {"value": "Sumaré", "label": "Sumaré"},
+        {"value": "Barretos", "label": "Barretos"},
+        {"value": "Votorantim", "label": "Votorantim"},
+        {"value": "Jandira", "label": "Jandira"},
+        {"value": "São José do Rio Preto", "label": "São José do Rio Preto"},
+        {"value": "Carapicuíba", "label": "Carapicuíba"},
+        {"value": "Guarujá", "label": "Guarujá"},
+        {"value": "Embu das Artes", "label": "Embu das Artes"},
+        {"value": "São Carlos", "label": "São Carlos"},
+        {"value": "Cotia", "label": "Cotia"},
+        {"value": "Marília", "label": "Marília"},
+        {"value": "Jacareí", "label": "Jacareí"},
         {"value": "São José dos Campos", "label": "São José dos Campos"}
       ]
     },
