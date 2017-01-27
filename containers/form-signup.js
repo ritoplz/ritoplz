@@ -65,9 +65,13 @@ class FormSignup extends Component {
     super()
 
     this.handleSignup = this.handleSignup.bind(this)
+    this.state = {
+      requesting: false
+    }
   }
 
   handleSignup(e) {
+    this.setState({requesting: true})
     e.preventDefault()
 
     const data = {
@@ -79,6 +83,7 @@ class FormSignup extends Component {
     this.props.signupRequest(data)
       .then(({ data, type }) => {
         const token = data.token
+        this.setState({requesting: false})
 
         if (type === SIGNUP_SUCCESS) {
           setToken(token)
@@ -109,7 +114,7 @@ class FormSignup extends Component {
           <input className={style(styles.input)} type="password" ref={input => this.password = input}/>
         </fieldset>
 
-        <button className={style(styles.btn)} type="submit">Cadastrar</button>
+        <button className={style(styles.btn)} type="submit" disabled={this.state.requesting}>Cadastrar</button>
 
         <Alert effect="jelly" stack={{limit: 3}}/>
       </form>

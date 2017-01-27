@@ -161,7 +161,7 @@ export default () => {
   } else {
     items = [
       {name: 'Rankings', link: 'rankings', type: 'item'},
-      {name: 'Login', link: 'login', type: 'button'}
+      {name: 'Cadastrar', link: 'signup', type: 'button'}
     ]
   }
 
