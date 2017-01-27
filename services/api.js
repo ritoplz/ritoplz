@@ -2,7 +2,7 @@ import axios from 'axios'
 import { getToken, isLogged } from '../services/auth'
 
 const api = axios.create({
-  baseURL: 'http://localhost:3001',
+  baseURL: 'https://staging.ritoplz.com',
   headers: {
     Accept: 'application/json'
   }
