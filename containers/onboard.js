@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import Select from 'react-select'
 import { style } from 'next/css'
 import Slider from 'react-slick'
+import CopyToClipboard from 'react-copy-to-clipboard'
 
 import fetchAccount from '../actions/fetch-account'
 import editUser from './../actions/edit-user'
@@ -131,17 +132,25 @@ const styles = {
   },
 
   codeBtn: {
-    height: '60px',
+    height: '64px',
     backgroundColor: 'transparent',
     border: 'none',
     top: '0',
     position: 'absolute',
     right: '0',
-    width: '100px',
+    width: '125px',
     fontSize: '1rem',
     borderLeft: '1px solid #ccc',
     outline: 'none',
-    color: '#333'
+    color: '#333',
+    lineHeight: '64px',
+    textAlign: 'center',
+    cursor: 'pointer',
+    transition: '.15s',
+
+    '&:hover': {
+      backgroundColor: '#f9f9f9'
+    }
   },
 
   mastery: {
@@ -150,16 +159,26 @@ const styles = {
   },
 
   stepImage: {
-    flexBasis: '100%'
+    flexBasis: '70%',
+
+    '@media (max-width: 750px)': {
+      flexBasis: '100%'
+    }
   },
 
   steps: {
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    flexWrap: 'wrap'
   },
 
   stepList: {
-    marginTop: '50px'
+    marginTop: '50px',
+    flexBasis: '30%',
+
+    '@media (max-width: 750px)': {
+      flexBasis: '100%'
+    }
   },
 
   step: {
@@ -190,6 +209,7 @@ class Onboard extends Component {
     this.handleState = this.handleState.bind(this)
     this.handleCity = this.handleCity.bind(this)
     this.confirmSummoner = this.confirmSummoner.bind(this)
+    this.copy = this.copy.bind(this)
 
     this.state = {
       countryList: countries,
@@ -198,8 +218,9 @@ class Onboard extends Component {
       country: null,
       state: null,
       city: null,
-      code: null,
-      account: {}
+      account: {},
+      requesting: false,
+      code: 'We love you'
     }
   }
 
@@ -232,6 +253,7 @@ class Onboard extends Component {
   }
 
   submitLocation () {
+    this.setState({requesting: true})
     const userData = {
       country: this.state.country,
       state: this.state.state,
@@ -240,7 +262,10 @@ class Onboard extends Component {
 
     this.props.editUser(userData)
       .then(({ data, type }) => {
+        this.setState({requesting: false})
+
         if (type === EDIT_USER_SUCCESS) {
+          this.props.throwSuccess('Localização atualizada')
           this.nextSlide()
         }
 
@@ -252,10 +277,14 @@ class Onboard extends Component {
 
   submitSummoner () {
     const summoner = {name: this.summoner.value}
+    this.setState({requesting: true})
 
     this.props.addSummoner(summoner)
       .then(({ data, type }) => {
+        this.setState({requesting: false})
+
         if (type === ADD_SUMMONER_SUCCESS) {
+          this.props.throwSuccess('Invocador adicionado')
           this.nextSlide()
           this.setState({code: data.code})
           this.props.fetchAccount()
@@ -274,14 +303,23 @@ class Onboard extends Component {
 
   confirmSummoner () {
     const summoner = this.state.account.summoners[0].name
+    this.setState({requesting: true})
+
     this.props.confirmSummoner(summoner)
       .then(({ data, type }) => {
+        this.setState({requesting: false})
+
         if (data) {
+          this.props.throwSuccess('Localização confirmado')
           this.props.routing.url.pushTo('/profile')
         } else {
           this.props.throwError('Invocador não confirmado ainda, tente novamente em alguns segundos')
         }
       })
+  }
+
+  copy () {
+    this.props.throwSuccess('Código copiado')
   }
 
   render () {
@@ -327,7 +365,7 @@ class Onboard extends Component {
           </div>
 
           <button className={style(styles.btnPrev)} onClick={this.previousSlide}>Anterior</button>
-          <button className={style(styles.btnNext)} onClick={this.submitLocation}>Próximo</button>
+          <button className={style(styles.btnNext)} onClick={this.submitLocation} disabled={this.state.requesting}>Próximo</button>
         </div>
 
         <div>
@@ -337,14 +375,14 @@ class Onboard extends Component {
 
             <div className={style(styles.form)}>
               <fieldset className={style(styles.formInput)}>
-                <label className={style(styles.label)}>Invocador</label>
+                <label className={style(styles.label)}>Nome do Invocador</label>
                 <input className={style(styles.input)} type="text" ref={node => this.summoner = node}/>
               </fieldset>
             </div>
           </div>
 
           <button className={style(styles.btnPrev)} onClick={this.previousSlide}>Anterior</button>
-          <button className={style(styles.btnNext)} onClick={this.submitSummoner}>Próximo</button>
+          <button className={style(styles.btnNext)} onClick={this.submitSummoner} disabled={this.state.requesting}>Próximo</button>
         </div>
 
         <div>
@@ -376,11 +414,14 @@ class Onboard extends Component {
 
           <div className={style(styles.codeCase)}>
             <p className={style(styles.code)}>{this.state.code}</p>
-            <button className={style(styles.codeBtn)}>Seu código</button>
+
+            <CopyToClipboard text={this.state.code} onCopy={this.copy}>
+              <span className={style(styles.codeBtn)}>Copiar código</span>
+            </CopyToClipboard>
           </div>
 
           <button className={style(styles.btnPrev)} onClick={this.previousSlide}>Anterior</button>
-          <button className={style(styles.btnNext)} onClick={this.confirmSummoner}>Confirmar Invocador</button>
+          <button className={style(styles.btnNext)} onClick={this.confirmSummoner} disabled={this.state.requesting}>Confirmar Invocador</button>
         </div>
       </Slider>
     )

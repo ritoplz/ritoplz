@@ -1,6 +1,6 @@
 {
   "name": "Ritoplz",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "repository": {
     "url": "https://github.com/BuKinoshita/ritoplz.git",
     "type": "git"
@@ -23,6 +23,7 @@
     "react": "^15.3.2",
     "react-addons-test-utils": "^15.3.2",
     "react-cookie": "^1.0.4",
+    "react-copy-to-clipboard": "^4.2.3",
     "react-modal": "^1.5.2",
     "react-redux": "^4.4.5",
     "react-s-alert": "^1.2.2",
