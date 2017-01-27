@@ -14,5 +14,5 @@ const styles = {
 }
 
 export default () => (
-  <h1 className={style(styles.loading)}>Loading...</h1>
+  <h1 className={style(styles.loading)}>Carregando...</h1>
 )

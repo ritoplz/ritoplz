@@ -114,11 +114,11 @@ class ModalAddSummoner extends Component {
       <Modal isOpen={this.state.modalStatus} onRequestClose={this.handleCloseModal} style={customStyle}>
         <form onSubmit={this.handleSubmit}>
           <fieldset className={style(styles.formInput)}>
-            <label className={style(styles.label)}>Summoner</label>
+            <label className={style(styles.label)}>Invocador</label>
             <input className={style(styles.input)} type="text" ref={node => this.summoner = node}/>
           </fieldset>
 
-          <button className={style(styles.btn)}>Add Summoner</button>
+          <button className={style(styles.btn)}>Adicionar Invocador</button>
         </form>
 
         <Alert effect="jelly" stack={{limit: 3}}/>

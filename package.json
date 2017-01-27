@@ -1,7 +1,6 @@
 {
-  "name": "ritoplz",
-  "version": "1.2.0",
-  "main": "index.js",
+  "name": "Ritoplz",
+  "version": "1.2.3",
   "repository": {
     "url": "https://github.com/BuKinoshita/ritoplz.git",
     "type": "git"

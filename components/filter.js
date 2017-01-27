@@ -49,7 +49,7 @@ class Filter extends Component {
     this.props.fetchRankings(params)
       .then(({ type }) => {
         if (type === RANKINGS_ERROR) {
-          Alert.error('No users found', {position: 'top-right'})
+          Alert.error('Nenhum invocador encontrado nessa região', {position: 'top-right'})
         }
       })
   }
@@ -71,7 +71,7 @@ class Filter extends Component {
     this.props.fetchRankings(params)
       .then(res => {
         if (res.type === RANKINGS_ERROR) {
-          Alert.error('No users found', {position: 'bottom-right'})
+          Alert.error('Nenhum invocador encatrado nessa região', {position: 'bottom-right'})
         }
       }).catch(err => console.log('err', err))
   }
@@ -88,7 +88,7 @@ class Filter extends Component {
     this.props.fetchRankings(params)
       .then(res => {
         if (res.type === RANKINGS_ERROR) {
-          Alert.error('No users found', {position: 'bottom-right'})
+          Alert.error('Nenhum invocador encatrado nessa região', {position: 'bottom-right'})
         }
       }).catch(err => console.log('err', err))
   }
@@ -97,15 +97,15 @@ class Filter extends Component {
     return (
       <section className={style(styles.filter)}>
         <div className={style(styles.input)}>
-          <Select options={this.state.countryList} value={this.state.country} onChange={this.handleCountry} placeholder="Select country..."/>
+          <Select options={this.state.countryList} value={this.state.country} onChange={this.handleCountry} placeholder="Selecione um país..."/>
         </div>
 
         <div className={style(styles.input)}>
-          <Select options={this.state.stateList} value={this.state.state} onChange={this.handleState} placeholder="Select state..."/>
+          <Select options={this.state.stateList} value={this.state.state} onChange={this.handleState} placeholder="Selecione um estado..."/>
         </div>
 
         <div className={style(styles.input)}>
-          <Select options={this.state.cityList} value={this.state.city} onChange={this.handleCity} placeholder="Select city..."/>
+          <Select options={this.state.cityList} value={this.state.city} onChange={this.handleCity} placeholder="Selecione uma cidade..."/>
         </div>
 
         <Alert effect="jelly" stack={{limit: 3}}/>
