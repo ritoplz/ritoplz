@@ -41,6 +41,10 @@ export default class extends Component {
     Alert.error(message, {position: 'top-right'})
   }
 
+  throwSuccess (message) {
+    Alert.success(message, {position: 'top-right'})
+  }
+
   render () {
     const items = [
       {name: 'Rankings', link: 'rankings', type: 'item'}
@@ -59,7 +63,7 @@ export default class extends Component {
             <Header items={items} />
 
             <div className={style(styles.row)}>
-              <Onboard routing={this.props} throwError={this.throwError}/>
+              <Onboard routing={this.props} throwError={this.throwError} throwSuccess={this.throwSuccess}/>
             </div>
 
             <Footer />
