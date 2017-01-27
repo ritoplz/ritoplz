@@ -344,7 +344,7 @@ class Onboard extends Component {
         </div>
 
         <div>
-          <h1 className={style(styles.title)}>Escolha sua localização your location</h1>
+          <h1 className={style(styles.title)}>Escolha sua localização</h1>
           <h2 className={style(styles.subtitle)}>Essa será sua localização no Rankings</h2>
 
           <div className={style(styles.form)}>
@@ -387,7 +387,7 @@ class Onboard extends Component {
 
         <div>
           <h1 className={style(styles.title)}>Confirme seu invocador</h1>
-          <h2 className={style(styles.subtitle)}>Copie o código abaixo para confirmar seu invocador</h2>
+          <h2 className={style(styles.subtitle)}>Siga as instruções abaixo para confirmar seu invocador</h2>
 
           <div className={style(styles.steps)}>
             <div className={style(styles.stepImage)}>
