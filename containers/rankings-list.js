@@ -43,6 +43,21 @@ const styles = {
     ':hover': {
       color: '#333'
     }
+  },
+
+  load: {
+    color: '#fff',
+    border: 'none',
+    borderRadius: '5px',
+    padding: '14px 28px',
+    fontSize: '1rem',
+    height: '55px',
+    fontWeight: '500',
+    cursor: 'pointer',
+    width: '100%',
+    marginTop: '10px',
+    marginBottom: '50px',
+    background: 'linear-gradient(to right, #52bdab 0%,#6BB6D6 100%)'
   }
 }
 
@@ -54,23 +69,41 @@ class RankingsList extends Component {
       summoners: [],
       unrankeds: [],
       selected: 'ranked',
-      fetched: false
+      fetched: false,
+      skip: 0,
+      nextPage: false
     }
 
     this.changeList = this.changeList.bind(this)
+    this.onFetchRankings = this.onFetchRankings.bind(this)
   }
 
   componentDidMount() {
-    this.props.fetchRankings().then(() => {
-      this.setState({fetched: true})
-    })
+    this.onFetchRankings()
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      summoners: nextProps.rankings.data.summoners,
       unrankeds: nextProps.rankings.data.unrankeds
     })
+  }
+
+  onFetchRankings () {
+    const params = {
+      country: 'BR',
+      limit: 100,
+      skip: this.state.skip
+    }
+
+    this.props.fetchRankings(params)
+      .then(res => {
+        this.setState({
+          fetched: true,
+          skip: this.state.skip + 100,
+          nextPage: res.data.next_page,
+          summoners: this.state.summoners.concat(res.data.summoners)
+        })
+      })
   }
 
   changeList (type) {
@@ -80,15 +113,19 @@ class RankingsList extends Component {
   render () {
     let rankingList
     let list
+    let loadMore = this.state.nextPage ? <button className={style(styles.load)} onClick={this.onFetchRankings}>Carregar mais</button> : ''
 
     if (this.state.fetched) {
       if (this.state.selected === 'ranked') {
         list = (
-          <ul>
-            {this.state.summoners.map((summoner, i) => {
-              return <RankingUser data={summoner} key={summoner._id} position={i + 1}/>
-            })}
-          </ul>
+          <div>
+            <ul>
+              {this.state.summoners.map((summoner, i) => {
+                return <RankingUser data={summoner} key={summoner._id} position={i + 1}/>
+              })}
+            </ul>
+            {loadMore}
+          </div>
         )
       } else {
         list = (
