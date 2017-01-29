@@ -53,7 +53,7 @@ class Filter extends Component {
     this.props.fetchRankings(params)
       .then(res => {
         if (res.type === RANKINGS_ERROR) {
-          Alert.error('Nenhum invocador encatrado nessa região', {position: 'bottom-right'})
+          Alert.error('Nenhum invocador encontrado nessa região', {position: 'bottom-right'})
         }
       }).catch(err => console.log('err', err))
   }
@@ -69,7 +69,7 @@ class Filter extends Component {
     this.props.fetchRankings(params)
       .then(res => {
         if (res.type === RANKINGS_ERROR) {
-          Alert.error('Nenhum invocador encatrado nessa região', {position: 'bottom-right'})
+          Alert.error('Nenhum invocador encontrado nessa região', {position: 'bottom-right'})
         }
       }).catch(err => console.log('err', err))
   }
