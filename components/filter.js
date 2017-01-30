@@ -47,7 +47,7 @@ class Filter extends Component {
       cityList: city[0].cities
     })
 
-    if (this.state.selected === 'ranked') {
+    if (this.props.selected === 'ranked') {
       params = {
         country: 'BR',
         state: e.label,
@@ -65,31 +65,56 @@ class Filter extends Component {
 
     this.props.fetchRankings(params)
       .then(res => {
-        this.setState({
+        const dataLocation = {
           summoners: res.data.summoners,
-          unrankeds: res.data.summoners
-        })
-
-        if (res.type === RANKINGS_ERROR) {
-          Alert.error('Nenhum invocador encontrado nessa região', {position: 'bottom-right'})
+          state: this.state.stateParam,
+          city: undefined
         }
+
+        if (typeof res.data === 'undefined') {
+          Alert.error('Nenhum invocador encontrado nessa região', {position: 'bottom-right'})
+          this.props.changeLocation(dataLocation)
+        }
+
+        this.props.changeLocation(dataLocation)
       }).catch(err => console.log('err', err))
   }
 
   handleCity (e) {
     this.setState({city: e.value})
-
-    const params = {
-      country: 'BR',
-      state: this.state.stateParam,
-      city: e.label
+    let params
+    if (this.props.selected === 'ranked') {
+      params = {
+        country: 'BR',
+        state: this.state.stateParam,
+        limit: 100,
+        skip: 0,
+        city: e.label
+      }
+    } else {
+      params = {
+        country: 'BR',
+        state: this.state.stateParam,
+        city: e.label,
+        limit: 300,
+        unrankeds: true
+      }
     }
 
     this.props.fetchRankings(params)
       .then(res => {
-        if (res.type === RANKINGS_ERROR) {
-          Alert.error('Nenhum invocador encontrado nessa região', {position: 'bottom-right'})
+        const dataLocation = {
+          summoners: res.data.summoners,
+          state: this.state.stateParam,
+          city: undefined
         }
+
+        if (typeof res.data === 'undefined') {
+          Alert.error('Nenhum invocador encontrado nessa região', {position: 'bottom-right'})
+          this.props.changeLocation(dataLocation)
+        }
+
+        this.props.changeLocation(dataLocation)
       }).catch(err => console.log('err', err))
   }
 
