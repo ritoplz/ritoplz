@@ -85,7 +85,7 @@ class RankingsList extends Component {
   onFetchRankings () {
     const params = {
       country: 'BR',
-      limit: 100,
+      limit: 1,
       skip: this.state.skip
     }
 
@@ -106,13 +106,14 @@ class RankingsList extends Component {
     if (type === 'ranked') {
       params = {
         country: 'BR',
-        limit: 100,
+        limit: 1,
         skip: 0
       }
     } else {
       params = {
         country: 'BR',
-        limit: 300
+        limit: 300,
+        unrankeds: true
       }
     }
 
