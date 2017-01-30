@@ -71,11 +71,13 @@ class RankingsList extends Component {
       selected: 'ranked',
       fetched: false,
       skip: 0,
-      nextPage: false
+      nextPage: false,
+      location: false
     }
 
     this.changeList = this.changeList.bind(this)
     this.onFetchRankings = this.onFetchRankings.bind(this)
+    this.handleLocation = this.handleLocation.bind(this)
   }
 
   componentDidMount() {
@@ -83,21 +85,52 @@ class RankingsList extends Component {
   }
 
   onFetchRankings () {
-    const params = {
-      country: 'BR',
-      limit: 1,
-      skip: this.state.skip
+    let params
+
+    if (this.state.location) {
+      params = {
+        country: 'BR',
+        limit: 100,
+        state: this.state.state,
+        city: this.state.city,
+        skip: this.state.skip
+      }
+    } else {
+      params = {
+        country: 'BR',
+        limit: 100,
+        skip: this.state.skip
+      }
     }
 
     this.props.fetchRankings(params)
       .then(res => {
         this.setState({
           fetched: true,
-          skip: this.state.skip + 1,
+          skip: this.state.skip + 100,
           nextPage: res.data.next_page,
           summoners: this.state.summoners.concat(res.data.summoners)
         })
       })
+  }
+
+  handleLocation (data = { state: undefined, city: undefined, summoners: [] }) {
+    console.log(data)
+    if (this.state.selected === 'ranked') {
+      this.setState({
+        summoners: data.summoners,
+        state: data.state,
+        city: data.city,
+        location: true
+      })
+    } else {
+      this.setState({
+        unrankeds: data.summoners,
+        state: data.state,
+        city: data.city,
+        location: true
+      })
+    }
   }
 
   changeList (type) {
@@ -106,7 +139,7 @@ class RankingsList extends Component {
     if (type === 'ranked') {
       params = {
         country: 'BR',
-        limit: 1,
+        limit: 100,
         skip: 0
       }
     } else {
@@ -131,7 +164,7 @@ class RankingsList extends Component {
   render () {
     let rankingList
     let list
-    let loadMore = this.state.nextPage ? <button className={style(styles.load)} onClick={this.onFetchRankings}>Carregar mais</button> : ''
+    const loadMore = this.state.nextPage ? <button className={style(styles.load)} onClick={this.onFetchRankings}>Carregar mais</button> : ''
 
     if (this.state.fetched) {
       if (this.state.selected === 'ranked') {
@@ -139,7 +172,7 @@ class RankingsList extends Component {
           <div>
             <ul>
               {this.state.summoners.map((summoner, i) => {
-                return <RankingUser data={summoner} key={summoner._id} position={i + 1}/>
+                return <RankingUser data={summoner} key={summoner._id + i} position={i + 1}/>
               })}
             </ul>
             {loadMore}
@@ -157,7 +190,7 @@ class RankingsList extends Component {
 
       rankingList = (
         <div>
-          <Filter fetchRankings={this.props.fetchRankings} summoners={this.state.summoners}/>
+          <Filter fetchRankings={this.props.fetchRankings} summoners={this.state.summoners} selected={this.state.selected} changeLocation={this.handleLocation}/>
 
           <nav className={style(styles.tabs)}>
             <span className={style(styles.tab)} onClick={node => this.changeList('ranked')}>Ranked</span>
