@@ -47,6 +47,7 @@ class Filter extends Component {
     })
 
     const params = {
+      country: 'BR',
       state: e.label
     }
 
@@ -62,6 +63,7 @@ class Filter extends Component {
     this.setState({city: e.value})
 
     const params = {
+      country: 'BR',
       state: this.state.stateParam,
       city: e.label
     }
