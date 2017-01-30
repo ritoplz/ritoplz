@@ -82,12 +82,6 @@ class RankingsList extends Component {
     this.onFetchRankings()
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      unrankeds: nextProps.rankings.data.unrankeds
-    })
-  }
-
   onFetchRankings () {
     const params = {
       country: 'BR',
@@ -107,7 +101,30 @@ class RankingsList extends Component {
   }
 
   changeList (type) {
-    this.setState({selected: type})
+    let params
+
+    if (type === 'ranked') {
+      params = {
+        country: 'BR',
+        limit: 100,
+        skip: 0
+      }
+    } else {
+      params = {
+        country: 'BR',
+        limit: 300
+      }
+    }
+
+    this.props.fetchRankings(params)
+      .then(res => {
+        this.setState({
+          fetched: true,
+          summoners: res.data.summoners,
+          unrankeds: res.data.summoners,
+          selected: type
+        })
+      })
   }
 
   render () {
