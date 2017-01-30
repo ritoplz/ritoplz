@@ -93,7 +93,7 @@ class RankingsList extends Component {
       .then(res => {
         this.setState({
           fetched: true,
-          skip: this.state.skip + 100,
+          skip: this.state.skip + 1,
           nextPage: res.data.next_page,
           summoners: this.state.summoners.concat(res.data.summoners)
         })
