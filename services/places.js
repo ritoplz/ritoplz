@@ -70,7 +70,8 @@ export const locations = {
         {"value": "Eunápolis", "label": "Eunápolis"},
         {"value": "Teixeira de Freitas", "label": "Teixeira de Freitas"},
         {"value": "Guarajuba", "label": "Guarajuba"},
-        {"value": "Camaçari", "label": "Camaçari"}
+        {"value": "Camaçari", "label": "Camaçari"},
+        {"value": "Serrinha", "label": "Serrinha"}
       ]
     },
     {
@@ -236,6 +237,7 @@ export const locations = {
         {"value": "Campina Grande", "label": "Campina Grande"},
         {"value": "Bayeux", "label": "Bayeux"},
         {"value": "Santa Rita", "label": "Santa Rita"},
+        {"value": "Pombal", "label": "Pombal"},
         {"value": "João Pessoa", "label": "João Pessoa"}
       ]
     },{
@@ -470,6 +472,7 @@ export const locations = {
         {"value": "Cotia", "label": "Cotia"},
         {"value": "Marília", "label": "Marília"},
         {"value": "Jacareí", "label": "Jacareí"},
+        {"value": "Itanhaém", "label": "Itanhaém"},
         {"value": "São José dos Campos", "label": "São José dos Campos"}
       ]
     },
