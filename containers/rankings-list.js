@@ -85,7 +85,7 @@ class RankingsList extends Component {
   onFetchRankings () {
     const params = {
       country: 'BR',
-      limit: 1,
+      limit: 100,
       skip: this.state.skip
     }
 
@@ -93,7 +93,7 @@ class RankingsList extends Component {
       .then(res => {
         this.setState({
           fetched: true,
-          skip: this.state.skip + 1,
+          skip: this.state.skip + 100,
           nextPage: res.data.next_page,
           summoners: this.state.summoners.concat(res.data.summoners)
         })
@@ -106,13 +106,13 @@ class RankingsList extends Component {
     if (type === 'ranked') {
       params = {
         country: 'BR',
-        limit: 1,
+        limit: 100,
         skip: 0
       }
     } else {
       params = {
         country: 'BR',
-        limit: 300,
+        limit: 600,
         unrankeds: true
       }
     }
