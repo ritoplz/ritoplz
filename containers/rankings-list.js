@@ -115,7 +115,6 @@ class RankingsList extends Component {
   }
 
   handleLocation (data = { state: undefined, city: undefined, summoners: [] }) {
-    console.log(data)
     if (this.state.selected === 'ranked') {
       this.setState({
         summoners: data.summoners,
