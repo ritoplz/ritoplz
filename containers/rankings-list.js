@@ -144,7 +144,7 @@ class RankingsList extends Component {
     } else {
       params = {
         country: 'BR',
-        limit: 300,
+        limit: 600,
         unrankeds: true
       }
     }
