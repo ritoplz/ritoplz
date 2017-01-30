@@ -39,7 +39,8 @@ function fetchRankings(params = { country: 'BR', state: undefined, city: undefin
         state: params.state,
         city: params.city,
         limit: params.limit,
-        skip: params.skip
+        skip: params.skip,
+        unrankeds: params.unrankeds
       }
     })
     .then(res => dispatch(rankingsSuccess(res)))
