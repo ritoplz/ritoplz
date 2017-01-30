@@ -16,7 +16,9 @@ const styles = {
   },
 
   input: {
-    flexBasis: '30%'
+    flexBasis: '100%',
+    marginLeft: '10px',
+    marginRight: '10px'
   }
 }
 
@@ -25,37 +27,18 @@ class Filter extends Component {
     super()
 
     this.state = {
-      countryList: countries,
-      stateList: null,
+      stateList: locations['BR'],
       cityList: null,
-      country: null,
       state: null,
       city: null
     }
 
-    this.handleCountry = this.handleCountry.bind(this)
     this.handleState = this.handleState.bind(this)
     this.handleCity = this.handleCity.bind(this)
   }
 
-  handleCountry (e) {
-    this.setState({
-      country: e.value,
-      stateList: locations[e.value]
-    })
-
-    const params = {country: e.value}
-
-    this.props.fetchRankings(params)
-      .then(({ type }) => {
-        if (type === RANKINGS_ERROR) {
-          Alert.error('Nenhum invocador encontrado nessa região', {position: 'top-right'})
-        }
-      })
-  }
-
   handleState (e) {
-    const city = locations[this.state.country].filter(state => state.value === e.value)
+    const city = locations['BR'].filter(state => state.value === e.value)
 
     this.setState({
       state: e.value,
@@ -64,14 +47,14 @@ class Filter extends Component {
     })
 
     const params = {
-      country: this.state.country,
+      country: 'BR',
       state: e.label
     }
 
     this.props.fetchRankings(params)
       .then(res => {
         if (res.type === RANKINGS_ERROR) {
-          Alert.error('Nenhum invocador encatrado nessa região', {position: 'bottom-right'})
+          Alert.error('Nenhum invocador encontrado nessa região', {position: 'bottom-right'})
         }
       }).catch(err => console.log('err', err))
   }
@@ -80,7 +63,7 @@ class Filter extends Component {
     this.setState({city: e.value})
 
     const params = {
-      country: this.state.country,
+      country: 'BR',
       state: this.state.stateParam,
       city: e.label
     }
@@ -88,7 +71,7 @@ class Filter extends Component {
     this.props.fetchRankings(params)
       .then(res => {
         if (res.type === RANKINGS_ERROR) {
-          Alert.error('Nenhum invocador encatrado nessa região', {position: 'bottom-right'})
+          Alert.error('Nenhum invocador encontrado nessa região', {position: 'bottom-right'})
         }
       }).catch(err => console.log('err', err))
   }
@@ -96,10 +79,6 @@ class Filter extends Component {
   render () {
     return (
       <section className={style(styles.filter)}>
-        <div className={style(styles.input)}>
-          <Select options={this.state.countryList} value={this.state.country} onChange={this.handleCountry} placeholder="Selecione um país..."/>
-        </div>
-
         <div className={style(styles.input)}>
           <Select options={this.state.stateList} value={this.state.state} onChange={this.handleState} placeholder="Selecione um estado..."/>
         </div>
