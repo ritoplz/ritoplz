@@ -39,6 +39,7 @@ class Filter extends Component {
 
   handleState (e) {
     const city = locations['BR'].filter(state => state.value === e.value)
+    let params
 
     this.setState({
       state: e.value,
@@ -46,13 +47,29 @@ class Filter extends Component {
       cityList: city[0].cities
     })
 
-    const params = {
-      country: 'BR',
-      state: e.label
+    if (this.state.selected === 'ranked') {
+      params = {
+        country: 'BR',
+        state: e.label,
+        limit: 100,
+        skip: 0
+      }
+    } else {
+      params = {
+        country: 'BR',
+        state: e.label,
+        limit: 300,
+        unrankeds: true
+      }
     }
 
     this.props.fetchRankings(params)
       .then(res => {
+        this.setState({
+          summoners: res.data.summoners,
+          unrankeds: res.data.summoners
+        })
+
         if (res.type === RANKINGS_ERROR) {
           Alert.error('Nenhum invocador encontrado nessa região', {position: 'bottom-right'})
         }
