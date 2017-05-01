@@ -2,74 +2,11 @@
 
 import React from 'react'
 import Link from 'next/link'
-import { style } from 'next/css'
 
 import Meta from '../components/meta'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import { isLogged } from './../services/auth'
-
-const styles = {
-  row: {
-    maxWidth: '900px',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-
-    '@media (max-width: 750px)': {
-      paddingLeft: '20px',
-      paddingRight: '20px'
-    }
-  },
-
-  title: {
-    color: '#333',
-    fontWeight: '300',
-    fontSize: '3rem',
-    textAlign: 'center',
-    marginTop: '50px'
-  },
-
-  subtitle: {
-    color: '#ccc',
-    fontWeight: '300',
-    fontSize: '1.15rem',
-    textAlign: 'center',
-    marginBottom: '50px',
-    marginTop: '5px'
-  },
-
-  exhibit: {
-    fontWeight: '600',
-    color: '#333',
-    fontSize: '1.25rem',
-    marginBottom: '15px'
-  },
-
-  text: {
-    fontSize: '1rem',
-    lineHeight: '1.75rem',
-    color: '#777',
-    marginBottom: '25px',
-    fontWeight: '400'
-  },
-
-  notice: {
-    lineHeight: '1.75rem',
-    color: '#777',
-    marginBottom: '25px',
-    fontWeight: '400',
-    fontSize: '.9rem',
-    marginTop: '50px',
-    textAlign: 'center',
-    paddingLeft: '50px',
-    paddingRight: '50px'
-  },
-
-  linked: {
-    color: '#333',
-    fontWeight: '600'
-  }
-}
 
 const Terms = () => {
   let items
@@ -151,6 +88,63 @@ const Terms = () => {
       </section>
 
       <Footer/>
+
+      <style jsx>{`
+        .row {
+          maxWidth: 900px;
+          marginLeft: auto;
+          marginRight: auto;
+        }
+
+        .title {
+          color: #333;
+          fontWeight: 300;
+          fontSize: 3rem;
+          textAlign: center;
+          marginTop: 50px;
+        }
+
+        .subtitle {
+          color: '#ccc',
+          fontWeight: '300',
+          fontSize: '1.15rem',
+          textAlign: 'center',
+          marginBottom: '50px',
+          marginTop: '5px'
+        }
+
+        .exhibit {
+          fontWeight: 600;
+          color: #333;
+          fontSize: 1.25rem;
+          marginBottom: 15px;
+        }
+
+        .text {
+          fontSize: 1rem;
+          lineHeight: 1.75rem;
+          color: #777;
+          marginBottom: 25px;
+          fontWeight: 400;
+        }
+
+        .notice {
+          lineHeight: 1.75rem;
+          color: #777;
+          marginBottom: 25px;
+          fontWeight: 400;
+          fontSize: .9rem;
+          marginTop: 50px;
+          textAlign: center;
+          paddingLeft: 50px;
+          paddingRight: 50px;
+        }
+
+        .linked {
+          color: #333;
+          fontWeight: 600;
+        }
+      `}</style>
     </div>
   )
 }
