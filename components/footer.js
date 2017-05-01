@@ -62,7 +62,7 @@ export default () => {
           margin-right: auto;
           display: flex;
           justify-content: space-between;
-          flexWrap: wrap;
+          flex-wrap: wrap;
         }
 
         .copyright {
@@ -77,7 +77,7 @@ export default () => {
           margin-right: 15px;
           height: 20px;
           line-height: 20px;
-          paddingRight: 15px;
+          padding-right: 15px;
         }
 
         .link {
