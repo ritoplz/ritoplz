@@ -2,7 +2,6 @@
 'use strict'
 
 import React, { Component } from 'react'
-import { style } from 'next/css'
 import { connect } from 'react-redux'
 
 import fetchRankings from '../actions/fetch-rankings'
@@ -10,56 +9,6 @@ import RankingUser from './../components/ranking-user'
 import UnrankedUser from './../components/unranked-user'
 import Filter from './../components/filter'
 import Loading from './../components/loading'
-
-const styles = {
-  title: {
-    textAlign: 'center',
-    fontWeight: '300',
-    fontSize: '3rem',
-    color: '#333',
-    paddingTop: '75px',
-    paddingBottom: '75px'
-  },
-
-  unrankedList: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between'
-  },
-
-  tab: {
-    width: '50%',
-    display: 'inline-block',
-    textAlign: 'center',
-    height: '60px',
-    lineHeight: '60px',
-    fontSize: '1.25rem',
-    color: '#999',
-    marginBottom: '40px',
-    marginTop: '25px',
-    cursor: 'pointer',
-    transition: '.15s',
-
-    ':hover': {
-      color: '#333'
-    }
-  },
-
-  load: {
-    color: '#fff',
-    border: 'none',
-    borderRadius: '5px',
-    padding: '14px 28px',
-    fontSize: '1rem',
-    height: '55px',
-    fontWeight: '500',
-    cursor: 'pointer',
-    width: '100%',
-    marginTop: '10px',
-    marginBottom: '50px',
-    background: 'linear-gradient(to right, #52bdab 0%,#6BB6D6 100%)'
-  }
-}
 
 class RankingsList extends Component {
   constructor() {
@@ -163,7 +112,7 @@ class RankingsList extends Component {
   render () {
     let rankingList
     let list
-    const loadMore = this.state.nextPage ? <button className={style(styles.load)} onClick={this.onFetchRankings}>Carregar mais</button> : ''
+    const loadMore = this.state.nextPage ? <button className="load" onClick={this.onFetchRankings}>Carregar mais</button> : ''
 
     if (this.state.fetched) {
       if (this.state.selected === 'ranked') {
@@ -179,7 +128,7 @@ class RankingsList extends Component {
         )
       } else {
         list = (
-          <ul className={style(styles.unrankedList)}>
+          <ul className="unrankedList">
             {this.state.unrankeds.map(summoner => {
               return <UnrankedUser data={summoner} key={summoner._id}/>
             })}
@@ -191,9 +140,9 @@ class RankingsList extends Component {
         <div>
           <Filter fetchRankings={this.props.fetchRankings} summoners={this.state.summoners} selected={this.state.selected} changeLocation={this.handleLocation}/>
 
-          <nav className={style(styles.tabs)}>
-            <span className={style(styles.tab)} onClick={node => this.changeList('ranked')}>Ranked</span>
-            <span className={style(styles.tab)} onClick={node => this.changeList('unranked')}>Unranked</span>
+          <nav className="tabs">
+            <span className="tab" onClick={node => this.changeList('ranked')}>Ranked</span>
+            <span className="tab" onClick={node => this.changeList('unranked')}>Unranked</span>
           </nav>
 
           {list}
@@ -205,8 +154,54 @@ class RankingsList extends Component {
 
     return (
       <div>
-        <h2 className={style(styles.title)}>Rankings</h2>
+        <h2 className="title">Rankings</h2>
         {rankingList}
+
+        <style jsx>{`
+          .title {
+            textAlign: center;
+            fontWeight: 300;
+            fontSize: 3rem;
+            color: #333;
+            paddingTop: 75px;
+            paddingBottom: 75px;
+          }
+
+          .unrankedList {
+            display: flex;
+            flexWrap: wrap;
+            justifyContent: space-between;
+          }
+
+          .tab {
+            width: 50%;
+            display: inline-block;
+            textAlign: center;
+            height: 60px;
+            lineHeight: 60px;
+            fontSize: 1.25rem;
+            color: #999;
+            marginBottom: 40px;
+            marginTop: 25px;
+            cursor: pointer;
+            transition: .15s;
+          }
+
+          .load {
+            color: #fff;
+            border: none;
+            borderRadius: 5px;
+            padding: 14px 28px;
+            fontSize: 1rem;
+            height: 55px;
+            fontWeight: 500;
+            cursor: pointer;
+            width: 100%;
+            marginTop: 10px;
+            marginBottom: 50px;
+            background: linear-gradient(to right, #52bdab 0%,#6BB6D6 100%);
+          }
+        `}</style>
       </div>
     )
   }
