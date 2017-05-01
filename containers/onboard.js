@@ -3,7 +3,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Select from 'react-select'
-import { style } from 'next/css'
 import Slider from 'react-slick'
 import CopyToClipboard from 'react-copy-to-clipboard'
 
