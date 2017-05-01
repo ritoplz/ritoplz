@@ -8,10 +8,10 @@ export default () => (
 
     <style jsx>{`
       .loading: {
-        fontWeight: 100;
-        textAlign: center;
+        font-weight: 100;
+        text-align: center;
         height: calc(100vh - 200px);
-        lineHeight: 70vh;
+        line-height: 70vh;
         color: #333;
       }
     `}</style>

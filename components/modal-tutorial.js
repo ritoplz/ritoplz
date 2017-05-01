@@ -100,46 +100,46 @@ class ModalTutorial extends Component {
 
         <style jsx>{`
           .title {
-            textAlign: center;
+            text-align: center;
             color: #333;
-            fontSize: 2rem;
-            fontWeight: 500;
-            marginBottom: 10px;
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 10px;
           }
 
           .subtitle {
             color: #999;
-            fontSize: 1.15rem;
-            fontWeight: 400;
-            textAlign: center;
-            marginBottom: 30px;
-            lineHeight: 2rem;
+            font-size: 1.15rem;
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 30px;
+            line-height: 2rem;
           }
 
           .btn {
             color: #52bdab;
-            borderRadius: 5px;
+            border-radius: 5px;
             padding: 10px 25px;
-            fontSize: .9rem;
-            fontWeight: 500;
+            font-size: .9rem;
+            font-weight: 500;
             cursor: pointer;
             border: 2px solid #52bdab;
             float: right;
-            backgroundColor: transparent;
-            marginTop: 70px;
-            marginRight: 5px;
+            background-color: transparent;
+            margin-top: 70px;
+            margin-right: 5px;
             transition: .25s;
           }
 
           .slickImage {
             display: inline-block;
             width: 90%;
-            marginLeft: auto;
-            marginRight: auto;
+            margin-left: auto;
+            margin-right: auto;
           }
 
           .image {
-            maxWidth: 100%;
+            max-width: 100%;
           }
         `}</style>
       </Modal>

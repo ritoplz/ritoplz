@@ -52,39 +52,39 @@ export default () => {
 
       <style jsx>{`
         .footer {
-          paddingTop: '20px',
-          paddingBottom: '20px',
+          padding-top: 20px;
+          padding-bottom: 20px;
         }
 
         .row {
-          maxWidth: '900px',
-          marginLeft: 'auto',
-          marginRight: 'auto',
-          display: 'flex',
-          justifyContent: 'space-between',
-          flexWrap: 'wrap',
+          max-width: 900px;
+          margin-left: auto;
+          margin-right: auto;
+          display: flex;
+          justify-content: space-between;
+          flexWrap: wrap;
         }
 
         .copyright {
-          color: '#666',
-          fontSize: '14px',
+          color: #666;
+          font-size: 14px;
         }
 
         .item {
-          display: 'inline-block',
-          borderRight: '1px solid #ededed',
-          verticalAlign: 'middle',
-          marginRight: '15px',
-          height: '20px',
-          lineHeight: '20px',
-          paddingRight: '15px',
+          display: inline-block;
+          border-right: 1px solid #ededed;
+          vertical-align: middle;
+          margin-right: 15px;
+          height: 20px;
+          line-height: 20px;
+          paddingRight: 15px;
         }
 
         .link {
-          color: '#666',
-          textDecoration: 'none',
-          fontSize: '12px',
-          transition: 'all .2s ease',
+          color: #666;
+          text-decoration: none;
+          font-size: 12px;
+          transition: all .2s ease;
         }
       `}</style>
     </footer>

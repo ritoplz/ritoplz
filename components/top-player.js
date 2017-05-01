@@ -36,12 +36,12 @@ export default props => {
 
       <style jsx>{`
         .topPlayersItem {
-          backgroundColor: #fff;
-          borderRadius: 10px;
-          boxShadow: 0 10px 40px rgba(0, 0, 0, .1);
-          flexBasis: 31%;
-          marginBottom: 30px;
-          textAlign: center;
+          background-color: #fff;
+          border-radius: 10px;
+          box-shadow: 0 10px 40px rgba(0, 0, 0, .1);
+          flex-basis: 31%;
+          margin-bottom: 30px;
+          text-align: center;
         }
 
         .topPlayersCard {
@@ -51,55 +51,55 @@ export default props => {
         .topPlayersAvatar {
           height: 70px;
           width: 70px;
-          borderRadius: 10px;
-          marginBottom: 15px;
+          border-radius: 10px;
+          margin-bottom: 15px;
         }
 
         .topPlayersName {
-          fontSize: 1.75rem;
+          font-size: 1.75rem;
           color: #333;
         }
 
         .topPlayersSummoner {
           color: #999;
-          fontSize: 1rem;
-          fontWeight: 600;
-          marginTop: 5px;
+          font-size: 1rem;
+          font-weight: 600;
+          margin-top: 5px;
         }
 
         .tierInfo {
-          flexBasis: 40%;
-          textAlign: left;
+          flex-basis: 40%;
+          text-align: left;
         }
 
         .tier {
           color: #333;
-          marginTop: 26px;
-          marginBottom: -22px;
-          fontWeight: 600;
-          fontSize: .9rem;
+          margin-top: 26px;
+          margin-bottom: -22px;
+          font-weight: 600;
+          font-size: .9rem;
         }
 
         .lp {
           color: #333;
           float: right;
-          marginBottom: 5px;
-          fontSize: 14px;
-          fontWeight: 600;
+          margin-bottom: 5px;
+          font-size: 14px;
+          font-weight: 600;
         }
 
         .location {
-          fontSize: .9rem;
-          fontWeight: 400;
+          font-size: .9rem;
+          font-weight: 400;
           color: #999;
-          marginTop: 10px;
-          lineHeight: 1.25rem;
+          margin-top: 10px;
+          line-height: 1.25rem;
         }
 
         .pin {
           width: 10px;
-          marginRight: 5px;
-          verticalAlign: middle;
+          margin-right: 5px;
+          vertical-align: middle;
         }
       `}</style>
     </li>

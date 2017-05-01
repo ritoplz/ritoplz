@@ -36,7 +36,7 @@ export default class Summoner extends Component {
 
         <style jsx>{`
           .base {
-            flexBasis: calc(50% - 30px);
+            flex-basis: calc(50% - 30px);
             margin: 15px;
           }
 
@@ -45,51 +45,51 @@ export default class Summoner extends Component {
           }
 
           .info {
-            borderLeft: 1px solid #F3F5FB;
-            borderBottom: 1px solid #F3F5FB;
-            borderRight: 1px solid #F3F5FB;
-            marginTop: 0;
+            border-left: 1px solid #F3F5FB;
+            border-bottom: 1px solid #F3F5FB;
+            border-right: 1px solid #F3F5FB;
+            margin-top: 0;
             width: 100%;
-            paddingLeft: 0;
-            paddingRight: 0;
-            boxSizing: border-box;
-            borderBottomRightRadius: 10px;
-            borderBottomLeftRadius: 10px;
+            padding-left: 0;
+            padding-right: 0;
+            box-sizing: border-box;
+            border-bottom-right-radius: 10px;
+            border-bottom-left-radius: 10px;
           }
 
           .item {
             display: inline-block;
             width: 33.33%;
-            textAlign: center;
-            paddingTop: 20px;
-            paddingBottom: 20px;
+            text-align: center;
+            padding-top: 20px;
+            padding-bottom: 20px;
           }
 
           .title {
-            marginTop: 0;
-            fontWeight: 400;
-            fontSize: .9rem;
+            margin-top: 0;
+            font-weight: 400;
+            font-size: .9rem;
             color: #ccc;
-            marginBottom: 5px;
+            margin-bottom: 5px;
           }
 
           .subtitle {
-            fontSize: 1.2rem;
-            fontWeight: 600;
+            font-size: 1.2rem;
+            font-weight: 600;
             color: #333;
           }
 
           .checkmark {
-            verticalAlign: middle;
+            vertical-align: middle;
           }
 
           .confirm {
             width: 100%;
-            backgroundColor: transparent;
+            background-color: transparent;
             padding: 20px;
-            fontSize: 1rem;
+            font-size: 1rem;
             border: none;
-            borderTop: 1px solid #F3F5FB;
+            border-top: 1px solid #F3F5FB;
             color: #ccc;
             cursor: pointer;
             transition: .25s ease-in-out;

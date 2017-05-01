@@ -25,60 +25,60 @@ export default props => {
 
       <style jsx>{`
         .rankingItem {
-          marginBottom: 20px;
+          margin-bottom: 20px;
           border: 1px solid #F3F5FB;
-          borderRadius: 10px;
-          boxShadow: 0 10px 50px rgba(0, 0, 0, .025);
-          paddingLeft: 25px;
-          paddingRight: 25px;
-          textAlign: center;
+          border-radius: 10px;
+          box-shadow: 0 10px 50px rgba(0, 0, 0, .025);
+          padding-left: 25px;
+          padding-right: 25px;
+          text-align: center;
           padding: 15px 25px 30px;
-          flexBasis: 32%;
+          flex-basis: 32%;
         }
 
         .image {
-          flexBasis: 10%;
-          marginTop: 24px;
+          flex-basis: 10%;
+          margin-top: 24px;
         }
 
         .avatar {
           height: 50px;
           width: 50px;
-          borderRadius: 5px;
+          border-radius: 5px;
         }
 
         .rankingInfo {
-          marginTop: 14px;
-          flexBasis: 35%;
+          margin-top: 14px;
+          flex-basis: 35%;
         }
 
         .username {
-          fontSize: 1.25rem;
-          fontWeight: 400;
+          font-size: 1.25rem;
+          font-weight: 400;
           color: #333;
         }
 
         .summoner {
-          fontSize: 1rem;
-          fontWeight: 600;
+          font-size: 1rem;
+          font-weight: 600;
           color: rgba(0, 0, 0, .5);
         }
 
         .location {
-          fontSize: .9rem;
-          fontWeight: 400;
+          font-size: .9rem;
+          font-weight: 400;
           color: #999;
-          marginTop: 7px;
+          margin-top: 7px;
         }
 
         .pin {
           width: 10px;
-          marginRight: 5px;
-          verticalAlign: middle;
+          margin-right: 5px;
+          vertical-align: middle;
         }
 
         .streak {
-          marginLeft: 10px;
+          margin-left: 10px;
           position: relative;
         }
       `}</style>

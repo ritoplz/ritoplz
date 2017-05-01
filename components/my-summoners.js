@@ -52,36 +52,36 @@ class MySummoners extends Component {
         <style jsx>{`
           .header {
             display: flex;
-            justifyContent: space-between;
+            justify-content: space-between;
             alignItems: center;
           }
 
           .title {
             color: #333;
-            marginBottom: 50px;
-            fontWeight: 400
+            margin-bottom: 50px;
+            font-weight: 400
           }
 
           .btn {
             color: #fff;
             border: none;
-            borderRadius: 5px;
+            border-radius: 5px;
             padding: 10px 25px;
-            fontSize: .9rem;
+            font-size: .9rem;
             height: 50px;
-            marginTop: -50px;
-            fontWeight: 500;
+            margin-top: -50px;
+            font-weight: 500;
             cursor: pointer;
             background: linear-gradient(to right, #52bdab 0%,#6BB6D6 100%);
           }
 
           .row {
-            marginLeft: -15px;
-            marginRight: -15px;
+            margin-left: -15px;
+            margin-right: -15px;
             display: flex;
-            flexFlow: row wrap;
-            alignItems: center;
-            justifyContent: space-between;
+            flex-flow: row wrap;
+            align-items: center;
+            justify-content: space-between;
           }
         `}</style>
       </section>

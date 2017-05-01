@@ -119,14 +119,14 @@ class Filter extends Component {
         <style jsx>{`
           .filter {
             display: flex;
-            justifyContent: space-between;
-            marginBottom: 30px;
+            justify-content: space-between;
+            margin-bottom: 30px;
           }
 
           .input {
-            flexBasis: 100%;
-            marginLeft: 10px;
-            marginRight: 10px;
+            flex-basis: 100%;
+            margin-left: 10px;
+            margin-right: 10px;
           }
         `}</style>
       </section>
