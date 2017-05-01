@@ -81,7 +81,7 @@ const Faq = () => {
 
         .text {
           font-size: 1rem;
-          lineHeight: 1.75rem;
+          line-height: 1.75rem;
           color: #777;
           margin-bottom: 25px;
           font-weight: 400;

@@ -91,58 +91,58 @@ const Terms = () => {
 
       <style jsx>{`
         .row {
-          maxWidth: 900px;
-          marginLeft: auto;
-          marginRight: auto;
+          max-width: 900px;
+          margin-left: auto;
+          margin-right: auto;
         }
 
         .title {
           color: #333;
-          fontWeight: 300;
-          fontSize: 3rem;
-          textAlign: center;
-          marginTop: 50px;
+          font-weight: 300;
+          font-size: 3rem;
+          text-align: center;
+          margin-top: 50px;
         }
 
         .subtitle {
           color: '#ccc',
-          fontWeight: '300',
-          fontSize: '1.15rem',
-          textAlign: 'center',
-          marginBottom: '50px',
-          marginTop: '5px'
+          font-weight: '300',
+          font-size: '1.15rem',
+          text-align: 'center',
+          margin-bottom: '50px',
+          margin-top: '5px'
         }
 
         .exhibit {
-          fontWeight: 600;
+          font-weight: 600;
           color: #333;
-          fontSize: 1.25rem;
-          marginBottom: 15px;
+          font-size: 1.25rem;
+          margin-bottom: 15px;
         }
 
         .text {
-          fontSize: 1rem;
-          lineHeight: 1.75rem;
+          font-size: 1rem;
+          line-height: 1.75rem;
           color: #777;
-          marginBottom: 25px;
-          fontWeight: 400;
+          margin-bottom: 25px;
+          font-weight: 400;
         }
 
         .notice {
-          lineHeight: 1.75rem;
+          line-height: 1.75rem;
           color: #777;
-          marginBottom: 25px;
-          fontWeight: 400;
-          fontSize: .9rem;
-          marginTop: 50px;
-          textAlign: center;
-          paddingLeft: 50px;
-          paddingRight: 50px;
+          margin-bottom: 25px;
+          font-weight: 400;
+          font-size: .9rem;
+          margin-top: 50px;
+          text-align: center;
+          padding-left: 50px;
+          padding-right: 50px;
         }
 
         .linked {
           color: #333;
-          fontWeight: 600;
+          font-weight: 600;
         }
       `}</style>
     </div>

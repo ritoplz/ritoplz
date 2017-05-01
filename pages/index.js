@@ -109,9 +109,9 @@ export default () => {
 
         <style jsx>{`
           .row {
-            maxWidth: 900px;
-            marginLeft: auto;
-            marginRight: auto;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
             position: relative;
           }
 
@@ -121,50 +121,50 @@ export default () => {
 
           .cover {
             background: url("static/bg.png") center center;
-            backgroundSize: cover;
+            background-size: cover;
             height: 100vh;
-            paddingTop: 110px;
-            paddingBottom: 75px;
+            padding-top: 110px;
+            padding-bottom: 75px;
           }
 
           .title {
             color: #333;
-            fontSize: 4rem;
-            textTransform: uppercase;
-            maxWidth: 500px;
+            font-size: 4rem;
+            text-transform: uppercase;
+            max-width: 500px;
           }
 
           .subtitle {
             color: #999;
-            fontSize: 1.5rem;
-            lineHeight: 2.5rem;
-            marginTop: 10px;
-            fontWeight: 400;
-            marginBottom: 70px;
+            font-size: 1.5rem;
+            line-height: 2.5rem;
+            margin-top: 10px;
+            font-weight: 400;
+            margin-bottom: 70px;
           }
 
           .btn {
             color: #fff;
             border: none;
-            borderRadius: 5px;
+            border-radius: 5px;
             padding: 14px 28px;
-            fontSize: 1rem;
+            font-size: 1rem;
             height: 55px;
-            fontWeight: 500;
+            font-weight: 500;
             cursor: pointer;
             background: linear-gradient(to right, #52bdab 0%,#6BB6D6 100%);
-            marginRight: 15px;
+            margin-right: 15px;
           }
 
           .btnLink {
             color: #52bdab;
             background: transparent;
-            textAlign: center;
+            text-align: center;
             padding: 14px 28px;
             height: 55px;
-            fontSize: 1rem;
+            font-size: 1rem;
             border: none;
-            fontWeight: 500;
+            font-weight: 500;
             cursor: pointer;
           }
 
@@ -175,62 +175,62 @@ export default () => {
           }
 
           .tier {
-            paddingBottom: 100px;
+            padding-bottom: 100px;
           }
 
           .tierTitle {
-            textAlign: center;
-            fontSize: 3rem;
+            text-align: center;
+            font-size: 3rem;
             color: #333;
           }
 
           .tierSubtitle {
-            textAlign: center;
-            fontSize: 1.5rem;
+            text-align: center;
+            font-size: 1.5rem;
             color: #999;
-            fontWeight: 300;
-            marginTop: 20px;
-            marginBottom: 75px;
+            font-weight: 300;
+            margin-top: 20px;
+            margin-bottom: 75px;
           }
 
           .tierDrop {
             background: url(static/tierdrop.png) center center;
-            backgroundSize: cover;
+            background-size: cover;
             minHeight: 700px;
           }
 
           .tierList {
             display: flex;
-            justifyContent: space-between;
-            maxWidth: 100%;
-            overflowX: auto;
-            marginTop: 100px;
+            justify-content: space-between;
+            max-width: 100%;
+            overflow-x: auto;
+            margin-top: 100px;
           }
 
           .tierItem {
-            textAlign: center;
+            text-align: center;
           }
 
           .tierItemTitle {
-            fontWeight: 400;
+            font-weight: 400;
             color: #ccc;
-            fontSize: 1rem;
+            font-size: 1rem;
           }
 
           .joinBtn {
-            textAlign: center;
-            marginRop: 150px;
+            text-align: center;
+            margin-top: 150px;
             display: block;
-            backgroundColor: red;
+            background-color: red;
             padding: 18px 20px;
-            fontSize: 1.25rem;
-            borderRadius: 4px;
-            marginLeft: auto;
-            marginRight: auto;
+            font-size: 1.25rem;
+            border-radius: 4px;
+            margin-left: auto;
+            margin-right: auto;
             width: 100%;
-            maxWidth: 400px;
+            max-width: 400px;
             background: linear-gradient(to right, #52bdab 0%,#6BB6D6 100%);
-            marginTop: 100px;
+            margin-top: 100px;
             color: #fff;
           }
         }

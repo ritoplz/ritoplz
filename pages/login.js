@@ -41,26 +41,26 @@ const Login = props => {
 
         <style jsx>{`
           .row {
-            maxWidth: 900px;
-            marginLeft: auto;
-            marginRight: auto;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
           }
 
           .title {
             color: #333;
-            fontWeight: 300;
-            fontSize: 3rem;
-            textAlign: center;
-            marginTop: 50px;
+            font-weight: 300;
+            font-size: 3rem;
+            text-align: center;
+            margin-top: 50px;
           }
 
           .subtitle {
             color: #ccc;
-            fontWeight: 300;
-            fontSize: 1.15rem;
-            textAlign: center;
-            marginBottom: 50px;
-            marginTop: 5px;
+            font-weight: 300;
+            font-size: 1.15rem;
+            text-align: center;
+            margin-bottom: 50px;
+            margin-top: 5px;
           }
         `}</style>
       </div>

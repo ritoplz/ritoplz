@@ -45,9 +45,9 @@ class Rankings extends Component {
 
           <style jsx>{`
             .row {
-              maxWidth: 900px;
-              marginLeft: auto;
-              marginRight: auto;
+              max-width: 900px;
+              margin-left: auto;
+              margin-right: auto;
             }
           `}</style>
         </div>

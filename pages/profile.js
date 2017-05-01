@@ -47,11 +47,11 @@ export default class extends Component {
 
           <style jsx>{`
             .row {
-              maxWidth: 900px;
-              marginLeft: auto;
-              marginRight: auto;
-              fontFamily: Source Sans Pro;
-              paddingBottom: 50px;
+              max-width: 900px;
+              margin-left: auto;
+              margin-right: auto;
+              font-family: Source Sans Pro;
+              padding-bottom: 50px;
             }
           `}</style>
         </div>
