@@ -2,7 +2,6 @@
 
 import React from 'react'
 import Head from 'next/head'
-import { insertRule } from 'next/css'
 
 export default () => (
   <div>
@@ -50,7 +49,22 @@ export default () => (
       <link rel="icon" type="image/png" sizes="96x96" href="static/favicon-96x96.png"/>
       <link rel="icon" type="image/png" sizes="16x16" href="static/favicon-16x16.png"/>
     </Head>
+
+    <style global>{`
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: Source Sans Pro, Helvetica Neue, Helvetica
+      }
+
+      li {
+        list-style: none;
+      }
+
+      a {
+        text-decoration: none
+      }
+    `}</style>
   </div>
 )
-
-insertRule('* {padding: 0; margin: 0; box-sizing: border-box; font-family: Source Sans Pro, Helvetica Neue, Helvetica } li { list-style: none } a { text-decoration: none}')
