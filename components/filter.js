@@ -2,25 +2,10 @@
 
 import React, { Component } from 'react'
 import Select from 'react-select'
-import { style } from 'next/css'
 import Alert from 'react-s-alert'
 
 import { countries, locations } from '../services/places'
 import { RANKINGS_ERROR } from './../constants'
-
-const styles = {
-  filter: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    marginBottom: '30px'
-  },
-
-  input: {
-    flexBasis: '100%',
-    marginLeft: '10px',
-    marginRight: '10px'
-  }
-}
 
 class Filter extends Component {
   constructor () {
@@ -120,16 +105,30 @@ class Filter extends Component {
 
   render () {
     return (
-      <section className={style(styles.filter)}>
-        <div className={style(styles.input)}>
+      <section className="filter">
+        <div className="input">
           <Select options={this.state.stateList} value={this.state.state} onChange={this.handleState} placeholder="Selecione um estado..."/>
         </div>
 
-        <div className={style(styles.input)}>
+        <div className="input">
           <Select options={this.state.cityList} value={this.state.city} onChange={this.handleCity} placeholder="Selecione uma cidade..."/>
         </div>
 
         <Alert effect="jelly" stack={{limit: 3}}/>
+
+        <style jsx>{`
+          .filter {
+            display: flex;
+            justifyContent: space-between;
+            marginBottom: 30px;
+          }
+
+          .input {
+            flexBasis: 100%;
+            marginLeft: 10px;
+            marginRight: 10px;
+          }
+        `}</style>
       </section>
     )
   }
