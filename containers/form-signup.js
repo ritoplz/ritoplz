@@ -68,31 +68,31 @@ class FormSignup extends Component {
 
         <style jsx>{`
           .registerForm {
-            maxWidth: 60%;
-            marginLeft: auto;
-            marginRight: auto;
-            paddingBottom: 50px;
+            max-width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-bottom: 50px;
           }
 
           .formInput {
             border: none;
-            marginBottom: 25px;
+            margin-bottom: 25px;
           }
 
           .label {
             display: block;
-            fontSize: 1rem;
-            fontWeight: 500;
-            marginBottom: 10px;
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 10px;
           }
 
           .input {
             width: 100%;
             height: 55px;
-            borderRadius: 4px;
+            border-radius: 4px;
             border: 1px solid #f2f2f2;
             padding: 15px;
-            fontSize: 1.15rem;
+            font-size: 1.15rem;
             outline: none;
             color: #333;
             transition: .25s;
@@ -102,12 +102,12 @@ class FormSignup extends Component {
             width: 100%;
             color: #fff;
             border: none;
-            borderRadius: 5px;
+            border-radius: 5px;
             padding: 10px 25px;
-            fontSize: .9rem;
+            font-size: .9rem;
             height: 55px;
-            marginTop: 25px;
-            fontWeight: 500;
+            margin-top: 25px;
+            font-weight: 500;
             cursor: pointer;
             background: linear-gradient(to right, #52bdab 0%,#6BB6D6 100%);
           }

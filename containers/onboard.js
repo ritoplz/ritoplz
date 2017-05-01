@@ -252,14 +252,14 @@ class Onboard extends Component {
         <style jsx>{`
           .formInput {
             border: none;
-            marginBottom: 20px;
+            margin-bottom: 20px;
           }
 
           .label {
             display: inline-block;
-            marginBottom: 10px;
-            fontWeight: 600,
-            fontSize: 1.15rem;
+            margin-bottom: 10px;
+            font-weight: 600,
+            font-size: 1.15rem;
             color: #333;
           }
 
@@ -267,44 +267,44 @@ class Onboard extends Component {
             padding: 20px 15px;
             width: 100%;
             border: 1px solid #eee;
-            borderRadius: 5px;
-            fontSize: 1.1rem;
+            border-radius: 5px;
+            font-size: 1.1rem;
             outline: none;
           }
 
           .title {
-            textAlign: center;
+            text-align: center;
             color: #333;
-            fontSize: 2rem;
-            fontWeight: 500;
-            marginBottom: 10px;
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 10px;
           }
 
           .subtitle {
             color: #999;
-            fontSize: 1.15rem;
-            fontWeight: 400;
-            textAlign: center;
-            marginBottom: 30px;
-            lineHeight: 2rem;
+            font-size: 1.15rem;
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 30px;
+            line-height: 2rem;
           }
 
           .slickImage {
             display: inline-block;
             width: 70%;
-            marginTop: 55px;
-            marginLeft: auto;
-            marginRight: auto;
+            margin-top: 55px;
+            margin-left: auto;
+            margin-right: auto;
           }
 
           .form {
-            maxWidth: 500px;
-            marginLeft: auto;
-            marginRight: auto;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
           }
 
           .summoner {
-            marginTop: 75px;
+            margin-top: 75px;
           }
 
           .btnPrev {
@@ -312,12 +312,12 @@ class Onboard extends Component {
             outline: none;
             color: #52bdab;
             border: none;
-            borderRadius: 5px;
+            border-radius: 5px;
             padding: 10px 25px;
-            fontSize: 1rem;
+            font-size: 1rem;
             height: 45px;
-            marginTop: 30px;
-            fontWeight: 500;
+            margin-top: 30px;
+            font-weight: 500;
             cursor: pointer;
             background: transparent;
           }
@@ -327,12 +327,12 @@ class Onboard extends Component {
             outline: none;
             color: #fff;
             border: none;
-            borderRadius: 5px;
+            border-radius: 5px;
             padding: 10px 25px;
-            fontSize: 1rem;
+            font-size: 1rem;
             height: 45px;
-            marginTop: 30px;
-            fontWeight: 500;
+            margin-top: 30px;
+            font-weight: 500;
             cursor: pointer;
             background: linear-gradient(to right, #52bdab 0%,#6BB6D6 100%);
           }
@@ -340,66 +340,66 @@ class Onboard extends Component {
           .codeCase {
             border: 1px solid #ccc;
             padding: 20px;
-            borderRadius: 4px;
+            border-radius: 4px;
             width: 300px;
             position: relative;
             margin: 25px auto;
           }
 
           .code {
-            fontSize: 1.5rem;
+            font-size: 1.5rem;
             color: #333;
-            lineHeight: 1;
-            verticalAlign: middle;
+            line-height: 1;
+            vertical-align: middle;
           }
 
           .codeBtn {
             height: 64px;
-            backgroundColor: transparent;
+            background-color: transparent;
             border: none;
             top: 0;
             position: absolute;
             right: 0;
             width: 125px;
-            fontSize: 1rem;
-            borderLeft: 1px solid #ccc;
+            font-size: 1rem;
+            border-left: 1px solid #ccc;
             outline: none;
             color: #333;
-            lineHeight: 64px;
-            textAlign: center;
+            line-height: 64px;
+            text-align: center;
             cursor: pointer;
             transition: .15s;
           }
 
           .mastery {
-            maxWidth: 90%;
-            borderRadius: 6px;
+            max-width: 90%;
+            border-radius: 6px;
           }
 
           .stepImage {
-            flexBasis: 70%;
+            flex-basis: 70%;
           }
 
           .steps {
             display: flex;
-            justifyContent: space-between;
-            flexWrap: wrap;
+            justify-content: space-between;
+            flex-wrap: wrap;
           }
 
           .stepList {
-            marginTop: 50px;
-            flexBasis: 30%;
+            margin-top: 50px;
+            flex-basis: 30%;
           }
 
           .step {
-            marginBottom: 30px;
+            margin-bottom: 30px;
           }
 
           .stepNumber {
             display: block;
-            fontSize: 1.5rem;
+            font-size: 1.5rem;
             color: #333;
-            marginBottom: 10px;
+            margin-bottom: 10px;
           }
 
           .stepText {

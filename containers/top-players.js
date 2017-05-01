@@ -59,43 +59,43 @@ class TopPlayers extends Component {
 
         <style jsx>{`
           .row {
-            maxWidth: 900px;
-            marginLeft: auto;
-            marginRight: auto;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
             position: relative;
           }
 
           .topPlayers {
-            paddingTop: 100px;
-            paddingBottom: 100px;
+            padding-top: 100px;
+            padding-bottom: 100px;
           }
 
           .topPlayersTitle {
             color: #333;
-            fontSize: 3rem;
-            marginBottom: 50px;
+            font-size: 3rem;
+            margin-bottom: 50px;
           }
 
           .topPlayersList {
             display: flex;
-            flexWrap: wrap;
-            justifyContent: space-between;
+            flex-wrap: wrap;
+            justify-content: space-between;
           }
 
           .btnLink {
             color: #52bdab;
             background: transparent;
-            textAlign: center;
+            text-align: center;
             padding: 14px 28px;
             height: 55px;
-            fontSize: 1.25rem;
+            font-size: 1.25rem;
             border: none;
-            fontWeight: 500;
+            font-weight: 500;
             cursor: pointer;
             display: block;
-            marginLeft: auto;
-            marginRight: auto;
-            marginTop: 30px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 30px;
           }
         `}</style>
       </section>

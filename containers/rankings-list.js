@@ -159,30 +159,30 @@ class RankingsList extends Component {
 
         <style jsx>{`
           .title {
-            textAlign: center;
-            fontWeight: 300;
-            fontSize: 3rem;
+            text-align: center;
+            font-weight: 300;
+            font-size: 3rem;
             color: #333;
-            paddingTop: 75px;
-            paddingBottom: 75px;
+            padding-top: 75px;
+            padding-bottom: 75px;
           }
 
           .unrankedList {
             display: flex;
-            flexWrap: wrap;
-            justifyContent: space-between;
+            flex-wrap: wrap;
+            justify-content: space-between;
           }
 
           .tab {
             width: 50%;
             display: inline-block;
-            textAlign: center;
+            text-align: center;
             height: 60px;
-            lineHeight: 60px;
-            fontSize: 1.25rem;
+            line-height: 60px;
+            font-size: 1.25rem;
             color: #999;
-            marginBottom: 40px;
-            marginTop: 25px;
+            margin-bottom: 40px;
+            margin-top: 25px;
             cursor: pointer;
             transition: .15s;
           }
@@ -190,15 +190,15 @@ class RankingsList extends Component {
           .load {
             color: #fff;
             border: none;
-            borderRadius: 5px;
+            border-radius: 5px;
             padding: 14px 28px;
-            fontSize: 1rem;
+            font-size: 1rem;
             height: 55px;
-            fontWeight: 500;
+            font-weight: 500;
             cursor: pointer;
             width: 100%;
-            marginTop: 10px;
-            marginBottom: 50px;
+            margin-top: 10px;
+            margin-bottom: 50px;
             background: linear-gradient(to right, #52bdab 0%,#6BB6D6 100%);
           }
         `}</style>
