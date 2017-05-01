@@ -1,19 +1,8 @@
 'use strict'
 
 import React from 'react'
-import { style } from 'next/css'
 
 import { isLogged, logout } from './../services/auth'
-
-const styles = {
-  message: {
-    fontWeight: '100',
-    textAlign: 'center',
-    height: 'calc(100vh - 200px)',
-    lineHeight: '70vh',
-    color: '#333'
-  }
-}
 
 export default props => {
   logout()
@@ -23,6 +12,18 @@ export default props => {
   }
 
   return (
-    <h1 className={style(styles.message)}>Bye! :(</h1>
+    <h1 className={style(styles.message)}>
+      Bye! :(
+
+      <style jsx>{`
+        .message {
+          font-weight: 100;
+          text-align: center;
+          height: calc(100vh - 200px);
+          line-height: 70vh;
+          color: #333;
+        }
+      `}</style>
+    </h1>
   )
 }

@@ -14,48 +14,6 @@ import { countries, locations } from '../services/places'
 import editUser from './../actions/edit-user'
 import { EDIT_USER_SUCCESS, EDIT_USER_ERROR } from './../constants'
 
-const styles = {
-  formInput: {
-    border: 'none',
-    marginBottom: '20px'
-  },
-
-  label: {
-    display: 'inline-block',
-    marginBottom: '10px',
-    fontWeight: 600,
-    fontSize: '1.15rem',
-    color: '#333'
-  },
-
-  input: {
-    padding: '20px 15px',
-    width: '100%',
-    border: '1px solid #eee',
-    borderRadius: '5px',
-    fontSize: '1.1rem',
-    outline: 'none',
-
-    ':focus': {
-      borderColor: '#ccc'
-    }
-  },
-
-  btn: {
-    color: '#fff',
-    border: 'none',
-    borderRadius: '5px',
-    padding: '10px 25px',
-    fontSize: '1rem',
-    height: '55px',
-    marginTop: '30px',
-    fontWeight: '500',
-    cursor: 'pointer',
-    width: '100%',
-    background: 'linear-gradient(to right, #52bdab 0%,#6BB6D6 100%)'
-  }
-}
-
 const customStyle = {
   overlay: {
     backgroundColor: 'rgba(0, 0, 0, .75)'
@@ -151,25 +109,63 @@ class ModalAddLocation extends Component {
     return (
       <Modal isOpen={this.state.modalStatus} onRequestClose={this.handleCloseModal} style={customStyle}>
         <form onSubmit={this.handleSubmit}>
-          <fieldset className={style(styles.formInput)}>
-            <label className={style(styles.label)}>País</label>
+          <fieldset className="formInput">
+            <label className="label">País</label>
             <Select options={this.state.countryList} value={this.state.country} onChange={this.handleCountry}/>
           </fieldset>
 
-          <fieldset className={style(styles.formInput)}>
-            <label className={style(styles.label)}>Estado</label>
+          <fieldset className="formInput">
+            <label className="label">Estado</label>
             <Select options={this.state.stateList} value={this.state.stateParam} onChange={this.handleState}/>
           </fieldset>
 
-          <fieldset className={style(styles.formInput)}>
-            <label className={style(styles.label)}>Cidade</label>
+          <fieldset className="formInput">
+            <label className="label">Cidade</label>
             <Select options={this.state.cityList} value={this.state.city} onChange={this.handleCity}/>
           </fieldset>
 
-          <button className={style(styles.btn)}>Adicionar localização</button>
+          <button className="btn">Adicionar localização</button>
         </form>
 
         <Alert effect="jelly" stack={{limit: 3}}/>
+
+        <style jsx>{`
+          .formInput {
+            border: none;
+            margin-bottom: 20px;
+          }
+
+          .label {
+            display: inline-block;
+            margin-bottom: 10px;
+            font-weight: 600,
+            font-size: 1.15rem;
+            color: #333;
+          }
+
+          .input {
+            padding: 20px 15px;
+            width: 100%;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            outline: none;
+          }
+
+          .btn {
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 25px;
+            font-size: 1rem;
+            height: 55px;
+            margin-top: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            width: 100%;
+            background: linear-gradient(to right, #52bdab 0%,#6BB6D6 100%);
+          }
+        `}</style>
       </Modal>
     )
   }

@@ -2,64 +2,12 @@
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { style } from 'next/css'
 import cookie from 'react-cookie'
 import Alert from 'react-s-alert'
 
 import loginRequest from '../actions/login'
 import { LOGIN_SUCCESS, LOGIN_ERROR } from './../constants'
 import { setToken } from './../services/auth'
-
-const styles = {
-  loginForm: {
-    maxWidth: '60%',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    paddingBottom: '50px'
-  },
-
-  formInput: {
-    border: 'none',
-    marginBottom: '25px'
-  },
-
-  label: {
-    display: 'block',
-    fontSize: '1rem',
-    fontWeight: '500',
-    marginBottom: '10px'
-  },
-
-  input: {
-    width: '100%',
-    height: '55px',
-    borderRadius: '4px',
-    border: '1px solid #f2f2f2',
-    padding: '15px',
-    fontSize: '1.15rem',
-    outline: 'none',
-    color: '#333',
-    transition: '.25s',
-
-    ':focus': {
-      borderColor: '#ddd'
-    }
-  },
-
-  btn: {
-    width: '100%',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '5px',
-    padding: '10px 25px',
-    fontSize: '.9rem',
-    height: '55px',
-    marginTop: '25px',
-    fontWeight: '500',
-    cursor: 'pointer',
-    background: 'linear-gradient(to right, #52bdab 0%,#6BB6D6 100%)'
-  }
-}
 
 class FormLogin extends Component {
   constructor() {
@@ -93,20 +41,67 @@ class FormLogin extends Component {
 
   render() {
     return (
-      <form className={style(styles.loginForm)} onSubmit={this.handleLogin}>
-        <fieldset className={style(styles.formInput)}>
-          <label className={style(styles.label)}>E-mail</label>
-          <input className={style(styles.input)} type="email" name="email" ref={input => this.email = input}/>
+      <form className="loginForm" onSubmit={this.handleLogin}>
+        <fieldset className="formInput">
+          <label className="label">E-mail</label>
+          <input className="input" type="email" name="email" ref={input => this.email = input}/>
         </fieldset>
 
-        <fieldset className={style(styles.formInput)}>
-          <label className={style(styles.label)}>Senha</label>
-          <input className={style(styles.input)} type="password" name="password" ref={input => this.password = input}/>
+        <fieldset className="formInput">
+          <label className="label">Senha</label>
+          <input className="input" type="password" name="password" ref={input => this.password = input}/>
         </fieldset>
 
-        <button className={style(styles.btn)} type="submit">Entrar</button>
+        <button className="btn" type="submit">Entrar</button>
 
         <Alert effect="jelly" stack={{limit: 3}}/>
+
+        <style jsx>{`
+          .loginForm {
+            max-width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-bottom: 50px;
+          }
+
+          .formInput {
+            border: none;
+            margin-bottom: 25px;
+          }
+
+          .label {
+            display: block;
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+          }
+
+          .input {
+            width: 100%;
+            height: 55px;
+            border-radius: 4px;
+            border: 1px solid #f2f2f2;
+            padding: 15px;
+            font-size: 1.15rem;
+            outline: none;
+            color: #333;
+            transition: .25s;
+          }
+
+          .btn {
+            width: 100%;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 25px;
+            font-size: .9rem;
+            height: 55px;
+            margin-top: 25px;
+            font-weight: 500;
+            cursor: pointer;
+            background: linear-gradient(to right, #52bdab 0%,#6BB6D6 100%);
+          }
+        `}</style>
       </form>
     )
   }

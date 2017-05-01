@@ -7,59 +7,6 @@ import Slider from 'react-slick'
 
 import { toggleTutorial } from './../services/auth'
 
-const styles = {
-  title: {
-    textAlign: 'center',
-    color: '#333',
-    fontSize: '2rem',
-    fontWeight: '500',
-    marginBottom: '10px'
-  },
-
-  subtitle: {
-    color: '#999',
-    fontSize: '1.15rem',
-    fontWeight: '400',
-    textAlign: 'center',
-    marginBottom: '30px',
-    lineHeight: '2rem'
-  },
-
-  btn: {
-    color: '#52bdab',
-    borderRadius: '5px',
-    padding: '10px 25px',
-    fontSize: '.9rem',
-    fontWeight: '500',
-    cursor: 'pointer',
-    border: '2px solid #52bdab',
-    float: 'right',
-    backgroundColor: 'transparent',
-    marginTop: '70px',
-    marginRight: '5px',
-    transition: '.25s',
-
-    ':hover': {
-      opacity: '.5'
-    }
-  },
-
-  slickImage: {
-    display: 'inline-block',
-    width: '90%',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-
-    '@media (max-width: 750px)': {
-      maxWidth: '100%'
-    }
-  },
-
-  image: {
-    maxWidth: '100%'
-  }
-}
-
 const customStyle = {
   overlay: {
     backgroundColor: 'rgba(0, 0, 0, .75)'
@@ -121,35 +68,80 @@ class ModalTutorial extends Component {
       <Modal isOpen={this.state.modalStatus} onRequestClose={this.handleCloseModal} style={customStyle}>
         <Slider {...settings}>
           <div>
-            <h1 className={style(styles.title)}>Aprendar como confirmar seu Invocador</h1>
-            <h2 className={style(styles.subtitle)}>Para participar do Ritoplz Rankings você precisa adicionar um Invocador</h2>
+            <h1 className="title">Aprendar como confirmar seu Invocador</h1>
+            <h2 className="subtitle">Para participar do Ritoplz Rankings você precisa adicionar um Invocador</h2>
 
-            <img className={style(styles.image)} src="static/placeholder.svg" alt=""/>
+            <img className="image" src="static/placeholder.svg" alt=""/>
           </div>
 
           <div>
-            <h1 className={style(styles.title)}>Receba o código</h1>
-            <h2 className={style(styles.subtitle)}>Você receberá um código quando adicionar seu invocador</h2>
+            <h1 className="title">Receba o código</h1>
+            <h2 className="subtitle">Você receberá um código quando adicionar seu invocador</h2>
 
-            <img className={style(styles.slickImage)} src="static/code.png" alt=""/>
+            <img className="slickImage" src="static/code.png" alt=""/>
           </div>
 
           <div>
-            <h1 className={style(styles.title)}>Página de Talentos no League of Legends</h1>
-            <h2 className={style(styles.subtitle)}>Crie uma página de talentos e use o código recebido como nome da página</h2>
+            <h1 className="title">Página de Talentos no League of Legends</h1>
+            <h2 className="subtitle">Crie uma página de talentos e use o código recebido como nome da página</h2>
 
-            <img className={style(styles.slickImage)} src="static/mastery.svg" alt=""/>
+            <img className="slickImage" src="static/mastery.svg" alt=""/>
           </div>
 
           <div>
-            <h1 className={style(styles.title)}>Confirme seu invocador</h1>
-            <h2 className={style(styles.subtitle)}>Após criar sua página de talentos com o código, você precisa confirmar seu invocador clicando em "Confirmar Invocador"</h2>
+            <h1 className="title">Confirme seu invocador</h1>
+            <h2 className="subtitle">Após criar sua página de talentos com o código, você precisa confirmar seu invocador clicando em "Confirmar Invocador"</h2>
 
-            <img className={style(styles.slickImage)} src="static/confirm.svg" alt=""/>
+            <img className="slickImage" src="static/confirm.svg" alt=""/>
 
-            <button className={style(styles.btn)} onClick={this.handleCloseModal}>Pronto</button>
+            <button className="btn" onClick={this.handleCloseModal}>Pronto</button>
           </div>
         </Slider>
+
+        <style jsx>{`
+          .title {
+            text-align: center;
+            color: #333;
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+          }
+
+          .subtitle {
+            color: #999;
+            font-size: 1.15rem;
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 30px;
+            line-height: 2rem;
+          }
+
+          .btn {
+            color: #52bdab;
+            border-radius: 5px;
+            padding: 10px 25px;
+            font-size: .9rem;
+            font-weight: 500;
+            cursor: pointer;
+            border: 2px solid #52bdab;
+            float: right;
+            background-color: transparent;
+            margin-top: 70px;
+            margin-right: 5px;
+            transition: .25s;
+          }
+
+          .slickImage {
+            display: inline-block;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+          }
+
+          .image {
+            max-width: 100%;
+          }
+        `}</style>
       </Modal>
     )
   }

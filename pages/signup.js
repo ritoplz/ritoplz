@@ -4,7 +4,6 @@ import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import Link from 'next/link'
 import Head from 'next/head'
-import { style } from 'next/css'
 
 import Meta from '../components/meta'
 import configureStore from '../store/configureStore'
@@ -13,36 +12,7 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 
 const styles = {
-  row: {
-    maxWidth: '900px',
-    marginLeft: 'auto',
-    marginRight: 'auto'
-  },
 
-  title: {
-    color: '#333',
-    fontWeight: '300',
-    fontSize: '3rem',
-    textAlign: 'center',
-    marginTop: '50px'
-  },
-
-  subtitle: {
-    color: '#ccc',
-    fontWeight: '300',
-    fontSize: '1.15rem',
-    textAlign: 'center',
-    marginBottom: '50px',
-    marginTop: '5px'
-  },
-
-  disclaimer: {
-    color: 'red',
-    marginTop: '-30px',
-    marginBottom: '50px',
-    opacity: '.5',
-    textAlign: 'center'
-  }
 }
 
 const Signup = props => {
@@ -59,16 +29,49 @@ const Signup = props => {
 
         <Header items={items} />
 
-        <section className={style(styles.row)}>
-          <h1 className={style(styles.title)}>Entre no nosso Rankings!</h1>
-          <h2 className={style(styles.subtitle)}>Preencha os campos abaixo para se cadastrar</h2>
+        <section className="row">
+          <h1 className="title">Entre no nosso Rankings!</h1>
+          <h2 className="subtitle">Preencha os campos abaixo para se cadastrar</h2>
 
           <FormSignup routing={props}/>
 
-          <p className={style(styles.disclaimer)}>*Nós nunca iremos pedir nenhuma informação credencial do League of Legends.</p>
+          <p className="disclaimer">*Nós nunca iremos pedir nenhuma informação credencial do League of Legends.</p>
         </section>
 
         <Footer />
+
+        <style jsx>{`
+          .row {
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+          }
+
+          .title {
+            color: #333;
+            font-weight: 300;
+            font-size: 3rem;
+            text-align: center;
+            margin-top: 50px;
+          }
+
+          .subtitle {
+            color: #ccc;
+            font-weight: 300;
+            font-size: 1.15rem;
+            text-align: center;
+            margin-bottom: 50px;
+            margin-top: 5px;
+          }
+
+          .disclaimer {
+            color: red;
+            margin-top: -30px;
+            margin-bottom: 50px;
+            opacity: .5;
+            text-align: center;
+          }
+        `}</style>
       </div>
     </Provider>
   )

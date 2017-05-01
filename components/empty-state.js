@@ -3,53 +3,9 @@
 /* @flow */
 
 import React, {Component} from 'react'
-import { style } from 'next/css'
 import { connect } from 'react-redux'
 
 import ModalAddSummoner from './../containers/modal-add-summoner'
-
-const styles = {
-  base: {
-    border: '1px solid #F3F5FB',
-    borderRadius: '10px',
-    textAlign: 'center',
-    paddingTop: '50px',
-    paddingBottom: '50px',
-    boxShadow: '0 10px 50px rgba(0, 0, 0, .025)',
-    marginBottom: '70px'
-  },
-
-  title: {
-    color: '#333',
-    fontWeight: '400',
-    fontSize: '2rem',
-    marginBottom: '15px'
-  },
-
-  subtitle: {
-    color: '#ccc',
-    marginTop: 0,
-    fontWeight: '300',
-    fontSize: '20px',
-    lineHeight: '33px',
-    maxWidth: '320px',
-    marginLeft: 'auto',
-    marginRight: 'auto'
-  },
-
-  btn: {
-    color: '#fff',
-    border: 'none',
-    borderRadius: '5px',
-    padding: '10px 25px',
-    fontSize: '.9rem',
-    height: '50px',
-    marginTop: '30px',
-    fontWeight: '500',
-    cursor: 'pointer',
-    background: 'linear-gradient(to right, #52bdab 0%,#6BB6D6 100%)'
-  }
-}
 
 class EmptyState extends Component {
   constructor () {
@@ -68,13 +24,56 @@ class EmptyState extends Component {
 
   render () {
     return (
-      <section className={style(styles.base)}>
-        <h2 className={style(styles.title)}>Você não tem nenhum Invocador ainda</h2>
-        <h3 className={style(styles.subtitle)}>Para participar do Ritoplz Rankings você precisa adicionar um Invocador</h3>
+      <section className="base">
+        <h2 className="title">Você não tem nenhum Invocador ainda</h2>
+        <h3 className="subtitle">Para participar do Ritoplz Rankings você precisa adicionar um Invocador</h3>
 
-        <button className={style(styles.btn)} onClick={this.handleModal}>Adicionar Invocador</button>
+        <button className="btn" onClick={this.handleModal}>Adicionar Invocador</button>
 
         <ModalAddSummoner open={this.state.modalAddSummoner}/>
+
+        <style jsx>{`
+          .base {
+            border: 1px solid #F3F5FB;
+            border-radius: 10px;
+            text-align: center;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, .025);
+            margin-bottom: 70px;
+          }
+
+          .title {
+            color: #333;
+            font-weight: 400;
+            font-size: 2rem;
+            margin-bottom: 15px;
+          }
+
+          .subtitle {
+            color: #ccc;
+            margin-top: 0,
+            font-weight: 300;
+            font-size: 20px;
+            line-height: 33px;
+            max-width: 320px;
+            margin-left: auto;
+            margin-right: auto;
+          }
+
+          .btn {
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 25px;
+            font-size: .9rem;
+            height: 50px;
+            margin-top: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            background: linear-gradient(to right, #52bdab 0%,#6BB6D6 100%);
+          }
+        `}</style>
       </section>
     )
   }

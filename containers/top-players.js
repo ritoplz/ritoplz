@@ -1,60 +1,12 @@
 'use strict'
 
 import React, { Component } from 'react'
-import { style } from 'next/css'
 import { connect } from 'react-redux'
 import Link from 'next/link'
 
 import fetchRankings from '../actions/fetch-rankings'
 import TopPlayer from './../components/top-player'
 import Loading from './../components/loading'
-
-const styles = {
-  row: {
-    maxWidth: '900px',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    position: 'relative',
-
-    '@media (max-width: 750px)': {
-      paddingLeft: '20px',
-      paddingRight: '20px'
-    }
-  },
-
-  topPlayers: {
-    paddingTop: '100px',
-    paddingBottom: '100px'
-  },
-
-  topPlayersTitle: {
-    color: '#333',
-    fontSize: '3rem',
-    marginBottom: '50px'
-  },
-
-  topPlayersList: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between'
-  },
-
-  btnLink: {
-    color: '#52bdab',
-    background: 'transparent',
-    textAlign: 'center',
-    padding: '14px 28px',
-    height: '55px',
-    fontSize: '1.25rem',
-    border: 'none',
-    fontWeight: '500',
-    cursor: 'pointer',
-    display: 'block',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    marginTop: '30px'
-  }
-}
 
 class TopPlayers extends Component {
   constructor () {
@@ -83,7 +35,7 @@ class TopPlayers extends Component {
 
     if (this.state.fetched) {
       rankingList = (
-        <ul className={style(styles.topPlayersList)}>
+        <ul className="topPlayersList">
           {this.state.summoners.map(summoner => {
             return <TopPlayer data={summoner} key={summoner._id}/>
           })}
@@ -94,16 +46,58 @@ class TopPlayers extends Component {
     }
 
     return (
-      <section className={style(styles.topPlayers)}>
-        <div className={style(styles.row)}>
-          <h2 className={style(styles.topPlayersTitle)}>Top players do Brazil</h2>
+      <section className="topPlayers">
+        <div className="row">
+          <h2 className="topPlayersTitle">Top players do Brazil</h2>
 
           {rankingList}
 
           <Link href="/rankings">
-            <span className={style(styles.btnLink)}>Veja o Ranking completo</span>
+            <span className="btnLink">Veja o Ranking completo</span>
           </Link>
         </div>
+
+        <style jsx>{`
+          .row {
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+          }
+
+          .topPlayers {
+            padding-top: 100px;
+            padding-bottom: 100px;
+          }
+
+          .topPlayersTitle {
+            color: #333;
+            font-size: 3rem;
+            margin-bottom: 50px;
+          }
+
+          .topPlayersList {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+          }
+
+          .btnLink {
+            color: #52bdab;
+            background: transparent;
+            text-align: center;
+            padding: 14px 28px;
+            height: 55px;
+            font-size: 1.25rem;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 30px;
+          }
+        `}</style>
       </section>
     )
   }
