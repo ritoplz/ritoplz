@@ -11,7 +11,7 @@ export default props => {
   return (
     <li className="rankingItem">
       <figure className="image">
-        <img className="avatar" src={`https://ddragon.leagueoflegends.com/cdn/7.1.1/img/profileicon/${profileIconId}.png`} alt=""/>
+        <img className="avatar" src={`https://ddragon.leagueoflegends.com/cdn/7.8.1/img/profileicon/${profileIconId}.png`} alt=""/>
       </figure>
 
       <div className="rankingInfo">

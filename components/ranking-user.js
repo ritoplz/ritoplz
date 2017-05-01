@@ -24,7 +24,7 @@ export default props => {
       <h4 className="position">{props.position}.</h4>
 
       <figure className="image">
-        <img className="avatar" src={`https://ddragon.leagueoflegends.com/cdn/7.1.1/img/profileicon/${profileIconId}.png`} alt=""/>
+        <img className="avatar" src={`https://ddragon.leagueoflegends.com/cdn/7.8.1/img/profileicon/${profileIconId}.png`} alt=""/>
       </figure>
 
       <div className="rankingInfo">
