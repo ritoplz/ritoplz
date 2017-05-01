@@ -2,117 +2,91 @@
 
 import React from 'react'
 import Link from 'next/link'
-import { style } from 'next/css'
-
-const styles = {
-  footer: {
-    paddingTop: '20px',
-    paddingBottom: '20px',
-
-    '@media (max-width: 750px)': {
-      paddingTop: '30px',
-      paddingBottom: '30px'
-    }
-  },
-
-  row: {
-    maxWidth: '900px',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    display: 'flex',
-    justifyContent: 'space-between',
-    flexWrap: 'wrap',
-
-    '@media (max-width: 750px)': {
-      textAlign: 'center'
-    }
-  },
-
-  copyright: {
-    color: '#666',
-    fontSize: '14px',
-
-    '@media (max-width: 750px)': {
-      textAlign: 'center',
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      order: '2',
-      marginTop: '20px'
-    }
-  },
-
-  item: {
-    display: 'inline-block',
-    borderRight: '1px solid #ededed',
-    verticalAlign: 'middle',
-    marginRight: '15px',
-    height: '20px',
-    lineHeight: '20px',
-    paddingRight: '15px',
-
-    '@media (max-width: 750px)': {
-      marginBottom: '10px'
-    }
-  },
-
-  link: {
-    color: '#666',
-    textDecoration: 'none',
-    fontSize: '12px',
-    transition: 'all .2s ease',
-
-    ':hover': {
-      color: '#ccc'
-    }
-  }
-}
 
 export default () => {
   return (
-    <footer className={style(styles.footer)}>
-      <div className={style(styles.row)}>
-        <span className={style(styles.copyright)}>Copyright © 2016 Ritoplz. All rights reserved.</span>
+    <footer className="footer">
+      <div className="row">
+        <span className="copyright">Copyright © 2016 Ritoplz. All rights reserved.</span>
 
-        <nav className={style(styles.footerLinks)}>
+        <nav className="footerLinks">
           <ul>
-            <li className={style(styles.item)}>
+            <li className="item">
               <Link href="https://github.com/ritoplz">
                 <img src="/static/github.svg"/>
               </Link>
             </li>
 
-            <li className={style(styles.item)}>
+            <li className="item">
               <Link href="https://twitter.com/ritoplzrankings">
                 <img src="/static/twitter.svg"/>
               </Link>
             </li>
 
-            <li className={style(styles.item)}>
+            <li className="item">
               <Link href="/faq">
-                <span className={style(styles.link)}>FAQ</span>
+                <span className="link">FAQ</span>
               </Link>
             </li>
 
-            <li className={style(styles.item)}>
+            <li className="item">
               <Link href="/terms">
-                <span className={style(styles.link)}>Termos de Serviço</span>
+                <span className="link">Termos de Serviço</span>
               </Link>
             </li>
 
-            <li className={style(styles.item)}>
+            <li className="item">
               <Link href="/privacy">
-                <span className={style(styles.link)}>Política de Privacidade</span>
+                <span className="link">Política de Privacidade</span>
               </Link>
             </li>
 
-            <li className={style(styles.item)}>
+            <li className="item">
               <a href="mailto:ritoplzteam@gmail.com">
-                <span className={style(styles.link)}>ritoplzteam@gmail.com</span>
+                <span className="link">ritoplzteam@gmail.com</span>
               </a>
             </li>
           </ul>
         </nav>
       </div>
+
+      <style jsx>{`
+        .footer {
+          paddingTop: '20px',
+          paddingBottom: '20px',
+        }
+
+        .row {
+          maxWidth: '900px',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          display: 'flex',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+        }
+
+        .copyright {
+          color: '#666',
+          fontSize: '14px',
+        }
+
+        .item {
+          display: 'inline-block',
+          borderRight: '1px solid #ededed',
+          verticalAlign: 'middle',
+          marginRight: '15px',
+          height: '20px',
+          lineHeight: '20px',
+          paddingRight: '15px',
+        }
+
+        .link {
+          color: '#666',
+          textDecoration: 'none',
+          fontSize: '12px',
+          transition: 'all .2s ease',
+        }
+      `}</style>
     </footer>
   )
 }
