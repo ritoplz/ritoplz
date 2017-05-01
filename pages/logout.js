@@ -1,7 +1,6 @@
 'use strict'
 
 import React from 'react'
-import { style } from 'next/css'
 
 import { isLogged, logout } from './../services/auth'
 
