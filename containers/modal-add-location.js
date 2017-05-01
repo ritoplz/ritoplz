@@ -16,7 +16,7 @@ import { EDIT_USER_SUCCESS, EDIT_USER_ERROR } from './../constants'
 
 const customStyle = {
   overlay: {
-    background-color: 'rgba(0, 0, 0, .75)'
+    backgroundColor: 'rgba(0, 0, 0, .75)'
   },
 
   content: {
