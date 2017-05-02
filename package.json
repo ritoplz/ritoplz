@@ -11,10 +11,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start",
-    "test": "jest",
-    "test:watch": "yarn test -- --watch",
-    "flow": "./node_modules/flow-bin/cli.js check"
+    "start": "next start"
   },
   "dependencies": {
     "axios": "^0.15.2",
