@@ -6,6 +6,7 @@ import Router from 'next/router'
 import PropTypes from 'prop-types'
 
 import pkg from './../package'
+import Header from './../components/header'
 import { colors } from './../components/ui/theme'
 
 let progress
@@ -35,22 +36,44 @@ if (global.document) {
 }
 
 const Page = ({ children }) => (
-  <main>
+  <div>
     <Head>
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1, user-scalable=no"
       />
+      <title>Ritoplz</title>
     </Head>
 
-    {children}
+    <main>
+      <Header />
+
+      {children}
+    </main>
 
     <style jsx global>{`
       * {
         padding: 0;
         margin: 0;
         -webkit-font-smoothing: antialiased;
-        font-family: 'Helvetica Neue', sans-serif;
+        box-sizing: border-box;
+        font-family: 'Fira Sans', 'Helvetica Neue', sans-serif;
+      }
+
+      svg {
+        vertical-align: middle;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      ul, li {
+        list-style: none;
+      }
+
+      a {
+        text-decoration: none;
       }
 
       #nprogress {
@@ -78,7 +101,7 @@ const Page = ({ children }) => (
         transform: rotate(3deg) translate(0px, -4px);
       }
     `}</style>
-  </main>
+  </div>
 )
 
 Page.propTypes = {
