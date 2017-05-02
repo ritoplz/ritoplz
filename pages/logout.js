@@ -12,7 +12,7 @@ export default props => {
   }
 
   return (
-    <h1 className={style(styles.message)}>
+    <h1 className="message">
       Bye! :(
 
       <style jsx>{`
