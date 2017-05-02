@@ -1,6 +1,7 @@
 {
   "name": "Ritoplz",
-  "version": "1.2.6",
+  "description": "Worldwide Rankings for League of Legends. See who's the best player of your region.",
+  "version": "2.0.0",
   "repository": {
     "url": "https://github.com/BuKinoshita/ritoplz.git",
     "type": "git"
