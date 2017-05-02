@@ -6,7 +6,7 @@ import Router from 'next/router'
 import PropTypes from 'prop-types'
 
 import pkg from './../package'
-import colors from './../components/ui/theme'
+import { colors } from './../components/ui/theme'
 
 let progress
 

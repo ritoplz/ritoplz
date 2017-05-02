@@ -1,7 +1,7 @@
 'use strict'
 
 import PropTypes from 'prop-types'
-import colors from './theme'
+import { typography, colors } from './theme'
 
 const Badge = ({ children, type = 'primary' }) => (
   <div className={type}>
@@ -9,13 +9,15 @@ const Badge = ({ children, type = 'primary' }) => (
 
     <style jsx>{`
       div {
-        border-radius: 3px;
-        padding: 4px 6px;
-        font-size: .8rem;
+        font-weight: 600;
+        border-radius: 2px;
+        padding: 4px 10px;
+        font-size: ${typography.f10};
         display: inline-block;
         vertical-align: middle;
-        margin-left: 5px;
+        margin-left: 3px;
         color: ${colors.white};
+        text-transform: uppercase;
       }
 
       .primary {
