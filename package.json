@@ -3,7 +3,7 @@
   "description": "Worldwide Rankings for League of Legends. See who's the best player of your region.",
   "version": "2.0.0",
   "repository": {
-    "url": "https://github.com/BuKinoshita/ritoplz.git",
+    "url": "https://github.com/ritoplz/ritoplz.git",
     "type": "git"
   },
   "author": "Bu Kinoshita <bukinoshita@gmail.com>",
@@ -19,6 +19,7 @@
   "dependencies": {
     "axios": "^0.15.2",
     "next": "^2.2.0",
+    "nprogress": "^0.2.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",
