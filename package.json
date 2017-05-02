@@ -13,6 +13,7 @@
     "build": "next build",
     "start": "next start",
     "precommit": "lint-staged",
+    "test": "npm run lint",
     "lint": "node_modules/.bin/xo"
   },
   "dependencies": {
