@@ -1,8 +1,7 @@
-'use strict';
+'use strict'
 
-import React from 'react';
-import Page from './../layouts/page';
-import { Row } from './../components/ui';
+import Page from './../layouts/page'
+import { Row } from './../components/ui'
 
 const Ui = () => (
   <Page>
@@ -12,6 +11,6 @@ const Ui = () => (
       <section />
     </Row>
   </Page>
-);
+)
 
-export default Ui;
+export default Ui

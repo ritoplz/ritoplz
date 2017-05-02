@@ -45,6 +45,7 @@
     "semicolon": false,
     "esnext": true,
     "rules": {
+      "react/react-in-jsx-scope": 0,
       "space-before-function-paren": 0,
       "object-curly-spacing": 0,
       "react/prop-types": 0
@@ -53,7 +54,7 @@
   "lint-staged": {
     "*.js": [
       "npm run test",
-      "prettier --single-quote --write",
+      "prettier --semi false --single-quote --write",
       "git add"
     ]
   },

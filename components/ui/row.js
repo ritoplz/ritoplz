@@ -1,8 +1,6 @@
 'use strict'
 
-import React from 'react'
-
-const Row = ({children}) => (
+const Row = ({ children }) => (
   <div className="row">
     {children}
 

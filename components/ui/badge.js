@@ -1,9 +1,8 @@
 'use strict'
 
-import React from 'react'
 import { colors } from './theme'
 
-const Badge = ({children, type = 'primary'}) => (
+const Badge = ({ children, type = 'primary' }) => (
   <div className={type}>
     {children}
 

@@ -2,14 +2,10 @@
 
 import { colors } from './theme'
 
-const TextInput = ({
-  type = 'text',
-  label = null,
-  placeholder = null
-}) => (
+const TextInput = ({ type = 'text', label = null, placeholder = null }) => (
   <div>
     <label>{label}</label>
-    <input type={type} placeholder={placeholder}/>
+    <input type={type} placeholder={placeholder} />
 
     <style jsx>{`
       div {

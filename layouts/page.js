@@ -1,34 +1,34 @@
-'use strict';
+'use strict'
 
-import Progress from 'nprogress';
-import Head from 'next/head';
-import Router from 'next/router';
+import Progress from 'nprogress'
+import Head from 'next/head'
+import Router from 'next/router'
 
-import pkg from './../package';
-import { colors } from './../components/ui/theme';
+import pkg from './../package'
+import { colors } from './../components/ui/theme'
 
-let progress;
+let progress
 const stopProgress = () => {
-  clearTimeout(progress);
-  Progress.done();
-};
+  clearTimeout(progress)
+  Progress.done()
+}
 
 Router.onRouteChangeStart = () => {
-  progress = setTimeout(Progress.start, 200);
-};
+  progress = setTimeout(Progress.start, 200)
+}
 
-Router.onRouteChangeComplete = stopProgress;
-Router.onRouteChangeError = stopProgress;
+Router.onRouteChangeComplete = stopProgress
+Router.onRouteChangeError = stopProgress
 
 if (global.document) {
   const info = [
     `${pkg.name} v${pkg.version}`,
     `${pkg.description}`,
     `Find the code here: ${pkg.repository.url}`
-  ];
+  ]
 
   for (const message of info) {
-    console.log(message);
+    console.log(message)
   }
 }
 
@@ -76,6 +76,6 @@ const Page = ({ children }) => (
       }
     `}</style>
   </main>
-);
+)
 
-export default Page;
+export default Page

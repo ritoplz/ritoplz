@@ -2,15 +2,8 @@
 
 import { colors } from './theme'
 
-const UiButton = ({
-  children,
-  type = 'button',
-  ui = 'primary'
-}) => (
-  <button
-    type={type}
-    className={ui}
-  >
+const UiButton = ({ children, type = 'button', ui = 'primary' }) => (
+  <button type={type} className={ui}>
     {children}
 
     <style jsx>{`
