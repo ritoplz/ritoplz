@@ -1,9 +1,9 @@
 'use strict'
 
 import PropTypes from 'prop-types'
-import colors from './theme'
+import { colors, typography } from './theme'
 
-const TextInput = ({ type = 'text', label = null, placeholder = null }) => (
+const TextInput = ({ type = 'text', label, placeholder }) => (
   <div>
     <label>{label}</label>
     <input type={type} placeholder={placeholder} />
@@ -16,18 +16,24 @@ const TextInput = ({ type = 'text', label = null, placeholder = null }) => (
       label {
         display: block;
         color: ${colors.secondary};
-        font-weight: 600;
-        font-size: .8rem;
-        margin-bottom: 5px;
+        font-weight: 500;
+        font-size: ${typography.f12};
+        margin-bottom: 8px;
       }
 
       input {
         width: 100%;
-        background-color: #FBFBFD;
-        padding: 10px;
-        border: 1px solid #E6E8F1;
-        font-size: 1rem;
+        background-color: ${colors.blueLight};
+        border: 1px solid ${colors.inputBorder};
+        font-size: ${typography.f14};
+        border-radius: 4px;
+        padding: 16px 15px;
         color: ${colors.secondary};
+      }
+
+      input:focus {
+        outline: transparent;
+        border-color: ${colors.grayLight};
       }
     `}</style>
   </div>
