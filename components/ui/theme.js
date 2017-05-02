@@ -1,6 +1,6 @@
 'use strict'
 
-export const colors = {
+const colors = {
   white: '#FFFFFF',
   primary: '#4482FF',
   secondary: '#6E8097',
@@ -8,3 +8,5 @@ export const colors = {
   danger: '#FF627E',
   gray: '#CCCCCC'
 }
+
+export default colors
