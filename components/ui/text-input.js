@@ -1,7 +1,7 @@
 'use strict'
 
 import PropTypes from 'prop-types'
-import { colors } from './theme'
+import colors from './theme'
 
 const TextInput = ({ type = 'text', label = null, placeholder = null }) => (
   <div>

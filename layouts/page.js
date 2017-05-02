@@ -6,7 +6,7 @@ import Router from 'next/router'
 import PropTypes from 'prop-types'
 
 import pkg from './../package'
-import { colors } from './../components/ui/theme'
+import colors from './../components/ui/theme'
 
 let progress
 
@@ -46,13 +46,10 @@ const Page = ({ children }) => (
     {children}
 
     <style jsx global>{`
-      body {
+      * {
         padding: 0;
         margin: 0;
         -webkit-font-smoothing: antialiased;
-      }
-
-      h1,h2,h3,h4,h5,h6 {
         font-family: 'Helvetica Neue', sans-serif;
       }
 

@@ -1,7 +1,7 @@
 'use strict'
 
 import PropTypes from 'prop-types'
-import { colors } from './theme'
+import colors from './theme'
 
 const UiButton = ({ children, type = 'button', ui = 'primary' }) => (
   <button type={type} className={ui}>
