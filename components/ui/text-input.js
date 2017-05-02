@@ -1,5 +1,6 @@
 'use strict'
 
+import PropTypes from 'prop-types'
 import { colors } from './theme'
 
 const TextInput = ({ type = 'text', label = null, placeholder = null }) => (
@@ -31,5 +32,11 @@ const TextInput = ({ type = 'text', label = null, placeholder = null }) => (
     `}</style>
   </div>
 )
+
+TextInput.propTypes = {
+  type: PropTypes.string,
+  label: PropTypes.string,
+  placeholder: PropTypes.string
+}
 
 export default TextInput

@@ -1,5 +1,6 @@
 'use strict'
 
+import PropTypes from 'prop-types'
 import { colors } from './theme'
 
 const Badge = ({ children, type = 'primary' }) => (
@@ -31,5 +32,10 @@ const Badge = ({ children, type = 'primary' }) => (
     `}</style>
   </div>
 )
+
+Badge.propTypes = {
+  children: PropTypes.node.isRequired,
+  type: PropTypes.string
+}
 
 export default Badge

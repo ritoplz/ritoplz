@@ -1,5 +1,7 @@
 'use strict'
 
+import PropTypes from 'prop-types'
+
 const Row = ({ children }) => (
   <div className="row">
     {children}
@@ -13,5 +15,9 @@ const Row = ({ children }) => (
     `}</style>
   </div>
 )
+
+Row.propTypes = {
+  children: PropTypes.node.isRequired
+}
 
 export default Row

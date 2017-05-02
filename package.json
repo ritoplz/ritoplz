@@ -20,6 +20,7 @@
     "axios": "^0.15.2",
     "next": "^2.2.0",
     "nprogress": "^0.2.0",
+    "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",
@@ -47,8 +48,7 @@
     "rules": {
       "react/react-in-jsx-scope": 0,
       "space-before-function-paren": 0,
-      "object-curly-spacing": 0,
-      "react/prop-types": 0
+      "object-curly-spacing": 0
     }
   },
   "lint-staged": {

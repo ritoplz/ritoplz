@@ -3,11 +3,13 @@
 import Progress from 'nprogress'
 import Head from 'next/head'
 import Router from 'next/router'
+import PropTypes from 'prop-types'
 
 import pkg from './../package'
 import { colors } from './../components/ui/theme'
 
 let progress
+
 const stopProgress = () => {
   clearTimeout(progress)
   Progress.done()
@@ -49,12 +51,15 @@ const Page = ({ children }) => (
         margin: 0;
         -webkit-font-smoothing: antialiased;
       }
+
       h1,h2,h3,h4,h5,h6 {
         font-family: 'Helvetica Neue', sans-serif;
       }
+
       #nprogress {
         pointer-events: none;
       }
+
       #nprogress .bar {
         background: ${colors.primary};
         position: fixed;
@@ -64,6 +69,7 @@ const Page = ({ children }) => (
         width: 100%;
         height: 2px;
       }
+
       #nprogress .peg {
         display: block;
         position: absolute;
@@ -77,5 +83,9 @@ const Page = ({ children }) => (
     `}</style>
   </main>
 )
+
+Page.propTypes = {
+  children: PropTypes.node.isRequired
+}
 
 export default Page

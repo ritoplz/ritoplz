@@ -1,5 +1,6 @@
 'use strict'
 
+import PropTypes from 'prop-types'
 import { TextInput } from './'
 
 const Fieldset = ({ title, description, type, label, placeholder }) => (
@@ -27,5 +28,13 @@ const Fieldset = ({ title, description, type, label, placeholder }) => (
     `}</style>
   </div>
 )
+
+Fieldset.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  label: PropTypes.string,
+  placeholder: PropTypes.string
+}
 
 export default Fieldset

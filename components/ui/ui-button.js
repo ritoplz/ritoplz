@@ -1,5 +1,6 @@
 'use strict'
 
+import PropTypes from 'prop-types'
 import { colors } from './theme'
 
 const UiButton = ({ children, type = 'button', ui = 'primary' }) => (
@@ -85,5 +86,12 @@ const UiButton = ({ children, type = 'button', ui = 'primary' }) => (
     `}</style>
   </button>
 )
+
+UiButton.propTypes = {
+  children: PropTypes.node.isRequired,
+  label: PropTypes.string,
+  ui: PropTypes.string,
+  type: PropTypes.string
+}
 
 export default UiButton
