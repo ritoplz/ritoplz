@@ -100,28 +100,6 @@ const RankingUser = ({ user }) => (
         margin-right: 15px;
       }
 
-      .ranking-progress {
-        flex-basis: 40%;
-      }
-
-      .ranking-tier {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .ranking-tier__division {
-        color: ${colors.gray};
-        font-weight: 600;
-        font-size: ${typography.f12};
-      }
-
-      .ranking-tier__lp {
-        color: ${colors.gray};
-        font-weight: 600;
-        font-size: ${typography.f12};
-      }
-
       .ranking-info {
         text-align: right;
         flex-basis: 50%;
