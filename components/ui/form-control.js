@@ -1,10 +1,10 @@
 'use strict'
 
-import { UiButton } from './'
+import { UiButton, UiLink } from './'
 
 const FormControl = () => (
   <div className="form-control">
-    <UiButton ui="link default">Cancel</UiButton>
+    <UiLink prefetch href="/dashboard" ui="link default">Cancel</UiLink>
     <UiButton ui="success">Save settings</UiButton>
 
     <style jsx>{`
