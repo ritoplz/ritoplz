@@ -18,6 +18,8 @@
   },
   "dependencies": {
     "axios": "^0.15.2",
+    "goot": "^0.0.6",
+    "moment-timezone": "^0.5.13",
     "next": "^2.2.0",
     "nprogress": "^0.2.0",
     "prop-types": "^15.5.8",
@@ -29,7 +31,8 @@
     "react-redux": "^5.0.4",
     "react-selectize": "^2.1.0",
     "redux": "^3.6.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "wer": "^0.0.1"
   },
   "devDependencies": {
     "eslint-config-prettier": "^1.7.0",
