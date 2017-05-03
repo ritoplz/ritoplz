@@ -11,7 +11,7 @@ import { UiButton, UiLink, TextInput } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
 import Logo from './../components/logo'
 
-class Login extends Component {
+class Signup extends Component {
   static async getInitialProps() {
     const where = await wer()
     const currentTime = moment().tz(where.time_zone).format('H')
@@ -24,39 +24,41 @@ class Login extends Component {
 
     return (
       <Page>
-        <div className="login">
-          <aside className="login-sidebar">
+        <div className="signup">
+          <aside className="signup-sidebar">
             <Link prefetch href="/">
-              <a className="login-sidebar__logo">
+              <a className="signup-sidebar__logo">
                 <Logo type="white" size="80px" />
               </a>
             </Link>
 
-            <div className="login-heading">
-              <h2 className="login-heading__title">
+            <div className="signup-heading">
+              <h2 className="signup-heading__title">
                 League of Legends Rankings.
               </h2>
-              <p className="login-heading__description">
+              <p className="signup-heading__description">
                 Usage of the Internet is becoming more common due to rapid advancement of technology.
               </p>
             </div>
           </aside>
 
-          <section className="login-section">
-            <div className="login-section__signup">
-              <UiLink ui="primary small" href="/signup">Sign up</UiLink>
+          <section className="signup-section">
+            <div className="signup-section__signup">
+              <UiLink ui="primary small" href="/signup">Login</UiLink>
             </div>
 
-            <h3 className="login-section__title">
+            <h3 className="signup-section__title">
               <strong>Good {greeting}! </strong>
-              It’s good to have you back.
+              Welcome to Ritoplz 🎉
             </h3>
 
-            <p className="login-section__subtitle">
-              Sign in to your account here.
+            <p className="signup-section__subtitle">
+              Create an account and keep playing, let's rank up.
             </p>
 
-            <form className="login-form">
+            <form className="signup-form">
+              <TextInput label="Your name" placeholder="Name" />
+
               <TextInput
                 type="email"
                 label="Email"
@@ -69,62 +71,67 @@ class Login extends Component {
                 placeholder="Your password"
               />
 
-              <span className="login-form__forgot">Forgot your password?</span>
-
-              <UiButton ui="success block">Login</UiButton>
+              <UiButton ui="success block">Create an account</UiButton>
+              <p className="warning">
+                We will
+                {' '}
+                <strong>never</strong>
+                {' '}
+                ask for any League of Legends credentials.
+              </p>
             </form>
           </section>
         </div>
 
         <style jsx>{`
-          .login {
+          .signup {
             display: flex;
             min-height: 100vh;
             max-height: 100vh;
           }
 
-          .login-sidebar {
+          .signup-sidebar {
             flex-basis: 475px;
             background-color: red;
             display: flex;
             flex-direction: column-reverse;
             padding: 50px;
-            background: url('static/background-login.png') center center;
+            background: url('static/background-signup.png') center center;
             background-size: cover;
           }
 
-          .login-sidebar__logo {
+          .signup-sidebar__logo {
             position: absolute;
             top: 50px;
           }
 
-          .login-heading__title {
+          .signup-heading__title {
             color: ${colors.white};
             font-size: ${typography.f24};
             margin-bottom: 5px;
             font-weight: 600;
           }
 
-          .login-heading__description {
+          .signup-heading__description {
             color: ${colors.white};
             font-size: ${typography.f14};
             line-height: 26px;
             font-weight: 400;
           }
 
-          .login-section {
+          .signup-section {
             flex-basis: calc(100% - 475px);
-            padding-top: 150px;
+            padding-top: 125px;
             padding-bottom: 50px;
           }
 
-          .login-section__signup {
+          .signup-section__signup {
             position: absolute;
             right: 50px;
             top: 30px;
           }
 
-          .login-section__title {
+          .signup-section__title {
             text-align: center;
             color: ${colors.heading};
             margin-bottom: 18px;
@@ -132,20 +139,20 @@ class Login extends Component {
             font-size: ${typography.f20};
           }
 
-          .login-section__subtitle {
+          .signup-section__subtitle {
             text-align: center;
             color: ${colors.gray};
             font-size: ${typography.f16};
           }
 
-          .login-form {
+          .signup-form {
             max-width: 500px;
             margin-left: auto;
             margin-right: auto;
             margin-top: 50px;
           }
 
-          .login-form__forgot {
+          .signup-form__forgot {
             display: block;
             font-size: ${typography.f14};
             color: ${colors.gray};
@@ -156,8 +163,15 @@ class Login extends Component {
             flex-direction: row-reverse;
           }
 
-          .login-form__forgot:hover {
+          .signup-form__forgot:hover {
             color: ${colors.grayDark};
+          }
+
+          .warning {
+            font-size: ${typography.f14};
+            margin-top: 15px;
+            text-align: center;
+            color: ${colors.gray};
           }
         `}</style>
       </Page>
@@ -165,8 +179,8 @@ class Login extends Component {
   }
 }
 
-Login.propTypes = {
+Signup.propTypes = {
   greeting: PropTypes.string.isRequired
 }
 
-export default Login
+export default Signup
