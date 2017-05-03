@@ -2,19 +2,22 @@
 
 import PropTypes from 'prop-types'
 import { SimpleSelect } from 'react-selectize'
-import { colors } from './theme'
+import { colors, typography } from './theme'
 
 const UiSelect = ({
   placeholder = 'Select...',
   options = [],
-  handleSelectChange
+  handleSelectChange,
+  label
 }) => {
   const selectOptions = options.map(({ value, label }) => (
     <option key={value} value={value}>{label}</option>
   ))
 
   return (
-    <div>
+    <div className="ui-select">
+      <label>{label}</label>
+
       <SimpleSelect
         placeholder={placeholder}
         onValueChange={value => handleSelectChange(value)}
@@ -23,8 +26,20 @@ const UiSelect = ({
       </SimpleSelect>
 
       <style>{`
+        .ui-select {
+          margin-bottom: 30px;
+        }
+
+        label {
+          display: block;
+          color: ${colors.secondary};
+          font-weight: 500;
+          font-size: ${typography.f12};
+          margin-bottom: 8px;
+        }
+
         .react-selectize {
-          color: ${colors.gray};
+          color: ${colors.secondary};
         }
 
         .react-selectize.root-node {
@@ -50,7 +65,7 @@ const UiSelect = ({
           -webkit-align-items: flex-start;
           align-items: flex-start;
           position: relative;
-          padding: 5px;
+          padding: 9px;
         }
 
         .react-selectize.root-node .react-selectize-control .react-selectize-placeholder {
@@ -92,7 +107,7 @@ const UiSelect = ({
           background: none;
           border: none;
           outline: none;
-          font-size: 1em;
+          font-size: ${typography.f14};
           margin: 2px;
           padding: 4px 0px;
           vertical-align: middle;
@@ -259,11 +274,11 @@ const UiSelect = ({
           border-color: ${colors.inputBorder};
           -webkit-border-radius: 4px;
           border-radius: 4px;
-          font-size: 1em;
+          font-size: ${typography.f14};
         }
 
         .react-selectize.default.root-node .react-selectize-control .react-selectize-placeholder {
-          color: #aaa;
+          color: ${colors.gray};
           text-indent: 8px;
         }
 
@@ -441,7 +456,7 @@ const UiSelect = ({
           border-color: #d9d9d9 #ccc #b3b3b3;
           -webkit-border-radius: 4px;
           border-radius: 4px;
-          font-size: 1em;
+          font-size: ${typography.f14};
         }
 
         .react-selectize.bootstrap3.root-node .react-selectize-control .react-selectize-placeholder {
@@ -794,7 +809,8 @@ const UiSelect = ({
 UiSelect.propTypes = {
   placeholder: PropTypes.string,
   options: PropTypes.array.isRequired,
-  handleSelectChange: PropTypes.func.isRequired
+  handleSelectChange: PropTypes.func.isRequired,
+  label: PropTypes.string
 }
 
 export default UiSelect

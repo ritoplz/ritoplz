@@ -8,10 +8,12 @@ import {
   FormControl,
   SocialButton,
   UiButton,
-  DividerOr
+  DividerOr,
+  UiSelect
 } from './../components/ui'
 import Header from './../components/header'
 import { colors } from './../components/ui/theme'
+import { locations, countries } from './../services/places'
 
 const Settings = () => {
   return (
@@ -43,20 +45,22 @@ const Settings = () => {
             title="Location"
             description="This will determ in which Ranking you will enter, we advise to put your current location so you can compete with players of your city"
           >
-            <TextInput
-              type="email"
+            <UiSelect
               label="Country"
-              placeholder="email@ritoplz.com"
+              options={countries}
+              placeholder="Select your country"
             />
-            <TextInput
-              type="email"
+
+            <UiSelect
               label="State"
-              placeholder="email@ritoplz.com"
+              options={locations.BR}
+              placeholder="Select your state"
             />
-            <TextInput
-              type="email"
+
+            <UiSelect
               label="City"
-              placeholder="email@ritoplz.com"
+              options={locations.BR[0].cities}
+              placeholder="Select your city"
             />
           </Fieldset>
 
