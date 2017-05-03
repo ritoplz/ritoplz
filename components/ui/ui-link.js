@@ -112,10 +112,10 @@ const UiLink = ({ children, href, as, ui = 'primary' }) => (
 )
 
 UiLink.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.node.isRequired,
   label: PropTypes.string,
   ui: PropTypes.string,
-  href: PropTypes.isRequired,
+  href: PropTypes.PropTypes.string.isRequired || PropTypes.object.isRequired,
   as: PropTypes.string || PropTypes.object
 }
 
