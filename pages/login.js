@@ -1,147 +1,171 @@
 'use strict'
 
+import { Component } from 'react'
+import PropTypes from 'prop-types'
 import Link from 'next/link'
+import wer from 'wer'
+import moment from 'moment-timezone'
+import goot from 'goot'
 import Page from './../layouts/page'
 import { UiButton, UiLink, TextInput } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
 import Logo from './../components/logo'
 
-const Settings = () => {
-  return (
-    <Page>
-      <div className="login">
-        <aside className="login-sidebar">
-          <Link prefetch href="/">
-            <a className="login-sidebar__logo">
-              <Logo type="white" size="80px" />
-            </a>
-          </Link>
+class Login extends Component {
+  static async getInitialProps() {
+    const where = await wer()
+    const currentTime = moment().tz(where.time_zone).format('H')
+    const greeting = await goot(currentTime)
+    return { greeting }
+  }
 
-          <div className="login-heading">
-            <h2 className="login-heading__title">
-              League of Legends Rankings.
-            </h2>
-            <p className="login-heading__description">
-              Usage of the Internet is becoming more common due to rapid advancement of technology.
+  render() {
+    const { greeting } = this.props
+
+    return (
+      <Page>
+        <div className="login">
+          <aside className="login-sidebar">
+            <Link prefetch href="/">
+              <a className="login-sidebar__logo">
+                <Logo type="white" size="80px" />
+              </a>
+            </Link>
+
+            <div className="login-heading">
+              <h2 className="login-heading__title">
+                League of Legends Rankings.
+              </h2>
+              <p className="login-heading__description">
+                Usage of the Internet is becoming more common due to rapid advancement of technology.
+              </p>
+            </div>
+          </aside>
+
+          <section className="login-section">
+            <div className="login-section__signup">
+              <UiLink ui="primary small" href="/signup">Sign up</UiLink>
+            </div>
+
+            <h3 className="login-section__title">
+              <strong>Good {greeting}! </strong>
+              It’s good to have you back.
+            </h3>
+
+            <p className="login-section__subtitle">
+              Sign in to your account here.
             </p>
-          </div>
-        </aside>
 
-        <section className="login-section">
-          <div className="login-section__signup">
-            <UiLink ui="primary small" href="/signup">Sign up</UiLink>
-          </div>
+            <form className="login-form">
+              <TextInput
+                type="email"
+                label="Email"
+                placeholder="Email address"
+              />
 
-          <h3 className="login-section__title">
-            <strong>Good night! </strong>
-            It’s good to have you back.
-          </h3>
+              <TextInput
+                type="password"
+                label="Password"
+                placeholder="Your password"
+              />
 
-          <p className="login-section__subtitle">
-            Sign in to your account here.
-          </p>
+              <span className="login-form__forgot">Forgot your password?</span>
 
-          <form className="login-form">
-            <TextInput type="email" label="Email" placeholder="Email address" />
+              <UiButton ui="success block">Login</UiButton>
+            </form>
+          </section>
+        </div>
 
-            <TextInput
-              type="password"
-              label="Password"
-              placeholder="Your password"
-            />
+        <style jsx>{`
+          .login {
+            display: flex;
+            min-height: 100vh;
+          }
 
-            <span className="login-form__forgot">Forgot your password?</span>
+          .login-sidebar {
+            flex-basis: 475px;
+            background-color: red;
+            display: flex;
+            flex-direction: column-reverse;
+            padding: 50px;
+            background: url('static/background-login.png') center center;
+            background-size: cover;
+          }
 
-            <UiButton ui="success block">Login</UiButton>
-          </form>
-        </section>
-      </div>
+          .login-sidebar__logo {
+            position: absolute;
+            top: 50px;
+          }
 
-      <style jsx>{`
-        .login {
-          display: flex;
-          min-height: 100vh;
-        }
+          .login-heading__title {
+            color: ${colors.white};
+            font-size: ${typography.f24};
+            margin-bottom: 5px;
+            font-weight: 600;
+          }
 
-        .login-sidebar {
-          flex-basis: 475px;
-          background-color: red;
-          display: flex;
-          flex-direction: column-reverse;
-          padding: 50px;
-          background: url('static/background-login.png') center center;
-          background-size: cover;
-        }
+          .login-heading__description {
+            color: ${colors.white};
+            font-size: ${typography.f14};
+            line-height: 26px;
+            font-weight: 400;
+          }
 
-        .login-sidebar__logo {
-          position: absolute;
-          top: 50px;
-        }
+          .login-section {
+            flex-basis: calc(100% - 475px);
+            padding-top: 150px;
+            padding-bottom: 50px;
+          }
 
-        .login-heading__title {
-          color: ${colors.white};
-          font-size: ${typography.f24};
-          margin-bottom: 5px;
-          font-weight: 600;
-        }
+          .login-section__signup {
+            position: absolute;
+            right: 50px;
+            top: 30px;
+          }
 
-        .login-heading__description {
-          color: ${colors.white};
-          font-size: ${typography.f14};
-          line-height: 26px;
-          font-weight: 400;
-        }
+          .login-section__title {
+            text-align: center;
+            color: ${colors.heading};
+            margin-bottom: 18px;
+            font-weight: 400;
+            font-size: ${typography.f20};
+          }
 
-        .login-section {
-          flex-basis: calc(100% - 475px);
-          padding-top: 150px;
-          padding-bottom: 50px;
-        }
+          .login-section__subtitle {
+            text-align: center;
+            color: ${colors.gray};
+            font-size: ${typography.f16};
+          }
 
-        .login-section__signup {
-          position: absolute;
-          right: 50px;
-          top: 30px;
-        }
+          .login-form {
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+          }
 
-        .login-section__title {
-          text-align: center;
-          color: ${colors.heading};
-          margin-bottom: 18px;
-          font-weight: 400;
-          font-size: ${typography.f20};
-        }
+          .login-form__forgot {
+            display: block;
+            font-size: ${typography.f14};
+            color: ${colors.gray};
+            margin-bottom: 50px;
+            transition: .15s ease-in-out;
+            cursor: pointer;
+            display: flex;
+            flex-direction: row-reverse;
+          }
 
-        .login-section__subtitle {
-          text-align: center;
-          color: ${colors.gray};
-          font-size: ${typography.f16};
-        }
-
-        .login-form {
-          max-width: 500px;
-          margin-left: auto;
-          margin-right: auto;
-          margin-top: 50px;
-        }
-
-        .login-form__forgot {
-          display: block;
-          font-size: ${typography.f14};
-          color: ${colors.gray};
-          margin-bottom: 50px;
-          transition: .15s ease-in-out;
-          cursor: pointer;
-          display: flex;
-          flex-direction: row-reverse;
-        }
-
-        .login-form__forgot:hover {
-          color: ${colors.grayDark};
-        }
-      `}</style>
-    </Page>
-  )
+          .login-form__forgot:hover {
+            color: ${colors.grayDark};
+          }
+        `}</style>
+      </Page>
+    )
+  }
 }
 
-export default Settings
+Login.propTypes = {
+  greeting: PropTypes.string.isRequired
+}
+
+export default Login
