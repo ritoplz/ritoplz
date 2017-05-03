@@ -23,8 +23,11 @@
     "prop-types": "^15.5.8",
     "rc-progress": "^2.1.1",
     "react": "^15.5.4",
+    "react-addons-css-transition-group": "^15.5.2",
+    "react-addons-shallow-compare": "^15.5.2",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",
+    "react-selectize": "^2.1.0",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0"
   },
