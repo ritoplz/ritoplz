@@ -76,6 +76,7 @@ const Settings = () => {
           <Fieldset
             title="Invite Friends"
             description="Invite your friends and earn points to exchange for RP. For each friend that confirms its summoner, you will earn 150 points to exchange with RP."
+            badge="Beta"
           >
             <div className="invite-friends">
               <h4 className="invite-friends__title">
