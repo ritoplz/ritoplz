@@ -99,6 +99,11 @@ const UiButton = ({ children, type = 'button', ui = 'primary' }) => (
         padding: 0.75rem 1.5rem;
         border-radius: 6px;
       }
+
+      .block {
+        display: block;
+        width: 100%;
+      }
     `}</style>
   </button>
 )
