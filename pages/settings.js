@@ -18,6 +18,8 @@ const Settings = () => {
     <Page>
       <Header />
       <Row>
+        <h2 className="page-title">Settings</h2>
+
         <form>
           <Fieldset
             title="Username"
@@ -108,6 +110,12 @@ const Settings = () => {
       </Row>
 
       <style jsx>{`
+        .page-title {
+          margin-top: 50px;
+          color: ${colors.heading};
+          font-weight: 600;
+        }
+
         form {
           padding-top: 50px;
           padding-bottom: 50px;
