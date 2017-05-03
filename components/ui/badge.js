@@ -36,7 +36,7 @@ const Badge = ({ children, type = 'primary' }) => (
 )
 
 Badge.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.element.isRequired,
   type: PropTypes.string
 }
 

@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Page from './../layouts/page'
-import { UiButton, TextInput } from './../components/ui'
+import { UiButton, UiLink, TextInput } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
 import Logo from './../components/logo'
 
@@ -28,6 +28,10 @@ const Settings = () => {
         </aside>
 
         <section className="login-section">
+          <div className="login-section__signup">
+            <UiLink ui="primary small" href="/signup">Sign up</UiLink>
+          </div>
+
           <h3 className="login-section__title">
             <strong>Good night! </strong>
             It’s good to have you back.
@@ -92,6 +96,12 @@ const Settings = () => {
           flex-basis: calc(100% - 475px);
           padding-top: 150px;
           padding-bottom: 50px;
+        }
+
+        .login-section__signup {
+          position: absolute;
+          right: 50px;
+          top: 30px;
         }
 
         .login-section__title {
