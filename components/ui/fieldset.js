@@ -60,7 +60,7 @@ Fieldset.propTypes = {
   type: PropTypes.string,
   label: PropTypes.string,
   badge: PropTypes.string,
-  children: PropTypes.element.isRequired,
+  children: PropTypes.node.isRequired,
   placeholder: PropTypes.string
 }
 

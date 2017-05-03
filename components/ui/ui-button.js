@@ -109,7 +109,7 @@ const UiButton = ({ children, type = 'button', ui = 'primary' }) => (
 )
 
 UiButton.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.node.isRequired,
   label: PropTypes.string,
   ui: PropTypes.string,
   type: PropTypes.string

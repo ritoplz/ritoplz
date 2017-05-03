@@ -17,7 +17,9 @@ export const colors = {
   grayDark: '#333333',
   grayLight: '#CCCCCC',
   gray: '#999999',
-  blueLight: '#FBFBFD'
+  blueLight: '#FBFBFD',
+  facebook: '#3B5998',
+  twitter: '#00ACED'
 }
 
 export const typography = {
