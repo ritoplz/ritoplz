@@ -1,21 +1,22 @@
 'use strict'
 
-import { Line } from 'rc-progress'
+import PropTypes from 'prop-types'
 import { colors, typography } from './../components/ui/theme'
 import { UiButton } from './../components/ui'
+import RankingProgress from './ranking-progress'
 
-const RankingUser = () => (
+const RankingUser = ({ user }) => (
   <div className="ranking">
     <header className="ranking-header">
       <img
         className="ranking-header__avatar"
-        src="https://ddragon.leagueoflegends.com/cdn/7.8.1/img/profileicon/1598.png"
+        src={`https://ddragon.leagueoflegends.com/cdn/7.8.1/img/profileicon/${user.profileIconId}.png`}
         alt=""
       />
 
       <div className="ranking-user">
-        <h3 className="ranking-user__summoner">Sarah Sheeva</h3>
-        <h4 className="ranking-user__username">Pedro Rezende</h4>
+        <h3 className="ranking-user__summoner">{user.username}</h3>
+        <h4 className="ranking-user__username">{user.name}</h4>
       </div>
 
       <UiButton ui="outline default small">View Profile</UiButton>
@@ -24,27 +25,16 @@ const RankingUser = () => (
     <footer className="ranking-footer">
       <span className="ranking-footer__position">#251</span>
 
-      <div className="ranking-progress">
-        <div className="ranking-tier">
-          <span className="ranking-tier__division">CHALLENGER I</span>
-          <span className="ranking-tier__lp">LP 76</span>
-        </div>
-
-        <Line
-          percent={75}
-          strokeWidth="1.25"
-          strokeColor={colors.success}
-          trailWidth="1.25"
-          trailColor={colors.border}
-        />
-      </div>
+      <RankingProgress ranking={user.rankedSolo} />
 
       <div className="ranking-info">
         <span className="ranking-info__location">
-          Belo Horizonte, Minas Gerais — BR
+          {user.city}, {user.state} — {user.country}
         </span>
         <span className="ranking-info__play">
-          Last time played: <strong>3 hours ago</strong>
+          Last time played:
+          {' '}
+          <strong>{user.recentMatches.lastPlayedSolo.date}</strong>
         </span>
       </div>
     </footer>
@@ -65,6 +55,7 @@ const RankingUser = () => (
         padding-top: 15px;
         padding-bottom: 15px;
         border-bottom: 1px solid ${colors.border};
+        align-items: center;
       }
 
       .ranking-header__avatar {
@@ -84,7 +75,6 @@ const RankingUser = () => (
         font-weight: 600;
         color: ${colors.heading};
         font-size: ${typography.f18};
-        margin-top: 4px;
         margin-bottom: 2px;
       }
 
@@ -97,8 +87,8 @@ const RankingUser = () => (
 
       .ranking-footer {
         display: flex;
-        padding-top: 15px;
-        padding-bottom: 15px;
+        padding-top: 10px;
+        padding-bottom: 10px;
         align-items: center;
       }
 
@@ -106,34 +96,13 @@ const RankingUser = () => (
         color: ${colors.heading};
         font-size: ${typography.f16};
         font-weight: 700;
-        flex-basis: 10%;
-      }
-
-      .ranking-progress {
-        flex-basis: 45%;
-      }
-
-      .ranking-tier {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .ranking-tier__division {
-        color: ${colors.gray};
-        font-weight: 600;
-        font-size: ${typography.f12};
-      }
-
-      .ranking-tier__lp {
-        color: ${colors.gray};
-        font-weight: 600;
-        font-size: ${typography.f12};
+        flex-basis: 45px;
+        margin-right: 15px;
       }
 
       .ranking-info {
         text-align: right;
-        flex-basis: 45%;
+        flex-basis: 50%;
       }
 
       .ranking-info__location {
@@ -153,5 +122,9 @@ const RankingUser = () => (
     `}</style>
   </div>
 )
+
+RankingUser.propTypes = {
+  user: PropTypes.object
+}
 
 export default RankingUser

@@ -90,7 +90,7 @@ const UiButton = ({ children, type = 'button', ui = 'primary' }) => (
 
       .small {
         font-size: ${typography.f14};
-        padding: 0 15px;
+        padding: 12px 15px;
         border-radius: 4px;
       }
 
