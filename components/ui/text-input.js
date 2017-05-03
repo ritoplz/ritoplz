@@ -31,6 +31,22 @@ const TextInput = ({ type = 'text', label, placeholder }) => (
         color: ${colors.secondary};
       }
 
+      input::-webkit-input-placeholder {
+        color: ${colors.gray};
+      }
+
+      input::-moz-placeholder {
+        color: ${colors.gray};
+      }
+
+      input:-ms-input-placeholder {
+        color: ${colors.gray};
+      }
+
+      input:-moz-placeholder {
+        color: ${colors.gray};
+      }
+
       input:focus {
         outline: transparent;
         border-color: ${colors.grayLight};
