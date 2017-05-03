@@ -3,8 +3,13 @@
 import PropTypes from 'prop-types'
 import { colors, typography } from './theme'
 
-const UiButton = ({ children, type = 'button', ui = 'primary' }) => (
-  <button type={type} className={ui}>
+const UiButton = ({
+  children,
+  type = 'button',
+  ui = 'primary',
+  disabled = false
+}) => (
+  <button type={type} className={ui} disabled={disabled}>
     {children}
 
     <style jsx>{`
@@ -24,9 +29,21 @@ const UiButton = ({ children, type = 'button', ui = 'primary' }) => (
         cursor: pointer;
       }
 
+      button:disabled {
+        cursor: default;
+      }
+
       .primary {
         background-color: ${colors.primary};
         color: ${colors.white};
+      }
+
+      .primary:hover {
+        background-color: ${colors.primaryHover};
+      }
+
+      .primary:disabled {
+        background-color: ${colors.primaryDisabled};
       }
 
       .success {
@@ -38,6 +55,10 @@ const UiButton = ({ children, type = 'button', ui = 'primary' }) => (
         background-color: ${colors.successHover};
       }
 
+      .success:disabled {
+        background-color: ${colors.successDisabled};
+      }
+
       .danger {
         background-color: ${colors.danger};
         color: ${colors.white};
@@ -45,6 +66,10 @@ const UiButton = ({ children, type = 'button', ui = 'primary' }) => (
 
       .danger:hover {
         background-color: ${colors.dangerHover};
+      }
+
+      .danger:disabled {
+        background-color: ${colors.dangerDisabled};
       }
 
       .default {
@@ -112,7 +137,8 @@ UiButton.propTypes = {
   children: PropTypes.node.isRequired,
   label: PropTypes.string,
   ui: PropTypes.string,
-  type: PropTypes.string
+  type: PropTypes.string,
+  disabled: PropTypes.bool
 }
 
 export default UiButton
