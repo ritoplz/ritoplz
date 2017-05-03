@@ -1,11 +1,22 @@
 'use strict'
 
 import Page from './../layouts/page'
-import { Row, Fieldset, TextInput, FormControl } from './../components/ui'
+import {
+  Row,
+  Fieldset,
+  TextInput,
+  FormControl,
+  SocialButton,
+  UiButton,
+  DividerOr
+} from './../components/ui'
+import Header from './../components/header'
+import { colors } from './../components/ui/theme'
 
 const Settings = () => {
   return (
     <Page>
+      <Header />
       <Row>
         <form>
           <Fieldset
@@ -62,6 +73,35 @@ const Settings = () => {
             />
           </Fieldset>
 
+          <Fieldset
+            title="Invite Friends"
+            description="Invite your friends and earn points to exchange for RP. For each friend that confirms its summoner, you will earn 150 points to exchange with RP."
+          >
+            <div className="invite-friends">
+              <h4 className="invite-friends__title">
+                Invite your friends to join Ritoplz! 🎉
+              </h4>
+
+              <SocialButton
+                customStyle={{ marginBottom: '15px' }}
+                href="https://facebook.com"
+                ui="facebook block"
+              >
+                Invite on Facebook
+              </SocialButton>
+
+              <SocialButton href="https://twitter.com" ui="twitter block">
+                Invite on Twitter
+              </SocialButton>
+
+              <DividerOr />
+
+              <UiButton ui="primary block">
+                Add your friend's summoner name
+              </UiButton>
+            </div>
+          </Fieldset>
+
           <FormControl />
         </form>
       </Row>
@@ -70,6 +110,19 @@ const Settings = () => {
         form {
           padding-top: 50px;
           padding-bottom: 50px;
+        }
+
+        .invite-friends {
+          background-color: #F7F8FC;
+          border-radius: 6px;
+          padding: 30px 40px;
+          text-align: center;
+        }
+
+        .invite-friends__title {
+          font-weight: 600;
+          margin-bottom: 25px;
+          color: ${colors.heading};
         }
       `}</style>
     </Page>

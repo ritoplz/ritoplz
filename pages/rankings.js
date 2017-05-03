@@ -3,6 +3,7 @@
 import Page from './../layouts/page'
 import { Row } from './../components/ui'
 import RankingUser from './../components/ranking-user'
+import Header from './../components/header'
 
 const rankingList = [
   {
@@ -89,6 +90,8 @@ const rankingList = [
 const Rankings = () => {
   return (
     <Page>
+      <Header />
+
       <Row>
         <div className="rankings">
           {rankingList.map(user => <RankingUser user={user} />)}

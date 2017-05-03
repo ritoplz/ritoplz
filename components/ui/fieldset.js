@@ -13,12 +13,12 @@ const Fieldset = ({ title, description, badge, type, children }) => {
 
   return (
     <div className="fieldset">
-      <div className="fielset-group">
+      <div className="fielset-group--left">
         <h4>{title} {hasBadge}</h4>
         <p>{description}</p>
       </div>
 
-      <div className="fielset-group">
+      <div className="fielset-group--right">
         {children}
       </div>
 
@@ -33,7 +33,11 @@ const Fieldset = ({ title, description, badge, type, children }) => {
           border-bottom: 1px solid ${colors.border};
         }
 
-        .fielset-group {
+        .fielset-group--left {
+          flex-basis: 40%;
+        }
+
+        .fielset-group--right {
           flex-basis: 50%;
         }
 

@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { colors, typography } from './theme'
 import { TwitterIcon, FacebookIcon } from './../icons'
 
-const SocialButton = ({ children, href, as, ui = 'facebook' }) => {
+const SocialButton = ({ children, href, as, ui = 'facebook', customStyle }) => {
   let socialIcon
 
   switch (ui) {
@@ -23,7 +23,7 @@ const SocialButton = ({ children, href, as, ui = 'facebook' }) => {
 
   return (
     <Link href={href} as={as}>
-      <a className={ui}>
+      <a className={ui} style={customStyle}>
         <span className="social">
           {socialIcon}
         </span>
@@ -40,7 +40,7 @@ const SocialButton = ({ children, href, as, ui = 'facebook' }) => {
             vertical-align: middle;
             user-select: none;
             border: 1px solid transparent;
-            padding: 15px 60px;
+            padding: 13px 30px;
             font-size: ${typography.f16};
             border-radius: 4px;
             transition: all .2s ease-in-out;
@@ -144,7 +144,8 @@ SocialButton.propTypes = {
   label: PropTypes.string,
   ui: PropTypes.string,
   href: PropTypes.PropTypes.string.isRequired || PropTypes.object.isRequired,
-  as: PropTypes.string || PropTypes.object
+  as: PropTypes.string || PropTypes.object,
+  customStyle: PropTypes.object
 }
 
 export default SocialButton
