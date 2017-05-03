@@ -25,5 +25,6 @@ export const typography = {
   f12: '.75rem',
   f14: '.85rem',
   f16: '1rem',
-  f18: '1.15rem'
+  f18: '1.15rem',
+  f20: '1.25rem'
 }
