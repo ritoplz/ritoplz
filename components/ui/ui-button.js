@@ -71,8 +71,8 @@ const UiButton = ({ children, type = 'button', ui = 'primary' }) => (
       }
 
       .outline.default {
-        border-color: ${colors.gray};
-        color: ${colors.gray};
+        border-color: #DADADA;
+        color: #CCCCCC;
       }
 
       .link {
@@ -89,9 +89,9 @@ const UiButton = ({ children, type = 'button', ui = 'primary' }) => (
       }
 
       .small {
-        font-size: 0.875rem;
-        padding: 0.25rem 0.5rem;
-        border-radius: 2px;
+        font-size: ${typography.f14};
+        padding: 0 15px;
+        border-radius: 4px;
       }
 
       .large {
