@@ -1,7 +1,7 @@
 'use strict'
 
 import Page from './../layouts/page'
-import { Row, UiSelect, SocialButton } from './../components/ui'
+import { Row, UiSelect, SocialButton, UiButton } from './../components/ui'
 
 const options = [
   { value: 'sp', label: 'São Paulo' },
@@ -22,6 +22,10 @@ const Ui = () => (
         <SocialButton href="https://github.com" ui="twitter">
           Share on twitter
         </SocialButton>
+
+        <UiButton ui="success" disabled={true}>Disabled button</UiButton>
+        <UiButton ui="primary" disabled={true}>Disabled button</UiButton>
+        <UiButton ui="danger" disabled={true}>Disabled button</UiButton>
 
         <div>
           <h2>Select</h2>
