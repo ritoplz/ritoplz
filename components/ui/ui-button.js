@@ -22,7 +22,7 @@ const UiButton = ({
         vertical-align: middle;
         user-select: none;
         border: 1px solid transparent;
-        padding: 15px 60px;
+        padding: 13px 30px;
         font-size: ${typography.f16};
         border-radius: 4px;
         transition: all .2s ease-in-out;
