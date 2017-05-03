@@ -6,7 +6,6 @@ import Router from 'next/router'
 import PropTypes from 'prop-types'
 
 import pkg from './../package'
-import Header from './../components/header'
 import { colors } from './../components/ui/theme'
 
 let progress
@@ -46,8 +45,6 @@ const Page = ({ children }) => (
     </Head>
 
     <main>
-      <Header />
-
       {children}
     </main>
 
