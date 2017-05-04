@@ -5,11 +5,14 @@ import PropTypes from 'prop-types'
 import wer from 'wer'
 import moment from 'moment-timezone'
 import goot from 'goot'
+import withRedux from 'next-redux-wrapper'
 
 import RegisterSidebar from './../components/register-sidebar'
 import Page from './../layouts/page'
 import { UiButton, UiLink, TextInput } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
+import store from './../store/configure-store'
+import signupRequest from './../actions/signup'
 
 class Signup extends Component {
   static async getInitialProps() {
@@ -17,6 +20,26 @@ class Signup extends Component {
     const currentTime = moment().tz(where.time_zone).format('H')
     const greeting = await goot(currentTime)
     return { greeting }
+  }
+
+  constructor() {
+    super()
+
+    this.handleSignup = this.handleSignup.bind(this)
+  }
+
+  handleSignup(e) {
+    e.preventDefault()
+
+    const { name, email, password, props } = this
+    const { signupRequest } = props
+    const data = {
+      name: name.value,
+      email: email.value,
+      password: password.value
+    }
+
+    signupRequest(data)
   }
 
   render() {
@@ -48,22 +71,37 @@ class Signup extends Component {
               Create an account and keep playing, let's rank up.
             </p>
 
-            <form className="signup-form">
-              <TextInput label="Your name" placeholder="Name" />
+            <form className="signup-form" onSubmit={this.handleSignup}>
+              <TextInput
+                label="Your name"
+                placeholder="Name"
+                inputRef={ref => {
+                  this.name = ref
+                }}
+              />
 
               <TextInput
                 type="email"
                 label="Email"
                 placeholder="Email address"
+                inputRef={ref => {
+                  this.email = ref
+                }}
               />
 
               <TextInput
                 type="password"
                 label="Password"
                 placeholder="Your password"
+                inputRef={ref => {
+                  this.password = ref
+                }}
               />
 
-              <UiButton ui="success block">Create an account</UiButton>
+              <UiButton ui="success block" type="submit">
+                Create an account
+              </UiButton>
+
               <p className="warning">
                 We will
                 {' '}
@@ -160,4 +198,10 @@ Signup.propTypes = {
   greeting: PropTypes.string.isRequired
 }
 
-export default Signup
+const mapDispatchToProps = dispatch => {
+  return {
+    signupRequest: userData => dispatch(signupRequest(userData))
+  }
+}
+
+export default withRedux(store, null, mapDispatchToProps)(Signup)
