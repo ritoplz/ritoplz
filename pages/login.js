@@ -2,16 +2,15 @@
 
 import { Component } from 'react'
 import PropTypes from 'prop-types'
-import Link from 'next/link'
 import wer from 'wer'
 import moment from 'moment-timezone'
 import goot from 'goot'
 import withRedux from 'next-redux-wrapper'
 
+import RegisterSidebar from './../components/register-sidebar'
 import Page from './../layouts/page'
 import { UiButton, UiLink, TextInput } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
-import Logo from './../components/logo'
 import store from './../store/configure-store'
 import loginRequest from './../actions/login'
 
@@ -45,22 +44,14 @@ class Login extends Component {
     return (
       <Page>
         <div className="login">
-          <aside className="login-sidebar">
-            <Link prefetch href="/">
-              <a className="login-sidebar__logo">
-                <Logo type="white" size="80px" />
-              </a>
-            </Link>
-
-            <div className="login-heading">
-              <h2 className="login-heading__title">
-                League of Legends Rankings.
-              </h2>
-              <p className="login-heading__description">
-                Usage of the Internet is becoming more common due to rapid advancement of technology.
-              </p>
-            </div>
-          </aside>
+          <RegisterSidebar bg="background-login.png">
+            <h2 className="login-heading__title">
+              League of Legends Rankings.
+            </h2>
+            <p className="login-heading__description">
+              Usage of the Internet is becoming more common due to rapid advancement of technology.
+            </p>
+          </RegisterSidebar>
 
           <section className="login-section">
             <div className="login-section__signup">
@@ -107,21 +98,6 @@ class Login extends Component {
             display: flex;
             min-height: 100vh;
             max-height: 100vh;
-          }
-
-          .login-sidebar {
-            flex-basis: 475px;
-            background-color: red;
-            display: flex;
-            flex-direction: column-reverse;
-            padding: 50px;
-            background: url('static/background-login.png') center center;
-            background-size: cover;
-          }
-
-          .login-sidebar__logo {
-            position: absolute;
-            top: 50px;
           }
 
           .login-heading__title {
