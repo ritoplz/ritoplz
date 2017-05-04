@@ -3,10 +3,10 @@
 import PropTypes from 'prop-types'
 import { colors, typography } from './theme'
 
-const TextInput = ({ type = 'text', label, placeholder }) => (
+const TextInput = ({ type = 'text', label, placeholder, inputRef }) => (
   <div>
     <label>{label}</label>
-    <input type={type} placeholder={placeholder} />
+    <input type={type} placeholder={placeholder} ref={inputRef} />
 
     <style jsx>{`
       div {
@@ -58,7 +58,8 @@ const TextInput = ({ type = 'text', label, placeholder }) => (
 TextInput.propTypes = {
   type: PropTypes.string,
   label: PropTypes.string,
-  placeholder: PropTypes.string
+  placeholder: PropTypes.string,
+  inputRef: PropTypes.func
 }
 
 export default TextInput

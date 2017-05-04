@@ -1,6 +1,6 @@
 'use strict'
 
-import api from '../services/api'
+import api from './../services/api'
 
 import {
   ADD_SUMMONER_REQUEST,
@@ -8,27 +8,27 @@ import {
   ADD_SUMMONER_ERROR
 } from './../constants'
 
-function addSummonerRequest () {
+function addSummonerRequest() {
   return {
     type: ADD_SUMMONER_REQUEST
   }
 }
 
-function addSummonerSuccess (data) {
+function addSummonerSuccess(data) {
   return {
     type: ADD_SUMMONER_SUCCESS,
     data
   }
 }
 
-function addSummonerError (data) {
+function addSummonerError(data) {
   return {
     type: ADD_SUMMONER_ERROR,
     data
   }
 }
 
-function handleAddSummoner (summoner) {
+function handleAddSummoner(summoner) {
   return dispatch => {
     dispatch(addSummonerRequest())
     return api({
@@ -36,8 +36,8 @@ function handleAddSummoner (summoner) {
       url: '/summoner',
       data: summoner
     })
-    .then(res => dispatch(addSummonerSuccess(res)))
-    .catch(err => dispatch(addSummonerError(err.message)))
+      .then(res => dispatch(addSummonerSuccess(res)))
+      .catch(err => dispatch(addSummonerError(err.message)))
   }
 }
 

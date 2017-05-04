@@ -1,12 +1,8 @@
 'use strict'
 
-import api from '../services/api'
+import api from './../services/api'
 
-import {
-  ACCOUNT_REQUEST,
-  ACCOUNT_SUCCESS,
-  ACCOUNT_ERROR
-} from './../constants'
+import { ACCOUNT_REQUEST, ACCOUNT_SUCCESS, ACCOUNT_ERROR } from './../constants'
 
 function accountRequest() {
   return {
@@ -31,9 +27,10 @@ function accountError(data) {
 function fetchAccount() {
   return dispatch => {
     dispatch(accountRequest())
-    return api.get('/account')
-    .then(res => dispatch(accountSuccess(res)))
-    .catch(err => dispatch(accountError(err)))
+    return api
+      .get('/account')
+      .then(res => dispatch(accountSuccess(res)))
+      .catch(err => dispatch(accountError(err)))
   }
 }
 

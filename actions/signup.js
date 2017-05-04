@@ -1,37 +1,34 @@
 'use strict'
 
-import api from '../services/api'
+import api from './../services/api'
 
-import {
-  SIGNUP_REQUEST,
-  SIGNUP_SUCCESS,
-  SIGNUP_ERROR
-} from '../constants'
+import { SIGNUP_REQUEST, SIGNUP_SUCCESS, SIGNUP_ERROR } from './../constants'
 
-function signupRequest () {
+function signupRequest() {
   return {
     type: SIGNUP_REQUEST
   }
 }
 
-function signupSuccess (data) {
+function signupSuccess(data) {
   return {
     type: SIGNUP_SUCCESS,
     data
   }
 }
 
-function signupError (data) {
+function signupError(data) {
   return {
     type: SIGNUP_ERROR,
     data
   }
 }
 
-function handleSignup (userData) {
+function handleSignup(userData) {
   return dispatch => {
     dispatch(signupRequest())
-    return api.post('/signup', userData)
+    return api
+      .post('/signup', userData)
       .then(res => dispatch(signupSuccess(res)))
       .catch(err => dispatch(signupError(err.message)))
   }

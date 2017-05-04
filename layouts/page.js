@@ -4,6 +4,7 @@ import Progress from 'nprogress'
 import Head from 'next/head'
 import Router from 'next/router'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
 import pkg from './../package'
 import { colors } from './../components/ui/theme'
@@ -34,7 +35,7 @@ if (global.document) {
   }
 }
 
-const Page = ({ children }) => (
+const Page = connect(state => state)(({ children }) => (
   <div>
     <Head>
       <meta
@@ -99,7 +100,7 @@ const Page = ({ children }) => (
       }
     `}</style>
   </div>
-)
+))
 
 Page.propTypes = {
   children: PropTypes.node.isRequired

@@ -6,10 +6,14 @@ import Link from 'next/link'
 import wer from 'wer'
 import moment from 'moment-timezone'
 import goot from 'goot'
+import withRedux from 'next-redux-wrapper'
+
 import Page from './../layouts/page'
 import { UiButton, UiLink, TextInput } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
 import Logo from './../components/logo'
+import store from './../store/configure-store'
+import loginRequest from './../actions/login'
 
 class Login extends Component {
   static async getInitialProps() {
@@ -17,6 +21,22 @@ class Login extends Component {
     const currentTime = moment().tz(where.time_zone).format('H')
     const greeting = await goot(currentTime)
     return { greeting }
+  }
+
+  constructor() {
+    super()
+
+    this.handleLogin = this.handleLogin.bind(this)
+  }
+
+  handleLogin(e) {
+    e.preventDefault()
+
+    const { email, password, props } = this
+    const { loginRequest } = props
+    const data = { email: email.value, password: password.value }
+
+    loginRequest(data)
   }
 
   render() {
@@ -56,22 +76,28 @@ class Login extends Component {
               Sign in to your account here.
             </p>
 
-            <form className="login-form">
+            <form className="login-form" onSubmit={this.handleLogin}>
               <TextInput
                 type="email"
                 label="Email"
                 placeholder="Email address"
+                inputRef={ref => {
+                  this.email = ref
+                }}
               />
 
               <TextInput
                 type="password"
                 label="Password"
                 placeholder="Your password"
+                inputRef={ref => {
+                  this.password = ref
+                }}
               />
 
               <span className="login-form__forgot">Forgot your password?</span>
 
-              <UiButton ui="success block">Login</UiButton>
+              <UiButton ui="success block" type="submit">Login</UiButton>
             </form>
           </section>
         </div>
@@ -169,4 +195,10 @@ Login.propTypes = {
   greeting: PropTypes.string.isRequired
 }
 
-export default Login
+const mapDispatchToProps = dispatch => {
+  return {
+    loginRequest: userData => dispatch(loginRequest(userData))
+  }
+}
+
+export default withRedux(store, null, mapDispatchToProps)(Login)

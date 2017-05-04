@@ -1,6 +1,6 @@
 'use strict'
 
-import api from '../services/api'
+import api from './../services/api'
 
 import {
   CONFIRM_SUMMONER_REQUEST,
@@ -8,28 +8,28 @@ import {
   CONFIRM_SUMMONER_ERROR
 } from './../constants'
 
-function confirmSummonerRequest () {
+function confirmSummonerRequest() {
   return {
     type: CONFIRM_SUMMONER_REQUEST
   }
 }
 
-function confirmSummonerSuccess (data) {
+function confirmSummonerSuccess(data) {
   return {
     type: CONFIRM_SUMMONER_SUCCESS,
     data
   }
 }
 
-function confirmSummonerError (data) {
+function confirmSummonerError(data) {
   return {
     type: CONFIRM_SUMMONER_ERROR,
     data
   }
 }
 
-function handleConfirmSummoner (summoner) {
-  const data = {name: summoner}
+function handleConfirmSummoner(summoner) {
+  const data = { name: summoner }
 
   return dispatch => {
     dispatch(confirmSummonerRequest())
@@ -38,8 +38,8 @@ function handleConfirmSummoner (summoner) {
       url: '/summoner/confirm',
       data
     })
-    .then(res => dispatch(confirmSummonerSuccess(res.confirmed)))
-    .catch(err => dispatch(confirmSummonerError(err.message)))
+      .then(res => dispatch(confirmSummonerSuccess(res.confirmed)))
+      .catch(err => dispatch(confirmSummonerError(err.message)))
   }
 }
 
