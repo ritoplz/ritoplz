@@ -2,14 +2,14 @@
 
 import { Component } from 'react'
 import PropTypes from 'prop-types'
-import Link from 'next/link'
 import wer from 'wer'
 import moment from 'moment-timezone'
 import goot from 'goot'
+
+import RegisterSidebar from './../components/register-sidebar'
 import Page from './../layouts/page'
 import { UiButton, UiLink, TextInput } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
-import Logo from './../components/logo'
 
 class Signup extends Component {
   static async getInitialProps() {
@@ -25,22 +25,14 @@ class Signup extends Component {
     return (
       <Page>
         <div className="signup">
-          <aside className="signup-sidebar">
-            <Link prefetch href="/">
-              <a className="signup-sidebar__logo">
-                <Logo type="white" size="80px" />
-              </a>
-            </Link>
-
-            <div className="signup-heading">
-              <h2 className="signup-heading__title">
-                League of Legends Rankings.
-              </h2>
-              <p className="signup-heading__description">
-                Usage of the Internet is becoming more common due to rapid advancement of technology.
-              </p>
-            </div>
-          </aside>
+          <RegisterSidebar bg="background-signup.png">
+            <h2 className="signup-heading__title">
+              League of Legends Rankings.
+            </h2>
+            <p className="signup-heading__description">
+              Usage of the Internet is becoming more common due to rapid advancement of technology.
+            </p>
+          </RegisterSidebar>
 
           <section className="signup-section">
             <div className="signup-section__signup">
@@ -88,21 +80,6 @@ class Signup extends Component {
             display: flex;
             min-height: 100vh;
             max-height: 100vh;
-          }
-
-          .signup-sidebar {
-            flex-basis: 475px;
-            background-color: red;
-            display: flex;
-            flex-direction: column-reverse;
-            padding: 50px;
-            background: url('static/background-signup.png') center center;
-            background-size: cover;
-          }
-
-          .signup-sidebar__logo {
-            position: absolute;
-            top: 50px;
           }
 
           .signup-heading__title {
