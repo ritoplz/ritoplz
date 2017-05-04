@@ -7,8 +7,9 @@ import moment from 'moment-timezone'
 import goot from 'goot'
 import withRedux from 'next-redux-wrapper'
 
-import RegisterSidebar from './../components/register-sidebar'
 import Page from './../layouts/page'
+import RegisterSidebar from './../components/register-sidebar'
+import RegisterMain from './../components/register-main'
 import { UiButton, UiLink, TextInput } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
 import store from './../store/configure-store'
@@ -53,20 +54,14 @@ class Login extends Component {
             </p>
           </RegisterSidebar>
 
-          <section className="login-section">
-            <div className="login-section__signup">
+          <RegisterMain
+            title="It’s good to have you back."
+            subtitle="Sign in to your account here."
+            redirect={
               <UiLink ui="primary small" href="/signup">Sign up</UiLink>
-            </div>
-
-            <h3 className="login-section__title">
-              <strong>Good {greeting}! </strong>
-              It’s good to have you back.
-            </h3>
-
-            <p className="login-section__subtitle">
-              Sign in to your account here.
-            </p>
-
+            }
+            greeting={greeting}
+          >
             <form className="login-form" onSubmit={this.handleLogin}>
               <TextInput
                 type="email"
@@ -90,7 +85,7 @@ class Login extends Component {
 
               <UiButton ui="success block" type="submit">Login</UiButton>
             </form>
-          </section>
+          </RegisterMain>
         </div>
 
         <style jsx>{`
@@ -112,32 +107,6 @@ class Login extends Component {
             font-size: ${typography.f14};
             line-height: 26px;
             font-weight: 400;
-          }
-
-          .login-section {
-            flex-basis: calc(100% - 475px);
-            padding-top: 150px;
-            padding-bottom: 50px;
-          }
-
-          .login-section__signup {
-            position: absolute;
-            right: 50px;
-            top: 30px;
-          }
-
-          .login-section__title {
-            text-align: center;
-            color: ${colors.heading};
-            margin-bottom: 18px;
-            font-weight: 400;
-            font-size: ${typography.f20};
-          }
-
-          .login-section__subtitle {
-            text-align: center;
-            color: ${colors.gray};
-            font-size: ${typography.f16};
           }
 
           .login-form {
