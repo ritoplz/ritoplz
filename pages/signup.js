@@ -7,8 +7,9 @@ import moment from 'moment-timezone'
 import goot from 'goot'
 import withRedux from 'next-redux-wrapper'
 
-import RegisterSidebar from './../components/register-sidebar'
 import Page from './../layouts/page'
+import RegisterSidebar from './../components/register-sidebar'
+import RegisterMain from './../components/register-main'
 import { UiButton, UiLink, TextInput } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
 import store from './../store/configure-store'
@@ -57,20 +58,12 @@ class Signup extends Component {
             </p>
           </RegisterSidebar>
 
-          <section className="signup-section">
-            <div className="signup-section__signup">
-              <UiLink ui="primary small" href="/signup">Login</UiLink>
-            </div>
-
-            <h3 className="signup-section__title">
-              <strong>Good {greeting}! </strong>
-              Welcome to Ritoplz 🎉
-            </h3>
-
-            <p className="signup-section__subtitle">
-              Create an account and keep playing, let's rank up.
-            </p>
-
+          <RegisterMain
+            title="Welcome to Ritoplz 🎉"
+            subtitle="Create an account and keep playing, let's rank up."
+            redirect={<UiLink ui="primary small" href="/login">Login</UiLink>}
+            greeting={greeting}
+          >
             <form className="signup-form" onSubmit={this.handleSignup}>
               <TextInput
                 label="Your name"
@@ -110,7 +103,7 @@ class Signup extends Component {
                 ask for any League of Legends credentials.
               </p>
             </form>
-          </section>
+          </RegisterMain>
         </div>
 
         <style jsx>{`
@@ -132,32 +125,6 @@ class Signup extends Component {
             font-size: ${typography.f14};
             line-height: 26px;
             font-weight: 400;
-          }
-
-          .signup-section {
-            flex-basis: calc(100% - 475px);
-            padding-top: 125px;
-            padding-bottom: 50px;
-          }
-
-          .signup-section__signup {
-            position: absolute;
-            right: 50px;
-            top: 30px;
-          }
-
-          .signup-section__title {
-            text-align: center;
-            color: ${colors.heading};
-            margin-bottom: 18px;
-            font-weight: 400;
-            font-size: ${typography.f20};
-          }
-
-          .signup-section__subtitle {
-            text-align: center;
-            color: ${colors.gray};
-            font-size: ${typography.f16};
           }
 
           .signup-form {
