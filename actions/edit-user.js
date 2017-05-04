@@ -1,6 +1,6 @@
 'use strict'
 
-import api from '../services/api'
+import api from './../services/api'
 
 import {
   EDIT_USER_REQUEST,
@@ -8,27 +8,27 @@ import {
   EDIT_USER_ERROR
 } from './../constants'
 
-function editUser () {
+function editUser() {
   return {
     type: EDIT_USER_REQUEST
   }
 }
 
-function editUserSuccess (data) {
+function editUserSuccess(data) {
   return {
     type: EDIT_USER_SUCCESS,
     data
   }
 }
 
-function editUserError (data) {
+function editUserError(data) {
   return {
     type: EDIT_USER_ERROR,
     data
   }
 }
 
-function handleEditUser (user) {
+function handleEditUser(user) {
   return dispatch => {
     dispatch(editUser())
     return api({
@@ -36,8 +36,8 @@ function handleEditUser (user) {
       url: '/account',
       data: user
     })
-    .then(res => dispatch(editUserSuccess(res)))
-    .catch(err => dispatch(editUserError(err.message)))
+      .then(res => dispatch(editUserSuccess(res)))
+      .catch(err => dispatch(editUserError(err.message)))
   }
 }
 

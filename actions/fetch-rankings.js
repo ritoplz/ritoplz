@@ -1,6 +1,6 @@
 'use strict'
 
-import api from '../services/api'
+import api from './../services/api'
 
 import {
   RANKINGS_REQUEST,
@@ -28,7 +28,15 @@ function rankingsError(err) {
   }
 }
 
-function fetchRankings(params = { country: 'BR', state: undefined, city: undefined, limit: 50, skip: 0 }) {
+function fetchRankings(
+  params = {
+    country: 'BR',
+    state: undefined,
+    city: undefined,
+    limit: 50,
+    skip: 0
+  }
+) {
   return dispatch => {
     dispatch(rankingsRequest())
 
@@ -43,8 +51,8 @@ function fetchRankings(params = { country: 'BR', state: undefined, city: undefin
         unrankeds: params.unrankeds
       }
     })
-    .then(res => dispatch(rankingsSuccess(res)))
-    .catch(err => dispatch(rankingsError(err)))
+      .then(res => dispatch(rankingsSuccess(res)))
+      .catch(err => dispatch(rankingsError(err)))
   }
 }
 

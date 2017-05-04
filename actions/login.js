@@ -1,37 +1,34 @@
 'use strict'
 
-import api from '../services/api'
+import api from './../services/api'
 
-import {
-  LOGIN_REQUEST,
-  LOGIN_SUCCESS,
-  LOGIN_ERROR
-} from '../constants'
+import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_ERROR } from './../constants'
 
-function loginRequest () {
+function loginRequest() {
   return {
     type: LOGIN_REQUEST
   }
 }
 
-function loginSuccess (data) {
+function loginSuccess(data) {
   return {
     type: LOGIN_SUCCESS,
     data
   }
 }
 
-function loginError (data) {
+function loginError(data) {
   return {
     type: LOGIN_ERROR,
     data
   }
 }
 
-function handleLogin (userData) {
+function handleLogin(data) {
   return dispatch => {
     dispatch(loginRequest())
-    return api.post('/login', userData)
+    return api
+      .post('/login', data)
       .then(res => dispatch(loginSuccess(res)))
       .catch(err => dispatch(loginError(err.message)))
   }

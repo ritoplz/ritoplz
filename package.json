@@ -21,6 +21,7 @@
     "goot": "^0.0.6",
     "moment-timezone": "^0.5.13",
     "next": "^2.2.0",
+    "next-redux-wrapper": "^1.1.2",
     "nprogress": "^0.2.0",
     "prop-types": "^15.5.8",
     "rc-progress": "^2.1.1",
