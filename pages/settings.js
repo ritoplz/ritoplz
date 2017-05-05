@@ -3,6 +3,7 @@
 import { Component } from 'react'
 import PropTypes from 'prop-types'
 import withRedux from 'next-redux-wrapper'
+import Router from 'next/router'
 
 import store from './../store/configure-store'
 import Page from './../layouts/page'
@@ -21,6 +22,7 @@ import { colors } from './../components/ui/theme'
 import { locations, countries } from './../services/places'
 import fetchAccount from './../actions/fetch-account'
 import editUser from './../actions/edit-user'
+import { isLogged } from './../services/auth'
 
 class Settings extends Component {
   constructor(props) {
@@ -35,7 +37,13 @@ class Settings extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchAccount()
+    const { fetchAccount } = this.props
+
+    if (isLogged()) {
+      return fetchAccount()
+    }
+
+    Router.push('/login')
   }
 
   componentWillReceiveProps(nextProps) {

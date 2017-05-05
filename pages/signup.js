@@ -6,6 +6,7 @@ import wer from 'wer'
 import moment from 'moment-timezone'
 import goot from 'goot'
 import withRedux from 'next-redux-wrapper'
+import Router from 'next/router'
 
 import Page from './../layouts/page'
 import RegisterSidebar from './../components/register-sidebar'
@@ -35,7 +36,7 @@ class Signup extends Component {
     e.preventDefault()
 
     const { name, email, password, props } = this
-    const { signupRequest, url } = props
+    const { signupRequest } = props
     const userData = {
       name: name.value,
       email: email.value,
@@ -46,7 +47,7 @@ class Signup extends Component {
       .then(({ data, error }) => {
         if (data) {
           setToken(data.token)
-          return url.push('/dashboard')
+          return Router.push('/dashboard')
         }
 
         return console.log(error)
