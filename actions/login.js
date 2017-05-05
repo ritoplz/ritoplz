@@ -17,10 +17,10 @@ function loginSuccess(data) {
   }
 }
 
-function loginError(data) {
+function loginError(error) {
   return {
     type: LOGIN_ERROR,
-    data
+    error
   }
 }
 
