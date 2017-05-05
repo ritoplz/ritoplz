@@ -29,7 +29,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         requesting: false,
-        error: action.data
+        error: action.error
       }
 
     default:

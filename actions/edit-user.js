@@ -21,10 +21,10 @@ function editUserSuccess(data) {
   }
 }
 
-function editUserError(data) {
+function editUserError(error) {
   return {
     type: EDIT_USER_ERROR,
-    data
+    error
   }
 }
 
