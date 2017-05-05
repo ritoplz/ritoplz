@@ -15,6 +15,7 @@ import { UiButton, UiLink, TextInput } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
 import store from './../store/configure-store'
 import signupRequest from './../actions/signup'
+import { setToken } from './../services/auth'
 
 class Signup extends Component {
   static async getInitialProps() {
@@ -34,14 +35,23 @@ class Signup extends Component {
     e.preventDefault()
 
     const { name, email, password, props } = this
-    const { signupRequest } = props
-    const data = {
+    const { signupRequest, url } = props
+    const userData = {
       name: name.value,
       email: email.value,
       password: password.value
     }
 
-    signupRequest(data)
+    signupRequest(userData)
+      .then(({ data, error }) => {
+        if (data) {
+          setToken(data.token)
+          return url.push('/dashboard')
+        }
+
+        return console.log(error)
+      })
+      .catch(err => console.log(err))
   }
 
   render() {

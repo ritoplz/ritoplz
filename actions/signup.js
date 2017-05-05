@@ -17,10 +17,10 @@ function signupSuccess(data) {
   }
 }
 
-function signupError(data) {
+function signupError(error) {
   return {
     type: SIGNUP_ERROR,
-    data
+    error
   }
 }
 
