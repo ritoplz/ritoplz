@@ -10,6 +10,7 @@ import withRedux from 'next-redux-wrapper'
 import Page from './../layouts/page'
 import RegisterSidebar from './../components/register-sidebar'
 import RegisterMain from './../components/register-main'
+import RegisterFooter from './../components/register-footer'
 import { UiButton, UiLink, TextInput } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
 import store from './../store/configure-store'
@@ -62,6 +63,8 @@ class Login extends Component {
             <p className="login-heading__description">
               Usage of the Internet is becoming more common due to rapid advancement of technology.
             </p>
+
+            <RegisterFooter />
           </RegisterSidebar>
 
           <RegisterMain
