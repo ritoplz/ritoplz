@@ -20,12 +20,18 @@ import Header from './../components/header'
 import { colors } from './../components/ui/theme'
 import { locations, countries } from './../services/places'
 import fetchAccount from './../actions/fetch-account'
+import editUser from './../actions/edit-user'
 
 class Settings extends Component {
   constructor(props) {
     super(props)
     this.handleInputChange = this.handleInputChange.bind(this)
-    this.state = { username: '' }
+    this.handleEditUser = this.handleEditUser.bind(this)
+    this.state = {
+      username: '',
+      email: '',
+      emailConfirmed: false
+    }
   }
 
   componentDidMount() {
@@ -35,14 +41,28 @@ class Settings extends Component {
   componentWillReceiveProps(nextProps) {
     const { email, name, emailConfirmed } = nextProps.user
     this.setState({
-      email,
       username: name,
+      email,
       emailConfirmed
     })
   }
 
   handleInputChange(e) {
     this.setState({ [e.target.name]: e.target.value })
+  }
+
+  handleEditUser(e) {
+    e.preventDefault()
+
+    const { editUser, user } = this.props
+    const { username, email } = this.state
+    const userData = { name: username, newEmail: email }
+
+    if (user.email === email) {
+      return editUser(userData)
+    }
+
+    console.log('We need you password to change your email')
   }
 
   render() {
@@ -52,7 +72,7 @@ class Settings extends Component {
         <Row>
           <h2 className="page-title">Settings</h2>
 
-          <form>
+          <form onSubmit={this.handleEditUser}>
             <Fieldset
               title="Username"
               description="This is your name and where players access your profile"
@@ -63,17 +83,14 @@ class Settings extends Component {
                 name="username"
                 handleInputChange={this.handleInputChange}
                 inputValue={this.state.username}
-                inputRef={ref => {
-                  this.username = ref
-                }}
               />
             </Fieldset>
 
             <Fieldset
               title="Email"
               description="This is your name and where players access your profile"
-              badge={this.state.emailverified ? 'verified' : 'not verified'}
-              type={this.state.emailverified ? 'success' : 'danger'}
+              badge={this.state.emailConfirmed ? 'verified' : 'not verified'}
+              type={this.state.emailConfirmed ? 'success' : 'danger'}
             >
               <TextInput
                 type="email"
@@ -82,9 +99,6 @@ class Settings extends Component {
                 name="email"
                 handleInputChange={this.handleInputChange}
                 inputValue={this.state.email}
-                inputRef={ref => {
-                  this.email = ref
-                }}
               />
             </Fieldset>
 
@@ -196,7 +210,8 @@ class Settings extends Component {
 
 Settings.propTypes = {
   fetchAccount: PropTypes.func.isRequired,
-  user: PropTypes.object.isRequired
+  user: PropTypes.object,
+  editUser: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => {
@@ -207,7 +222,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchAccount: () => dispatch(fetchAccount())
+    fetchAccount: () => dispatch(fetchAccount()),
+    editUser: userData => dispatch(editUser(userData))
   }
 }
 
