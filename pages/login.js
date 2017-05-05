@@ -6,6 +6,7 @@ import wer from 'wer'
 import moment from 'moment-timezone'
 import goot from 'goot'
 import withRedux from 'next-redux-wrapper'
+import Router from 'next/router'
 
 import Page from './../layouts/page'
 import RegisterSidebar from './../components/register-sidebar'
@@ -35,14 +36,14 @@ class Login extends Component {
     e.preventDefault()
 
     const { email, password, props } = this
-    const { loginRequest, url } = props
+    const { loginRequest } = props
     const userData = { email: email.value, password: password.value }
 
     loginRequest(userData)
       .then(({ data, error }) => {
         if (data) {
           setToken(data.token)
-          return url.push('/dashboard')
+          return Router.push('/dashboard')
         }
 
         return console.log(error)
