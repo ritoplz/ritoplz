@@ -7,7 +7,13 @@ export const getToken = () => {
 }
 
 export const setToken = token => {
-  return cookie.save('ritoplzToken', token, { path: '/' })
+  const now = new Date()
+  now.setDate(now.getDate() + 14)
+
+  return cookie.save('ritoplzToken', token, {
+    expires: now,
+    path: '/'
+  })
 }
 
 export const logout = () => {
