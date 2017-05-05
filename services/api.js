@@ -1,6 +1,7 @@
 'use strict'
 
 import axios from 'axios'
+import { getToken, isLogged } from './auth'
 
 const api = axios.create({
   baseURL: 'http://localhost:3001',
@@ -10,6 +11,12 @@ const api = axios.create({
 })
 
 api.interceptors.request.use(config => {
+  const token = getToken()
+
+  if (isLogged()) {
+    config.headers.authorization = token
+  }
+
   return config
 })
 

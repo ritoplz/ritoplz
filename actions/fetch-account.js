@@ -17,10 +17,10 @@ function accountSuccess(data) {
   }
 }
 
-function accountError(data) {
+function accountError(error) {
   return {
     type: ACCOUNT_ERROR,
-    data
+    error
   }
 }
 

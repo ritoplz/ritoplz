@@ -3,10 +3,25 @@
 import PropTypes from 'prop-types'
 import { colors, typography } from './theme'
 
-const TextInput = ({ type = 'text', label, placeholder, inputRef }) => (
+const TextInput = ({
+  type = 'text',
+  name,
+  label,
+  placeholder,
+  inputRef,
+  inputValue,
+  handleInputChange
+}) => (
   <div>
     <label>{label}</label>
-    <input type={type} placeholder={placeholder} ref={inputRef} />
+    <input
+      type={type}
+      name={name}
+      placeholder={placeholder}
+      ref={inputRef}
+      value={inputValue}
+      onChange={value => handleInputChange(value)}
+    />
 
     <style jsx>{`
       div {
@@ -59,7 +74,10 @@ TextInput.propTypes = {
   type: PropTypes.string,
   label: PropTypes.string,
   placeholder: PropTypes.string,
-  inputRef: PropTypes.func
+  inputRef: PropTypes.func,
+  name: PropTypes.string,
+  inputValue: PropTypes.string,
+  handleInputChange: PropTypes.func
 }
 
 export default TextInput
