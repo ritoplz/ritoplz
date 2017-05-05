@@ -10,7 +10,7 @@ const RegisterFooter = () => (
         <a>About</a>
       </Link>
       <Link href="/terms">
-        <a>Terms & Conditions</a>
+        <a>Terms of Services</a>
       </Link>
       <Link href="/privacy">
         <a>Privacy Policy</a>
