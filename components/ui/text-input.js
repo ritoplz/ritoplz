@@ -11,64 +11,72 @@ const TextInput = ({
   inputRef,
   inputValue,
   handleInputChange
-}) => (
-  <div>
-    <label>{label}</label>
-    <input
-      type={type}
-      name={name}
-      placeholder={placeholder}
-      ref={inputRef}
-      value={inputValue}
-      onChange={value => handleInputChange(value)}
-    />
+}) => {
+  const onInputChange = value => {
+    if (handleInputChange) {
+      return handleInputChange(value)
+    }
+  }
 
-    <style jsx>{`
-      div {
-        margin-bottom: 30px;
-      }
+  return (
+    <div>
+      <label>{label}</label>
+      <input
+        type={type}
+        name={name}
+        placeholder={placeholder}
+        ref={inputRef}
+        value={inputValue}
+        onChange={value => onInputChange(value)}
+      />
 
-      label {
-        display: block;
-        color: ${colors.secondary};
-        font-weight: 500;
-        font-size: ${typography.f12};
-        margin-bottom: 8px;
-      }
+      <style jsx>{`
+        div {
+          margin-bottom: 30px;
+        }
 
-      input {
-        width: 100%;
-        background-color: ${colors.blueLight};
-        border: 1px solid ${colors.inputBorder};
-        font-size: ${typography.f14};
-        border-radius: 4px;
-        padding: 16px 15px;
-        color: ${colors.secondary};
-      }
+        label {
+          display: block;
+          color: ${colors.secondary};
+          font-weight: 500;
+          font-size: ${typography.f12};
+          margin-bottom: 8px;
+        }
 
-      input::-webkit-input-placeholder {
-        color: ${colors.gray};
-      }
+        input {
+          width: 100%;
+          background-color: ${colors.blueLight};
+          border: 1px solid ${colors.inputBorder};
+          font-size: ${typography.f14};
+          border-radius: 4px;
+          padding: 16px 15px;
+          color: ${colors.secondary};
+        }
 
-      input::-moz-placeholder {
-        color: ${colors.gray};
-      }
+        input::-webkit-input-placeholder {
+          color: ${colors.gray};
+        }
 
-      input:-ms-input-placeholder {
-        color: ${colors.gray};
-      }
+        input::-moz-placeholder {
+          color: ${colors.gray};
+        }
 
-      input:-moz-placeholder {
-        color: ${colors.gray};
-      }
+        input:-ms-input-placeholder {
+          color: ${colors.gray};
+        }
 
-      input:focus {
-        outline: transparent;
-        border-color: ${colors.grayLight};
-      }
-    `}</style>
-  </div>
-)
+        input:-moz-placeholder {
+          color: ${colors.gray};
+        }
+
+        input:focus {
+          outline: transparent;
+          border-color: ${colors.grayLight};
+        }
+      `}</style>
+    </div>
+  )
+}
 
 TextInput.propTypes = {
   type: PropTypes.string,
