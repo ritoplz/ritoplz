@@ -14,6 +14,7 @@ import { UiButton, UiLink, TextInput } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
 import store from './../store/configure-store'
 import loginRequest from './../actions/login'
+import { setToken } from './../services/auth'
 
 class Login extends Component {
   static async getInitialProps() {
@@ -33,10 +34,19 @@ class Login extends Component {
     e.preventDefault()
 
     const { email, password, props } = this
-    const { loginRequest } = props
-    const data = { email: email.value, password: password.value }
+    const { loginRequest, url } = props
+    const userData = { email: email.value, password: password.value }
 
-    loginRequest(data)
+    loginRequest(userData)
+      .then(({ data, error }) => {
+        if (data) {
+          setToken(data.token)
+          return url.push('/dashboard')
+        }
+
+        return console.log(error)
+      })
+      .catch(err => console.log(err))
   }
 
   render() {
@@ -140,10 +150,16 @@ Login.propTypes = {
   greeting: PropTypes.string.isRequired
 }
 
+const mapStateToProps = state => {
+  return {
+    login: state.login
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     loginRequest: userData => dispatch(loginRequest(userData))
   }
 }
 
-export default withRedux(store, null, mapDispatchToProps)(Login)
+export default withRedux(store, mapStateToProps, mapDispatchToProps)(Login)
