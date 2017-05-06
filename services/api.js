@@ -1,10 +1,12 @@
 'use strict'
 
+/* global API_URL */
+
 import axios from 'axios'
 import { getToken, isLogged } from './auth'
 
 const api = axios.create({
-  baseURL: 'http://localhost:3001',
+  baseURL: API_URL,
   headers: {
     Accept: 'application/json'
   }
