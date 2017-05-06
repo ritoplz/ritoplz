@@ -28,15 +28,7 @@ function rankingsError(err) {
   }
 }
 
-function fetchRankings(
-  params = {
-    country: 'BR',
-    state: undefined,
-    city: undefined,
-    limit: 50,
-    skip: 0
-  }
-) {
+function fetchRankings(params) {
   return dispatch => {
     dispatch(rankingsRequest())
 
