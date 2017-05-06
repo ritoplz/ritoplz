@@ -38,6 +38,7 @@
     "wer": "^0.0.1"
   },
   "devDependencies": {
+    "babel-plugin-transform-define": "^1.2.0",
     "eslint-config-prettier": "^1.7.0",
     "eslint-plugin-react": "^6.10.3",
     "husky": "^0.13.3",
@@ -45,6 +46,17 @@
     "prettier": "^1.2.2",
     "redux-logger": "^3.0.1",
     "xo": "^0.18.1"
+  },
+  "babel": {
+    "presets": [
+      "next/babel"
+    ],
+    "plugins": [
+      [
+        "transform-define",
+        "./env-config.js"
+      ]
+    ]
   },
   "xo": {
     "extends": [
