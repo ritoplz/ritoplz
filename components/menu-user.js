@@ -6,7 +6,7 @@ import { colors, typography } from './ui/theme'
 const MenuUser = () => {
   return (
     <span>
-      <Link href="/dashboard"><a>Bu Kinoshita</a></Link>
+      <Link href="/profile"><a>Bu Kinoshita</a></Link>
 
       <style jsx>{`
         span {

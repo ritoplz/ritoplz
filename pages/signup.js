@@ -47,7 +47,7 @@ class Signup extends Component {
       .then(({ data, error }) => {
         if (data) {
           setToken(data.token)
-          return Router.push('/dashboard')
+          return Router.push('/profile')
         }
 
         return console.log(error)
