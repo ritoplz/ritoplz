@@ -7,6 +7,7 @@ import moment from 'moment-timezone'
 import goot from 'goot'
 import withRedux from 'next-redux-wrapper'
 import Router from 'next/router'
+import Link from 'next/link'
 
 import Page from './../layouts/page'
 import RegisterSidebar from './../components/register-sidebar'
@@ -95,7 +96,11 @@ class Login extends Component {
                 }}
               />
 
-              <span className="login-form__forgot">Forgot your password?</span>
+              <Link href="/reset-password">
+                <span className="login-form__forgot">
+                  Forgot your password?
+                </span>
+              </Link>
 
               <UiButton ui="success block" type="submit">Login</UiButton>
             </form>
