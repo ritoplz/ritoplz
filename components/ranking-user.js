@@ -7,6 +7,7 @@ import RankingProgress from './ranking-progress'
 
 const RankingUser = ({ user, position }) => {
   let lastTimePlayed
+  const hotStreak = user.rankedSolo.isHotStreak ? '🔥' : null
 
   if (user.recentMatches.lastPlayedSolo) {
     lastTimePlayed = user.recentMatches.lastPlayedSolo.date
@@ -24,7 +25,9 @@ const RankingUser = ({ user, position }) => {
         />
 
         <div className="ranking-user">
-          <h3 className="ranking-user__summoner">{user.username}</h3>
+          <h3 className="ranking-user__summoner">
+            {user.username} {hotStreak}
+          </h3>
           <h4 className="ranking-user__username">{user.name}</h4>
         </div>
 
