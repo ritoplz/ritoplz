@@ -1,9 +1,13 @@
-# ritoplz
+<h1 align="center">
+	<br>
+	<img width="380" src="https://cldup.com/8T8w6cCTIr.png" alt="ritoplz">
+	<br>
+</h1>
+
+> Worldwide Rankings for League of Legends. See who's the best player of your region.
 
 [![Codeship Status for ritoplz/ritoplz](https://app.codeship.com/projects/16878b90-c650-0134-8851-6e9b40f38dec/status?branch=master)](https://app.codeship.com/projects/198595)
 
-`npm install`
+## License
 
-`npm start` to run
-
-
+MIT © [Ritoplz](https://ritoplz.com)
