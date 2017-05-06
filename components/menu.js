@@ -2,45 +2,67 @@
 
 import Link from 'next/link'
 import { colors } from './ui/theme'
+import { UiLink } from './ui'
 import MenuUser from './menu-user'
+import { isLogged } from './../services/auth'
 
-const Menu = () => (
-  <ul>
-    <li>
-      <Link prefetch href="/rankings">
-        <a>Rankings</a>
-      </Link>
-    </li>
+const Menu = () => {
+  let showUser
 
-    <li>
-      <Link prefetch href="/settings">
-        <a>Settings</a>
-      </Link>
-    </li>
+  if (isLogged()) {
+    showUser = <MenuUser />
+  } else {
+    showUser = (
+      <div>
+        <UiLink href="/login" ui="primary small">Login</UiLink>
 
-    <MenuUser />
+        <style jsx>{`
+          div {
+            margin-left: 30px;
+          }
+        `}</style>
+      </div>
+    )
+  }
 
-    <style jsx>{`
-      ul {
-        display: flex;
-      }
+  return (
+    <ul>
+      <li>
+        <Link prefetch href="/rankings">
+          <a>Rankings</a>
+        </Link>
+      </li>
 
-      li {
-        margin-left: 30px;
-        font-size: 14px;
-      }
+      <li>
+        <Link prefetch href="/settings">
+          <a>Settings</a>
+        </Link>
+      </li>
 
-      a {
-        color: ${colors.gray};
-        display: block;
-        transition: .15s ease-in-out;
-      }
+      {showUser}
 
-      a:hover {
-        color: ${colors.grayDark};
-      }
-    `}</style>
-  </ul>
-)
+      <style jsx>{`
+        ul {
+          display: flex;
+        }
+
+        li {
+          margin-left: 30px;
+          font-size: 14px;
+        }
+
+        a {
+          color: ${colors.gray};
+          display: block;
+          transition: .15s ease-in-out;
+        }
+
+        a:hover {
+          color: ${colors.grayDark};
+        }
+      `}</style>
+    </ul>
+  )
+}
 
 export default Menu
