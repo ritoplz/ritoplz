@@ -40,7 +40,11 @@ class Settings extends Component {
     const { fetchAccount } = this.props
 
     if (isLogged()) {
-      return fetchAccount()
+      return fetchAccount().then(res => {
+        if (res.error) {
+          Router.push('/login')
+        }
+      })
     }
 
     Router.push('/login')
@@ -70,7 +74,13 @@ class Settings extends Component {
       return editUser(userData)
     }
 
-    console.log('We need you password to change your email')
+    Router.push({
+      pathname: '/sudo-mode',
+      query: {
+        name: username,
+        newEmail: email
+      }
+    })
   }
 
   render() {
