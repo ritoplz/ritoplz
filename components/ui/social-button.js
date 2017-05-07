@@ -5,10 +5,17 @@ import Link from 'next/link'
 import { colors, typography } from './theme'
 import { TwitterIcon, FacebookIcon } from './../icons'
 
-const SocialButton = ({ children, href, as, ui = 'facebook', customStyle }) => {
+const SocialButton = ({
+  children,
+  href,
+  as,
+  ui = 'facebook',
+  icon = 'facebook',
+  customStyle
+}) => {
   let socialIcon
 
-  switch (ui) {
+  switch (icon) {
     case 'facebook':
       socialIcon = <FacebookIcon />
       break
@@ -145,7 +152,8 @@ SocialButton.propTypes = {
   ui: PropTypes.string,
   href: PropTypes.PropTypes.string.isRequired || PropTypes.object.isRequired,
   as: PropTypes.string || PropTypes.object,
-  customStyle: PropTypes.object
+  customStyle: PropTypes.object,
+  icon: PropTypes.string
 }
 
 export default SocialButton
