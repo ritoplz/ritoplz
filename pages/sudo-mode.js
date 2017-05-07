@@ -2,15 +2,50 @@
 
 import { Component } from 'react'
 import withRedux from 'next-redux-wrapper'
+import PropTypes from 'prop-types'
 import Link from 'next/link'
+import Router from 'next/router'
 
 import Page from './../layouts/page'
 import Header from './../components/header'
 import { UiButton, TextInput, Row } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
 import store from './../store/configure-store'
+import { isLogged } from './../services/auth'
+import editUser from './../actions/edit-user'
 
 class SudoMode extends Component {
+  constructor() {
+    super()
+    this.handleSudoMode = this.handleSudoMode.bind(this)
+  }
+
+  componentDidMount() {
+    const { query } = this.props.url
+
+    if (!query.hasOwnProperty('newEmail')) {
+      if (isLogged()) {
+        return Router.push('/profile')
+      }
+
+      return Router.push('/login')
+    }
+  }
+
+  handleSudoMode(e) {
+    e.preventDefault()
+
+    const { editUser, url } = this.props
+
+    if (url.query.hasOwnProperty('newEmail')) {
+      const { name, newEmail } = url.query
+      const password = this.password.value
+      const data = { name, newEmail, password }
+
+      editUser(data).then(() => Router.push('/profile'))
+    }
+  }
+
   render() {
     return (
       <Page>
@@ -21,7 +56,7 @@ class SudoMode extends Component {
             You are entering sudo mode. We won’t ask for your password again for a few hours.
           </p>
 
-          <form>
+          <form onSubmit={this.handleSudoMode}>
             <TextInput
               label="Password"
               placeholder="Your password"
@@ -82,4 +117,17 @@ class SudoMode extends Component {
   }
 }
 
-export default withRedux(store, null, null)(SudoMode)
+SudoMode.propTypes = {
+  editUser: PropTypes.func.isRequired,
+  url: {
+    query: PropTypes.object
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    editUser: userData => dispatch(editUser(userData))
+  }
+}
+
+export default withRedux(store, null, mapDispatchToProps)(SudoMode)
