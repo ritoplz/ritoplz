@@ -9,8 +9,10 @@ import store from './../store/configure-store'
 import Page from './../layouts/page'
 import { Row } from './../components/ui'
 import RankingUser from './../components/ranking-user'
+import RankingHeading from './../components/ranking-heading'
 import Header from './../components/header'
 import fetchRankings from './../actions/fetch-rankings'
+import fetchAccount from './../actions/fetch-account'
 
 class Rankings extends Component {
   constructor() {
@@ -24,11 +26,17 @@ class Rankings extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchRankings({ country: 'BR' }).then(({ data }) => {
+    const { fetchAccount, fetchRankings } = this.props
+
+    Promise.all([
+      fetchAccount(),
+      fetchRankings({ country: 'BR' })
+    ]).then(res => {
       this.setState({
-        nextPage: data.next_page,
+        user: res[0].data.user,
+        nextPage: res[1].data.next_page,
         skip: 0,
-        summoners: data.summoners
+        summoners: res[1].data.summoners
       })
     })
   }
@@ -66,6 +74,8 @@ class Rankings extends Component {
         <Header />
 
         <Row>
+          <RankingHeading user={this.props.user} />
+
           <InfiniteScroll
             pageStart={0}
             loadMore={this.loadItems}
@@ -91,18 +101,22 @@ class Rankings extends Component {
 
 Rankings.propTypes = {
   fetchRankings: PropTypes.func.isRequired,
-  summoners: PropTypes.array
+  fetchAccount: PropTypes.func.isRequired,
+  summoners: PropTypes.array,
+  user: PropTypes.object
 }
 
 const mapStateToProps = state => {
   return {
-    summoners: state.rankings.data.summoners
+    summoners: state.rankings.data.summoners,
+    user: state.account.data.user
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchRankings: params => dispatch(fetchRankings(params))
+    fetchRankings: params => dispatch(fetchRankings(params)),
+    fetchAccount: () => dispatch(fetchAccount())
   }
 }
 
