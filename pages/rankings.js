@@ -11,6 +11,7 @@ import { Row } from './../components/ui'
 import RankingUser from './../components/ranking-user'
 import RankingHeading from './../components/ranking-heading'
 import Header from './../components/header'
+import { SpinnerIcon } from './../components/icons'
 import fetchRankings from './../actions/fetch-rankings'
 import fetchAccount from './../actions/fetch-account'
 
@@ -64,10 +65,10 @@ class Rankings extends Component {
         return <RankingUser user={user} key={user._id} position={index + 1} />
       })
     } else {
-      rankings = <div className="loader">Loading ...</div>
+      rankings = <SpinnerIcon />
     }
 
-    const loader = <div className="loader">Loading ...</div>
+    const loader = <SpinnerIcon />
 
     return (
       <Page>
