@@ -32,6 +32,8 @@ class Settings extends Component {
     this.state = {
       username: '',
       email: '',
+      password: '',
+      newPassword: '',
       emailConfirmed: false
     }
   }
@@ -67,10 +69,15 @@ class Settings extends Component {
     e.preventDefault()
 
     const { editUser, user } = this.props
-    const { username, email } = this.state
+    const { username, email, password, newPassword } = this.state
     const userData = { name: username, newEmail: email }
 
     if (user.email === email) {
+      if (password && newPassword) {
+        userData.password = password
+        userData.newPassword = newPassword
+      }
+
       return editUser(userData)
     }
 
@@ -154,11 +161,17 @@ class Settings extends Component {
                 type="password"
                 label="Current password"
                 placeholder="Current password"
+                name="password"
+                handleInputChange={this.handleInputChange}
+                inputValue={this.state.password}
               />
               <TextInput
                 type="password"
                 label="New password"
                 placeholder="New password"
+                name="newPassword"
+                handleInputChange={this.handleInputChange}
+                inputValue={this.state.newPassword}
               />
             </Fieldset>
 
