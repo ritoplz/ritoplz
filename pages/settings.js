@@ -193,7 +193,11 @@ class Settings extends Component {
                   Invite on Facebook
                 </SocialButton>
 
-                <SocialButton href="https://twitter.com" ui="twitter block">
+                <SocialButton
+                  href="https://twitter.com"
+                  ui="twitter block"
+                  icon="twitter"
+                >
                   Invite on Twitter
                 </SocialButton>
 
