@@ -70,7 +70,7 @@ class Settings extends Component {
 
     const { editUser, user } = this.props
     const { username, email, password, newPassword } = this.state
-    const userData = { name: username, newEmail: email }
+    const userData = { name: username }
 
     if (user.email === email) {
       if (password && newPassword) {
