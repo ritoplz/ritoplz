@@ -29,19 +29,24 @@ class Rankings extends Component {
   componentDidMount() {
     const { fetchAccount, fetchRankings } = this.props
 
-    Promise.all([
-      fetchAccount(),
-      fetchRankings({ country: 'BR' })
-    ]).then(res => {
-      this.setState({
-        nextPage: res[1].data.next_page,
-        skip: 0,
-        summoners: res[1].data.summoners
-      })
+    fetchAccount().then(res => {
+      let sQuery
 
-      if (res[0].data) {
-        this.setState({ user: res[0].data.user })
+      if (res.data) {
+        const { country, state, city } = res.data.user
+        this.setState({ user: res.data.user })
+        sQuery = { country, state, city }
+      } else {
+        sQuery = {}
       }
+
+      fetchRankings(sQuery).then(({ data }) => {
+        this.setState({
+          nextPage: data.next_page,
+          skip: 0,
+          summoners: data.summoners
+        })
+      })
     })
   }
 
