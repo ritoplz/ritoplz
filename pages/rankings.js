@@ -34,11 +34,14 @@ class Rankings extends Component {
       fetchRankings({ country: 'BR' })
     ]).then(res => {
       this.setState({
-        user: res[0].data.user,
         nextPage: res[1].data.next_page,
         skip: 0,
         summoners: res[1].data.summoners
       })
+
+      if (res[0].data) {
+        this.setState({ user: res[0].data.user })
+      }
     })
   }
 
@@ -61,8 +64,16 @@ class Rankings extends Component {
     let rankings
 
     if (this.state.summoners) {
+      const currentUser = this.state.user || {}
       rankings = this.state.summoners.map((user, index) => {
-        return <RankingUser user={user} key={user._id} position={index + 1} />
+        return (
+          <RankingUser
+            user={user}
+            currentUser={currentUser}
+            key={user._id}
+            position={index + 1}
+          />
+        )
       })
     } else {
       rankings = <SpinnerIcon />

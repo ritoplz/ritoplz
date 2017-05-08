@@ -5,7 +5,6 @@ import { colors, typography } from './ui/theme'
 import { isLogged } from './../services/auth'
 
 const RankingHeading = ({ user }) => {
-  console.log(user)
   let rankingHeading
   if (isLogged() && user) {
     rankingHeading = (
@@ -17,7 +16,7 @@ const RankingHeading = ({ user }) => {
         {' '}
         in
         {' '}
-        <strong>São Paulo, São Paulo — BR</strong>
+        <strong>{user.city}, {user.state} — {user.country}</strong>
 
         <style jsx>{`
           h2 {
