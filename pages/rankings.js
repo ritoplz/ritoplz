@@ -37,7 +37,7 @@ class Rankings extends Component {
         this.setState({ user: res.data.user })
         sQuery = { country, state, city }
       } else {
-        sQuery = {}
+        sQuery = { country: 'BR' }
       }
 
       fetchRankings(sQuery).then(({ data }) => {
