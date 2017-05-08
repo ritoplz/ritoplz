@@ -33,19 +33,14 @@ class Rankings extends Component {
       fetchAccount(),
       fetchRankings({ country: 'BR' })
     ]).then(res => {
+      this.setState({
+        nextPage: res[1].data.next_page,
+        skip: 0,
+        summoners: res[1].data.summoners
+      })
+
       if (res[0].data) {
-        this.setState({
-          user: res[0].data.user,
-          nextPage: res[1].data.next_page,
-          skip: 0,
-          summoners: res[1].data.summoners
-        })
-      } else {
-        this.setState({
-          nextPage: res[1].data.next_page,
-          skip: 0,
-          summoners: res[1].data.summoners
-        })
+        this.setState({ user: res[0].data.user })
       }
     })
   }
