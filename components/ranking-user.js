@@ -5,7 +5,7 @@ import { colors, typography } from './../components/ui/theme'
 import { UiButton } from './../components/ui'
 import RankingProgress from './ranking-progress'
 
-const RankingUser = ({ user, position }) => {
+const RankingUser = ({ user, position, currentUser }) => {
   let lastTimePlayed
   const hotStreak = user.rankedSolo.isHotStreak ? '🔥' : null
 
@@ -15,8 +15,14 @@ const RankingUser = ({ user, position }) => {
     lastTimePlayed = ''
   }
 
+  const currentUserId = currentUser._id
+  const userId = user.userId
+  const userStyle = currentUserId === userId
+    ? 'ranking ranking--user'
+    : 'ranking'
+
   return (
-    <div className="ranking">
+    <div className={userStyle}>
       <header className="ranking-header">
         <img
           className="ranking-header__avatar"
@@ -60,6 +66,11 @@ const RankingUser = ({ user, position }) => {
           padding-left: 15px;
           padding-right: 15px;
           margin-bottom: 30px;
+          border: 1px solid transparent;
+        }
+
+        .ranking--user {
+          border-color: ${colors.primary};
         }
 
         .ranking-header {
@@ -138,7 +149,8 @@ const RankingUser = ({ user, position }) => {
 
 RankingUser.propTypes = {
   user: PropTypes.object,
-  position: PropTypes.number
+  position: PropTypes.number,
+  currentUser: PropTypes.object
 }
 
 export default RankingUser
