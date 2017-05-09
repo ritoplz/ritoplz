@@ -22,11 +22,6 @@ class Profile extends Component {
         <Header logged={isLogged()} user={this.props.user} />
         <Row>
           <h1>Profile</h1>
-
-          {this.props.user._id}
-          {this.props.user.email}
-          {this.props.user.emailConfirmed}
-          {this.props.user.name}
         </Row>
       </Page>
     )
