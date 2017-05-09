@@ -2,18 +2,29 @@
 
 import { Component } from 'react'
 import withRedux from 'next-redux-wrapper'
+import PropTypes from 'prop-types'
 
+import { isLogged } from './../services/auth'
 import Page from './../layouts/page'
 import { UiButton, TextInput, Row } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
 import store from './../store/configure-store'
 import Header from './../components/header'
+import fetchAccount from './../actions/fetch-account'
 
 class ResetPassword extends Component {
+  componentDidMount() {
+    const { fetchAccount } = this.props
+
+    if (isLogged()) {
+      fetchAccount()
+    }
+  }
+
   render() {
     return (
       <Page>
-        <Header />
+        <Header logged={isLogged()} user={this.props.user} />
         <Row>
           <h2>Reset your password</h2>
           <p>
@@ -62,4 +73,23 @@ class ResetPassword extends Component {
   }
 }
 
-export default withRedux(store, null, null)(ResetPassword)
+ResetPassword.propTypes = {
+  fetchAccount: PropTypes.func.isRequired,
+  user: PropTypes.object
+}
+
+const mapStateToProps = state => {
+  return {
+    user: state.account.data.user
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchAccount: () => dispatch(fetchAccount())
+  }
+}
+
+export default withRedux(store, mapStateToProps, mapDispatchToProps)(
+  ResetPassword
+)

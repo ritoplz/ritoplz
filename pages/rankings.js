@@ -14,6 +14,7 @@ import Header from './../components/header'
 import { SpinnerIcon } from './../components/icons'
 import fetchRankings from './../actions/fetch-rankings'
 import fetchAccount from './../actions/fetch-account'
+import { isLogged } from './../services/auth'
 
 class Rankings extends Component {
   constructor() {
@@ -88,7 +89,7 @@ class Rankings extends Component {
 
     return (
       <Page>
-        <Header />
+        <Header logged={isLogged()} user={this.props.user} />
 
         <Row>
           <RankingHeading user={this.props.user} />
