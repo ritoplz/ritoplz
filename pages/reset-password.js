@@ -3,6 +3,7 @@
 import { Component } from 'react'
 import withRedux from 'next-redux-wrapper'
 
+import { isLogged } from './../services/auth'
 import Page from './../layouts/page'
 import { UiButton, TextInput, Row } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
@@ -13,7 +14,7 @@ class ResetPassword extends Component {
   render() {
     return (
       <Page>
-        <Header />
+        <Header logged={isLogged()} />
         <Row>
           <h2>Reset your password</h2>
           <p>

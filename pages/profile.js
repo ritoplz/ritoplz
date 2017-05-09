@@ -9,6 +9,7 @@ import Page from './../layouts/page'
 import Header from './../components/header'
 import { Row } from './../components/ui'
 import store from './../store/configure-store'
+import { isLogged } from './../services/auth'
 
 class Profile extends Component {
   componentDidMount() {
@@ -18,7 +19,7 @@ class Profile extends Component {
   render() {
     return (
       <Page>
-        <Header />
+        <Header logged={isLogged()} />
         <Row>
           <h1>Profile</h1>
 

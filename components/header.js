@@ -1,12 +1,13 @@
 'use strict'
 
+import PropTypes from 'prop-types'
 import Link from 'next/link'
 import { colors } from './ui/theme'
 import { Row } from './ui'
 import Logo from './logo'
 import Menu from './menu'
 
-const Header = () => (
+const Header = ({ logged }) => (
   <header>
     <Row>
       <div className="header-content">
@@ -16,7 +17,7 @@ const Header = () => (
           </a>
         </Link>
 
-        <Menu />
+        <Menu logged={logged} />
       </div>
     </Row>
 
@@ -38,5 +39,9 @@ const Header = () => (
     `}</style>
   </header>
 )
+
+Header.propTypes = {
+  logged: PropTypes.bool
+}
 
 export default Header

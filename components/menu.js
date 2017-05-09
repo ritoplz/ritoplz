@@ -1,117 +1,108 @@
 'use strict'
 
-import { Component } from 'react'
+import PropTypes from 'prop-types'
 import Link from 'next/link'
 import { colors } from './ui/theme'
 import { UiLink } from './ui'
 import MenuUser from './menu-user'
-import { isLogged } from './../services/auth'
 
-class Menu extends Component {
-  constructor() {
-    super()
-    this.state = { rendered: false }
-  }
+const Menu = ({ logged }) => {
+  let showUser
+  if (logged) {
+    showUser = (
+      <ul>
+        <li>
+          <Link prefetch href="/rankings">
+            <a>Rankings</a>
+          </Link>
+        </li>
 
-  componentDidMount() {
-    this.setState({ rendered: true })
-  }
+        <li>
+          <Link prefetch href="/settings">
+            <a>Settings</a>
+          </Link>
+        </li>
 
-  render() {
-    let showUser
+        <MenuUser />
 
-    if (isLogged() && this.state.rendered) {
-      showUser = (
-        <ul>
-          <li>
-            <Link prefetch href="/rankings">
-              <a>Rankings</a>
-            </Link>
-          </li>
+        <style jsx>{`
+          ul {
+            display: flex;
+          }
 
-          <li>
-            <Link prefetch href="/settings">
-              <a>Settings</a>
-            </Link>
-          </li>
+          li {
+            margin-left: 30px;
+            font-size: 14px;
+          }
 
-          <MenuUser />
+          a {
+            color: ${colors.gray};
+            display: block;
+            transition: .15s ease-in-out;
+          }
 
-          <style jsx>{`
-            ul {
-              display: flex;
-            }
+          a:hover {
+            color: ${colors.grayDark};
+          }
+        `}</style>
+      </ul>
+    )
+  } else {
+    showUser = (
+      <ul>
+        <li>
+          <Link prefetch href="/rankings">
+            <a>Rankings</a>
+          </Link>
+        </li>
 
-            li {
-              margin-left: 30px;
-              font-size: 14px;
-            }
+        <li>
+          <Link prefetch href="/settings">
+            <a>Settings</a>
+          </Link>
+        </li>
 
-            a {
-              color: ${colors.gray};
-              display: block;
-              transition: .15s ease-in-out;
-            }
+        <div>
+          <UiLink href="/login" ui="primary small">Login</UiLink>
+        </div>
 
-            a:hover {
-              color: ${colors.grayDark};
-            }
-          `}</style>
-        </ul>
-      )
-    } else {
-      showUser = (
-        <ul>
-          <li>
-            <Link prefetch href="/rankings">
-              <a>Rankings</a>
-            </Link>
-          </li>
+        <style jsx>{`
+          ul {
+            display: flex;
+          }
 
-          <li>
-            <Link prefetch href="/settings">
-              <a>Settings</a>
-            </Link>
-          </li>
+          li {
+            margin-left: 30px;
+            font-size: 14px;
+          }
 
-          <div>
-            <UiLink href="/login" ui="primary small">Login</UiLink>
-          </div>
+          a {
+            color: ${colors.gray};
+            display: block;
+            transition: .15s ease-in-out;
+          }
 
-          <style jsx>{`
-            ul {
-              display: flex;
-            }
+          a:hover {
+            color: ${colors.grayDark};
+          }
 
-            li {
-              margin-left: 30px;
-              font-size: 14px;
-            }
-
-            a {
-              color: ${colors.gray};
-              display: block;
-              transition: .15s ease-in-out;
-            }
-
-            a:hover {
-              color: ${colors.grayDark};
-            }
-
-            div {
-              margin-left: 30px;
-            }
-          `}</style>
-        </ul>
-      )
-    }
-
-    return (
-      <div>
-        {showUser}
-      </div>
+          div {
+            margin-left: 30px;
+          }
+        `}</style>
+      </ul>
     )
   }
+
+  return (
+    <div>
+      {showUser}
+    </div>
+  )
+}
+
+Menu.propTypes = {
+  logged: PropTypes.bool
 }
 
 export default Menu

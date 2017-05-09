@@ -10,10 +10,11 @@ import Header from './../components/header'
 import { Row } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
 import store from './../store/configure-store'
+import { isLogged } from './../services/auth'
 
 const Terms = () => (
   <Page>
-    <Header />
+    <Header logged={isLogged()} />
     <Row>
       <LegalTitle title="Terms of Services" date="01/18/2017" />
 

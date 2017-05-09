@@ -49,7 +49,7 @@ class SudoMode extends Component {
   render() {
     return (
       <Page>
-        <Header />
+        <Header logged={isLogged()} />
         <Row>
           <h2>Confirm password to continue</h2>
           <p>

@@ -9,10 +9,11 @@ import LegalText from './../components/legal-text'
 import Header from './../components/header'
 import { Row } from './../components/ui'
 import store from './../store/configure-store'
+import { isLogged } from './../services/auth'
 
 const Privacy = () => (
   <Page>
-    <Header />
+    <Header logged={isLogged()} />
     <Row>
       <LegalTitle title="Privacy Policy" date="01/18/2017" />
 

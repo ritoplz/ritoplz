@@ -93,7 +93,7 @@ class Settings extends Component {
   render() {
     return (
       <Page>
-        <Header />
+        <Header logged={isLogged()} />
         <Row>
           <h2 className="page-title">Settings</h2>
 
