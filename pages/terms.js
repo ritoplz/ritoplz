@@ -3,6 +3,7 @@
 import { Component } from 'react'
 import withRedux from 'next-redux-wrapper'
 import PropTypes from 'prop-types'
+import Link from 'next/link'
 
 import Page from './../layouts/page'
 import LegalTitle from './../components/legal-title'
@@ -33,21 +34,38 @@ class Terms extends Component {
 
           <LegalHeading>1. Acceptance of Terms.</LegalHeading>
           <LegalText>
-            1.1. Ritoplz ("Company" or "we") provides its Service (as defined below) to you through its web site and platform located at https://ritoplz.com (the "Site"), subject to this Terms of Service agreement ("TOS"). By accepting this TOS or by accessing or using the Service or Site, you acknowledge that you have read, understood, and agree to be bound by this TOS. If you are entering into this TOS on behalf of a company, business or other legal entity, you represent that you have the authority to bind such entity and its affiliates to this TOS, in which case the terms "you" or "your" shall refer to such entity and its affiliates. If you do not have such authority, or if you do not agree with this TOS, you must not accept this TOS and may not use the Service.
+            1.1. Ritoplz ("Company" or "we") provides its Service (as defined below) to you through its web site and platform located at
+            {' '}
+            <Link href="/"><a>https://ritoplz.com</a></Link>
+            {' '}
+            (the "Site"), subject to this Terms of Service agreement ("TOS"). By accepting this TOS or by accessing or using the Service or Site, you acknowledge that you have read, understood, and agree to be bound by this TOS. If you are entering into this TOS on behalf of a company, business or other legal entity, you represent that you have the authority to bind such entity and its affiliates to this TOS, in which case the terms "you" or "your" shall refer to such entity and its affiliates. If you do not have such authority, or if you do not agree with this TOS, you must not accept this TOS and may not use the Service.
           </LegalText>
 
           <LegalText>
-            1.1. Ritoplz ("Company" or "we") provides its Service (as defined below) to you through its web site and platform located at https://ritoplz.com (the "Site"), subject to this Terms of Service agreement ("TOS"). By accepting this TOS or by accessing or using the Service or Site, you acknowledge that you have read, understood, and agree to be bound by this TOS. If you are entering into this TOS on behalf of a company, business or other legal entity, you represent that you have the authority to bind such entity and its affiliates to this TOS, in which case the terms "you" or "your" shall refer to such entity and its affiliates. If you do not have such authority, or if you do not agree with this TOS, you must not accept this TOS and may not use the Service.
+            1.1. Ritoplz ("Company" or "we") provides its Service (as defined below) to you through its web site and platform located at
+            {' '}
+            <Link href="/"><a>https://ritoplz.com</a></Link>
+            {' '}
+            (the "Site"), subject to this Terms of Service agreement ("TOS"). By accepting this TOS or by accessing or using the Service or Site, you acknowledge that you have read, understood, and agree to be bound by this TOS. If you are entering into this TOS on behalf of a company, business or other legal entity, you represent that you have the authority to bind such entity and its affiliates to this TOS, in which case the terms "you" or "your" shall refer to such entity and its affiliates. If you do not have such authority, or if you do not agree with this TOS, you must not accept this TOS and may not use the Service.
           </LegalText>
 
           <LegalText>
-            1.2. Company may change this TOS from time to time by providing thirty (30) days prior notice either by emailing the email address associated with your account or by posting a notice on the Site. You can review the most current version of this TOS at any time [at https://ritoplz.com/terms]. The revised terms and conditions will become effective thirty (30) days after we post or send you notice of such changes, and if you use the Service after that date, your use will constitute acceptance of the revised terms and conditions. If any change to this TOS is not acceptable to you, your only remedy is stop using the Services and send a cancellation email to ritoplzteam@gmail.com.
+            1.2. Company may change this TOS from time to time by providing thirty (30) days prior notice either by emailing the email address associated with your account or by posting a notice on the Site. You can review the most current version of this TOS at any time [at
+            {' '}
+            <Link href="/"><a>https://ritoplz.com</a></Link>
+            /terms]. The revised terms and conditions will become effective thirty (30) days after we post or send you notice of such changes, and if you use the Service after that date, your use will constitute acceptance of the revised terms and conditions. If any change to this TOS is not acceptable to you, your only remedy is stop using the Services and send a cancellation email to
+            {' '}
+            <a href="mailto:ritoplzteam@gmail.com">ritoplzteam@gmail.com</a>
+            .
           </LegalText>
 
           <LegalHeading>2. Description of Service.</LegalHeading>
 
           <LegalText>
-            The "Service" includes (a) the Site, (b) all software (including the Software, as defined below), data, reports, text, images, sounds, video, and content made available through any of the foregoing (collectively referred to as the "Content"). Any new features added to or augmenting the Service are also subject to this TOS. For a more detailed description of our Service offerings, please see our product pages at https://ritoplz.com.
+            The "Service" includes (a) the Site, (b) all software (including the Software, as defined below), data, reports, text, images, sounds, video, and content made available through any of the foregoing (collectively referred to as the "Content"). Any new features added to or augmenting the Service are also subject to this TOS. For a more detailed description of our Service offerings, please see our product pages at
+            {' '}
+            <Link href="/"><a>https://ritoplz.com</a></Link>
+            .
           </LegalText>
 
           <LegalHeading>
@@ -79,7 +97,11 @@ class Terms extends Component {
           </LegalText>
 
           <LegalText>
-            3.7. Company reserves the right to use your name and/or company name as a reference for marketing or promotional purposes on Company's website and in other communication with existing or potential Company customers. To decline Company this right you need to email ritoplzteam@gmail.com stating that you do not wish to be used as a reference.
+            3.7. Company reserves the right to use your name and/or company name as a reference for marketing or promotional purposes on Company's website and in other communication with existing or potential Company customers. To decline Company this right you need to email
+            {' '}
+            <a href="mailto:ritoplzteam@gmail.com">ritoplzteam@gmail.com</a>
+            {' '}
+            stating that you do not wish to be used as a reference.
           </LegalText>
           <LegalText>
             3.8. Subject to the terms hereof, Company may (but has no obligation to) provide technical support services, through email in accordance with our standard practice.
@@ -88,7 +110,10 @@ class Terms extends Component {
           <LegalHeading>4. Termination.</LegalHeading>
 
           <LegalText>
-            You have the right to terminate your account at any time by sending a cancellation request to ritoplzteam@gmail.com. Subject to earlier termination as provided below, Company may terminate your Account and this TOS at any time by providing thirty (30) days prior notice to the administrative email address associated with your Account. All of Your Content on the Service (if any) may be permanently deleted by Company upon any termination of your account in its sole discretion.
+            You have the right to terminate your account at any time by sending a cancellation request to
+            {' '}
+            <a href="mailto:ritoplzteam@gmail.com">ritoplzteam@gmail.com</a>
+            . Subject to earlier termination as provided below, Company may terminate your Account and this TOS at any time by providing thirty (30) days prior notice to the administrative email address associated with your Account. All of Your Content on the Service (if any) may be permanently deleted by Company upon any termination of your account in its sole discretion.
           </LegalText>
 
           <p>
@@ -106,6 +131,10 @@ class Terms extends Component {
             margin: 20px auto 50px;
             border-top: 1px solid ${colors.border};
             padding-top: 30px;
+          }
+
+          a {
+            color: ${colors.primary};
           }
         `}</style>
       </Page>

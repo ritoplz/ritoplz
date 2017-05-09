@@ -9,6 +9,9 @@ const RegisterFooter = () => (
       <Link href="/about">
         <a>About</a>
       </Link>
+      <Link href="/faq">
+        <a>FAQ</a>
+      </Link>
       <Link href="/terms">
         <a>Terms of Services</a>
       </Link>
