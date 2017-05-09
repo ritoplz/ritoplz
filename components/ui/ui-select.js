@@ -28,6 +28,7 @@ const UiSelect = ({
       <style>{`
         .ui-select {
           margin-bottom: 30px;
+          width: 100%;
         }
 
         label {
