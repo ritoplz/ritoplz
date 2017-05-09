@@ -6,7 +6,7 @@ import { colors } from './ui/theme'
 import { UiLink } from './ui'
 import MenuUser from './menu-user'
 
-const Menu = ({ logged }) => {
+const Menu = ({ logged, user }) => {
   let showUser
   if (logged) {
     showUser = (
@@ -23,7 +23,7 @@ const Menu = ({ logged }) => {
           </Link>
         </li>
 
-        <MenuUser />
+        <MenuUser user={user} />
 
         <style jsx>{`
           ul {
@@ -102,7 +102,8 @@ const Menu = ({ logged }) => {
 }
 
 Menu.propTypes = {
-  logged: PropTypes.bool
+  logged: PropTypes.bool,
+  user: PropTypes.object
 }
 
 export default Menu

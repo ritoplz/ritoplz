@@ -5,6 +5,7 @@ import withRedux from 'next-redux-wrapper'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 import Router from 'next/router'
+import fetchAccount from './../actions/fetch-account'
 
 import Page from './../layouts/page'
 import Header from './../components/header'
@@ -30,6 +31,10 @@ class SudoMode extends Component {
 
       return Router.push('/login')
     }
+
+    if (isLogged()) {
+      fetchAccount()
+    }
   }
 
   handleSudoMode(e) {
@@ -49,7 +54,7 @@ class SudoMode extends Component {
   render() {
     return (
       <Page>
-        <Header logged={isLogged()} />
+        <Header logged={isLogged()} user={this.props.user} />
         <Row>
           <h2>Confirm password to continue</h2>
           <p>
@@ -118,16 +123,25 @@ class SudoMode extends Component {
 }
 
 SudoMode.propTypes = {
+  fetchAccount: PropTypes.func.isRequired,
   editUser: PropTypes.func.isRequired,
+  user: PropTypes.object,
   url: {
     query: PropTypes.object
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    user: state.account.data.user
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
+    fetchAccount: () => dispatch(fetchAccount()),
     editUser: userData => dispatch(editUser(userData))
   }
 }
 
-export default withRedux(store, null, mapDispatchToProps)(SudoMode)
+export default withRedux(store, mapStateToProps, mapDispatchToProps)(SudoMode)

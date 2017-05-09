@@ -89,7 +89,7 @@ class Rankings extends Component {
 
     return (
       <Page>
-        <Header logged={isLogged()} />
+        <Header logged={isLogged()} user={this.props.user} />
 
         <Row>
           <RankingHeading user={this.props.user} />

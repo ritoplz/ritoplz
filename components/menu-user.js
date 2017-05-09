@@ -1,12 +1,15 @@
 'use strict'
 
+import PropTypes from 'prop-types'
 import Link from 'next/link'
 import { colors, typography } from './ui/theme'
 
-const MenuUser = () => {
+const MenuUser = ({ user }) => {
+  const userName = user ? user.name : ''
+
   return (
     <span>
-      <Link href="/profile"><a>Bu Kinoshita</a></Link>
+      <Link href="/profile"><a>{userName}</a></Link>
 
       <style jsx>{`
         span {
@@ -26,6 +29,11 @@ const MenuUser = () => {
       `}</style>
     </span>
   )
+}
+
+MenuUser.propTypes = {
+  logged: PropTypes.bool,
+  user: PropTypes.object
 }
 
 export default MenuUser

@@ -19,7 +19,7 @@ class Profile extends Component {
   render() {
     return (
       <Page>
-        <Header logged={isLogged()} />
+        <Header logged={isLogged()} user={this.props.user} />
         <Row>
           <h1>Profile</h1>
 

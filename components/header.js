@@ -7,7 +7,7 @@ import { Row } from './ui'
 import Logo from './logo'
 import Menu from './menu'
 
-const Header = ({ logged }) => (
+const Header = ({ logged, user }) => (
   <header>
     <Row>
       <div className="header-content">
@@ -17,7 +17,7 @@ const Header = ({ logged }) => (
           </a>
         </Link>
 
-        <Menu logged={logged} />
+        <Menu logged={logged} user={user} />
       </div>
     </Row>
 
@@ -41,7 +41,8 @@ const Header = ({ logged }) => (
 )
 
 Header.propTypes = {
-  logged: PropTypes.bool
+  logged: PropTypes.bool,
+  user: PropTypes.object
 }
 
 export default Header
