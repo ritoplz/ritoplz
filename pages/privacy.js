@@ -13,6 +13,7 @@ import { Row } from './../components/ui'
 import store from './../store/configure-store'
 import { isLogged } from './../services/auth'
 import fetchAccount from './../actions/fetch-account'
+import { colors } from './../components/ui/theme'
 
 class Privacy extends Component {
   componentDidMount() {
@@ -26,7 +27,7 @@ class Privacy extends Component {
   render() {
     return (
       <Page>
-        <Header logged={isLogged()} />
+        <Header logged={isLogged()} user={this.props.user} />
         <Row>
           <LegalTitle title="Privacy Policy" date="01/18/2017" />
 
@@ -142,16 +143,25 @@ class Privacy extends Component {
           </LegalText>
 
           <LegalText>
-            Please also feel free to contact us if you have any questions about Ritoplz's Privacy Policy or the information practices of the Services You may contact us as follows ritoplzteam@gmail.com
+            Please also feel free to contact us if you have any questions about Ritoplz's Privacy Policy or the information practices of the Services You may contact us as follows
+            {' '}
+            <a href="mailto:ritoplzteam@gmail.com">ritoplzteam@gmail.com</a>
           </LegalText>
         </Row>
+
+        <style jsx>{`
+          a {
+            color: ${colors.primary};
+          }
+        `}</style>
       </Page>
     )
   }
 }
 
 Privacy.propTypes = {
-  fetchAccount: PropTypes.func.isRequired
+  fetchAccount: PropTypes.func.isRequired,
+  user: PropTypes.object
 }
 
 const mapStateToProps = state => {
