@@ -25,10 +25,16 @@ class Rankings extends Component {
 
     this.loadItems = this.loadItems.bind(this)
     this.onFetchRankings = this.onFetchRankings.bind(this)
+    this.onSelectState = this.onSelectState.bind(this)
+    this.onSelectCity = this.onSelectCity.bind(this)
 
     this.state = {
       nextPage: false,
-      country: 'BR'
+      country: 'BR',
+      countrySelected: { label: 'Brazil', value: 'BR' },
+      stateSelected: { label: 'São Paulo', value: 'SP' },
+      state: 25,
+      citySelected: { label: 'São Paulo', value: 'SP' }
     }
   }
 
@@ -94,6 +100,32 @@ class Rankings extends Component {
     })
   }
 
+  onSelectState(stateSelected) {
+    const state = locations[this.state.country].findIndex(
+      ({ label }) => label === stateSelected.label
+    )
+    this.setState({ stateSelected, state })
+
+    const sQuery = {
+      country: this.state.country,
+      state: this.state.stateSelected.label
+    }
+
+    this.onFetchRankings(sQuery)
+  }
+
+  onSelectCity(citySelected) {
+    this.setState({ citySelected, city: citySelected.label })
+
+    const sQuery = {
+      country: this.state.country,
+      state: this.state.stateSelected.label,
+      city: this.state.city
+    }
+
+    this.onFetchRankings(sQuery)
+  }
+
   render() {
     let rankings
     const { summoners, user = {} } = this.state
@@ -130,25 +162,27 @@ class Rankings extends Component {
                 label="Country"
                 options={countries}
                 placeholder="Select your country"
-                handleSelectChange={value => console.log(value)}
+                inputSelected={this.state.countrySelected}
               />
             </div>
 
             <div className="filter-select">
               <UiSelect
                 label="State"
-                options={locations.BR}
+                options={locations[this.state.country]}
                 placeholder="Select your state"
-                handleSelectChange={value => console.log(value)}
+                handleSelectChange={selected => this.onSelectState(selected)}
+                inputSelected={this.state.stateSelected}
               />
             </div>
 
             <div className="filter-select">
               <UiSelect
                 label="City"
-                options={locations.BR[0].cities}
+                options={locations[this.state.country][this.state.state].cities}
                 placeholder="Select your city"
-                handleSelectChange={value => console.log(value)}
+                handleSelectChange={selected => this.onSelectCity(selected)}
+                inputSelected={this.state.citySelected}
               />
             </div>
           </div>
@@ -187,8 +221,7 @@ class Rankings extends Component {
           }
 
           li {
-            padding-top: 12px;
-            padding-bottom: 12px;
+            padding: 12px;
             font-size: ${typography.f14};
             margin-right: 35px;
             text-transform: uppercase;
