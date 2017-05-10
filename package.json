@@ -72,7 +72,8 @@
       "space-before-function-paren": 0,
       "object-curly-spacing": 0,
       "no-implicit-coercion": 0,
-      "no-prototype-builtins": 0
+      "no-prototype-builtins": 0,
+      "array-callback-return": 0
     },
     "ignores": [
       "static/*.js"
