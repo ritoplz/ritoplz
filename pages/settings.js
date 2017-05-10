@@ -34,7 +34,12 @@ class Settings extends Component {
       email: '',
       password: '',
       newPassword: '',
-      emailConfirmed: false
+      emailConfirmed: false,
+      country: 'BR',
+      countrySelected: { label: 'Brazil', value: 'BR' },
+      stateSelected: { label: 'São Paulo', value: 'SP' },
+      state: 25,
+      citySelected: { label: 'São Paulo', value: 'SP' }
     }
   }
 
@@ -44,7 +49,7 @@ class Settings extends Component {
     if (isLogged()) {
       return fetchAccount().then(res => {
         if (res.error) {
-          Router.push('/login')
+          Router.push('/profile')
         }
       })
     }
@@ -54,6 +59,37 @@ class Settings extends Component {
 
   componentWillReceiveProps(nextProps) {
     const { email, name, emailConfirmed } = nextProps.user
+
+    if (nextProps.user.country && nextProps.user.state && nextProps.user.city) {
+      countries.filter(country => {
+        if (country.value === nextProps.user.country) {
+          this.setState({
+            countrySelected: country,
+            country: country.value
+          })
+
+          locations[country.value].filter(state => {
+            if (state.label === nextProps.user.state) {
+              const stateIndex = locations[country.value].findIndex(
+                ({ label }) => label === state.label
+              )
+
+              this.setState({
+                stateSelected: state,
+                state: stateIndex
+              })
+
+              locations[country.value][stateIndex].cities.filter(city => {
+                if (city.label === nextProps.user.city) {
+                  this.setState({ citySelected: city })
+                }
+              })
+            }
+          })
+        }
+      })
+    }
+
     this.setState({
       username: name,
       email,
@@ -69,8 +105,21 @@ class Settings extends Component {
     e.preventDefault()
 
     const { editUser, user } = this.props
-    const { username, email, password, newPassword } = this.state
-    const userData = { name: username }
+    const {
+      username,
+      email,
+      password,
+      newPassword,
+      country,
+      stateSelected,
+      city
+    } = this.state
+    const userData = {
+      name: username,
+      country,
+      state: stateSelected.label,
+      city
+    }
 
     if (user.email === email) {
       if (password && newPassword) {
@@ -88,6 +137,17 @@ class Settings extends Component {
         newEmail: email
       }
     })
+  }
+
+  onSelectState(stateSelected) {
+    const state = locations[this.state.country].findIndex(
+      ({ label }) => label === stateSelected.label
+    )
+    this.setState({ stateSelected, state })
+  }
+
+  onSelectCity(citySelected) {
+    this.setState({ citySelected, city: citySelected.label })
   }
 
   render() {
@@ -135,21 +195,23 @@ class Settings extends Component {
                 label="Country"
                 options={countries}
                 placeholder="Select your country"
-                handleSelectChange={value => console.log(value)}
+                inputSelected={this.state.countrySelected}
               />
 
               <UiSelect
                 label="State"
-                options={locations.BR}
+                options={locations[this.state.country]}
                 placeholder="Select your state"
-                handleSelectChange={value => console.log(value)}
+                handleSelectChange={selected => this.onSelectState(selected)}
+                inputSelected={this.state.stateSelected}
               />
 
               <UiSelect
                 label="City"
-                options={locations.BR[0].cities}
+                options={locations[this.state.country][this.state.state].cities}
                 placeholder="Select your city"
-                handleSelectChange={value => console.log(value)}
+                handleSelectChange={selected => this.onSelectCity(selected)}
+                inputSelected={this.state.citySelected}
               />
             </Fieldset>
 
