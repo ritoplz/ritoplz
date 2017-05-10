@@ -3,6 +3,7 @@
 import { Component } from 'react'
 import withRedux from 'next-redux-wrapper'
 import PropTypes from 'prop-types'
+import Router from 'next/router'
 
 import fetchAccount from './../actions/fetch-account'
 import Page from './../layouts/page'
@@ -24,7 +25,17 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchAccount()
+    const { fetchAccount } = this.props
+
+    if (isLogged()) {
+      return fetchAccount().then(res => {
+        if (res.error) {
+          Router.push('/profile')
+        }
+      })
+    }
+
+    Router.push('/login')
   }
 
   componentWillReceiveProps({ summoners }) {
