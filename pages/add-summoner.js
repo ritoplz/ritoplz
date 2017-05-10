@@ -24,8 +24,14 @@ class AddSummoner extends Component {
     const { fetchAccount } = this.props
 
     if (isLogged()) {
-      fetchAccount()
+      return fetchAccount().then(res => {
+        if (res.error) {
+          Router.push('/profile')
+        }
+      })
     }
+
+    Router.push('/login')
   }
 
   addSummoner(e) {
