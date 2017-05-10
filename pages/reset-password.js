@@ -12,6 +12,7 @@ import { colors, typography } from './../components/ui/theme'
 import store from './../store/configure-store'
 import Header from './../components/header'
 import fetchAccount from './../actions/fetch-account'
+import resetPassword from './../actions/reset-password'
 
 class ResetPassword extends Component {
   componentDidMount() {
@@ -26,6 +27,13 @@ class ResetPassword extends Component {
     }
 
     Router.push('/login')
+  }
+
+  resetPassword() {
+    const { resetPassword } = this.props
+    const userData = { email: this.email }
+
+    resetPassword(userData)
   }
 
   render() {
@@ -82,6 +90,7 @@ class ResetPassword extends Component {
 
 ResetPassword.propTypes = {
   fetchAccount: PropTypes.func.isRequired,
+  resetPassword: PropTypes.func.isRequired,
   user: PropTypes.object
 }
 
@@ -93,7 +102,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchAccount: () => dispatch(fetchAccount())
+    fetchAccount: () => dispatch(fetchAccount()),
+    resetPassword: email => dispatch(resetPassword(email))
   }
 }
 
