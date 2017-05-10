@@ -26,6 +26,14 @@ const ProfileTitle = ({ user }) => (
         color: ${colors.primary};
         font-size: ${typography.f16}
       }
+
+      span {
+        color: ${colors.gray};
+        font-size: ${typography.f14}
+        font-weight: 500;
+        margin-top: 5px;
+        display: block;
+      }
     `}</style>
   </div>
 )
