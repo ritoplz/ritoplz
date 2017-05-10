@@ -21,10 +21,10 @@ function rankingsSuccess(data) {
   }
 }
 
-function rankingsError(err) {
+function rankingsError(error) {
   return {
     type: RANKINGS_ERROR,
-    err
+    error
   }
 }
 

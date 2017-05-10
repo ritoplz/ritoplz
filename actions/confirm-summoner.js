@@ -21,10 +21,10 @@ function confirmSummonerSuccess(data) {
   }
 }
 
-function confirmSummonerError(data) {
+function confirmSummonerError(error) {
   return {
     type: CONFIRM_SUMMONER_ERROR,
-    data
+    error
   }
 }
 
