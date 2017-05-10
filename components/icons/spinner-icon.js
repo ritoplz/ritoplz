@@ -2,8 +2,14 @@
 
 import PropTypes from 'prop-types'
 
-const SpinnerIcon = ({ size = '30px', color = '#6772E5' }) => (
-  <svg viewBox="0 0 32 32" width={size} height={size} fill={color}>
+const SpinnerIcon = ({ size = '30px', color = '#6772E5', customStyle }) => (
+  <svg
+    viewBox="0 0 32 32"
+    width={size}
+    height={size}
+    fill={color}
+    style={customStyle}
+  >
     <path
       opacity=".25"
       d="M16 0 A16 16 0 0 0 16 32 A16 16 0 0 0 16 0 M16 4 A12 12 0 0 1 16 28 A12 12 0 0 1 16 4"
@@ -32,7 +38,8 @@ const SpinnerIcon = ({ size = '30px', color = '#6772E5' }) => (
 
 SpinnerIcon.propTypes = {
   size: PropTypes.string,
-  color: PropTypes.string
+  color: PropTypes.string,
+  customStyle: PropTypes.object
 }
 
 export default SpinnerIcon
