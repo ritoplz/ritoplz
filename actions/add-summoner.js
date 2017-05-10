@@ -21,10 +21,10 @@ function addSummonerSuccess(data) {
   }
 }
 
-function addSummonerError(data) {
+function addSummonerError(error) {
   return {
     type: ADD_SUMMONER_ERROR,
-    data
+    error
   }
 }
 
