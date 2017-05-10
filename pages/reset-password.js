@@ -3,6 +3,7 @@
 import { Component } from 'react'
 import withRedux from 'next-redux-wrapper'
 import PropTypes from 'prop-types'
+import Router from 'next/router'
 
 import { isLogged } from './../services/auth'
 import Page from './../layouts/page'
@@ -17,8 +18,14 @@ class ResetPassword extends Component {
     const { fetchAccount } = this.props
 
     if (isLogged()) {
-      fetchAccount()
+      return fetchAccount().then(res => {
+        if (res.error) {
+          Router.push('/profile')
+        }
+      })
     }
+
+    Router.push('/login')
   }
 
   render() {
