@@ -7,9 +7,10 @@ const UiButton = ({
   children,
   type = 'button',
   ui = 'primary',
-  disabled = false
+  disabled = false,
+  customStyle
 }) => (
-  <button type={type} className={ui} disabled={disabled}>
+  <button type={type} className={ui} disabled={disabled} style={customStyle}>
     {children}
 
     <style jsx>{`
@@ -138,7 +139,8 @@ UiButton.propTypes = {
   label: PropTypes.string,
   ui: PropTypes.string,
   type: PropTypes.string,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
+  customStyle: PropTypes.object
 }
 
 export default UiButton
