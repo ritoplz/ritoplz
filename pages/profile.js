@@ -8,20 +8,57 @@ import fetchAccount from './../actions/fetch-account'
 import Page from './../layouts/page'
 import Header from './../components/header'
 import { Row } from './../components/ui'
+import ProfileTitle from './../components/profile-title'
+import SummonerList from './../components/summoner-list'
+import { SpinnerIcon } from './../components/icons'
 import store from './../store/configure-store'
 import { isLogged } from './../services/auth'
 
 class Profile extends Component {
+  constructor() {
+    super()
+
+    this.state = {
+      fetched: false
+    }
+  }
+
   componentDidMount() {
     this.props.fetchAccount()
   }
 
+  componentWillReceiveProps({ summoners }) {
+    this.setState({ summoners, fetched: true })
+  }
+
   render() {
+    let profile
+    if (this.props.requested) {
+      profile = (
+        <section>
+          <ProfileTitle user={this.props.user} />
+          <SummonerList
+            summoners={this.props.summoners}
+            requested={this.props.requested}
+          />
+
+          <style jsx>{`
+            section {
+              padding-top: 50px;
+              padding-bottom: 50px;
+            }
+          `}</style>
+        </section>
+      )
+    } else {
+      profile = <SpinnerIcon />
+    }
+
     return (
       <Page>
         <Header logged={isLogged()} user={this.props.user} />
         <Row>
-          <h1>Profile</h1>
+          {profile}
         </Row>
       </Page>
     )
@@ -30,12 +67,16 @@ class Profile extends Component {
 
 Profile.propTypes = {
   user: PropTypes.object,
-  fetchAccount: PropTypes.func
+  fetchAccount: PropTypes.func,
+  summoners: PropTypes.array,
+  requested: PropTypes.bool
 }
 
 const mapStateToProps = state => {
   return {
-    user: state.account.data.user
+    user: state.account.data.user,
+    summoners: state.account.data.summoners,
+    requested: state.account.requested
   }
 }
 
