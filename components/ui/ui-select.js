@@ -8,7 +8,8 @@ const UiSelect = ({
   placeholder = 'Select...',
   options = [],
   handleSelectChange,
-  label
+  label,
+  inputSelected
 }) => {
   const selectOptions = options.map(({ value, label }) => (
     <option key={value} value={value}>{label}</option>
@@ -21,6 +22,7 @@ const UiSelect = ({
       <SimpleSelect
         placeholder={placeholder}
         onValueChange={value => handleSelectChange(value)}
+        value={inputSelected}
       >
         {selectOptions}
       </SimpleSelect>
@@ -810,8 +812,9 @@ const UiSelect = ({
 UiSelect.propTypes = {
   placeholder: PropTypes.string,
   options: PropTypes.array.isRequired,
-  handleSelectChange: PropTypes.func.isRequired,
-  label: PropTypes.string
+  handleSelectChange: PropTypes.func,
+  label: PropTypes.string,
+  inputSelected: PropTypes.object
 }
 
 export default UiSelect
