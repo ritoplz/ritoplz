@@ -62,7 +62,7 @@ class Profile extends Component {
         </section>
       )
     } else {
-      profile = <SpinnerIcon />
+      profile = <SpinnerIcon customStyle={{ marginTop: '150px' }} />
     }
 
     return (
