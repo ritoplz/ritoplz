@@ -3,6 +3,7 @@
 import { Component } from 'react'
 import withRedux from 'next-redux-wrapper'
 import PropTypes from 'prop-types'
+import Link from 'next/link'
 
 import Page from './../layouts/page'
 import LegalTitle from './../components/legal-title'
@@ -63,6 +64,24 @@ class Faq extends Component {
 
           <LegalText>
             You are able to change you location anytime you want, just note that you will be part of the rankings of the newest selected region. At the moment we allow users to change their location only three times. Please, contact us if you selected the wrong location.
+          </LegalText>
+
+          <LegalHeading>
+            5. How can I confirm my summoner?
+          </LegalHeading>
+
+          <LegalText>
+            We created a dedicated page to help you confirm your summoner, you can find it
+            {' '}
+            <Link href="/how-to"><a>here</a></Link>
+          </LegalText>
+
+          <LegalHeading>
+            6. Why do I need to confirm my summoner?
+          </LegalHeading>
+
+          <LegalText>
+            You need to confirm your summoner so we can make sure that the summoner belongs to you. And the easiest way we found was by creating a Mastery or Runes page on your account with the unique code we provide to each summoner that you add.
           </LegalText>
         </Row>
 
