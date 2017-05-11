@@ -15,6 +15,7 @@ import SummonerList from './../components/summoner-list'
 import { SpinnerIcon } from './../components/icons'
 import store from './../store/configure-store'
 import { isLogged } from './../services/auth'
+import { colors, typography } from './../components/ui/theme'
 
 class Profile extends Component {
   constructor() {
@@ -42,7 +43,22 @@ class Profile extends Component {
   }
 
   componentWillReceiveProps({ summoners }) {
-    this.setState({ summoners, fetched: true })
+    const activeSummoners = []
+    const inactiveSummoners = []
+
+    summoners.map(summoner => {
+      if (summoner.active) {
+        activeSummoners.push(summoner)
+      } else {
+        inactiveSummoners.push(summoner)
+      }
+    })
+
+    this.setState({
+      summoners: activeSummoners,
+      inactiveSummoners,
+      fetched: true
+    })
   }
 
   confirmSummoner({ name }) {
@@ -53,8 +69,12 @@ class Profile extends Component {
   render() {
     let profile
 
-    if (this.props.requested) {
-      const { user, summoners, requested } = this.props
+    if (
+      this.props.requested &&
+      this.state.summoners &&
+      this.state.inactiveSummoners
+    ) {
+      const { user, requested } = this.props
       const location = user.country
         ? `${user.city}, ${user.state} ${user.country}`
         : 'Add your location'
@@ -62,16 +82,72 @@ class Profile extends Component {
       profile = (
         <section>
           <ProfileTitle user={user} location={location} />
-          <SummonerList
-            summoners={summoners}
-            requested={requested}
-            confirmSummoner={this.confirmSummoner}
-          />
+
+          <div className="summoner-list--active">
+            <h2>My summoners</h2>
+            <SummonerList
+              summoners={this.state.summoners}
+              requested={requested}
+            />
+          </div>
+
+          <div className="summoner-list--inactive">
+            <h2>Inactive summoners</h2>
+            <SummonerList
+              summoners={this.state.inactiveSummoners}
+              requested={requested}
+              confirmSummoner={this.confirmSummoner}
+            />
+          </div>
 
           <style jsx>{`
             section {
               padding-top: 50px;
               padding-bottom: 50px;
+            }
+
+            h2 {
+              color: ${colors.gray};
+              font-weight: 400;
+              margin-bottom: 20px;
+              font-size: ${typography.f18}
+            }
+
+            .summoner-list--active {
+              border-bottom: 1px solid ${colors.border};
+              margin-bottom: 30px;
+              padding-bottom: 10px;
+            }
+
+            ul {
+              display: flex;
+              border-bottom: 1px solid ${colors.border};
+              margin-bottom: 40px;
+              margin-top: 40px;
+            }
+
+            li {
+              padding: 12px;
+              font-size: ${typography.f14};
+              margin-right: 35px;
+              text-transform: uppercase;
+              font-weight: 600;
+              color: ${colors.gray};
+              transition: .15s ease-in-out;
+              cursor: pointer;
+            }
+
+            li:hover {
+              color: ${colors.grayDark};
+            }
+
+            .active {
+              color: ${colors.primary};
+              border-bottom: 2px solid ${colors.primary};
+            }
+
+            .active:hover {
+              color: ${colors.primary};
             }
           `}</style>
         </section>

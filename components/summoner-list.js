@@ -41,7 +41,7 @@ const SummonerList = ({ summoners, requested, confirmSummoner }) => {
 SummonerList.propTypes = {
   summoners: PropTypes.array,
   requested: PropTypes.bool,
-  confirmSummoner: PropTypes.func.isRequired
+  confirmSummoner: PropTypes.func
 }
 
 export default SummonerList
