@@ -12,10 +12,6 @@ const RankingHeading = ({ user }) => {
         <strong className="username">{user.name}</strong>
         , you are in
         {' '}
-        <strong>45th</strong>
-        {' '}
-        in
-        {' '}
         <strong>{user.city}, {user.state} — {user.country}</strong>
 
         <style jsx>{`
