@@ -4,12 +4,12 @@ import PropTypes from 'prop-types'
 import Summoner from './summoner'
 import EmptyState from './empty-state'
 
-const SummonerList = ({ summoners, requested }) => {
+const SummonerList = ({ summoners, requested, confirmSummoner }) => {
   let summonerList
 
   if (requested && summoners.length > 0) {
     summonerList = summoners.map(summoner => {
-      return <Summoner summoner={summoner} />
+      return <Summoner summoner={summoner} confirmSummoner={confirmSummoner} />
     })
   } else {
     summonerList = <EmptyState />
@@ -40,7 +40,8 @@ const SummonerList = ({ summoners, requested }) => {
 
 SummonerList.propTypes = {
   summoners: PropTypes.array,
-  requested: PropTypes.bool
+  requested: PropTypes.bool,
+  confirmSummoner: PropTypes.func.isRequired
 }
 
 export default SummonerList

@@ -8,9 +8,16 @@ const UiButton = ({
   type = 'button',
   ui = 'primary',
   disabled = false,
-  customStyle
+  customStyle,
+  onBtnClick
 }) => (
-  <button type={type} className={ui} disabled={disabled} style={customStyle}>
+  <button
+    type={type}
+    className={ui}
+    disabled={disabled}
+    style={customStyle}
+    onClick={onBtnClick}
+  >
     {children}
 
     <style jsx>{`
@@ -140,7 +147,8 @@ UiButton.propTypes = {
   ui: PropTypes.string,
   type: PropTypes.string,
   disabled: PropTypes.bool,
-  customStyle: PropTypes.object
+  customStyle: PropTypes.object,
+  onBtnClick: PropTypes.func
 }
 
 export default UiButton

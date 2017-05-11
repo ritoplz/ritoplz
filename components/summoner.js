@@ -4,13 +4,15 @@ import PropTypes from 'prop-types'
 import SummonerActive from './summoner-active'
 import SummonerInactive from './summoner-inactive'
 
-const Summoner = ({ summoner }) => {
+const Summoner = ({ summoner, confirmSummoner }) => {
   let summonerCard
 
   if (summoner.active) {
     summonerCard = <SummonerActive summoner={summoner} />
   } else {
-    summonerCard = <SummonerInactive summoner={summoner} />
+    summonerCard = (
+      <SummonerInactive summoner={summoner} confirmSummoner={confirmSummoner} />
+    )
   }
 
   return (
@@ -32,7 +34,8 @@ const Summoner = ({ summoner }) => {
 }
 
 Summoner.propTypes = {
-  summoner: PropTypes.object
+  summoner: PropTypes.object,
+  confirmSummoner: PropTypes.func.isRequired
 }
 
 export default Summoner
