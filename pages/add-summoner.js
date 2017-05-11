@@ -4,10 +4,11 @@ import { Component } from 'react'
 import withRedux from 'next-redux-wrapper'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
+import Alert from 'react-s-alert'
 
 import { isLogged } from './../services/auth'
 import Page from './../layouts/page'
-import { UiButton, UiLink, TextInput, Row } from './../components/ui'
+import { UiButton, UiLink, TextInput, Row, Notify } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
 import store from './../store/configure-store'
 import Header from './../components/header'
@@ -40,7 +41,7 @@ class AddSummoner extends Component {
     const summoner = { name: this.summoner.value }
     addSummoner(summoner).then(({ data, error }) => {
       if (error) {
-        return console.log('Error', error)
+        return Alert.error(error)
       }
 
       Router.push({
@@ -78,6 +79,8 @@ class AddSummoner extends Component {
               Back to profile
             </UiLink>
           </form>
+
+          <Notify />
         </Row>
 
         <style jsx>{`
