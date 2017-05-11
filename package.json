@@ -32,6 +32,7 @@
     "react-dom": "^15.5.4",
     "react-infinite-scroller": "^1.0.10",
     "react-redux": "^5.0.4",
+    "react-s-alert": "^1.3.0",
     "react-selectize": "^2.1.0",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
