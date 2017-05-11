@@ -8,8 +8,14 @@ const SummonerList = ({ summoners, requested, confirmSummoner }) => {
   let summonerList
 
   if (requested && summoners.length > 0) {
-    summonerList = summoners.map(summoner => {
-      return <Summoner summoner={summoner} confirmSummoner={confirmSummoner} />
+    summonerList = summoners.map((summoner, index) => {
+      return (
+        <Summoner
+          key={index + summoner.name}
+          summoner={summoner}
+          confirmSummoner={confirmSummoner}
+        />
+      )
     })
   } else {
     summonerList = <EmptyState />

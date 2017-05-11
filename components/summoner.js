@@ -45,7 +45,7 @@ const Summoner = ({ summoner, confirmSummoner }) => {
 
 Summoner.propTypes = {
   summoner: PropTypes.object,
-  confirmSummoner: PropTypes.func.isRequired
+  confirmSummoner: PropTypes.func
 }
 
 export default Summoner
