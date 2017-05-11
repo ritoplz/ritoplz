@@ -5,11 +5,12 @@ import withRedux from 'next-redux-wrapper'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 import Router from 'next/router'
-import fetchAccount from './../actions/fetch-account'
+import Alert from 'react-s-alert'
 
+import fetchAccount from './../actions/fetch-account'
 import Page from './../layouts/page'
 import Header from './../components/header'
-import { UiButton, TextInput, Row } from './../components/ui'
+import { UiButton, TextInput, Row, Notify } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
 import store from './../store/configure-store'
 import { isLogged } from './../services/auth'
@@ -47,7 +48,13 @@ class SudoMode extends Component {
       const password = this.password.value
       const data = { name, newEmail, password }
 
-      editUser(data).then(() => Router.push('/profile'))
+      editUser(data).then(({ error }) => {
+        if (error) {
+          return Alert.error(error)
+        }
+
+        Router.push('/profile')
+      })
     }
   }
 
@@ -81,6 +88,8 @@ class SudoMode extends Component {
               Confirm password
             </UiButton>
           </form>
+
+          <Notify />
 
           <style jsx>{`
             h2 {
