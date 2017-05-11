@@ -4,10 +4,11 @@ import { Component } from 'react'
 import withRedux from 'next-redux-wrapper'
 import PropTypes from 'prop-types'
 import InfiniteScroll from 'react-infinite-scroller'
+import Alert from 'react-s-alert'
 
 import store from './../store/configure-store'
 import Page from './../layouts/page'
-import { Row, UiSelect } from './../components/ui'
+import { Row, UiSelect, Notify } from './../components/ui'
 import RankingUser from './../components/ranking-user'
 import RankingHeading from './../components/ranking-heading'
 import Header from './../components/header'
@@ -53,7 +54,7 @@ class Rankings extends Component {
       }
 
       if (error) {
-        console.log('ERROR', error)
+        Alert.error(error)
       }
 
       this.onFetchRankings(sQuery)
@@ -79,9 +80,9 @@ class Rankings extends Component {
           return
         }
 
-        console.log('ERROR', error)
+        Alert.error(error)
       })
-      .catch(err => console.log('err', err))
+      .catch(err => Alert.error(err))
   }
 
   loadItems() {
@@ -201,6 +202,8 @@ class Rankings extends Component {
               {rankings}
             </div>
           </InfiniteScroll>
+
+          <Notify />
         </Row>
 
         <style jsx>{`
