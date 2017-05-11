@@ -2,16 +2,17 @@
 
 import PropTypes from 'prop-types'
 import Summoner from './summoner'
+import EmptyState from './empty-state'
 
 const SummonerList = ({ summoners, requested }) => {
   let summonerList
 
-  if (requested && summoners) {
+  if (requested && summoners.length > 0) {
     summonerList = summoners.map(summoner => {
       return <Summoner summoner={summoner} />
     })
   } else {
-    summonerList = <h1>No summoners</h1>
+    summonerList = <EmptyState />
   }
 
   return (
