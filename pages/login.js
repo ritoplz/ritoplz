@@ -8,12 +8,13 @@ import goot from 'goot'
 import withRedux from 'next-redux-wrapper'
 import Router from 'next/router'
 import Link from 'next/link'
+import Alert from 'react-s-alert'
 
 import Page from './../layouts/page'
 import RegisterSidebar from './../components/register-sidebar'
 import RegisterMain from './../components/register-main'
 import RegisterFooter from './../components/register-footer'
-import { UiButton, UiLink, TextInput } from './../components/ui'
+import { UiButton, UiLink, TextInput, Notify } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
 import store from './../store/configure-store'
 import loginRequest from './../actions/login'
@@ -47,9 +48,9 @@ class Login extends Component {
           return Router.push('/profile')
         }
 
-        return console.log(error)
+        return Alert.error(error)
       })
-      .catch(err => console.log(err))
+      .catch(err => Alert.error(err))
   }
 
   render() {
@@ -105,6 +106,8 @@ class Login extends Component {
               <UiButton ui="success block" type="submit">Login</UiButton>
             </form>
           </RegisterMain>
+
+          <Notify />
         </div>
 
         <style jsx>{`

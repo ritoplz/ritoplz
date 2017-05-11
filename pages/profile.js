@@ -4,12 +4,13 @@ import { Component } from 'react'
 import withRedux from 'next-redux-wrapper'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
+import Alert from 'react-s-alert'
 
 import fetchAccount from './../actions/fetch-account'
 import confirmSummoner from './../actions/confirm-summoner'
 import Page from './../layouts/page'
 import Header from './../components/header'
-import { Row } from './../components/ui'
+import { Row, Notify } from './../components/ui'
 import ProfileTitle from './../components/profile-title'
 import SummonerList from './../components/summoner-list'
 import { SpinnerIcon } from './../components/icons'
@@ -63,7 +64,17 @@ class Profile extends Component {
 
   confirmSummoner({ name }) {
     const { confirmSummoner } = this.props
-    confirmSummoner(name).then(({ data }) => console.log(data))
+    confirmSummoner(name).then(({ data, error }) => {
+      if (data) {
+        return Alert.error('Summoner confirmed')
+      }
+
+      if (error) {
+        return Alert.error(error)
+      }
+
+      return Alert.error('Summoner not confirmed yet')
+    })
   }
 
   render() {
@@ -161,6 +172,8 @@ class Profile extends Component {
         <Header logged={isLogged()} user={this.props.user} />
         <Row>
           {profile}
+
+          <Notify />
         </Row>
       </Page>
     )

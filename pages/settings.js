@@ -4,6 +4,7 @@ import { Component } from 'react'
 import PropTypes from 'prop-types'
 import withRedux from 'next-redux-wrapper'
 import Router from 'next/router'
+import Alert from 'react-s-alert'
 
 import store from './../store/configure-store'
 import Page from './../layouts/page'
@@ -15,7 +16,8 @@ import {
   SocialButton,
   UiButton,
   DividerOr,
-  UiSelect
+  UiSelect,
+  Notify
 } from './../components/ui'
 import Header from './../components/header'
 import { colors } from './../components/ui/theme'
@@ -81,7 +83,7 @@ class Settings extends Component {
 
               locations[country.value][stateIndex].cities.filter(city => {
                 if (city.label === nextProps.user.city) {
-                  this.setState({ citySelected: city })
+                  this.setState({ citySelected: city, city: city.label })
                 }
               })
             }
@@ -128,6 +130,14 @@ class Settings extends Component {
       }
 
       return editUser(userData)
+        .then(({ data, error }) => {
+          if (error) {
+            return Alert.error(error)
+          }
+
+          Alert.success(data.message)
+        })
+        .catch(err => Alert.error(err))
     }
 
     Router.push({
@@ -273,6 +283,8 @@ class Settings extends Component {
 
             <FormControl />
           </form>
+
+          <Notify />
         </Row>
 
         <style jsx>{`
