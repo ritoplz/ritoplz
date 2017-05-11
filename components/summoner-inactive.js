@@ -8,13 +8,17 @@ const style = {
   marginTop: '20px'
 }
 
-const SummonerInactive = ({ summoner }) => (
+const SummonerInactive = ({ summoner, confirmSummoner }) => (
   <div>
     <div className="summoner-status">
       <h3 className="summoner__name">{summoner.name}</h3>
       <p className="summoner__code">Code: {summoner.code}</p>
 
-      <UiButton ui="success block small" customStyle={style}>
+      <UiButton
+        ui="success block small"
+        customStyle={style}
+        onBtnClick={() => confirmSummoner(summoner)}
+      >
         Confirm summoner
       </UiButton>
     </div>
@@ -47,7 +51,8 @@ const SummonerInactive = ({ summoner }) => (
 )
 
 SummonerInactive.propTypes = {
-  summoner: PropTypes.object
+  summoner: PropTypes.object,
+  confirmSummoner: PropTypes.func.isRequired
 }
 
 export default SummonerInactive

@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import Router from 'next/router'
 
 import fetchAccount from './../actions/fetch-account'
+import confirmSummoner from './../actions/confirm-summoner'
 import Page from './../layouts/page'
 import Header from './../components/header'
 import { Row } from './../components/ui'
@@ -18,6 +19,8 @@ import { isLogged } from './../services/auth'
 class Profile extends Component {
   constructor() {
     super()
+
+    this.confirmSummoner = this.confirmSummoner.bind(this)
 
     this.state = {
       fetched: false
@@ -42,6 +45,11 @@ class Profile extends Component {
     this.setState({ summoners, fetched: true })
   }
 
+  confirmSummoner({ name }) {
+    const { confirmSummoner } = this.props
+    confirmSummoner(name).then(({ data }) => console.log(data))
+  }
+
   render() {
     let profile
     if (this.props.requested) {
@@ -51,6 +59,7 @@ class Profile extends Component {
           <SummonerList
             summoners={this.props.summoners}
             requested={this.props.requested}
+            confirmSummoner={this.confirmSummoner}
           />
 
           <style jsx>{`
@@ -80,7 +89,8 @@ Profile.propTypes = {
   user: PropTypes.object,
   fetchAccount: PropTypes.func,
   summoners: PropTypes.array,
-  requested: PropTypes.bool
+  requested: PropTypes.bool,
+  confirmSummoner: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => {
@@ -93,7 +103,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchAccount: () => dispatch(fetchAccount())
+    fetchAccount: () => dispatch(fetchAccount()),
+    confirmSummoner: summoner => dispatch(confirmSummoner(summoner))
   }
 }
 
