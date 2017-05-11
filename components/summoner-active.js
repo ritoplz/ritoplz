@@ -5,7 +5,7 @@ import { Badge } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
 
 const SummonerActive = ({ summoner }) => (
-  <div>
+  <div className="summoner">
     <img
       className="summoner__avatar"
       src={`https://ddragon.leagueoflegends.com/cdn/7.8.1/img/profileicon/${summoner.profileIconId}.png`}
