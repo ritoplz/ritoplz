@@ -4,10 +4,11 @@ import { Component } from 'react'
 import withRedux from 'next-redux-wrapper'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
+import Alert from 'react-s-alert'
 
 import { isLogged } from './../services/auth'
 import Page from './../layouts/page'
-import { UiButton, TextInput, Row } from './../components/ui'
+import { UiButton, TextInput, Row, Notify } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
 import store from './../store/configure-store'
 import Header from './../components/header'
@@ -15,25 +16,41 @@ import fetchAccount from './../actions/fetch-account'
 import resetPassword from './../actions/reset-password'
 
 class ResetPassword extends Component {
+  constructor() {
+    super()
+
+    this.resetPassword = this.resetPassword.bind(this)
+  }
+
   componentDidMount() {
     const { fetchAccount } = this.props
 
     if (isLogged()) {
       return fetchAccount().then(res => {
         if (res.error) {
-          Router.push('/profile')
+          Router.push('/login')
         }
       })
     }
-
-    Router.push('/login')
   }
 
-  resetPassword() {
+  resetPassword(e) {
+    e.preventDefault()
     const { resetPassword } = this.props
     const userData = { email: this.email }
 
-    resetPassword(userData)
+    resetPassword(userData).then(({ data, error }) => {
+      if (data) {
+        Alert.success('Instructions sent to your email.')
+        Router.push('/login')
+      }
+
+      if (error) {
+        Alert.error(
+          'We were not able to reset your password at the moment, please contact us.'
+        )
+      }
+    })
   }
 
   render() {
@@ -46,7 +63,7 @@ class ResetPassword extends Component {
             Forgot your password? Happens all the time. Enter your email below to reset it.
           </p>
 
-          <form>
+          <form onSubmit={this.resetPassword}>
             <TextInput
               label="Email"
               placeholder="ritoplz@gmail.com"
@@ -58,6 +75,8 @@ class ResetPassword extends Component {
 
             <UiButton ui="primary block" type="submit">Reset password</UiButton>
           </form>
+
+          <Notify />
         </Row>
 
         <style jsx>{`
