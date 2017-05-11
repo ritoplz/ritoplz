@@ -1,14 +1,15 @@
 'use strict'
 
 import PropTypes from 'prop-types'
+import Link from 'next/link'
 import { UiLink } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
 
-const ProfileTitle = ({ user }) => (
+const ProfileTitle = ({ user, location }) => (
   <div className="profile-title">
     <div>
       <h1>{user.name}</h1>
-      <span>{user.city}, {user.state} — {user.country}</span>
+      <Link href="/settings"><span>{location}</span></Link>
     </div>
 
     <UiLink href="/add-summoner" ui="primary small">Add new summoner</UiLink>
@@ -33,13 +34,15 @@ const ProfileTitle = ({ user }) => (
         font-weight: 500;
         margin-top: 5px;
         display: block;
+        cursor: pointer;
       }
     `}</style>
   </div>
 )
 
 ProfileTitle.propTypes = {
-  user: PropTypes.object
+  user: PropTypes.object,
+  location: PropTypes.string
 }
 
 export default ProfileTitle

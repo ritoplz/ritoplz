@@ -52,13 +52,19 @@ class Profile extends Component {
 
   render() {
     let profile
+
     if (this.props.requested) {
+      const { user, summoners, requested } = this.props
+      const location = user.country
+        ? `${user.city}, ${user.state} ${user.country}`
+        : 'Add your location'
+
       profile = (
         <section>
-          <ProfileTitle user={this.props.user} />
+          <ProfileTitle user={user} location={location} />
           <SummonerList
-            summoners={this.props.summoners}
-            requested={this.props.requested}
+            summoners={summoners}
+            requested={requested}
             confirmSummoner={this.confirmSummoner}
           />
 
