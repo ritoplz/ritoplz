@@ -4,27 +4,27 @@ import api from './../services/api'
 
 import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_ERROR } from './../constants'
 
-function loginRequest() {
+export function loginRequest() {
   return {
     type: LOGIN_REQUEST
   }
 }
 
-function loginSuccess(data) {
+export function loginSuccess(data) {
   return {
     type: LOGIN_SUCCESS,
     data
   }
 }
 
-function loginError(error) {
+export function loginError(error) {
   return {
     type: LOGIN_ERROR,
     error
   }
 }
 
-function handleLogin(data) {
+export function handleLogin(data) {
   return dispatch => {
     dispatch(loginRequest())
     return api
@@ -33,5 +33,3 @@ function handleLogin(data) {
       .catch(err => dispatch(loginError(err.message)))
   }
 }
-
-export default handleLogin

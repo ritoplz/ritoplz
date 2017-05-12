@@ -5,8 +5,10 @@
 import axios from 'axios'
 import { getToken, isLogged } from './auth'
 
+const apiUrl = API_URL || 'localhost:3001'
+
 const api = axios.create({
-  baseURL: API_URL,
+  baseURL: apiUrl,
   headers: {
     Accept: 'application/json'
   }
