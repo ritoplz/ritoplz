@@ -8,35 +8,33 @@ import {
   RESET_PASSWORD_ERROR
 } from './../constants'
 
-function resetPassowordRequest() {
+export function resetPasswordRequest() {
   return {
     type: RESET_PASSWORD_REQUEST
   }
 }
 
-function resetPassowordSuccess(data) {
+export function resetPasswordSuccess(data) {
   return {
     type: RESET_PASSWORD_SUCCESS,
     data
   }
 }
 
-function resetPassowordError(error) {
+export function resetPasswordError(error) {
   return {
     type: RESET_PASSWORD_ERROR,
     error
   }
 }
 
-function resetPassword(data) {
+export function resetPassword(data) {
   return dispatch => {
-    dispatch(resetPassowordRequest())
+    dispatch(resetPasswordRequest())
 
     return api
       .post('/reset', data)
-      .then(res => dispatch(resetPassowordSuccess(res)))
-      .catch(err => dispatch(resetPassowordError(err)))
+      .then(res => dispatch(resetPasswordSuccess(res)))
+      .catch(err => dispatch(resetPasswordError(err)))
   }
 }
-
-export default resetPassword
