@@ -33,8 +33,9 @@ export default (state = initialState, action) => {
       return {
         ...state,
         requesting: false,
-        error: 'FUCK ME',
-        data: {summoners: []}
+        requested: true,
+        error: action.error,
+        data: { summoners: [] }
       }
 
     default:

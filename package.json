@@ -13,7 +13,7 @@
     "build": "next build",
     "start": "next start",
     "precommit": "lint-staged",
-    "test": "npm run lint",
+    "test": "npm run lint && node_modules/.bin/jest",
     "lint": "node_modules/.bin/xo"
   },
   "dependencies": {
@@ -40,24 +40,45 @@
   },
   "devDependencies": {
     "babel-plugin-transform-define": "^1.2.0",
+    "enzyme": "^2.8.2",
     "eslint-config-prettier": "^1.7.0",
     "eslint-plugin-react": "^6.10.3",
     "husky": "^0.13.3",
+    "jest": "^20.0.1",
     "lint-staged": "^3.4.1",
     "prettier": "^1.2.2",
+    "react-addons-test-utils": "^15.5.1",
+    "react-test-renderer": "^15.5.4",
     "redux-logger": "^3.0.1",
     "xo": "^0.18.1"
   },
   "babel": {
-    "presets": [
-      "next/babel"
-    ],
-    "plugins": [
-      [
-        "transform-define",
-        "./env-config.js"
-      ]
-    ]
+    "env": {
+      "development": {
+        "presets": "next/babel",
+        "plugins": [[
+          "transform-define",
+          "./env-config.js"
+        ]]
+      },
+      "production": {
+        "presets": "next/babel",
+        "plugins": [[
+          "transform-define",
+          "./env-config.js"
+        ]]
+      },
+      "test": {
+        "presets": [
+          ["env", { "modules": "commonjs" }],
+          "next/babel"
+        ],
+        "plugins": [[
+          "transform-define",
+          "./env-config.js"
+        ]]
+      }
+    }
   },
   "xo": {
     "extends": [

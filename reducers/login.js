@@ -26,6 +26,7 @@ export default (state = initialState, action) => {
     case LOGIN_ERROR:
       return Object.assign({}, state, {
         requesting: false,
+        requested: true,
         error: action.error
       })
 
