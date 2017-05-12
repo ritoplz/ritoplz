@@ -14,7 +14,7 @@ import { UiButton, TextInput, Row, Notify } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
 import store from './../store/configure-store'
 import { isLogged } from './../services/auth'
-import editUser from './../actions/edit-user'
+import { editUser } from './../actions/edit-user'
 
 class SudoMode extends Component {
   constructor() {
