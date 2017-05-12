@@ -8,27 +8,27 @@ import {
   RANKINGS_ERROR
 } from './../constants'
 
-function rankingsRequest() {
+export function rankingsRequest() {
   return {
     type: RANKINGS_REQUEST
   }
 }
 
-function rankingsSuccess(data) {
+export function rankingsSuccess(data) {
   return {
     type: RANKINGS_SUCCESS,
     data
   }
 }
 
-function rankingsError(error) {
+export function rankingsError(error) {
   return {
     type: RANKINGS_ERROR,
     error
   }
 }
 
-function fetchRankings(params) {
+export function fetchRankings(params) {
   return dispatch => {
     dispatch(rankingsRequest())
 
@@ -47,5 +47,3 @@ function fetchRankings(params) {
       .catch(err => dispatch(rankingsError(err)))
   }
 }
-
-export default fetchRankings
