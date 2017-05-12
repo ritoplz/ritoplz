@@ -16,7 +16,7 @@ import RegisterFooter from './../components/register-footer'
 import { UiButton, UiLink, TextInput, Notify } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
 import store from './../store/configure-store'
-import signupRequest from './../actions/signup'
+import { onSignup } from './../actions/signup'
 import { setToken } from './../services/auth'
 
 class Signup extends Component {
@@ -184,7 +184,7 @@ Signup.propTypes = {
 
 const mapDispatchToProps = dispatch => {
   return {
-    signupRequest: userData => dispatch(signupRequest(userData))
+    signupRequest: userData => dispatch(onSignup(userData))
   }
 }
 

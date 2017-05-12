@@ -4,27 +4,27 @@ import api from './../services/api'
 
 import { ACCOUNT_REQUEST, ACCOUNT_SUCCESS, ACCOUNT_ERROR } from './../constants'
 
-function accountRequest() {
+export function accountRequest() {
   return {
     type: ACCOUNT_REQUEST
   }
 }
 
-function accountSuccess(data) {
+export function accountSuccess(data) {
   return {
     type: ACCOUNT_SUCCESS,
     data
   }
 }
 
-function accountError(error) {
+export function accountError(error) {
   return {
     type: ACCOUNT_ERROR,
     error
   }
 }
 
-function fetchAccount() {
+export function fetchAccount() {
   return dispatch => {
     dispatch(accountRequest())
     return api
@@ -33,5 +33,3 @@ function fetchAccount() {
       .catch(err => dispatch(accountError(err)))
   }
 }
-
-export default fetchAccount

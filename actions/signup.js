@@ -4,27 +4,27 @@ import api from './../services/api'
 
 import { SIGNUP_REQUEST, SIGNUP_SUCCESS, SIGNUP_ERROR } from './../constants'
 
-function signupRequest() {
+export function signupRequest() {
   return {
     type: SIGNUP_REQUEST
   }
 }
 
-function signupSuccess(data) {
+export function signupSuccess(data) {
   return {
     type: SIGNUP_SUCCESS,
     data
   }
 }
 
-function signupError(error) {
+export function signupError(error) {
   return {
     type: SIGNUP_ERROR,
     error
   }
 }
 
-function handleSignup(userData) {
+export function onSignup(userData) {
   return dispatch => {
     dispatch(signupRequest())
     return api
@@ -33,5 +33,3 @@ function handleSignup(userData) {
       .catch(err => dispatch(signupError(err.message)))
   }
 }
-
-export default handleSignup

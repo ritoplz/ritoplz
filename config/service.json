@@ -1,4 +1,5 @@
 {
+  "test": "http://localhost:3001",
   "development": "http://localhost:3001",
   "staging": "https://staging.ritoplz.com",
   "production": "https://api.ritoplz.com"

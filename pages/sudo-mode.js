@@ -7,14 +7,14 @@ import Link from 'next/link'
 import Router from 'next/router'
 import Alert from 'react-s-alert'
 
-import fetchAccount from './../actions/fetch-account'
+import { fetchAccount } from './../actions/fetch-account'
 import Page from './../layouts/page'
 import Header from './../components/header'
 import { UiButton, TextInput, Row, Notify } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
 import store from './../store/configure-store'
 import { isLogged } from './../services/auth'
-import editUser from './../actions/edit-user'
+import { editUser } from './../actions/edit-user'
 
 class SudoMode extends Component {
   constructor() {

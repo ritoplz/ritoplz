@@ -8,29 +8,29 @@ import {
   EDIT_USER_ERROR
 } from './../constants'
 
-function editUser() {
+export function editUserRequest() {
   return {
     type: EDIT_USER_REQUEST
   }
 }
 
-function editUserSuccess(data) {
+export function editUserSuccess(data) {
   return {
     type: EDIT_USER_SUCCESS,
     data
   }
 }
 
-function editUserError(error) {
+export function editUserError(error) {
   return {
     type: EDIT_USER_ERROR,
     error
   }
 }
 
-function handleEditUser(user) {
+export function editUser(user) {
   return dispatch => {
-    dispatch(editUser())
+    dispatch(editUserRequest())
     return api({
       method: 'put',
       url: '/account',
@@ -40,5 +40,3 @@ function handleEditUser(user) {
       .catch(err => dispatch(editUserError(err.message)))
   }
 }
-
-export default handleEditUser

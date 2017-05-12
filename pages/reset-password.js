@@ -12,8 +12,8 @@ import { UiButton, TextInput, Row, Notify } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
 import store from './../store/configure-store'
 import Header from './../components/header'
-import fetchAccount from './../actions/fetch-account'
-import resetPassword from './../actions/reset-password'
+import { fetchAccount } from './../actions/fetch-account'
+import { resetPassword } from './../actions/reset-password'
 
 class ResetPassword extends Component {
   constructor() {

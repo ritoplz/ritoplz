@@ -22,8 +22,8 @@ import {
 import Header from './../components/header'
 import { colors } from './../components/ui/theme'
 import { locations, countries } from './../services/places'
-import fetchAccount from './../actions/fetch-account'
-import editUser from './../actions/edit-user'
+import { fetchAccount } from './../actions/fetch-account'
+import { editUser } from './../actions/edit-user'
 import { isLogged } from './../services/auth'
 
 class Settings extends Component {
