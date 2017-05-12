@@ -17,7 +17,7 @@ import RegisterFooter from './../components/register-footer'
 import { UiButton, UiLink, TextInput, Notify } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
 import store from './../store/configure-store'
-import { loginRequest } from './../actions/login'
+import { onLogin } from './../actions/login'
 import { setToken } from './../services/auth'
 
 class Login extends Component {
@@ -170,7 +170,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    loginRequest: userData => dispatch(loginRequest(userData))
+    loginRequest: userData => dispatch(onLogin(userData))
   }
 }
 

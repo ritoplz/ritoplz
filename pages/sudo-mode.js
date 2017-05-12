@@ -7,7 +7,7 @@ import Link from 'next/link'
 import Router from 'next/router'
 import Alert from 'react-s-alert'
 
-import fetchAccount from './../actions/fetch-account'
+import { fetchAccount } from './../actions/fetch-account'
 import Page from './../layouts/page'
 import Header from './../components/header'
 import { UiButton, TextInput, Row, Notify } from './../components/ui'

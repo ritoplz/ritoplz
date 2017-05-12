@@ -12,7 +12,7 @@ import Header from './../components/header'
 import { Row } from './../components/ui'
 import store from './../store/configure-store'
 import { isLogged } from './../services/auth'
-import fetchAccount from './../actions/fetch-account'
+import { fetchAccount } from './../actions/fetch-account'
 import { colors } from './../components/ui/theme'
 
 class Privacy extends Component {

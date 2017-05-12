@@ -33,5 +33,3 @@ export function fetchAccount() {
       .catch(err => dispatch(accountError(err)))
   }
 }
-
-export default fetchAccount

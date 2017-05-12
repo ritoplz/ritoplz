@@ -24,7 +24,7 @@ export function loginError(error) {
   }
 }
 
-export function handleLogin(data) {
+export function onLogin(data) {
   return dispatch => {
     dispatch(loginRequest())
     return api

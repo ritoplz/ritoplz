@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import Router from 'next/router'
 import Alert from 'react-s-alert'
 
-import fetchAccount from './../actions/fetch-account'
+import { fetchAccount } from './../actions/fetch-account'
 import confirmSummoner from './../actions/confirm-summoner'
 import Page from './../layouts/page'
 import Header from './../components/header'

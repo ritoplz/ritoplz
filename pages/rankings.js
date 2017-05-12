@@ -14,7 +14,7 @@ import RankingHeading from './../components/ranking-heading'
 import Header from './../components/header'
 import { SpinnerIcon } from './../components/icons'
 import fetchRankings from './../actions/fetch-rankings'
-import fetchAccount from './../actions/fetch-account'
+import { fetchAccount } from './../actions/fetch-account'
 import { isLogged } from './../services/auth'
 import { locations, countries } from './../services/places'
 
