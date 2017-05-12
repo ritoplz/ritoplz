@@ -28,7 +28,7 @@ export function addSummonerError(error) {
   }
 }
 
-export function handleAddSummoner(summoner) {
+export function addSummoner(summoner) {
   return dispatch => {
     dispatch(addSummonerRequest())
     return api({

@@ -7,7 +7,7 @@ import Router from 'next/router'
 import Alert from 'react-s-alert'
 
 import { fetchAccount } from './../actions/fetch-account'
-import confirmSummoner from './../actions/confirm-summoner'
+import { confirmSummoner } from './../actions/confirm-summoner'
 import Page from './../layouts/page'
 import Header from './../components/header'
 import { Row, Notify } from './../components/ui'

@@ -8,27 +8,27 @@ import {
   CONFIRM_SUMMONER_ERROR
 } from './../constants'
 
-function confirmSummonerRequest() {
+export function confirmSummonerRequest() {
   return {
     type: CONFIRM_SUMMONER_REQUEST
   }
 }
 
-function confirmSummonerSuccess(data) {
+export function confirmSummonerSuccess(data) {
   return {
     type: CONFIRM_SUMMONER_SUCCESS,
     data
   }
 }
 
-function confirmSummonerError(error) {
+export function confirmSummonerError(error) {
   return {
     type: CONFIRM_SUMMONER_ERROR,
     error
   }
 }
 
-function handleConfirmSummoner(summoner) {
+export function confirmSummoner(summoner) {
   const data = { name: summoner }
 
   return dispatch => {
@@ -42,5 +42,3 @@ function handleConfirmSummoner(summoner) {
       .catch(err => dispatch(confirmSummonerError(err.message)))
   }
 }
-
-export default handleConfirmSummoner
