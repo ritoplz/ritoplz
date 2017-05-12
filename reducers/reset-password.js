@@ -30,6 +30,7 @@ export default (state = initialState, action) => {
     case RESET_PASSWORD_ERROR:
       return Object.assign({}, state, {
         requesting: false,
+        requested: true,
         error: action.error
       })
 
