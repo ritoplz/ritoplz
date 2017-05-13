@@ -20,6 +20,7 @@ import {
   Notify
 } from './../components/ui'
 import Header from './../components/header'
+import PageTitle from './../components/page-title'
 import { colors } from './../components/ui/theme'
 import { locations, countries } from './../services/places'
 import { fetchAccount } from './../actions/fetch-account'
@@ -165,7 +166,7 @@ class Settings extends Component {
       <Page>
         <Header logged={isLogged()} user={this.props.user} />
         <Row>
-          <h2 className="page-title">Settings</h2>
+          <PageTitle title="Settings" />
 
           <form onSubmit={this.handleEditUser}>
             <Fieldset
@@ -288,14 +289,7 @@ class Settings extends Component {
         </Row>
 
         <style jsx>{`
-          .page-title {
-            margin-top: 50px;
-            color: ${colors.heading};
-            font-weight: 600;
-          }
-
           form {
-            padding-top: 50px;
             padding-bottom: 50px;
           }
 
