@@ -12,7 +12,7 @@ const SummonersActive = ({ summoners }) => {
       const { name, profileIconId, rankedSolo } = summoner
 
       return (
-        <li>
+        <li key={summoner._id}>
           <img
             src={`https://ddragon.leagueoflegends.com/cdn/7.8.1/img/profileicon/${profileIconId}.png`}
             alt={name}

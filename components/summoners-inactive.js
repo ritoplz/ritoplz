@@ -12,7 +12,7 @@ const SummonersInactive = ({ summoners, confirmSummoner }) => {
       const { name, code } = summoner
 
       return (
-        <li onClick={() => confirmSummoner(summoner)}>
+        <li key={summoner.code} onClick={() => confirmSummoner(summoner)}>
           <div>
             <h4>{name}</h4>
             <span>Code: {code}</span>
