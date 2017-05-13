@@ -6,17 +6,19 @@ import PropTypes from 'prop-types'
 import Router from 'next/router'
 import Alert from 'react-s-alert'
 
-import { fetchAccount } from './../actions/fetch-account'
-import { confirmSummoner } from './../actions/confirm-summoner'
 import Page from './../layouts/page'
+
 import Header from './../components/header'
 import PageTitle from './../components/page-title'
-import { Row, Notify } from './../components/ui'
-import SummonerList from './../components/summoner-list'
+import ActiveSummoners from './../components/summoners-active'
+import InactiveSummoners from './../components/summoners-inactive'
 import { SpinnerIcon } from './../components/icons'
+import { Row, Notify, UiLink } from './../components/ui'
+
 import store from './../store/configure-store'
+import { fetchAccount } from './../actions/fetch-account'
+import { confirmSummoner } from './../actions/confirm-summoner'
 import { isLogged } from './../services/auth'
-import { colors, typography } from './../components/ui/theme'
 
 class MySummoners extends Component {
   constructor() {
@@ -78,83 +80,44 @@ class MySummoners extends Component {
   }
 
   render() {
-    let profile
+    let mySummoners
 
     if (
       this.props.requested &&
       this.state.summoners &&
       this.state.inactiveSummoners
     ) {
-      const { requested } = this.props
-
-      profile = (
-        <section>
-          <div className="summoner-list--active">
-            <PageTitle title="My summoners" />
-            <SummonerList
-              summoners={this.state.summoners}
-              requested={requested}
-            />
-          </div>
-
-          <div className="summoner-list--inactive">
-            <PageTitle title="Inactive summoners" />
-            <SummonerList
-              summoners={this.state.inactiveSummoners}
-              requested={requested}
-              confirmSummoner={this.confirmSummoner}
-            />
-          </div>
+      mySummoners = (
+        <div>
+          <ActiveSummoners summoners={this.state.summoners} />
+          <InactiveSummoners
+            summoners={this.state.inactiveSummoners}
+            confirmSummoner={this.confirmSummoner}
+          />
 
           <style jsx>{`
-            .summoner-list--active {
-              border-bottom: 1px solid ${colors.border};
-              margin-bottom: 30px;
-              padding-bottom: 10px;
-            }
-
-            ul {
+            div {
               display: flex;
-              border-bottom: 1px solid ${colors.border};
-              margin-bottom: 40px;
-              margin-top: 40px;
-            }
-
-            li {
-              padding: 12px;
-              font-size: ${typography.f14};
-              margin-right: 35px;
-              text-transform: uppercase;
-              font-weight: 600;
-              color: ${colors.gray};
-              transition: .15s ease-in-out;
-              cursor: pointer;
-            }
-
-            li:hover {
-              color: ${colors.grayDark};
-            }
-
-            .active {
-              color: ${colors.primary};
-              border-bottom: 2px solid ${colors.primary};
-            }
-
-            .active:hover {
-              color: ${colors.primary};
+              justify-content: space-between;
             }
           `}</style>
-        </section>
+        </div>
       )
     } else {
-      profile = <SpinnerIcon customStyle={{ marginTop: '150px' }} />
+      mySummoners = <SpinnerIcon customStyle={{ marginTop: '150px' }} />
     }
 
     return (
       <Page>
         <Header logged={isLogged()} user={this.props.user} />
         <Row>
-          {profile}
+          <PageTitle title="My summoners">
+            <UiLink href="/add-summoner" ui="primary small">
+              Add new summoner
+            </UiLink>
+          </PageTitle>
+
+          {mySummoners}
 
           <Notify />
         </Row>
