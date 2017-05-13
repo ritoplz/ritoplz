@@ -5,22 +5,30 @@ import withRedux from 'next-redux-wrapper'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
 
-import { fetchAccount } from './../actions/fetch-account'
-import { confirmSummoner } from './../actions/confirm-summoner'
 import Page from './../layouts/page'
+
 import PageTitle from './../components/page-title'
 import Header from './../components/header'
+import Summoners from './../components/summoners'
+import Stats from './../components/stats'
+import LatestMatches from './../components/latest-matches'
 import { Row, Notify } from './../components/ui'
 import { SpinnerIcon } from './../components/icons'
-import store from './../store/configure-store'
+
 import { isLogged } from './../services/auth'
+import store from './../store/configure-store'
+import { fetchAccount } from './../actions/fetch-account'
+import { confirmSummoner } from './../actions/confirm-summoner'
 
 class Profile extends Component {
   constructor() {
     super()
 
+    this.selectSummoner = this.selectSummoner.bind(this)
+
     this.state = {
-      fetched: false
+      fetched: false,
+      summonerSelected: 0
     }
   }
 
@@ -53,20 +61,29 @@ class Profile extends Component {
     })
   }
 
+  selectSummoner(summonerSelected) {
+    this.setState({ summonerSelected })
+  }
+
   render() {
     let profile
 
     if (this.props.requested && this.state.summoners) {
       profile = (
-        <section>
-          <PageTitle title="My summoners" />
+        <div>
+          <PageTitle title="Summoners" />
+          <Summoners
+            summoners={this.state.summoners}
+            summonerSelected={this.state.summonerSelected}
+            selectSummoner={index => this.selectSummoner(index)}
+          />
+          <Stats info={this.state.summoners[this.state.summonerSelected]} />
 
-          <style jsx>{`
-            section {
-              padding-bottom: 50px;
-            }
-          `}</style>
-        </section>
+          <PageTitle title="Latest matches" />
+          <LatestMatches
+            info={this.state.summoners[this.state.summonerSelected]}
+          />
+        </div>
       )
     } else {
       profile = <SpinnerIcon customStyle={{ marginTop: '150px' }} />
@@ -77,7 +94,6 @@ class Profile extends Component {
         <Header logged={isLogged()} user={this.props.user} />
         <Row>
           {profile}
-
           <Notify />
         </Row>
       </Page>
