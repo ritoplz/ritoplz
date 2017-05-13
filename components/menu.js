@@ -18,6 +18,12 @@ const Menu = ({ logged, user }) => {
         </li>
 
         <li>
+          <Link prefetch href="/my-summoners">
+            <a>My summoners</a>
+          </Link>
+        </li>
+
+        <li>
           <Link prefetch href="/settings">
             <a>Settings</a>
           </Link>
