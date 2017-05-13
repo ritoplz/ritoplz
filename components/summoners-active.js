@@ -31,6 +31,7 @@ const SummonersActive = ({ summoners }) => {
               border-radius: 6px;
               display: flex;
               padding: 15px;
+              margin-bottom: 20px;
               align-items: center;
             }
 

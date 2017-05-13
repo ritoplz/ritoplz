@@ -27,6 +27,7 @@ const SummonersInactive = ({ summoners, confirmSummoner }) => {
               display: flex;
               padding: 15px;
               min-height: 80px;
+              margin-bottom: 20px;
               align-items: center;
             }
 
