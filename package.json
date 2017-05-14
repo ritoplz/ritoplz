@@ -109,7 +109,8 @@
       "array-callback-return": 0
     },
     "ignores": [
-      "static/*.js"
+      "static/*.js",
+      "next.config.js"
     ]
   },
   "lint-staged": {
