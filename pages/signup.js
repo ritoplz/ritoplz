@@ -63,7 +63,7 @@ class Signup extends Component {
               League of Legends Rankings.
             </h2>
             <p className="signup-heading__description">
-              Usage of the Internet is becoming more common due to rapid advancement of technology.
+              Join the Worldwide Rankings for League of Legends. See who's the best player of your region.
             </p>
 
             <RegisterFooter />

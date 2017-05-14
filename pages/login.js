@@ -60,7 +60,7 @@ class Login extends Component {
               League of Legends Rankings.
             </h2>
             <p className="login-heading__description">
-              Usage of the Internet is becoming more common due to rapid advancement of technology.
+              Worldwide Rankings for League of Legends. See who's the best player of your region.
             </p>
 
             <RegisterFooter />
