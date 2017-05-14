@@ -19,7 +19,6 @@
   "dependencies": {
     "axios": "^0.15.2",
     "goot": "^0.0.6",
-    "moment-timezone": "^0.5.13",
     "next": "^2.3.1",
     "next-redux-wrapper": "^1.1.2",
     "nprogress": "^0.2.0",
@@ -35,8 +34,7 @@
     "react-s-alert": "^1.3.0",
     "react-selectize": "^2.1.0",
     "redux": "^3.6.0",
-    "redux-thunk": "^2.2.0",
-    "wer": "^0.0.1"
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "babel-plugin-transform-define": "^1.2.0",

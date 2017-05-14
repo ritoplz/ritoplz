@@ -2,8 +2,6 @@
 
 import { Component } from 'react'
 import PropTypes from 'prop-types'
-import wer from 'wer'
-import moment from 'moment-timezone'
 import goot from 'goot'
 import withRedux from 'next-redux-wrapper'
 import Router from 'next/router'
@@ -21,9 +19,7 @@ import { setToken } from './../services/auth'
 
 class Signup extends Component {
   static async getInitialProps() {
-    const where = await wer()
-    const currentTime = moment().tz(where.time_zone).format('H')
-    const greeting = await goot(currentTime)
+    const greeting = await goot()
     return { greeting }
   }
 
