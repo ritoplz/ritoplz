@@ -25,8 +25,6 @@ class HowTo extends Component {
         }
       })
     }
-
-    Router.push('/login')
   }
 
   render() {
