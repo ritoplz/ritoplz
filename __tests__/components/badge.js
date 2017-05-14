@@ -3,6 +3,7 @@
 /* eslint-env jest */
 
 import { shallow } from 'enzyme'
+import renderer from 'react-test-renderer'
 
 import Badge from '../../components/ui/badge'
 
@@ -27,5 +28,22 @@ describe('ui badge component', () => {
     expect(wrapper.find('.primary').props().children[0]).toEqual(
       'danger button'
     )
+  })
+
+  describe('snapshots', () => {
+    it('should render primary badge with only children props', () => {
+      const tree = renderer.create(<Badge>Badge</Badge>).toJSON()
+      expect(tree).toMatchSnapshot()
+    })
+
+    it('should render success badge', () => {
+      const tree = renderer.create(<Badge type="success">Badge</Badge>).toJSON()
+      expect(tree).toMatchSnapshot()
+    })
+
+    it('should render danger badge', () => {
+      const tree = renderer.create(<Badge type="danger">Badge</Badge>).toJSON()
+      expect(tree).toMatchSnapshot()
+    })
   })
 })

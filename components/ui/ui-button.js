@@ -143,7 +143,6 @@ const UiButton = ({
 
 UiButton.propTypes = {
   children: PropTypes.node.isRequired,
-  label: PropTypes.string,
   ui: PropTypes.string,
   type: PropTypes.string,
   disabled: PropTypes.bool,

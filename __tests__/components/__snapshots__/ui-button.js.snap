@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ui ui-button component snapshots should render danger button 1`] = `
+<button
+  className="danger"
+  data-jsx={2023613154}
+  disabled={false}
+  onClick={undefined}
+  style={undefined}
+  type="button"
+>
+  Button
+</button>
+`;
+
+exports[`ui ui-button component snapshots should render disabled button 1`] = `
+<button
+  className="primary"
+  data-jsx={2023613154}
+  disabled={true}
+  onClick={undefined}
+  style={undefined}
+  type="button"
+>
+  Button
+</button>
+`;
+
+exports[`ui ui-button component snapshots should render primary button with only children props 1`] = `
+<button
+  className="primary"
+  data-jsx={2023613154}
+  disabled={false}
+  onClick={undefined}
+  style={undefined}
+  type="button"
+>
+  Button
+</button>
+`;
+
+exports[`ui ui-button component snapshots should render success button 1`] = `
+<button
+  className="success"
+  data-jsx={2023613154}
+  disabled={false}
+  onClick={undefined}
+  style={undefined}
+  type="button"
+>
+  Button
+</button>
+`;
