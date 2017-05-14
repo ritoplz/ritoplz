@@ -7,33 +7,34 @@ import { isLogged } from './../services/auth'
 const RankingHeading = ({ user }) => {
   let rankingHeading
   if (isLogged() && user) {
-    rankingHeading = (
-      <h2>
-        <strong className="username">{user.name}</strong>
-        , you are in
-        {' '}
-        <strong>{user.city}, {user.state} — {user.country}</strong>
+    if (user.country && user.state && user.city) {
+      rankingHeading = (
+        <h2>
+          <strong className="username">{user.name}</strong>
+          , you are in
+          {' '}
+          <strong>{user.city}, {user.state} — {user.country}</strong>
 
-        <style jsx>{`
-          h2 {
-            font-weight: 300;
-            font-size: ${typography.f56};
-            color: ${colors.heading};
-            padding-top: 100px;
-            padding-bottom: 50px;
-          }
+          <style jsx>{`
+            h2 {
+              font-weight: 300;
+              font-size: ${typography.f56};
+              color: ${colors.heading};
+              padding-top: 100px;
+            }
 
-          strong {
-            font-weight: 400;
-          }
+            strong {
+              font-weight: 400;
+            }
 
-          .username {
-            color: ${colors.primary};
-            font-weight: 600;
-          }
-        `}</style>
-      </h2>
-    )
+            .username {
+              color: ${colors.primary};
+              font-weight: 600;
+            }
+          `}</style>
+        </h2>
+      )
+    }
   }
 
   return (

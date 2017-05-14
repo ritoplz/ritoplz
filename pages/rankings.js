@@ -42,23 +42,36 @@ class Rankings extends Component {
   componentDidMount() {
     const { fetchAccount } = this.props
 
-    fetchAccount().then(({ data, error }) => {
-      let sQuery
+    if (isLogged()) {
+      fetchAccount().then(({ data, error }) => {
+        let sQuery
 
-      if (data) {
-        const { country, state, city } = data.user
-        this.setState({ user: data.user })
-        sQuery = { country, state, city }
-      } else {
-        sQuery = { country: this.state.country }
-      }
+        if (data) {
+          this.setState({ user: data.user })
 
-      if (error) {
-        Alert.error(error)
-      }
+          if (data.user.country && data.user.state && data.user.city) {
+            sQuery = {
+              country: data.user.country,
+              state: data.user.state,
+              city: data.user.city
+            }
+          } else {
+            sQuery = { country: this.state.country }
+          }
+        } else {
+          sQuery = { country: this.state.country }
+        }
 
+        if (error) {
+          Alert.error(error.message)
+        }
+
+        this.onFetchRankings(sQuery)
+      })
+    } else {
+      const sQuery = { country: this.state.country }
       this.onFetchRankings(sQuery)
-    })
+    }
   }
 
   onFetchRankings(sQuery) {
@@ -80,7 +93,7 @@ class Rankings extends Component {
           return
         }
 
-        Alert.error(error)
+        Alert.error(error.message)
       })
       .catch(err => Alert.error(err))
   }
@@ -210,7 +223,7 @@ class Rankings extends Component {
           .filter {
             display: flex;
             justify-content: space-between;
-            margin-top: 20px;
+            margin-top: 100px;
             margin-bottom: 50px;
           }
 
