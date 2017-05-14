@@ -100,9 +100,14 @@ class Rankings extends Component {
 
   loadItems() {
     this.setState({ nextPage: false })
-    const { skip, summoners, country, state, city } = this.state
+    const { skip, summoners, country, city, stateSelected } = this.state
     const { fetchRankings } = this.props
-    const sQuery = { skip: skip + 100, country, state, city }
+    const sQuery = {
+      skip: skip + 100,
+      country,
+      state: stateSelected.label,
+      city
+    }
 
     fetchRankings(sQuery).then(({ data }) => {
       const newSummoners = summoners.concat(data.summoners)
