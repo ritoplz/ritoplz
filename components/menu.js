@@ -62,12 +62,6 @@ const Menu = ({ logged, user }) => {
           </Link>
         </li>
 
-        <li>
-          <Link prefetch href="/settings">
-            <a>Settings</a>
-          </Link>
-        </li>
-
         <div>
           <UiLink href="/login" ui="primary small">Login</UiLink>
         </div>
