@@ -12,6 +12,7 @@ import Header from './../components/header'
 import Summoners from './../components/summoners'
 import Stats from './../components/stats'
 import LatestMatches from './../components/latest-matches'
+import EmptyState from './../components/empty-state'
 import { Row, Notify } from './../components/ui'
 import { SpinnerIcon } from './../components/icons'
 
@@ -69,22 +70,26 @@ class Profile extends Component {
     let profile
 
     if (this.props.requested && this.state.summoners) {
-      profile = (
-        <div>
-          <PageTitle title="Summoners" />
-          <Summoners
-            summoners={this.state.summoners}
-            summonerSelected={this.state.summonerSelected}
-            selectSummoner={index => this.selectSummoner(index)}
-          />
-          <Stats info={this.state.summoners[this.state.summonerSelected]} />
+      if (this.state.summoners.length > 0) {
+        profile = (
+          <div>
+            <PageTitle title="Summoners" />
+            <Summoners
+              summoners={this.state.summoners}
+              summonerSelected={this.state.summonerSelected}
+              selectSummoner={index => this.selectSummoner(index)}
+            />
+            <Stats info={this.state.summoners[this.state.summonerSelected]} />
 
-          <PageTitle title="Latest matches" />
-          <LatestMatches
-            info={this.state.summoners[this.state.summonerSelected]}
-          />
-        </div>
-      )
+            <PageTitle title="Latest matches" />
+            <LatestMatches
+              info={this.state.summoners[this.state.summonerSelected]}
+            />
+          </div>
+        )
+      } else {
+        profile = <EmptyState />
+      }
     } else {
       profile = <SpinnerIcon customStyle={{ marginTop: '150px' }} />
     }

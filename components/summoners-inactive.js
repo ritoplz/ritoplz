@@ -7,7 +7,7 @@ import { colors, typography } from './../components/ui/theme'
 const SummonersInactive = ({ summoners, confirmSummoner }) => {
   let inactiveSummoners
 
-  if (summoners) {
+  if (summoners.length > 0) {
     inactiveSummoners = summoners.map(summoner => {
       const { name, code } = summoner
 

@@ -7,7 +7,7 @@ import { Badge } from './../components/ui'
 const SummonersActive = ({ summoners }) => {
   let activeSummoners
 
-  if (summoners) {
+  if (summoners.length > 0) {
     activeSummoners = summoners.map(summoner => {
       const { name, profileIconId, rankedSolo } = summoner
 

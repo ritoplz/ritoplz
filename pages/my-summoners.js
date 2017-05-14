@@ -12,6 +12,7 @@ import Header from './../components/header'
 import PageTitle from './../components/page-title'
 import ActiveSummoners from './../components/summoners-active'
 import InactiveSummoners from './../components/summoners-inactive'
+import EmptyState from './../components/empty-state'
 import { SpinnerIcon } from './../components/icons'
 import { Row, Notify, UiLink } from './../components/ui'
 
@@ -87,22 +88,29 @@ class MySummoners extends Component {
       this.state.summoners &&
       this.state.inactiveSummoners
     ) {
-      mySummoners = (
-        <div>
-          <ActiveSummoners summoners={this.state.summoners} />
-          <InactiveSummoners
-            summoners={this.state.inactiveSummoners}
-            confirmSummoner={this.confirmSummoner}
-          />
+      if (
+        this.state.summoners.length > 0 &&
+        this.state.inactiveSummoners.length > 0
+      ) {
+        mySummoners = (
+          <div>
+            <ActiveSummoners summoners={this.state.summoners} />
+            <InactiveSummoners
+              summoners={this.state.inactiveSummoners}
+              confirmSummoner={this.confirmSummoner}
+            />
 
-          <style jsx>{`
-            div {
-              display: flex;
-              justify-content: space-between;
-            }
-          `}</style>
-        </div>
-      )
+            <style jsx>{`
+              div {
+                display: flex;
+                justify-content: space-between;
+              }
+            `}</style>
+          </div>
+        )
+      } else {
+        mySummoners = <EmptyState />
+      }
     } else {
       mySummoners = <SpinnerIcon customStyle={{ marginTop: '150px' }} />
     }

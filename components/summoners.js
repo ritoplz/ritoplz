@@ -6,7 +6,7 @@ import { colors, typography } from './../components/ui/theme'
 const Summoners = ({ summoners, selectSummoner, summonerSelected }) => {
   let summonersList
 
-  if (summoners) {
+  if (summoners.length > 0) {
     summonersList = summoners.map((summoner, index) => {
       const { name, profileIconId, rankedSolo } = summoner
       const selected = summonerSelected === index ? 'selected' : ''
