@@ -8,7 +8,7 @@ import renderer from 'react-test-renderer'
 import UiButton from '../../components/ui/ui-button'
 
 describe('ui ui-button component', () => {
-  it('should render asClass button', () => {
+  it('should render primary button with only children props', () => {
     const wrapper = shallow(<UiButton>Button</UiButton>)
     expect(wrapper.hasClass('primary')).toEqual(true)
   })
