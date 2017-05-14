@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ui row component snapshots should render row 1`] = `
+<div
+  className="row"
+  data-jsx={2720213651}
+>
+  Nice
+</div>
+`;
