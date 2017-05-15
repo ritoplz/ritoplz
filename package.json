@@ -58,6 +58,15 @@
   },
   "babel": {
     "env": {
+      "development": {
+        "presets": "next/babel",
+        "plugins": [
+          [
+            "transform-define",
+            "./env-config.js"
+          ]
+        ]
+      },
       "staging": {
         "presets": "next/babel",
         "plugins": [
