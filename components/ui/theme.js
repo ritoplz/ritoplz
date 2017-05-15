@@ -37,3 +37,6 @@ export const typography = {
   f30: '2rem',
   f56: '3.5rem'
 }
+
+export const tablet = `screen and (max-width: 768px)`
+export const phone = `screen and (max-width: 414px)`

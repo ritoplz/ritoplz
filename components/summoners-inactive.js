@@ -2,7 +2,7 @@
 
 import PropTypes from 'prop-types'
 import { UiButton } from './../components/ui'
-import { colors, typography } from './../components/ui/theme'
+import { colors, typography, phone } from './../components/ui/theme'
 
 const SummonersInactive = ({ summoners, confirmSummoner }) => {
   let inactiveSummoners
@@ -59,6 +59,12 @@ const SummonersInactive = ({ summoners, confirmSummoner }) => {
       <style jsx>{`
         ul {
           flex-basis: 48%;
+        }
+
+        @media ${phone} {
+          ul {
+            flex-basis: 100%;
+          }
         }
       `}</style>
     </ul>

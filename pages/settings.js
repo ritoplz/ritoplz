@@ -21,7 +21,7 @@ import {
 } from './../components/ui'
 import Header from './../components/header'
 import PageTitle from './../components/page-title'
-import { colors } from './../components/ui/theme'
+import { colors, phone } from './../components/ui/theme'
 
 import { locations, countries } from './../services/places'
 import { isLogged } from './../services/auth'
@@ -306,6 +306,12 @@ class Settings extends Component {
             font-weight: 600;
             margin-bottom: 25px;
             color: ${colors.heading};
+          }
+
+          @media ${phone} {
+            .invite-friends {
+              padding: 20px;
+            }
           }
         `}</style>
       </Page>

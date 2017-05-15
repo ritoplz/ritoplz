@@ -13,7 +13,7 @@ import RankingUser from './../components/ranking-user'
 import RankingHeading from './../components/ranking-heading'
 import Header from './../components/header'
 import { SpinnerIcon } from './../components/icons'
-import { colors, typography } from './../components/ui/theme'
+import { colors, typography, phone } from './../components/ui/theme'
 
 import { locations, countries } from './../services/places'
 import { isLogged } from './../services/auth'
@@ -231,6 +231,7 @@ class Rankings extends Component {
             justify-content: space-between;
             margin-top: 100px;
             margin-bottom: 50px;
+            flex-wrap: wrap;
           }
 
           .filter-select {
@@ -269,6 +270,12 @@ class Rankings extends Component {
           .rankings {
             padding-top: 50px;
             padding-bottom: 50px;
+          }
+
+          @media ${phone} {
+            .filter-select {
+              flex-basis: 100%;
+            }
           }
         `}</style>
       </Page>

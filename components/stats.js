@@ -3,7 +3,7 @@
 import PropTypes from 'prop-types'
 
 import { Badge } from './../components/ui'
-import { colors, typography } from './../components/ui/theme'
+import { colors, typography, phone } from './../components/ui/theme'
 
 const Stats = ({ info }) => {
   const badgeType = info.recentMatches.lastPlayedSolo.win ? 'success' : 'danger'
@@ -45,6 +45,7 @@ const Stats = ({ info }) => {
         .header {
           display: flex;
           justify-content: space-between;
+          flex-wrap: wrap;
           margin-top: 30px;
         }
 
@@ -78,6 +79,12 @@ const Stats = ({ info }) => {
           font-weight: 400;
           display: block;
           color: ${colors.grayDark};
+        }
+
+        @media ${phone} {
+          .header-box {
+            flex-basis: 100%;
+          }
         }
       `}</style>
     </div>

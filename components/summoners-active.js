@@ -1,7 +1,7 @@
 'use strict'
 
 import PropTypes from 'prop-types'
-import { colors, typography } from './../components/ui/theme'
+import { colors, typography, phone } from './../components/ui/theme'
 import { Badge } from './../components/ui'
 
 const SummonersActive = ({ summoners }) => {
@@ -70,6 +70,12 @@ const SummonersActive = ({ summoners }) => {
       <style jsx>{`
         ul {
           flex-basis: 48%;
+        }
+
+        @media ${phone} {
+          ul {
+            flex-basis: 100%;
+          }
         }
       `}</style>
     </ul>

@@ -1,7 +1,7 @@
 'use strict'
 
 import PropTypes from 'prop-types'
-import { colors, typography } from './theme'
+import { colors, typography, phone } from './theme'
 import { Badge } from './'
 
 const Fieldset = ({ title, description, badge, type, children }) => {
@@ -35,10 +35,12 @@ const Fieldset = ({ title, description, badge, type, children }) => {
 
         .fielset-group--left {
           flex-basis: 40%;
+          max-width: 100%;
         }
 
         .fielset-group--right {
           flex-basis: 50%;
+          max-width: 100%;
         }
 
         h4 {
@@ -52,6 +54,17 @@ const Fieldset = ({ title, description, badge, type, children }) => {
           font-size: ${typography.f14};
           margin-top: 10px;
           line-height: 24px;
+        }
+
+        @media ${phone} {
+          .fielset-group--left {
+            flex-basis: 100%;
+            margin-bottom: 20px;
+          }
+
+          .fielset-group--right {
+            flex-basis: 100%;
+          }
         }
       `}</style>
     </div>

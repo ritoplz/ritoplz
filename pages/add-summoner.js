@@ -8,7 +8,7 @@ import Alert from 'react-s-alert'
 
 import Page from './../layouts/page'
 import { UiButton, UiLink, TextInput, Row, Notify } from './../components/ui'
-import { colors, typography } from './../components/ui/theme'
+import { colors, typography, phone } from './../components/ui/theme'
 import Header from './../components/header'
 
 import store from './../store/configure-store'
@@ -105,6 +105,12 @@ class AddSummoner extends Component {
             max-width: 60%;
             margin-left: auto;
             margin-right: auto;
+          }
+
+          @media ${phone} {
+            form {
+              max-width: 90%;
+            }
           }
         `}</style>
       </Page>

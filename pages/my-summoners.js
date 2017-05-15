@@ -103,6 +103,7 @@ class MySummoners extends Component {
             <style jsx>{`
               div {
                 display: flex;
+                flex-wrap: wrap;
                 justify-content: space-between;
               }
             `}</style>

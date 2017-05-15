@@ -2,7 +2,7 @@
 
 import PropTypes from 'prop-types'
 import Link from 'next/link'
-import { colors, typography } from './ui/theme'
+import { colors, typography, phone } from './ui/theme'
 
 const MenuUser = ({ user }) => {
   const userName = user ? user.name : ''
@@ -25,6 +25,16 @@ const MenuUser = ({ user }) => {
 
         a {
           color: ${colors.primary};
+        }
+
+        @media ${phone} {
+          span {
+            margin-left: 5px;
+            padding-left: 10px;
+            line-height: inherit;
+            margin-top: 0;
+            margin-bottom: 0;
+          }
         }
       `}</style>
     </span>

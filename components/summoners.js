@@ -1,7 +1,7 @@
 'use strict'
 
 import PropTypes from 'prop-types'
-import { colors, typography } from './../components/ui/theme'
+import { colors, typography, phone } from './../components/ui/theme'
 
 const Summoners = ({ summoners, selectSummoner, summonerSelected }) => {
   let summonersList
@@ -69,6 +69,12 @@ const Summoners = ({ summoners, selectSummoner, summonerSelected }) => {
               font-size: ${typography.f12};
               font-weight: 500;
               color: ${colors.gray};
+            }
+
+            @media ${phone} {
+              li {
+                flex-basis: calc(50% - 10px);
+              }
             }
           `}</style>
         </li>

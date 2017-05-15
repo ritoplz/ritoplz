@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 import Logo from './../components/logo'
+import { phone } from './ui/theme'
 
 const RegisterSidebar = ({ bg, children }) => (
   <aside className="sidebar" style={{ backgroundImage: `url(static/${bg})` }}>
@@ -29,6 +30,12 @@ const RegisterSidebar = ({ bg, children }) => (
       .sidebar__logo {
         position: absolute;
         top: 50px;
+      }
+
+      @media ${phone} {
+        .sidebar {
+          display: none;
+        }
       }
     `}</style>
   </aside>

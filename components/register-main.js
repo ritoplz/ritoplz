@@ -1,7 +1,7 @@
 'use strict'
 
 import PropTypes from 'prop-types'
-import { colors, typography } from './../components/ui/theme'
+import { colors, typography, phone } from './../components/ui/theme'
 
 const RegisterMain = ({ children, title, subtitle, redirect, greeting }) => (
   <section className="register-main">
@@ -45,6 +45,14 @@ const RegisterMain = ({ children, title, subtitle, redirect, greeting }) => (
         text-align: center;
         color: ${colors.gray};
         font-size: ${typography.f16};
+      }
+
+      @media ${phone} {
+        .register-main {
+          flex-basis: 90%;
+          margin-left: auto;
+          margin-right: auto;
+        }
       }
     `}</style>
   </section>

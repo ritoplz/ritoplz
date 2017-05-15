@@ -2,7 +2,7 @@
 
 import PropTypes from 'prop-types'
 import Link from 'next/link'
-import { colors } from './ui/theme'
+import { colors, phone } from './ui/theme'
 import { UiLink } from './ui'
 import MenuUser from './menu-user'
 
@@ -49,6 +49,12 @@ const Menu = ({ logged, user }) => {
 
           a:hover {
             color: ${colors.grayDark};
+          }
+
+          @media ${phone} {
+            li {
+              margin-left: 5px;
+            }
           }
         `}</style>
       </ul>

@@ -1,6 +1,7 @@
 'use strict'
 
 import PropTypes from 'prop-types'
+import { tablet, phone } from './theme'
 
 const Row = ({ children }) => (
   <div className="row">
@@ -11,6 +12,20 @@ const Row = ({ children }) => (
         max-width: 900px;
         margin-left: auto;
         margin-right: auto;
+      }
+
+      @media ${tablet} {
+        .row {
+          padding-left: 50px;
+          padding-right: 50px;
+        }
+      }
+
+      @media ${phone} {
+        .row {
+          padding-left: 25px;
+          padding-right: 25px;
+        }
       }
     `}</style>
   </div>

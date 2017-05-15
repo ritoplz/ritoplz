@@ -11,7 +11,7 @@ import Page from './../layouts/page'
 
 import Header from './../components/header'
 import { UiButton, TextInput, Row, Notify } from './../components/ui'
-import { colors, typography } from './../components/ui/theme'
+import { colors, typography, phone } from './../components/ui/theme'
 
 import { isLogged } from './../services/auth'
 import store from './../store/configure-store'
@@ -125,6 +125,12 @@ class SudoMode extends Component {
               max-width: 60%;
               margin-left: auto;
               margin-right: auto;
+            }
+
+            @media ${phone} {
+              form {
+                max-width: 90%;
+              }
             }
           `}</style>
         </Row>
