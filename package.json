@@ -50,9 +50,15 @@
     "redux-logger": "^3.0.1",
     "xo": "^0.18.1"
   },
+  "now": {
+    "name": "ritoplz",
+    "env": {
+      "NODE_ENV": "staging"
+    }
+  },
   "babel": {
     "env": {
-      "development": {
+      "staging": {
         "presets": "next/babel",
         "plugins": [
           [
