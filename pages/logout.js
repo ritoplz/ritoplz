@@ -4,12 +4,14 @@ import { Component } from 'react'
 import withRedux from 'next-redux-wrapper'
 import Router from 'next/router'
 
+import Page from './../layouts/page'
+
 import Logo from './../components/logo'
 import Header from './../components/header'
-import Page from './../layouts/page'
 import { colors, typography } from './../components/ui/theme'
-import store from './../store/configure-store'
+
 import { logout } from './../services/auth'
+import store from './../store/configure-store'
 
 class Logout extends Component {
   componentDidMount() {

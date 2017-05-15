@@ -6,19 +6,20 @@ import PropTypes from 'prop-types'
 import InfiniteScroll from 'react-infinite-scroller'
 import Alert from 'react-s-alert'
 
-import store from './../store/configure-store'
 import Page from './../layouts/page'
+
 import { Row, UiSelect, Notify } from './../components/ui'
 import RankingUser from './../components/ranking-user'
 import RankingHeading from './../components/ranking-heading'
 import Header from './../components/header'
 import { SpinnerIcon } from './../components/icons'
+import { colors, typography } from './../components/ui/theme'
+
+import { locations, countries } from './../services/places'
+import { isLogged } from './../services/auth'
+import store from './../store/configure-store'
 import { fetchRankings } from './../actions/fetch-rankings'
 import { fetchAccount } from './../actions/fetch-account'
-import { isLogged } from './../services/auth'
-import { locations, countries } from './../services/places'
-
-import { colors, typography } from './../components/ui/theme'
 
 class Rankings extends Component {
   constructor() {

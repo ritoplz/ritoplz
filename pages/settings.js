@@ -6,8 +6,8 @@ import withRedux from 'next-redux-wrapper'
 import Router from 'next/router'
 import Alert from 'react-s-alert'
 
-import store from './../store/configure-store'
 import Page from './../layouts/page'
+
 import {
   Row,
   Fieldset,
@@ -22,10 +22,12 @@ import {
 import Header from './../components/header'
 import PageTitle from './../components/page-title'
 import { colors } from './../components/ui/theme'
+
 import { locations, countries } from './../services/places'
+import { isLogged } from './../services/auth'
+import store from './../store/configure-store'
 import { fetchAccount } from './../actions/fetch-account'
 import { editUser } from './../actions/edit-user'
-import { isLogged } from './../services/auth'
 
 class Settings extends Component {
   constructor(props) {

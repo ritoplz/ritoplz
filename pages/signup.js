@@ -8,14 +8,16 @@ import Router from 'next/router'
 import Alert from 'react-s-alert'
 
 import Page from './../layouts/page'
+
 import RegisterSidebar from './../components/register-sidebar'
 import RegisterMain from './../components/register-main'
 import RegisterFooter from './../components/register-footer'
 import { UiButton, UiLink, TextInput, Notify } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
+
+import { setToken } from './../services/auth'
 import store from './../store/configure-store'
 import { onSignup } from './../actions/signup'
-import { setToken } from './../services/auth'
 
 class Signup extends Component {
   static async getInitialProps() {

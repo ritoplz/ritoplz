@@ -6,15 +6,17 @@ import PropTypes from 'prop-types'
 import Link from 'next/link'
 
 import Page from './../layouts/page'
+
 import LegalTitle from './../components/legal-title'
 import LegalHeading from './../components/legal-heading'
 import LegalText from './../components/legal-text'
 import Header from './../components/header'
 import { Row } from './../components/ui'
-import store from './../store/configure-store'
-import { isLogged } from './../services/auth'
-import { fetchAccount } from './../actions/fetch-account'
 import { colors } from './../components/ui/theme'
+
+import { isLogged } from './../services/auth'
+import store from './../store/configure-store'
+import { fetchAccount } from './../actions/fetch-account'
 
 class Faq extends Component {
   componentDidMount() {

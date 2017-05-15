@@ -5,12 +5,14 @@ import withRedux from 'next-redux-wrapper'
 import PropTypes from 'prop-types'
 
 import Page from './../layouts/page'
+
 import Header from './../components/header'
 import { Row } from './../components/ui'
-import store from './../store/configure-store'
-import { isLogged } from './../services/auth'
-import { fetchAccount } from './../actions/fetch-account'
 import { colors, typography } from './../components/ui/theme'
+
+import { isLogged } from './../services/auth'
+import store from './../store/configure-store'
+import { fetchAccount } from './../actions/fetch-account'
 
 class About extends Component {
   componentDidMount() {

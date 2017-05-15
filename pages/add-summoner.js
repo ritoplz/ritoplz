@@ -6,12 +6,13 @@ import PropTypes from 'prop-types'
 import Router from 'next/router'
 import Alert from 'react-s-alert'
 
-import { isLogged } from './../services/auth'
 import Page from './../layouts/page'
 import { UiButton, UiLink, TextInput, Row, Notify } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
-import store from './../store/configure-store'
 import Header from './../components/header'
+
+import store from './../store/configure-store'
+import { isLogged } from './../services/auth'
 import { fetchAccount } from './../actions/fetch-account'
 import { addSummoner } from './../actions/add-summoner'
 

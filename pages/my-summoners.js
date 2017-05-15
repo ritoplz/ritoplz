@@ -16,10 +16,10 @@ import EmptyState from './../components/empty-state'
 import { SpinnerIcon } from './../components/icons'
 import { Row, Notify, UiLink } from './../components/ui'
 
+import { isLogged } from './../services/auth'
 import store from './../store/configure-store'
 import { fetchAccount } from './../actions/fetch-account'
 import { confirmSummoner } from './../actions/confirm-summoner'
-import { isLogged } from './../services/auth'
 
 class MySummoners extends Component {
   constructor() {
