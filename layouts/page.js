@@ -38,11 +38,45 @@ if (global.document) {
 const Page = connect(state => state)(({ children }) => (
   <div>
     <Head>
+      <title>Ritoplz - Worldwide League of Legends Rankings</title>
+
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta charSet="utf-8" />
       <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1, user-scalable=no"
+        name="description"
+        content="Worldwide Rankings for League of Legends. See who's the best player of your region."
       />
-      <title>Ritoplz</title>
+      <meta
+        name="keywords"
+        content="league of legends, lol, LOL, League, of, Legends, Rankings, ritoplz, Ritoplz, summoner, summoners, platinum, bronze, silver, lp"
+      />
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@ritoplzrankings" />
+      <meta name="twitter:creator" content="@ritoplzrankings" />
+      <meta name="twitter:title" content="Ritoplz" />
+      <meta
+        name="twitter:description"
+        content="Worldwide Rankings for League of Legends. See who's the best player of your region."
+      />
+      <meta
+        property="twitter:image:src"
+        content="https://ritoplz.com/static/cover.png"
+      />
+
+      <meta property="og:url" content="http://ritoplz.com" />
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content="Ritoplz" />
+      <meta property="og:image" content="static/cover.png" />
+      <meta
+        property="og:description"
+        content="Worldwide Rankings for League of Legends. See who's the best player of your region."
+      />
+      <meta property="og:site_name" content="Ritoplz" />
+
+      <script src="static/drift.js" />
+      <script src="static/analytics.js" />
+      <script src="static/heatmaps.js" />
     </Head>
 
     <main>
