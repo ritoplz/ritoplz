@@ -1,71 +1,131 @@
 'use strict'
 
-import React, { Component } from 'react'
-import { style } from 'next/css'
-import Head from 'next/head'
-import { Provider } from 'react-redux'
+import { Component } from 'react'
+import withRedux from 'next-redux-wrapper'
+import PropTypes from 'prop-types'
+import Router from 'next/router'
 
-import Meta from '../components/meta'
-import ProfileContent from '../containers/profile-content'
-import configureStore from '../store/configureStore'
-import Header from '../components/header'
-import Footer from '../components/footer'
+import Page from './../layouts/page'
+
+import PageTitle from './../components/page-title'
+import Header from './../components/header'
+import Summoners from './../components/summoners'
+import Stats from './../components/stats'
+import LatestMatches from './../components/latest-matches'
+import EmptyState from './../components/empty-state'
+import { Row, Notify } from './../components/ui'
+import { SpinnerIcon } from './../components/icons'
+
 import { isLogged } from './../services/auth'
+import store from './../store/configure-store'
+import { fetchAccount } from './../actions/fetch-account'
+import { confirmSummoner } from './../actions/confirm-summoner'
 
-const styles = {
-  row: {
-    maxWidth: '900px',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    fontFamily: 'Source Sans Pro',
-    paddingBottom: '50px',
-
-    '@media (max-width: 750px)': {
-      paddingLeft: '20px',
-      paddingRight: '20px'
-    }
-  },
-
-  notification: {
-    backgroundColor: 'red'
-  }
-}
-
-const store = configureStore()
-
-export default class extends Component {
-  constructor () {
+class Profile extends Component {
+  constructor() {
     super()
 
-    store.subscribe(() => store.getState())
+    this.selectSummoner = this.selectSummoner.bind(this)
+
+    this.state = {
+      fetched: false,
+      summonerSelected: 0
+    }
   }
 
-  render () {
-    if (!isLogged()) {
-      this.props.url.replaceTo('/login')
+  componentDidMount() {
+    const { fetchAccount } = this.props
+
+    if (isLogged()) {
+      return fetchAccount().then(res => {
+        if (res.error) {
+          Router.push('/profile')
+        }
+      })
     }
 
-    const items = [
-      {name: 'Rankings', link: 'rankings', type: 'item'},
-      {name: 'Logout', link: 'logout', type: 'item'}
-    ]
+    Router.push('/login')
+  }
+
+  componentWillReceiveProps({ summoners }) {
+    const activeSummoners = []
+
+    summoners.map(summoner => {
+      if (summoner.active) {
+        activeSummoners.push(summoner)
+      }
+    })
+
+    this.setState({
+      summoners: activeSummoners,
+      fetched: true
+    })
+  }
+
+  selectSummoner(summonerSelected) {
+    this.setState({ summonerSelected })
+  }
+
+  render() {
+    let profile
+
+    if (this.props.requested && this.state.summoners) {
+      if (this.state.summoners.length > 0) {
+        profile = (
+          <div>
+            <PageTitle title="Summoners" />
+            <Summoners
+              summoners={this.state.summoners}
+              summonerSelected={this.state.summonerSelected}
+              selectSummoner={index => this.selectSummoner(index)}
+            />
+            <Stats info={this.state.summoners[this.state.summonerSelected]} />
+
+            <PageTitle title="Latest matches" />
+            <LatestMatches
+              info={this.state.summoners[this.state.summonerSelected]}
+            />
+          </div>
+        )
+      } else {
+        profile = <EmptyState />
+      }
+    } else {
+      profile = <SpinnerIcon customStyle={{ marginTop: '150px' }} />
+    }
 
     return (
-      <Provider store={store}>
-        <div>
-          <Meta />
-
-          <div>
-            <Header items={items} />
-
-            <div className={style(styles.row)}>
-              <ProfileContent/>
-            </div>
-
-            <Footer />
-          </div>
-        </div>
-      </Provider>
+      <Page>
+        <Header logged={isLogged()} user={this.props.user} />
+        <Row>
+          {profile}
+          <Notify />
+        </Row>
+      </Page>
     )
   }
 }
+
+Profile.propTypes = {
+  user: PropTypes.object,
+  fetchAccount: PropTypes.func,
+  summoners: PropTypes.array,
+  requested: PropTypes.bool
+}
+
+const mapStateToProps = state => {
+  return {
+    user: state.account.data.user,
+    summoners: state.account.data.summoners,
+    requested: state.account.requested
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchAccount: () => dispatch(fetchAccount()),
+    confirmSummoner: summoner => dispatch(confirmSummoner(summoner))
+  }
+}
+
+export default withRedux(store, mapStateToProps, mapDispatchToProps)(Profile)

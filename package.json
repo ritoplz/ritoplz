@@ -1,63 +1,139 @@
 {
   "name": "Ritoplz",
-  "version": "1.2.5",
+  "description": "Worldwide Rankings for League of Legends. See who's the best player of your region.",
+  "version": "2.0.0",
   "repository": {
-    "url": "https://github.com/BuKinoshita/ritoplz.git",
+    "url": "https://github.com/ritoplz/ritoplz.git",
     "type": "git"
   },
   "author": "Bu Kinoshita <bukinoshita@gmail.com>",
   "license": "MIT",
-  "dependencies": {
-    "ava": "^0.16.0",
-    "axios": "^0.15.2",
-    "babel-jest": "^18.0.0",
-    "babel-preset-es2015": "^6.18.0",
-    "eslint-config-xo-react": "^0.10.0",
-    "eslint-plugin-react": "^6.6.0",
-    "flow-bin": "^0.34.0",
-    "jest": "^18.0.0",
-    "next": "latest",
-    "nock": "^9.0.2",
-    "ordinal-numbers": "^1.0.3",
-    "rc-progress": "^2.0.3",
-    "react": "^15.3.2",
-    "react-addons-test-utils": "^15.3.2",
-    "react-cookie": "^1.0.4",
-    "react-copy-to-clipboard": "^4.2.3",
-    "react-modal": "^1.5.2",
-    "react-redux": "^4.4.5",
-    "react-s-alert": "^1.2.2",
-    "react-select": "^1.0.0-rc.2",
-    "react-slick": "^0.14.5",
-    "redux": "^3.6.0",
-    "redux-logger": "^2.7.4",
-    "redux-mock-store": "^1.2.1",
-    "redux-thunk": "^2.1.0",
-    "ritoplz-summoner": "^0.0.2",
-    "ritoplz-tier": "0.0.3",
-    "slick-carousel": "^1.6.0",
-    "xo": "^0.17.1"
-  },
   "scripts": {
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "test": "jest",
-    "test:watch": "yarn test -- --watch",
-    "flow": "./node_modules/flow-bin/cli.js check"
+    "precommit": "lint-staged",
+    "test": "npm run lint && node_modules/.bin/jest",
+    "lint": "node_modules/.bin/xo"
+  },
+  "dependencies": {
+    "axios": "^0.15.2",
+    "goot": "^0.0.6",
+    "next": "^2.3.1",
+    "next-redux-wrapper": "^1.1.2",
+    "nprogress": "^0.2.0",
+    "prop-types": "^15.5.8",
+    "rc-progress": "^2.1.1",
+    "react": "^15.5.4",
+    "react-addons-css-transition-group": "^15.5.2",
+    "react-addons-shallow-compare": "^15.5.2",
+    "react-cookies": "^0.0.1",
+    "react-dom": "^15.5.4",
+    "react-infinite-scroller": "^1.0.10",
+    "react-redux": "^5.0.4",
+    "react-s-alert": "^1.3.0",
+    "react-selectize": "^2.1.0",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-define": "^1.2.0",
+    "enzyme": "^2.8.2",
+    "eslint-config-prettier": "^1.7.0",
+    "eslint-plugin-react": "^6.10.3",
+    "husky": "^0.13.3",
+    "jest": "^20.0.1",
+    "lint-staged": "^3.4.1",
+    "prettier": "^1.2.2",
+    "react-addons-test-utils": "^15.5.1",
+    "react-test-renderer": "^15.5.4",
+    "redux-logger": "^3.0.1",
+    "xo": "^0.18.1"
+  },
+  "now": {
+    "name": "ritoplz",
+    "env": {
+      "NODE_ENV": "staging"
+    }
+  },
+  "babel": {
+    "env": {
+      "development": {
+        "presets": "next/babel",
+        "plugins": [
+          [
+            "transform-define",
+            "./env-config.js"
+          ]
+        ]
+      },
+      "staging": {
+        "presets": "next/babel",
+        "plugins": [
+          [
+            "transform-define",
+            "./env-config.js"
+          ]
+        ]
+      },
+      "production": {
+        "presets": "next/babel",
+        "plugins": [
+          [
+            "transform-define",
+            "./env-config.js"
+          ]
+        ]
+      },
+      "test": {
+        "presets": [
+          [
+            "env",
+            {
+              "modules": "commonjs"
+            }
+          ],
+          "next/babel"
+        ],
+        "plugins": [
+          [
+            "transform-define",
+            "./env-config.js"
+          ]
+        ]
+      }
+    }
   },
   "xo": {
-    "extends": "xo-react",
+    "extends": [
+      "prettier",
+      "prettier/react",
+      "plugin:react/recommended"
+    ],
     "space": true,
     "semicolon": false,
     "esnext": true,
     "rules": {
+      "react/react-in-jsx-scope": 0,
       "space-before-function-paren": 0,
       "object-curly-spacing": 0,
-      "react/prop-types": 0
-    }
+      "no-implicit-coercion": 0,
+      "no-prototype-builtins": 0,
+      "array-callback-return": 0
+    },
+    "ignores": [
+      "static/*.js",
+      "next.config.js"
+    ]
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run test",
+      "prettier --semi false --single-quote --write",
+      "git add"
+    ]
   },
   "engines": {
-    "node": "6.9.1"
+    "node": "7.10.0"
   }
 }

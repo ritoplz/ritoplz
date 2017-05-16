@@ -1,28 +1,49 @@
 'use strict'
 
-import React from 'react'
-import { style } from 'next/css'
+import { Component } from 'react'
+import withRedux from 'next-redux-wrapper'
+import Router from 'next/router'
 
-import { isLogged, logout } from './../services/auth'
+import Page from './../layouts/page'
 
-const styles = {
-  message: {
-    fontWeight: '100',
-    textAlign: 'center',
-    height: 'calc(100vh - 200px)',
-    lineHeight: '70vh',
-    color: '#333'
+import Logo from './../components/logo'
+import Header from './../components/header'
+import { colors, typography } from './../components/ui/theme'
+
+import { logout } from './../services/auth'
+import store from './../store/configure-store'
+
+class Logout extends Component {
+  componentDidMount() {
+    logout()
+    Router.push('/')
+  }
+
+  render() {
+    return (
+      <Page>
+        <Header />
+        <div>
+          <Logo size="200px" />
+          <h2>😢</h2>
+        </div>
+
+        <style jsx>{`
+          div {
+            padding-top: 150px;
+            text-align: center;
+          }
+
+          h2 {
+            margin-top: 20px;
+            font-size: ${typography.f30};
+            font-weight: 400;
+            color: ${colors.heading};
+          }
+        `}</style>
+      </Page>
+    )
   }
 }
 
-export default props => {
-  logout()
-
-  if (!isLogged()) {
-    props.url.replaceTo('/login')
-  }
-
-  return (
-    <h1 className={style(styles.message)}>Bye! :(</h1>
-  )
-}
+export default withRedux(store, null, null)(Logout)

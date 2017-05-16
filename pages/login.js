@@ -1,72 +1,175 @@
 'use strict'
 
-import React from 'react'
-import { Provider } from 'react-redux'
+import { Component } from 'react'
+import PropTypes from 'prop-types'
+import goot from 'goot'
+import withRedux from 'next-redux-wrapper'
+import Router from 'next/router'
 import Link from 'next/link'
-import Head from 'next/head'
-import { style } from 'next/css'
+import Alert from 'react-s-alert'
 
-import Meta from '../components/meta'
-import configureStore from '../store/configureStore'
-import FormLogin from '../containers/form-login'
-import Header from '../components/header'
-import { isLogged } from './../services/auth'
-import Footer from '../components/footer'
+import Page from './../layouts/page'
 
-const styles = {
-  row: {
-    maxWidth: '900px',
-    marginLeft: 'auto',
-    marginRight: 'auto'
-  },
+import RegisterSidebar from './../components/register-sidebar'
+import RegisterMain from './../components/register-main'
+import RegisterFooter from './../components/register-footer'
+import { UiButton, UiLink, TextInput, Notify } from './../components/ui'
+import { colors, typography } from './../components/ui/theme'
 
-  title: {
-    color: '#333',
-    fontWeight: '300',
-    fontSize: '3rem',
-    textAlign: 'center',
-    marginTop: '50px'
-  },
+import { setToken } from './../services/auth'
+import store from './../store/configure-store'
+import { onLogin } from './../actions/login'
 
-  subtitle: {
-    color: '#ccc',
-    fontWeight: '300',
-    fontSize: '1.15rem',
-    textAlign: 'center',
-    marginBottom: '50px',
-    marginTop: '5px'
+class Login extends Component {
+  static async getInitialProps() {
+    const greeting = await goot()
+    return { greeting }
+  }
+
+  constructor() {
+    super()
+
+    this.handleLogin = this.handleLogin.bind(this)
+  }
+
+  handleLogin(e) {
+    e.preventDefault()
+
+    const { email, password, props } = this
+    const { loginRequest } = props
+    const userData = { email: email.value, password: password.value }
+
+    loginRequest(userData)
+      .then(({ data, error }) => {
+        if (data) {
+          setToken(data.token)
+          return Router.push('/profile')
+        }
+
+        return Alert.error(error)
+      })
+      .catch(err => Alert.error(err))
+  }
+
+  render() {
+    const { greeting } = this.props
+
+    return (
+      <Page>
+        <div className="login">
+          <RegisterSidebar bg="background-login.png">
+            <h2 className="login-heading__title">
+              League of Legends Rankings.
+            </h2>
+            <p className="login-heading__description">
+              Worldwide Rankings for League of Legends. See who's the best player of your region.
+            </p>
+
+            <RegisterFooter />
+          </RegisterSidebar>
+
+          <RegisterMain
+            title="It’s good to have you back."
+            subtitle="Sign in to your account here."
+            redirect={
+              <UiLink ui="primary small" href="/signup">Sign up</UiLink>
+            }
+            greeting={greeting}
+          >
+            <form className="login-form" onSubmit={this.handleLogin}>
+              <TextInput
+                type="email"
+                label="Email"
+                placeholder="Email address"
+                inputRef={ref => {
+                  this.email = ref
+                }}
+              />
+
+              <TextInput
+                type="password"
+                label="Password"
+                placeholder="Your password"
+                inputRef={ref => {
+                  this.password = ref
+                }}
+              />
+
+              <Link href="/reset-password">
+                <span className="login-form__forgot">
+                  Forgot your password?
+                </span>
+              </Link>
+
+              <UiButton ui="success block" type="submit">Login</UiButton>
+            </form>
+          </RegisterMain>
+
+          <Notify />
+        </div>
+
+        <style jsx>{`
+          .login {
+            display: flex;
+            min-height: 100vh;
+            max-height: 100vh;
+          }
+
+          .login-heading__title {
+            color: ${colors.white};
+            font-size: ${typography.f24};
+            margin-bottom: 5px;
+            font-weight: 600;
+          }
+
+          .login-heading__description {
+            color: ${colors.white};
+            font-size: ${typography.f14};
+            line-height: 26px;
+            font-weight: 400;
+          }
+
+          .login-form {
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+          }
+
+          .login-form__forgot {
+            display: block;
+            font-size: ${typography.f14};
+            color: ${colors.gray};
+            margin-bottom: 50px;
+            transition: .15s ease-in-out;
+            cursor: pointer;
+            display: flex;
+            flex-direction: row-reverse;
+          }
+
+          .login-form__forgot:hover {
+            color: ${colors.grayDark};
+          }
+        `}</style>
+      </Page>
+    )
   }
 }
 
-const Login = props => {
-  const store = configureStore()
-  const items = [
-    {name: 'Rankings', link: 'rankings', type: 'item'},
-    {name: 'Cadastrar', link: 'signup', type: 'item'}
-  ]
-
-  if (isLogged()) {
-    props.url.replaceTo('/profile')
-  }
-
-  return (
-    <Provider store={store}>
-      <div>
-        <Meta />
-
-        <Header items={items} />
-
-        <section className={style(styles.row)}>
-          <h1 className={style(styles.title)}>Que bom te ver hoje!</h1>
-          <h2 className={style(styles.subtitle)}>Entre no Ritoplz Rankings</h2>
-
-          <FormLogin routing={props}/>
-        </section>
-
-        <Footer />
-      </div>
-    </Provider>
-  )
+Login.propTypes = {
+  greeting: PropTypes.string.isRequired
 }
 
-export default Login
+const mapStateToProps = state => {
+  return {
+    login: state.login
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    loginRequest: userData => dispatch(onLogin(userData))
+  }
+}
+
+export default withRedux(store, mapStateToProps, mapDispatchToProps)(Login)

@@ -1,95 +1,39 @@
 'use strict'
 
-/* @flow */
+import { UiLink } from './../components/ui'
+import { colors, typography } from './../components/ui/theme'
 
-import React, {Component} from 'react'
-import { style } from 'next/css'
-import { connect } from 'react-redux'
+const EmptyState = () => (
+  <div>
+    <h2>You don't have any summmoners yet</h2>
+    <p>
+      To enter to our Rankings you have to have at least on summoner confirmed.
+    </p>
 
-import ModalAddSummoner from './../containers/modal-add-summoner'
+    <UiLink href="/add-summoner">Add summoner</UiLink>
+    <style jsx>{`
+      div {
+        text-align: center;
+        padding-top: 100px;
+        padding-bottom: 50px;
+        width: 100%;
+      }
 
-const styles = {
-  base: {
-    border: '1px solid #F3F5FB',
-    borderRadius: '10px',
-    textAlign: 'center',
-    paddingTop: '50px',
-    paddingBottom: '50px',
-    boxShadow: '0 10px 50px rgba(0, 0, 0, .025)',
-    marginBottom: '70px'
-  },
+      h2 {
+        color: ${colors.heading};
+        font-weight: 500;
+        font-size: ${typography.f26};
+      }
 
-  title: {
-    color: '#333',
-    fontWeight: '400',
-    fontSize: '2rem',
-    marginBottom: '15px'
-  },
+      p {
+        color: ${colors.gray};
+        font-weight: 400;
+        font-size: ${typography.f16};
+        margin-top: 10px;
+        margin-bottom: 50px;
+      }
+    `}</style>
+  </div>
+)
 
-  subtitle: {
-    color: '#ccc',
-    marginTop: 0,
-    fontWeight: '300',
-    fontSize: '20px',
-    lineHeight: '33px',
-    maxWidth: '320px',
-    marginLeft: 'auto',
-    marginRight: 'auto'
-  },
-
-  btn: {
-    color: '#fff',
-    border: 'none',
-    borderRadius: '5px',
-    padding: '10px 25px',
-    fontSize: '.9rem',
-    height: '50px',
-    marginTop: '30px',
-    fontWeight: '500',
-    cursor: 'pointer',
-    background: 'linear-gradient(to right, #52bdab 0%,#6BB6D6 100%)'
-  }
-}
-
-class EmptyState extends Component {
-  constructor () {
-    super()
-
-    this.handleModal = this.handleModal.bind(this)
-
-    this.state = {
-      modalAddSummoner: false
-    }
-  }
-
-  handleModal () {
-    this.setState({modalAddSummoner: !this.state.modalAddSummoner})
-  }
-
-  render () {
-    return (
-      <section className={style(styles.base)}>
-        <h2 className={style(styles.title)}>Você não tem nenhum Invocador ainda</h2>
-        <h3 className={style(styles.subtitle)}>Para participar do Ritoplz Rankings você precisa adicionar um Invocador</h3>
-
-        <button className={style(styles.btn)} onClick={this.handleModal}>Adicionar Invocador</button>
-
-        <ModalAddSummoner open={this.state.modalAddSummoner}/>
-      </section>
-    )
-  }
-}
-
-const mapStateToProps = state => {
-  return {
-    modals: state.modals
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    openModal: modal => dispatch(openModal(modal))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(EmptyState)
+export default EmptyState

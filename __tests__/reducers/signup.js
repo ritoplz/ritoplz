@@ -1,78 +1,55 @@
-import {
-  SIGNUP_REQUEST,
-  SIGNUP_SUCCESS,
-  SIGNUP_ERROR
-} from '../../constants'
-import reducer from '../../reducers/signup'
+'use strict'
+
+/* eslint-env jest */
+
+import reducer from './../../reducers/signup'
+import { SIGNUP_REQUEST, SIGNUP_SUCCESS, SIGNUP_ERROR } from './../../constants'
 
 describe('signup reducer', () => {
-  it('should return the initial state', () => {
-    expect(
-      reducer(undefined, {})
-    ).toEqual({
-      requesting: false,
-      requested: false,
-      data: {},
-      error: null
+  describe('signup request', () => {
+    it('should return requesting equal true', () => {
+      const { requesting } = reducer(undefined, { type: SIGNUP_REQUEST })
+      expect(requesting).toBeTruthy()
     })
   })
 
-  it('should handle SIGNUP_REQUEST', () => {
-    expect(
-      reducer([], {
-        type: SIGNUP_REQUEST
-      })
-    ).toEqual({
-      requesting: true
+  describe('signup success', () => {
+    const signup = { token: 1 }
+    const { requesting, requested, data } = reducer(undefined, {
+      type: SIGNUP_SUCCESS,
+      data: signup
+    })
+
+    it('should return requesting equal false', () => {
+      expect(requesting).toBeFalsy()
+    })
+
+    it('should return requested equal true', () => {
+      expect(requested).toBeTruthy()
+    })
+
+    it('should return data', () => {
+      expect(data).toEqual(signup)
     })
   })
 
-  it('should handle SIGNUP_SUCCESS', () => {
-    expect(
-      reducer([], {
-        type: SIGNUP_SUCCESS,
-        data: {
-          token: 'token1234',
-          user: {
-            updatedAt: '2016-12-25T16:16:03.939Z',
-            createdAt: '2016-12-25T16:16:03.939Z',
-            name: 'Ritoplz',
-            email: 'ritoplz@ritoplz.com',
-            _id: '585ff0c3214de06b70e8aee2',
-            emailConfirmed: false
-          }
-        }
-      })
-    ).toEqual({
-      requesting: false,
-      requested: true,
-      data: {
-        token: 'token1234',
-        user: {
-          updatedAt: '2016-12-25T16:16:03.939Z',
-          createdAt: '2016-12-25T16:16:03.939Z',
-          name: 'Ritoplz',
-          email: 'ritoplz@ritoplz.com',
-          _id: '585ff0c3214de06b70e8aee2',
-          emailConfirmed: false
-        }
-      }
+  describe('signup error', () => {
+    const signup = { message: 'Email should not be blank' }
+    const { requesting, requested, error } = reducer(undefined, {
+      type: SIGNUP_ERROR,
+      error: signup
     })
-  })
 
-  it('should handle SIGNUP_ERROR', () => {
-    expect(
-      reducer([], {
-        type: SIGNUP_ERROR,
-        data: {
-          message: 'Email cannont be blank'
-        }
-      })
-    ).toEqual({
-      requesting: false,
-      error: {
-        message: 'Email cannont be blank'
-      }
+    it('should return requesting equal false', () => {
+      expect(requesting).toBeFalsy()
+    })
+
+    it('should return requested equal true', () => {
+      expect(requested).toBeTruthy()
+    })
+
+    it('should return error', () => {
+      expect(error).toEqual(signup)
     })
   })
 })

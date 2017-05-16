@@ -1,118 +1,107 @@
 'use strict'
 
-import React from 'react'
 import Link from 'next/link'
-import { style } from 'next/css'
+import { Row } from './../components/ui'
+import { colors, typography, phone } from './../components/ui/theme'
 
-const styles = {
-  footer: {
-    paddingTop: '20px',
-    paddingBottom: '20px',
+const Footer = () => (
+  <footer>
+    <Row>
+      <ul>
+        <li>
+          <Link prefetch href="/about">
+            <a>About</a>
+          </Link>
+        </li>
 
-    '@media (max-width: 750px)': {
-      paddingTop: '30px',
-      paddingBottom: '30px'
-    }
-  },
+        <li>
+          <Link prefetch href="/signup">
+            <a>Create an account</a>
+          </Link>
+        </li>
 
-  row: {
-    maxWidth: '900px',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    display: 'flex',
-    justifyContent: 'space-between',
-    flexWrap: 'wrap',
+        <li>
+          <Link href="https://github.com/ritoplz/ritoplz/releases">
+            <a>Releases</a>
+          </Link>
+        </li>
 
-    '@media (max-width: 750px)': {
-      textAlign: 'center'
-    }
-  },
+        <li>
+          <Link href="https://www.dropbox.com/sh/66azn9735a3yehp/AADK7GzGwtYi4iDZsSHl6zCda?dl=0">
+            <a>Press</a>
+          </Link>
+        </li>
 
-  copyright: {
-    color: '#666',
-    fontSize: '14px',
+        <li>
+          <Link prefetch href="/faq">
+            <a>FAQ</a>
+          </Link>
+        </li>
 
-    '@media (max-width: 750px)': {
-      textAlign: 'center',
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      order: '2',
-      marginTop: '20px'
-    }
-  },
+        <li>
+          <Link prefetch href="/terms">
+            <a>Terms of Services</a>
+          </Link>
+        </li>
 
-  item: {
-    display: 'inline-block',
-    borderRight: '1px solid #ededed',
-    verticalAlign: 'middle',
-    marginRight: '15px',
-    height: '20px',
-    lineHeight: '20px',
-    paddingRight: '15px',
+        <li>
+          <Link prefetch href="/privacy">
+            <a>Privacy Policy</a>
+          </Link>
+        </li>
 
-    '@media (max-width: 750px)': {
-      marginBottom: '10px'
-    }
-  },
+        <li>
+          <a href="mailto:ritoplzteam@gmail.com">Contact</a>
+        </li>
+      </ul>
 
-  link: {
-    color: '#666',
-    textDecoration: 'none',
-    fontSize: '12px',
-    transition: 'all .2s ease',
+      <p>Made with ❤ by Ritoplz — © 2017. All rights reserved.</p>
+    </Row>
 
-    ':hover': {
-      color: '#ccc'
-    }
-  }
-}
+    <style jsx>{`
+      footer {
+        border-top: 1px solid ${colors.border};
+        padding-top: 50px;
+        padding-bottom: 50px;
+        text-align: center;
+      }
 
-export default () => {
-  return (
-    <footer className={style(styles.footer)}>
-      <div className={style(styles.row)}>
-        <span className={style(styles.copyright)}>Copyright © 2016 Ritoplz. All rights reserved.</span>
+      ul {
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        justify-content: space-around;
+        max-width: 80%;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+      }
 
-        <nav className={style(styles.footerLinks)}>
-          <ul>
-            <li className={style(styles.item)}>
-              <Link href="https://github.com/ritoplz">
-                <img src="/static/github.svg"/>
-              </Link>
-            </li>
+      a {
+        color: ${colors.grayDark};
+        opacity: .75;
+        font-size: ${typography.f14};
+        transition: .15s ease-in-out;
+      }
 
-            <li className={style(styles.item)}>
-              <Link href="https://twitter.com/ritoplzrankings">
-                <img src="/static/twitter.svg"/>
-              </Link>
-            </li>
+      a:hover {
+        opacity: 1;
+      }
 
-            <li className={style(styles.item)}>
-              <Link href="/faq">
-                <span className={style(styles.link)}>FAQ</span>
-              </Link>
-            </li>
+      p {
+        color: ${colors.gray};
+        font-size: ${typography.f14};
+      }
 
-            <li className={style(styles.item)}>
-              <Link href="/terms">
-                <span className={style(styles.link)}>Termos de Serviço</span>
-              </Link>
-            </li>
+      @media ${phone} {
+        li {
+          flex-basis: 100%;
+          margin-top: 10px;
+          margin-bottom: 10px;
+        }
+      }
+    `}</style>
+  </footer>
+)
 
-            <li className={style(styles.item)}>
-              <Link href="/privacy">
-                <span className={style(styles.link)}>Política de Privacidade</span>
-              </Link>
-            </li>
-
-            <li className={style(styles.item)}>
-              <a href="mailto:ritoplzteam@gmail.com">
-                <span className={style(styles.link)}>ritoplzteam@gmail.com</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </footer>
-  )
-}
+export default Footer
