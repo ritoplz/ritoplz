@@ -5,7 +5,7 @@
 import axios from 'axios'
 import { getToken, isLogged } from './auth'
 
-const apiUrl = API_URL || 'localhost:3001'
+const apiUrl = API_URL || 'http://localhost:3001'
 
 const api = axios.create({
   baseURL: apiUrl,
