@@ -43,11 +43,11 @@ class Faq extends Component {
           </LegalText>
 
           <LegalHeading>
-            2. Will you support other type of queues and rankings?
+            2. Will you support another type of queues and rankings?
           </LegalHeading>
 
           <LegalText>
-            Yes, we are also in the process of adding more types of rankings such as Champion Maestry per region, Best Duo players per region, Victory streak and more, you can expect to have these functionality in the coming months.
+            Yes, we are also in the process of adding more types of rankings such as Champion Mastery per region, Best Duo players per region, Victory streak and more, you can expect to have these functionalities in the coming months.
           </LegalText>
 
           <LegalHeading>
@@ -55,7 +55,7 @@ class Faq extends Component {
           </LegalHeading>
 
           <LegalText>
-            We are trying to keep the cities between 1 ~ 7 per state, if we receive too many requests for a city we will be inclined to add it, if you want a city just send us an email to
+            We are trying to keep the cities between 1 ~ 7 per state, if we receive too many requests for a city we will be inclined to add it if you want a city just send us an email to
             {' '}
             <a href="mailto:ritoplzteam@gmail.com">ritoplzteam@gmail.com</a>
             . If you think a state is missing for you region sent us an email too
