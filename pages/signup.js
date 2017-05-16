@@ -65,7 +65,7 @@ class Signup extends Component {
               League of Legends Rankings.
             </h2>
             <p className="signup-heading__description">
-              Join the Worldwide Rankings for League of Legends. See who's the best player of your region.
+              Join the Worldwide Rankings for League of Legends. See who's the best player in your region.
             </p>
 
             <RegisterFooter />

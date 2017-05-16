@@ -44,7 +44,7 @@ const Page = connect(state => state)(({ children }) => (
       <meta charSet="utf-8" />
       <meta
         name="description"
-        content="Worldwide Rankings for League of Legends. See who's the best player of your region."
+        content="Worldwide Rankings for League of Legends. See who's the best player in your region."
       />
       <meta
         name="keywords"
@@ -57,7 +57,7 @@ const Page = connect(state => state)(({ children }) => (
       <meta name="twitter:title" content="Ritoplz" />
       <meta
         name="twitter:description"
-        content="Worldwide Rankings for League of Legends. See who's the best player of your region."
+        content="Worldwide Rankings for League of Legends. See who's the best player in your region."
       />
       <meta
         property="twitter:image:src"
@@ -70,7 +70,7 @@ const Page = connect(state => state)(({ children }) => (
       <meta property="og:image" content="static/cover.png" />
       <meta
         property="og:description"
-        content="Worldwide Rankings for League of Legends. See who's the best player of your region."
+        content="Worldwide Rankings for League of Legends. See who's the best player in your region."
       />
       <meta property="og:site_name" content="Ritoplz" />
 
