@@ -77,6 +77,9 @@ const Page = connect(state => state)(({ children }) => (
       <script src="static/drift.js" />
       <script src="static/analytics.js" />
       <script src="static/heatmaps.js" />
+
+      <link rel="shortcut icon" href="static/favicon.png" type="image/x-icon" />
+      <link rel="icon" href="static/favicon.png" type="image/x-icon" />
     </Head>
 
     <main>
