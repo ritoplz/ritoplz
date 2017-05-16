@@ -62,7 +62,7 @@ class Login extends Component {
               League of Legends Rankings.
             </h2>
             <p className="login-heading__description">
-              Worldwide Rankings for League of Legends. See who's the best player of your region.
+              Worldwide Rankings for League of Legends. See who's the best player in your region.
             </p>
 
             <RegisterFooter />
