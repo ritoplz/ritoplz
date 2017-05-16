@@ -7,7 +7,7 @@ const Hero = () => (
   <section>
     <h1>Ritoplz <span>Rankings</span></h1>
     <h2>
-      Worldwide Rankings for League of Legends. See whos the best player of your region.
+      Worldwide Rankings for League of Legends. See who's the best player in your region.
     </h2>
 
     <UiLink href="/signup">Create an account</UiLink>
