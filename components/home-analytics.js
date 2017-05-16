@@ -12,7 +12,7 @@ const Analytics = () => (
     <div>
       <h2>Improve your gaming with data</h2>
       <p>
-        We provide data for you to understand better you game style and how you are improving.
+        We provide data for you to understand better your game style and how you are improving.
       </p>
 
       <UiLink href="/signup">Learn more</UiLink>
