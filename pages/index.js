@@ -8,6 +8,7 @@ import Page from './../layouts/page'
 import Header from './../components/header'
 import Hero from './../components/home-hero'
 import Road from './../components/home-road'
+import Footer from './../components/footer'
 import Analytics from './../components/home-analytics'
 import { Row } from './../components/ui'
 import { phone, tablet } from './../components/ui/theme'
@@ -26,6 +27,8 @@ class Home extends Component {
           <Road />
           <Analytics />
         </Row>
+
+        <Footer />
 
         <style jsx>{`
           img {

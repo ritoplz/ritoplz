@@ -11,6 +11,7 @@ import LegalTitle from './../components/legal-title'
 import LegalHeading from './../components/legal-heading'
 import LegalText from './../components/legal-text'
 import Header from './../components/header'
+import Footer from './../components/footer'
 import { Row } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
 
@@ -122,6 +123,8 @@ class Terms extends Component {
             Ritoplz isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.
           </p>
         </Row>
+
+        <Footer />
 
         <style jsx>{`
           p {

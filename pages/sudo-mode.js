@@ -10,6 +10,7 @@ import Alert from 'react-s-alert'
 import Page from './../layouts/page'
 
 import Header from './../components/header'
+import Footer from './../components/footer'
 import { UiButton, TextInput, Row, Notify } from './../components/ui'
 import { colors, typography, phone } from './../components/ui/theme'
 
@@ -92,48 +93,50 @@ class SudoMode extends Component {
           </form>
 
           <Notify />
-
-          <style jsx>{`
-            h2 {
-              text-align: center;
-              padding-top: 120px;
-              font-size: ${typography.f30};
-              color: ${colors.grayDark};
-              margin-bottom: 8px;
-              font-weight: 600;
-            }
-
-            p {
-              text-align: center;
-              margin-bottom: 50px;
-              font-size: ${typography.f16};
-              color: ${colors.gray};
-            }
-
-            span {
-              display: block;
-              font-size: ${typography.f14};
-              color: ${colors.gray};
-              margin-bottom: 50px;
-              transition: .15s ease-in-out;
-              cursor: pointer;
-              display: flex;
-              flex-direction: row-reverse;
-            }
-
-            form {
-              max-width: 60%;
-              margin-left: auto;
-              margin-right: auto;
-            }
-
-            @media ${phone} {
-              form {
-                max-width: 90%;
-              }
-            }
-          `}</style>
         </Row>
+
+        <Footer />
+
+        <style jsx>{`
+          h2 {
+            text-align: center;
+            padding-top: 120px;
+            font-size: ${typography.f30};
+            color: ${colors.grayDark};
+            margin-bottom: 8px;
+            font-weight: 600;
+          }
+
+          p {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: ${typography.f16};
+            color: ${colors.gray};
+          }
+
+          span {
+            display: block;
+            font-size: ${typography.f14};
+            color: ${colors.gray};
+            margin-bottom: 50px;
+            transition: .15s ease-in-out;
+            cursor: pointer;
+            display: flex;
+            flex-direction: row-reverse;
+          }
+
+          form {
+            max-width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+          }
+
+          @media ${phone} {
+            form {
+              max-width: 90%;
+            }
+          }
+        `}</style>
       </Page>
     )
   }

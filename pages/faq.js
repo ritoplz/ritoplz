@@ -11,6 +11,7 @@ import LegalTitle from './../components/legal-title'
 import LegalHeading from './../components/legal-heading'
 import LegalText from './../components/legal-text'
 import Header from './../components/header'
+import Footer from './../components/footer'
 import { Row } from './../components/ui'
 import { colors } from './../components/ui/theme'
 
@@ -86,6 +87,8 @@ class Faq extends Component {
             You need to confirm your summoner so we can make sure that the summoner belongs to you. And the easiest way we found was by creating a Mastery or Runes page on your account with the unique code we provide to each summoner that you add.
           </LegalText>
         </Row>
+
+        <Footer />
 
         <style jsx>{`
           a {

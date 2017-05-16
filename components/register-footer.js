@@ -18,9 +18,8 @@ const RegisterFooter = () => (
       <Link href="/privacy">
         <a>Privacy Policy</a>
       </Link>
-      <Link href="/contact">
-        <a>Contact</a>
-      </Link>
+
+      <a href="mailto:ritoplzteam@gmail.com">Contact</a>
     </nav>
 
     <p>Copyright © 2016 Ritoplz. All rights reserved.</p>

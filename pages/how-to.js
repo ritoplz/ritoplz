@@ -10,6 +10,7 @@ import Page from './../layouts/page'
 
 import { Row } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
+import Footer from './../components/footer'
 import Header from './../components/header'
 
 import { isLogged } from './../services/auth'
@@ -131,6 +132,8 @@ class HowTo extends Component {
             </ul>
           </div>
         </Row>
+
+        <Footer />
 
         <style jsx>{`
           h2 {

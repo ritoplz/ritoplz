@@ -10,6 +10,7 @@ import LegalTitle from './../components/legal-title'
 import LegalHeading from './../components/legal-heading'
 import LegalText from './../components/legal-text'
 import Header from './../components/header'
+import Footer from './../components/footer'
 import { Row } from './../components/ui'
 import { colors } from './../components/ui/theme'
 
@@ -150,6 +151,8 @@ class Privacy extends Component {
             <a href="mailto:ritoplzteam@gmail.com">ritoplzteam@gmail.com</a>
           </LegalText>
         </Row>
+
+        <Footer />
 
         <style jsx>{`
           a {
