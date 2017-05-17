@@ -72,6 +72,8 @@ class HowTo extends Component {
                   {' '}
                   to add your summoner. We only ask your summoner name.
                 </p>
+
+                <img src="static/add-summoner.png" alt="" />
               </div>
 
               <div className="step">
@@ -88,6 +90,8 @@ class HowTo extends Component {
                   {' '}
                   with a code. Copy that code and go to step 03.
                 </p>
+
+                <img src="static/get-code.png" alt="" />
               </div>
 
               <div className="step">
@@ -108,6 +112,8 @@ class HowTo extends Component {
                   {' '}
                   and name it with the code received.
                 </p>
+
+                <img src="static/mastery-page.png" alt="" />
               </div>
 
               <div className="step">
@@ -124,6 +130,8 @@ class HowTo extends Component {
                   {' '}
                   page and click on the confirm button of your summoner.
                 </p>
+
+                <img src="static/confirm-summoner.png" alt="" />
               </div>
             </div>
 
@@ -263,6 +271,14 @@ class HowTo extends Component {
 
             a {
               cursor: pointer;
+            }
+
+            img {
+              max-width: 500px;
+              margin-left: auto;
+              margin-right: auto;
+              margin-top: 40px;
+              display: block;
             }
           `}</style>
         </Page>
