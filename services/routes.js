@@ -12,5 +12,4 @@ const routes = [
 
 const urlPrettifier = new UrlPrettifier(routes)
 
-exports.default = routes
-exports.Router = urlPrettifier
+module.exports = urlPrettifier

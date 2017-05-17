@@ -1,10 +1,10 @@
 'use strict'
 
 import PropTypes from 'prop-types'
-import Link from 'next-url-prettifier'
+import { Link } from 'next-url-prettifier'
 
 import { colors, typography, phone } from './ui/theme'
-import { Router } from './../services/routes'
+import Router from './../services/routes'
 
 const MenuUser = ({ user }) => {
   const name = user ? user.name : ''
@@ -12,7 +12,7 @@ const MenuUser = ({ user }) => {
 
   return (
     <span>
-      <Link route={Router.linkPage('profile', { name: 'BuKinoshita' })}>
+      <Link route={Router.linkPage('profile', { username })}>
         <a>{name}</a>
       </Link>
 
