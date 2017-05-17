@@ -42,7 +42,7 @@ class HowTo extends Component {
     if (isLogged()) {
       return fetchAccount().then(res => {
         if (res.error) {
-          Router.push('/profile')
+          Router.push('/my-summoners')
         }
       })
     }
@@ -82,9 +82,9 @@ class HowTo extends Component {
                   </span>
                 </h3>
                 <p className="step__description">
-                  After adding your summoner it will show up on your
+                  After adding your summoner it will show up in your
                   {' '}
-                  <Link href="/profile"><a>profile page</a></Link>
+                  <Link href="/my-summoners"><a>my summoners page</a></Link>
                   {' '}
                   with a code. Copy that code and go to step 03.
                 </p>
@@ -120,9 +120,9 @@ class HowTo extends Component {
                 <p className="step__description">
                   After creating your Mastery page or Runes page with the code, go back to your
                   {' '}
-                  <Link href="/profile"><a>profile</a></Link>
+                  <Link href="/my-summoners"><a>my summoners</a></Link>
                   {' '}
-                  and click on the confirm button of your summoner.
+                  page and click on the confirm button of your summoner.
                 </p>
               </div>
             </div>

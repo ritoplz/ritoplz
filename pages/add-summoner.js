@@ -41,7 +41,7 @@ class AddSummoner extends Component {
     if (isLogged()) {
       return fetchAccount().then(res => {
         if (res.error) {
-          Router.push('/profile')
+          Router.push('/my-summoners')
         }
       })
     }
@@ -87,7 +87,7 @@ class AddSummoner extends Component {
 
               <UiButton ui="primary block" type="submit">Add summoner</UiButton>
               <UiLink
-                href="/profile"
+                href="/my-summoners"
                 ui="link block small"
                 customStyle={{ marginTop: '10px' }}
               >

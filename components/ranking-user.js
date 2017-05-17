@@ -2,10 +2,11 @@
 
 import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
+import { Link } from 'next-url-prettifier'
 
-import { colors, typography } from './../components/ui/theme'
-import { UiButton } from './../components/ui'
+import { colors, typography } from './ui/theme'
 import RankingProgress from './ranking-progress'
+import Router from './../services/routes'
 
 const RankingUser = ({ user, position, currentUser, t }) => {
   let lastTimePlayed
@@ -39,7 +40,9 @@ const RankingUser = ({ user, position, currentUser, t }) => {
           <h4 className="ranking-user__username">{user.name}</h4>
         </div>
 
-        <UiButton ui="outline default small">{t('View Profile')}</UiButton>
+        <Link route={Router.linkPage('profile', { username: user.name })}>
+          <a>View Profile</a>
+        </Link>
       </header>
 
       <footer className="ranking-footer">
@@ -143,6 +146,24 @@ const RankingUser = ({ user, position, currentUser, t }) => {
           color: #AAA;
           font-size: ${typography.f12};
           font-weight: 500;
+        }
+
+        a {
+          display: inline-block;
+          font-weight: 500;
+          line-height: 1.25;
+          text-align: center;
+          white-space: nowrap;
+          vertical-align: middle;
+          user-select: none;
+          border: 1px solid #DADADA;
+          border-radius: 4px;
+          transition: all .2s ease-in-out;
+          cursor: pointer;
+          background-color: transparent;
+          color: #CCCCCC;
+          font-size: ${typography.f14};
+          padding: 12px 15px;
         }
       `}</style>
     </div>
