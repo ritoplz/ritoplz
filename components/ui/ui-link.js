@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { colors, typography } from './theme'
 
 const UiLink = ({ children, href, as, ui = 'primary', customStyle }) => (
-  <Link prefetch href={href} as={as}>
+  <Link prefetch={process.env.USE_PREFETCH} href={href} as={as}>
     <a className={ui} style={customStyle}>
       {children}
 
