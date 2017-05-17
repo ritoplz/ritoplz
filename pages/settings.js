@@ -289,7 +289,7 @@ class Settings extends Component {
               <Fieldset
                 title="Invite Friends"
                 description="Invite your friends and earn points to exchange for RP. For each friend that confirms its summoner, you will earn 150 points to exchange with RP."
-                badge="Beta"
+                badge="Coming soon"
               >
                 <div className="invite-friends">
                   <h4 className="invite-friends__title">
@@ -298,14 +298,14 @@ class Settings extends Component {
 
                   <SocialButton
                     customStyle={{ marginBottom: '15px' }}
-                    href="https://facebook.com"
+                    href="/settings"
                     ui="facebook block"
                   >
                     Invite on Facebook
                   </SocialButton>
 
                   <SocialButton
-                    href="https://twitter.com"
+                    href="/settings"
                     ui="twitter block"
                     icon="twitter"
                   >
