@@ -4,7 +4,7 @@ import { UiButton, UiLink } from './'
 
 const FormControl = () => (
   <div className="form-control">
-    <UiLink prefetch href="/profile" ui="link default">Cancel</UiLink>
+    <UiLink href="/profile" ui="link default">Cancel</UiLink>
     <UiButton ui="success" type="submit">Save settings</UiButton>
 
     <style jsx>{`
