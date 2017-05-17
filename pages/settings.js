@@ -68,7 +68,7 @@ class Settings extends Component {
     if (isLogged()) {
       return fetchAccount().then(res => {
         if (res.error) {
-          Router.push('/profile')
+          Router.push('/my-summoner')
         }
       })
     }

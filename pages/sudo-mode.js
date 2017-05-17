@@ -43,7 +43,7 @@ class SudoMode extends Component {
 
     if (!query.hasOwnProperty('newEmail')) {
       if (isLogged()) {
-        return Router.push('/profile')
+        return Router.push('/my-summoner')
       }
 
       return Router.push('/login')
@@ -69,7 +69,7 @@ class SudoMode extends Component {
           return Alert.error(error)
         }
 
-        Router.push('/profile')
+        Router.push('/my-summoner')
       })
     }
   }
