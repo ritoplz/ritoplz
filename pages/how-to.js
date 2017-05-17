@@ -42,7 +42,7 @@ class HowTo extends Component {
     if (isLogged()) {
       return fetchAccount().then(res => {
         if (res.error) {
-          Router.push('/profile')
+          Router.push('/my-summoners')
         }
       })
     }
@@ -72,6 +72,11 @@ class HowTo extends Component {
                   {' '}
                   to add your summoner. We only ask your summoner name.
                 </p>
+
+                <img
+                  src="static/add-summoner.png"
+                  alt="Add summoner on Ritoplz"
+                />
               </div>
 
               <div className="step">
@@ -82,12 +87,17 @@ class HowTo extends Component {
                   </span>
                 </h3>
                 <p className="step__description">
-                  After adding your summoner it will show up on your
+                  After adding your summoner it will show up in your
                   {' '}
-                  <Link href="/profile"><a>profile page</a></Link>
+                  <Link href="/my-summoners"><a>my summoners page</a></Link>
                   {' '}
                   with a code. Copy that code and go to step 03.
                 </p>
+
+                <img
+                  src="static/get-code.png"
+                  alt="Get summoner code on my summoners"
+                />
               </div>
 
               <div className="step">
@@ -108,6 +118,11 @@ class HowTo extends Component {
                   {' '}
                   and name it with the code received.
                 </p>
+
+                <img
+                  src="static/mastery-page.png"
+                  alt="Mastery page and Runes page"
+                />
               </div>
 
               <div className="step">
@@ -120,10 +135,15 @@ class HowTo extends Component {
                 <p className="step__description">
                   After creating your Mastery page or Runes page with the code, go back to your
                   {' '}
-                  <Link href="/profile"><a>profile</a></Link>
+                  <Link href="/my-summoners"><a>my summoners</a></Link>
                   {' '}
-                  and click on the confirm button of your summoner.
+                  page and click on the confirm button of your summoner.
                 </p>
+
+                <img
+                  src="static/confirm-summoner.png"
+                  alt="Confirm your summoner on Ritoplz"
+                />
               </div>
             </div>
 
@@ -263,6 +283,14 @@ class HowTo extends Component {
 
             a {
               cursor: pointer;
+            }
+
+            img {
+              max-width: 500px;
+              margin-left: auto;
+              margin-right: auto;
+              margin-top: 40px;
+              display: block;
             }
           `}</style>
         </Page>

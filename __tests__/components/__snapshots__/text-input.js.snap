@@ -2,54 +2,63 @@
 
 exports[`ui text-input component snapshots should render email input 1`] = `
 <div
-  data-jsx={2337555898}
+  data-jsx={67896831}
 >
   <label
-    data-jsx={2337555898}
+    data-jsx={67896831}
   />
   <input
-    data-jsx={2337555898}
+    data-jsx={67896831}
     name={undefined}
     onChange={[Function]}
     placeholder={undefined}
     type="email"
     value={undefined}
+  />
+  <span
+    data-jsx={67896831}
   />
 </div>
 `;
 
 exports[`ui text-input component snapshots should render placeholder email 1`] = `
 <div
-  data-jsx={2337555898}
+  data-jsx={67896831}
 >
   <label
-    data-jsx={2337555898}
+    data-jsx={67896831}
   />
   <input
-    data-jsx={2337555898}
+    data-jsx={67896831}
     name={undefined}
     onChange={[Function]}
     placeholder="email"
     type="email"
     value={undefined}
   />
+  <span
+    data-jsx={67896831}
+  />
 </div>
 `;
 
 exports[`ui text-input component snapshots should render text input 1`] = `
 <div
-  data-jsx={2337555898}
+  data-jsx={67896831}
 >
   <label
-    data-jsx={2337555898}
+    data-jsx={67896831}
   />
   <input
-    data-jsx={2337555898}
+    data-jsx={67896831}
     name={undefined}
     onChange={[Function]}
     placeholder={undefined}
     type="text"
     value={undefined}
+  />
+  <span
+    data-jsx={67896831}
   />
 </div>
 `;

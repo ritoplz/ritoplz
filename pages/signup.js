@@ -54,7 +54,7 @@ class Signup extends Component {
       .then(({ data, error }) => {
         if (data) {
           setToken(data.token)
-          return Router.push('/profile')
+          return Router.push('/my-summoners')
         }
 
         return Alert.error(error)
