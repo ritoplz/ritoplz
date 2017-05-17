@@ -3,10 +3,39 @@
 import Link from 'next/link'
 import { Row } from './../components/ui'
 import { colors, typography, phone } from './../components/ui/theme'
+import {
+  TwitterIcon,
+  FacebookIcon,
+  InstagramIcon,
+  GithubIcon
+} from './../components/icons'
 
 const Footer = () => (
   <footer>
     <Row>
+      <ul className="social">
+        <li>
+          <a href="https://www.facebook.com/ritoplzrankings/">
+            <FacebookIcon />
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/ritoplzrankings">
+            <TwitterIcon />
+          </a>
+        </li>
+        <li>
+          <a href="https://instagram.com/ritoplzrankings">
+            <InstagramIcon />
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/ritoplz/ritoplz">
+            <GithubIcon />
+          </a>
+        </li>
+      </ul>
+
       <ul>
         <li>
           <Link prefetch href="/about">
@@ -93,11 +122,19 @@ const Footer = () => (
         font-size: ${typography.f14};
       }
 
+      .social {
+        max-width: 200px;
+      }
+
       @media ${phone} {
         li {
           flex-basis: 100%;
           margin-top: 10px;
           margin-bottom: 10px;
+        }
+
+        .social li {
+          flex-basis: 25%;
         }
       }
     `}</style>
