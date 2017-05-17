@@ -6,7 +6,7 @@ import renderer from 'react-test-renderer'
 
 import FormControl from '../../components/ui/form-control'
 
-describe('ui badge component', () => {
+describe('ui form-control component', () => {
   describe('snapshots', () => {
     it('should render form-control', () => {
       const tree = renderer.create(<FormControl />).toJSON()
