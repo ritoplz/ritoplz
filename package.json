@@ -9,7 +9,8 @@
   "author": "Bu Kinoshita <bukinoshita@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "next",
+    "dev": "NODE_ENV=development node server",
+    "staging": "NODE_ENV=staging node server",
     "build": "next build",
     "start": "next start",
     "precommit": "lint-staged",

@@ -1,15 +1,20 @@
 'use strict'
 
 import PropTypes from 'prop-types'
-import Link from 'next/link'
+import Link from 'next-url-prettifier'
+
 import { colors, typography, phone } from './ui/theme'
+import { Router } from './../services/routes'
 
 const MenuUser = ({ user }) => {
-  const userName = user ? user.name : ''
+  const name = user ? user.name : ''
+  const username = user ? user.username : ''
 
   return (
     <span>
-      <Link href="/profile"><a>{userName}</a></Link>
+      <Link route={Router.linkPage('profile', { name: 'BuKinoshita' })}>
+        <a>{name}</a>
+      </Link>
 
       <style jsx>{`
         span {

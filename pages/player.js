@@ -15,16 +15,17 @@ import { isLogged } from './../services/auth'
 import { startI18n, getTranslation } from './../services/i18n'
 import store from './../store/configure-store'
 import { fetchAccount } from './../actions/fetch-account'
+import { fetchProfile } from './../actions/fetch-profile'
 
 class Player extends Component {
-  static async getInitialProps({ query: { name } }) {
+  static async getInitialProps({ query: { username } }) {
     const translations = await getTranslation(
       'pt',
       'common',
       'http://localhost:3000/static/locales/'
     )
 
-    return { translations, name }
+    return { translations, username }
   }
 
   constructor(props) {
@@ -34,7 +35,9 @@ class Player extends Component {
   }
 
   componentDidMount() {
-    const { fetchAccount } = this.props
+    const { fetchAccount, fetchProfile, username } = this.props
+
+    fetchProfile(username)
 
     if (isLogged()) {
       fetchAccount()
@@ -42,15 +45,23 @@ class Player extends Component {
   }
 
   render() {
-    const { name } = this.props
+    const { username, profile } = this.props
+    let profileUser
+
+    if (profile) {
+      profileUser = (
+        <h1>{profile.city}</h1>
+      )
+    }
 
     return (
       <I18nextProvider i18n={this.i18n}>
         <Page>
-          <Row>
-            <Header logged={isLogged()} user={this.props.user} />
+          <Header logged={isLogged()} user={this.props.user} />
 
-            <h1>Player {name}</h1>
+          <Row>
+            <h1>Player {username}</h1>
+            {profileUser}
           </Row>
 
           <Footer />
@@ -62,20 +73,23 @@ class Player extends Component {
 
 Player.propTypes = {
   fetchAccount: PropTypes.func.isRequired,
+  fetchProfile: PropTypes.func.isRequired,
   user: PropTypes.object,
-  name: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
   translations: PropTypes.object
 }
 
 const mapStateToProps = state => {
   return {
-    user: state.account.data.user
+    user: state.account.data.user,
+    profile: state.profile.data.user
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchAccount: () => dispatch(fetchAccount())
+    fetchAccount: () => dispatch(fetchAccount()),
+    fetchProfile: username => dispatch(fetchProfile(username))
   }
 }
 

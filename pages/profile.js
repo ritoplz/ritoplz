@@ -3,144 +3,94 @@
 import { Component } from 'react'
 import withRedux from 'next-redux-wrapper'
 import PropTypes from 'prop-types'
-import Router from 'next/router'
 import { I18nextProvider } from 'react-i18next'
 
 import Page from './../layouts/page'
 
-import PageTitle from './../components/page-title'
+import { Row } from './../components/ui'
+import Footer from './../components/footer'
 import Header from './../components/header'
-import Summoners from './../components/summoners'
-import Stats from './../components/stats'
-import LatestMatches from './../components/latest-matches'
-import EmptyState from './../components/empty-state'
-import { Row, Notify } from './../components/ui'
-import { SpinnerIcon } from './../components/icons'
 
 import { isLogged } from './../services/auth'
 import { startI18n, getTranslation } from './../services/i18n'
 import store from './../store/configure-store'
 import { fetchAccount } from './../actions/fetch-account'
-import { confirmSummoner } from './../actions/confirm-summoner'
+import { fetchProfile } from './../actions/fetch-profile'
 
-class Profile extends Component {
-  static async getInitialProps() {
+class Player extends Component {
+  static async getInitialProps({ query: { username } }) {
     const translations = await getTranslation(
       'pt',
       'common',
       'http://localhost:3000/static/locales/'
     )
-    return { translations }
+
+    return { translations, username }
   }
 
   constructor(props) {
     super(props)
 
-    this.selectSummoner = this.selectSummoner.bind(this)
     this.i18n = startI18n(props.translations)
-
-    this.state = {
-      fetched: false,
-      summonerSelected: 0
-    }
   }
 
   componentDidMount() {
-    const { fetchAccount } = this.props
+    const { fetchAccount, fetchProfile, username } = this.props
+
+    fetchProfile(username)
 
     if (isLogged()) {
-      return fetchAccount().then(res => {
-        if (res.error) {
-          Router.push('/profile')
-        }
-      })
+      fetchAccount()
     }
-
-    Router.push('/login')
-  }
-
-  componentWillReceiveProps({ summoners }) {
-    const activeSummoners = []
-
-    summoners.map(summoner => {
-      if (summoner.active) {
-        activeSummoners.push(summoner)
-      }
-    })
-
-    this.setState({
-      summoners: activeSummoners,
-      fetched: true
-    })
-  }
-
-  selectSummoner(summonerSelected) {
-    this.setState({ summonerSelected })
   }
 
   render() {
-    let profile
+    const { username, profile } = this.props
+    let profileUser
 
-    if (this.props.requested && this.state.summoners) {
-      if (this.state.summoners.length > 0) {
-        profile = (
-          <div>
-            <PageTitle title="Summoners" />
-            <Summoners
-              summoners={this.state.summoners}
-              summonerSelected={this.state.summonerSelected}
-              selectSummoner={index => this.selectSummoner(index)}
-            />
-            <Stats info={this.state.summoners[this.state.summonerSelected]} />
-
-            <PageTitle title="Latest matches" />
-            <LatestMatches
-              info={this.state.summoners[this.state.summonerSelected]}
-            />
-          </div>
-        )
-      } else {
-        profile = <EmptyState />
-      }
-    } else {
-      profile = <SpinnerIcon customStyle={{ marginTop: '150px' }} />
+    if (profile) {
+      profileUser = (
+        <h1>{profile.city}</h1>
+      )
     }
 
     return (
       <I18nextProvider i18n={this.i18n}>
         <Page>
           <Header logged={isLogged()} user={this.props.user} />
+
           <Row>
-            {profile}
-            <Notify />
+            <h1>Player {username}</h1>
+            {profileUser}
           </Row>
+
+          <Footer />
         </Page>
       </I18nextProvider>
     )
   }
 }
 
-Profile.propTypes = {
+Player.propTypes = {
+  fetchAccount: PropTypes.func.isRequired,
+  fetchProfile: PropTypes.func.isRequired,
   user: PropTypes.object,
-  fetchAccount: PropTypes.func,
-  summoners: PropTypes.array,
-  requested: PropTypes.bool,
+  username: PropTypes.string.isRequired,
   translations: PropTypes.object
 }
 
 const mapStateToProps = state => {
   return {
     user: state.account.data.user,
-    summoners: state.account.data.summoners,
-    requested: state.account.requested
+    profile: state.profile.data.user
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     fetchAccount: () => dispatch(fetchAccount()),
-    confirmSummoner: summoner => dispatch(confirmSummoner(summoner))
+    fetchProfile: username => dispatch(fetchProfile(username))
   }
 }
 
-export default withRedux(store, mapStateToProps, mapDispatchToProps)(Profile)
+export default withRedux(store, mapStateToProps, mapDispatchToProps)(Player)

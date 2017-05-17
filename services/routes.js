@@ -4,9 +4,9 @@ const UrlPrettifier = require('next-url-prettifier').default
 
 const routes = [
   {
-    page: 'player',
-    prettyUrl: ({ name = '' }) => `/player/${name}`,
-    prettyUrlPatterns: [{ pattern: '/player/:name' }]
+    page: 'profile',
+    prettyUrl: ({ username = '' }) => `/profile/${username}`,
+    prettyUrlPatterns: [{ pattern: '/profile/:username' }]
   }
 ]
 
