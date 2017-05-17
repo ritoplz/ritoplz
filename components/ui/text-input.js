@@ -10,6 +10,7 @@ const TextInput = ({
   placeholder,
   inputRef,
   inputValue,
+  hint,
   handleInputChange
 }) => {
   const onInputChange = value => {
@@ -29,10 +30,19 @@ const TextInput = ({
         value={inputValue}
         onChange={value => onInputChange(value)}
       />
+      <span>{hint}</span>
 
       <style jsx>{`
         div {
           margin-bottom: 30px;
+        }
+
+        span {
+          display: block;
+          color: ${colors.gray};
+          font-weight: 500;
+          font-size: ${typography.f12};
+          margin-top: 10px;
         }
 
         label {
@@ -84,6 +94,7 @@ TextInput.propTypes = {
   placeholder: PropTypes.string,
   inputRef: PropTypes.func,
   name: PropTypes.string,
+  hint: PropTypes.string,
   inputValue: PropTypes.string,
   handleInputChange: PropTypes.func
 }

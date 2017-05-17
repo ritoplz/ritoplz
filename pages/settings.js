@@ -48,6 +48,7 @@ class Settings extends Component {
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleEditUser = this.handleEditUser.bind(this)
     this.state = {
+      name: '',
       username: '',
       email: '',
       password: '',
@@ -76,18 +77,22 @@ class Settings extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { email, name, emailConfirmed } = nextProps.user
+    const { email, name, username, emailConfirmed } = nextProps.userSettings
 
-    if (nextProps.user.country && nextProps.user.state && nextProps.user.city) {
+    if (
+      nextProps.userSettings.country &&
+      nextProps.userSettings.state &&
+      nextProps.userSettings.city
+    ) {
       countries.filter(country => {
-        if (country.value === nextProps.user.country) {
+        if (country.value === nextProps.userSettings.country) {
           this.setState({
             countrySelected: country,
             country: country.value
           })
 
           locations[country.value].filter(state => {
-            if (state.label === nextProps.user.state) {
+            if (state.label === nextProps.userSettings.state) {
               const stateIndex = locations[country.value].findIndex(
                 ({ label }) => label === state.label
               )
@@ -98,7 +103,7 @@ class Settings extends Component {
               })
 
               locations[country.value][stateIndex].cities.filter(city => {
-                if (city.label === nextProps.user.city) {
+                if (city.label === nextProps.userSettings.city) {
                   this.setState({ citySelected: city, city: city.label })
                 }
               })
@@ -109,7 +114,8 @@ class Settings extends Component {
     }
 
     this.setState({
-      username: name,
+      name,
+      username,
       email,
       emailConfirmed
     })
@@ -122,8 +128,9 @@ class Settings extends Component {
   handleEditUser(e) {
     e.preventDefault()
 
-    const { editUser, user } = this.props
+    const { editUser, userSettings } = this.props
     const {
+      name,
       username,
       email,
       password,
@@ -133,13 +140,14 @@ class Settings extends Component {
       city
     } = this.state
     const userData = {
-      name: username,
+      name,
+      username,
       country,
       state: stateSelected.label,
       city
     }
 
-    if (user.email === email) {
+    if (userSettings.email === email) {
       if (password && newPassword) {
         userData.password = password
         userData.newPassword = newPassword
@@ -159,7 +167,8 @@ class Settings extends Component {
     Router.push({
       pathname: '/sudo-mode',
       query: {
-        name: username,
+        name,
+        username,
         newEmail: email
       }
     })
@@ -180,14 +189,24 @@ class Settings extends Component {
     return (
       <I18nextProvider i18n={this.i18n}>
         <Page>
-          <Header logged={isLogged()} user={this.props.user} />
+          <Header logged={isLogged()} user={this.props.userSettings} />
           <Row>
             <PageTitle title="Settings" />
 
             <form onSubmit={this.handleEditUser}>
+              <Fieldset title="Name" description="This is your real name">
+                <TextInput
+                  label="Name"
+                  placeholder="Your name"
+                  name="name"
+                  handleInputChange={this.handleInputChange}
+                  inputValue={this.state.name}
+                />
+              </Fieldset>
+
               <Fieldset
                 title="Username"
-                description="This is your name and where players access your profile"
+                description="Where players access your profile"
               >
                 <TextInput
                   label="Username"
@@ -195,6 +214,7 @@ class Settings extends Component {
                   name="username"
                   handleInputChange={this.handleInputChange}
                   inputValue={this.state.username}
+                  hint={`ritoplz.com/profile/${this.state.username}`}
                 />
               </Fieldset>
 
@@ -338,14 +358,14 @@ class Settings extends Component {
 
 Settings.propTypes = {
   fetchAccount: PropTypes.func.isRequired,
-  user: PropTypes.object,
+  userSettings: PropTypes.object,
   editUser: PropTypes.func.isRequired,
   translations: PropTypes.object
 }
 
 const mapStateToProps = state => {
   return {
-    user: state.account.data.user
+    userSettings: state.account.data.user
   }
 }
 

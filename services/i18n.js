@@ -7,7 +7,7 @@ import 'isomorphic-fetch'
 
 export const startI18n = file =>
   i18n.init({
-    fallbackLng: 'pt',
+    fallbackLng: 'en',
     resources: file,
     load: 'languageOnly',
     ns: ['common'],
