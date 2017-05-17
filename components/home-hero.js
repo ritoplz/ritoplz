@@ -1,17 +1,19 @@
 'use strict'
 
+import { translate } from 'react-i18next'
+
 import { UiLink } from './/ui'
 import { colors, typography, phone, tablet } from './ui/theme'
 
-const Hero = () => (
+const Hero = ({ t }) => (
   <section>
     <h1>Ritoplz <span>Rankings</span></h1>
     <h2>
-      Worldwide Rankings for League of Legends. See who's the best player in your region.
+      {t(`Worldwide Rankings for League of Legends`)}. {t(`See who's the best player in your region`)}.
     </h2>
 
-    <UiLink href="/signup">Create an account</UiLink>
-    <UiLink href="/rankings" ui="link">See Rankings</UiLink>
+    <UiLink href="/signup">{t('Create an account')}</UiLink>
+    <UiLink href="/rankings" ui="link">{t('See Rankings')}</UiLink>
 
     <style jsx>{`
       section {
@@ -57,4 +59,4 @@ const Hero = () => (
   </section>
 )
 
-export default Hero
+export default translate(['common'])(Hero)

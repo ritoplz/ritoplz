@@ -2,6 +2,11 @@
 
 import { Component } from 'react'
 import withRedux from 'next-redux-wrapper'
+import i18next from 'i18next'
+
+import { I18nextProvider } from 'react-i18next'
+import startI18n from './../tools/startI18n'
+import { getTranslation } from './../tools/translation-helper'
 
 import Page from './../layouts/page'
 
@@ -16,40 +21,54 @@ import { phone, tablet } from './../components/ui/theme'
 import store from './../store/configure-store'
 
 class Home extends Component {
+  static async getInitialProps () {
+    const translations = await getTranslation('pt', 'common', 'http://localhost:3000/static/locales/')
+
+    return { translations }
+  }
+
+  constructor (props) {
+    super(props)
+
+    this.i18n = startI18n(props.translations)
+  }
+
   render() {
     return (
-      <Page>
-        <Header logged={false} />
+      <I18nextProvider i18n={this.i18n}>
+        <Page>
+          <Header logged={false} />
 
-        <Row>
-          <Hero />
-          <img src="static/background.png" alt="" />
-          <Road />
-          <Analytics />
-        </Row>
+          <Row>
+            <Hero />
+            <img src="static/background.png" alt="" />
+            <Road />
+            <Analytics />
+          </Row>
 
-        <Footer />
+          <Footer />
 
-        <style jsx>{`
-          img {
-            position: absolute;
-            top: 300px;
-            right: 0;
-          }
-
-          @media ${tablet} {
+          <style jsx>{`
             img {
-              top: 400px;
+              position: absolute;
+              top: 300px;
+              right: 0;
             }
-          }
 
-          @media ${phone} {
-            img {
-              display: none;
+            @media ${tablet} {
+              img {
+                top: 400px;
+              }
             }
-          }
-        `}</style>
-      </Page>
+
+            @media ${phone} {
+              img {
+                display: none;
+              }
+            }
+          `}</style>
+        </Page>
+      </ I18nextProvider>
     )
   }
 }

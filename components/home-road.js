@@ -1,15 +1,17 @@
 'use strict'
 
+import { translate } from 'react-i18next'
+
 import { UiLink } from './../components/ui'
 import { colors, typography, phone } from './../components/ui/theme'
 
-const Road = () => (
+const Road = ({ t }) => (
   <section>
     <div>
-      <h2>Road to the top</h2>
-      <p>See how is the best of your region and compete against.</p>
+      <h2>{t('Road to the top')}</h2>
+      <p>{t(`See who's the best of your region and compete against`)}.</p>
 
-      <UiLink href="/rankings">See your Ranking</UiLink>
+      <UiLink href="/rankings">{t('See your Ranking')}</UiLink>
     </div>
 
     <div>
@@ -54,4 +56,4 @@ const Road = () => (
   </section>
 )
 
-export default Road
+export default translate(['common'])(Road)
