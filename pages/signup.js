@@ -6,10 +6,7 @@ import goot from 'goot'
 import withRedux from 'next-redux-wrapper'
 import Router from 'next/router'
 import Alert from 'react-s-alert'
-
 import { I18nextProvider } from 'react-i18next'
-import startI18n from './../tools/startI18n'
-import { getTranslation } from './../tools/translation-helper'
 
 import Page from './../layouts/page'
 
@@ -20,12 +17,17 @@ import { UiButton, UiLink, TextInput, Notify } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
 
 import { setToken } from './../services/auth'
+import { startI18n, getTranslation } from './../services/i18n'
 import store from './../store/configure-store'
 import { onSignup } from './../actions/signup'
 
 class Signup extends Component {
   static async getInitialProps() {
-    const translations = await getTranslation('pt', 'common', 'http://localhost:3000/static/locales/')
+    const translations = await getTranslation(
+      'pt',
+      'common',
+      'http://localhost:3000/static/locales/'
+    )
     const greeting = await goot()
     return { greeting, translations }
   }
@@ -185,7 +187,8 @@ class Signup extends Component {
 }
 
 Signup.propTypes = {
-  greeting: PropTypes.string.isRequired
+  greeting: PropTypes.string.isRequired,
+  translations: PropTypes.object
 }
 
 const mapDispatchToProps = dispatch => {

@@ -2,11 +2,8 @@
 
 import { Component } from 'react'
 import withRedux from 'next-redux-wrapper'
-import i18next from 'i18next'
-
+import PropTypes from 'prop-types'
 import { I18nextProvider } from 'react-i18next'
-import startI18n from './../tools/startI18n'
-import { getTranslation } from './../tools/translation-helper'
 
 import Page from './../layouts/page'
 
@@ -18,16 +15,21 @@ import Analytics from './../components/home-analytics'
 import { Row } from './../components/ui'
 import { phone, tablet } from './../components/ui/theme'
 
+import { startI18n, getTranslation } from './../services/i18n'
 import store from './../store/configure-store'
 
 class Home extends Component {
-  static async getInitialProps () {
-    const translations = await getTranslation('pt', 'common', 'http://localhost:3000/static/locales/')
+  static async getInitialProps() {
+    const translations = await getTranslation(
+      'pt',
+      'common',
+      'http://localhost:3000/static/locales/'
+    )
 
     return { translations }
   }
 
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.i18n = startI18n(props.translations)
@@ -68,9 +70,13 @@ class Home extends Component {
             }
           `}</style>
         </Page>
-      </ I18nextProvider>
+      </I18nextProvider>
     )
   }
+}
+
+Home.propTypes = {
+  translations: PropTypes.object
 }
 
 export default withRedux(store, null, null)(Home)

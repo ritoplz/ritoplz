@@ -2,10 +2,11 @@
 
 import { translate } from 'react-i18next'
 import Link from 'next/link'
+import PropTypes from 'prop-types'
 
 import { colors, typography } from './../components/ui/theme'
 
-const RegisterFooter = ({ t, i18n }) => {
+const RegisterFooter = ({ t }) => {
   return (
     <footer>
       <nav>
@@ -58,6 +59,10 @@ const RegisterFooter = ({ t, i18n }) => {
       `}</style>
     </footer>
   )
+}
+
+RegisterFooter.propTypes = {
+  t: PropTypes.func
 }
 
 export default translate(['common'])(RegisterFooter)

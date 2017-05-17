@@ -2,6 +2,7 @@
 
 import { translate } from 'react-i18next'
 import Link from 'next/link'
+import PropTypes from 'prop-types'
 
 import { Row } from './../components/ui'
 import { colors, typography, phone } from './../components/ui/theme'
@@ -86,7 +87,18 @@ const Footer = ({ t }) => (
         </li>
       </ul>
 
-      <p>{t('Made with')} ❤ {t('by')} Ritoplz — © 2017. {t('All rights reserved')}.</p>
+      <p>
+        {t('Made with')}
+        {' '}
+        ❤
+        {' '}
+        {t('by')}
+        {' '}
+        Ritoplz — © 2017.
+        {' '}
+        {t('All rights reserved')}
+        .
+      </p>
     </Row>
 
     <style jsx>{`
@@ -142,5 +154,9 @@ const Footer = ({ t }) => (
     `}</style>
   </footer>
 )
+
+Footer.propTypes = {
+  t: PropTypes.func
+}
 
 export default translate(['common'])(Footer)

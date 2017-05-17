@@ -111,7 +111,8 @@ const Menu = ({ logged, user, t }) => {
 
 Menu.propTypes = {
   logged: PropTypes.bool,
-  user: PropTypes.object
+  user: PropTypes.object,
+  t: PropTypes.func
 }
 
 export default translate(['common'])(Menu)

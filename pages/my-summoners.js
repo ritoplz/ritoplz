@@ -5,6 +5,7 @@ import withRedux from 'next-redux-wrapper'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
 import Alert from 'react-s-alert'
+import { I18nextProvider } from 'react-i18next'
 
 import Page from './../layouts/page'
 
@@ -17,14 +18,25 @@ import { SpinnerIcon } from './../components/icons'
 import { Row, Notify, UiLink } from './../components/ui'
 
 import { isLogged } from './../services/auth'
+import { startI18n, getTranslation } from './../services/i18n'
 import store from './../store/configure-store'
 import { fetchAccount } from './../actions/fetch-account'
 import { confirmSummoner } from './../actions/confirm-summoner'
 
 class MySummoners extends Component {
-  constructor() {
-    super()
+  static async getInitialProps() {
+    const translations = await getTranslation(
+      'pt',
+      'common',
+      'http://localhost:3000/static/locales/'
+    )
 
+    return { translations }
+  }
+
+  constructor(props) {
+    super(props)
+    this.i18n = startI18n(props.translations)
     this.confirmSummoner = this.confirmSummoner.bind(this)
 
     this.state = {
@@ -117,20 +129,22 @@ class MySummoners extends Component {
     }
 
     return (
-      <Page>
-        <Header logged={isLogged()} user={this.props.user} />
-        <Row>
-          <PageTitle title="My summoners">
-            <UiLink href="/add-summoner" ui="primary small">
-              Add new summoner
-            </UiLink>
-          </PageTitle>
+      <I18nextProvider i18n={this.i18n}>
+        <Page>
+          <Header logged={isLogged()} user={this.props.user} />
+          <Row>
+            <PageTitle title="My summoners">
+              <UiLink href="/add-summoner" ui="primary small">
+                Add new summoner
+              </UiLink>
+            </PageTitle>
 
-          {mySummoners}
+            {mySummoners}
 
-          <Notify />
-        </Row>
-      </Page>
+            <Notify />
+          </Row>
+        </Page>
+      </I18nextProvider>
     )
   }
 }
@@ -140,7 +154,8 @@ MySummoners.propTypes = {
   fetchAccount: PropTypes.func,
   summoners: PropTypes.array,
   requested: PropTypes.bool,
-  confirmSummoner: PropTypes.func.isRequired
+  confirmSummoner: PropTypes.func.isRequired,
+  translations: PropTypes.object
 }
 
 const mapStateToProps = state => {

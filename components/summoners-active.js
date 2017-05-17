@@ -1,10 +1,12 @@
 'use strict'
 
+import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
+
 import { colors, typography, phone } from './../components/ui/theme'
 import { Badge } from './../components/ui'
 
-const SummonersActive = ({ summoners }) => {
+const SummonersActive = ({ summoners, t }) => {
   let activeSummoners
 
   if (summoners.length > 0) {
@@ -23,7 +25,7 @@ const SummonersActive = ({ summoners }) => {
             <span>{rankedSolo.tier} {rankedSolo.division}</span>
           </div>
 
-          <Badge type="primary">confirmed</Badge>
+          <Badge type="primary">{t('confirmed')}</Badge>
 
           <style jsx>{`
             li {
@@ -83,7 +85,8 @@ const SummonersActive = ({ summoners }) => {
 }
 
 SummonersActive.propTypes = {
-  summoners: PropTypes.array
+  summoners: PropTypes.array,
+  t: PropTypes.func
 }
 
-export default SummonersActive
+export default translate(['common'])(SummonersActive)

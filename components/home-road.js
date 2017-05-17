@@ -1,6 +1,7 @@
 'use strict'
 
 import { translate } from 'react-i18next'
+import PropTypes from 'prop-types'
 
 import { UiLink } from './../components/ui'
 import { colors, typography, phone } from './../components/ui/theme'
@@ -55,5 +56,9 @@ const Road = ({ t }) => (
     `}</style>
   </section>
 )
+
+Road.propTypes = {
+  t: PropTypes.func
+}
 
 export default translate(['common'])(Road)

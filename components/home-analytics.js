@@ -1,6 +1,7 @@
 'use strict'
 
 import { translate } from 'react-i18next'
+import PropTypes from 'prop-types'
 
 import { UiLink } from './../components/ui'
 import { colors, typography, phone } from './../components/ui/theme'
@@ -14,7 +15,10 @@ const Analytics = ({ t }) => (
     <div>
       <h2>{t('Improve your gaming with data')}</h2>
       <p>
-        {t('We provide data for you to understand better your game style and how you are improving')}.
+        {t(
+          'We provide data for you to understand better your game style and how you are improving'
+        )}
+        .
       </p>
 
       <UiLink href="/signup">{t('Learn more')}</UiLink>
@@ -72,5 +76,9 @@ const Analytics = ({ t }) => (
     `}</style>
   </section>
 )
+
+Analytics.propTypes = {
+  t: PropTypes.func
+}
 
 export default translate(['common'])(Analytics)

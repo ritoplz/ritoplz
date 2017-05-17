@@ -5,6 +5,7 @@ import withRedux from 'next-redux-wrapper'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
 import Alert from 'react-s-alert'
+import { I18nextProvider } from 'react-i18next'
 
 import Page from './../layouts/page'
 
@@ -13,14 +14,25 @@ import { colors, typography, phone } from './../components/ui/theme'
 import Header from './../components/header'
 
 import { isLogged } from './../services/auth'
+import { startI18n, getTranslation } from './../services/i18n'
 import store from './../store/configure-store'
 import { fetchAccount } from './../actions/fetch-account'
 import { resetPassword } from './../actions/reset-password'
 
 class ResetPassword extends Component {
-  constructor() {
-    super()
+  static async getInitialProps() {
+    const translations = await getTranslation(
+      'pt',
+      'common',
+      'http://localhost:3000/static/locales/'
+    )
 
+    return { translations }
+  }
+
+  constructor(props) {
+    super(props)
+    this.i18n = startI18n(props.translations)
     this.resetPassword = this.resetPassword.bind(this)
   }
 
@@ -57,60 +69,64 @@ class ResetPassword extends Component {
 
   render() {
     return (
-      <Page>
-        <Header logged={isLogged()} user={this.props.user} />
-        <Row>
-          <h2>Reset your password</h2>
-          <p>
-            Forgot your password? Happens all the time. Enter your email below to reset it.
-          </p>
+      <I18nextProvider i18n={this.i18n}>
+        <Page>
+          <Header logged={isLogged()} user={this.props.user} />
+          <Row>
+            <h2>Reset your password</h2>
+            <p>
+              Forgot your password? Happens all the time. Enter your email below to reset it.
+            </p>
 
-          <form onSubmit={this.resetPassword}>
-            <TextInput
-              label="Email"
-              placeholder="ritoplz@gmail.com"
-              type="email"
-              inputRef={ref => {
-                this.email = ref
-              }}
-            />
+            <form onSubmit={this.resetPassword}>
+              <TextInput
+                label="Email"
+                placeholder="ritoplz@gmail.com"
+                type="email"
+                inputRef={ref => {
+                  this.email = ref
+                }}
+              />
 
-            <UiButton ui="primary block" type="submit">Reset password</UiButton>
-          </form>
+              <UiButton ui="primary block" type="submit">
+                Reset password
+              </UiButton>
+            </form>
 
-          <Notify />
-        </Row>
+            <Notify />
+          </Row>
 
-        <style jsx>{`
-          h2 {
-            text-align: center;
-            padding-top: 120px;
-            font-size: ${typography.f30};
-            color: ${colors.grayDark};
-            margin-bottom: 8px;
-            font-weight: 600;
-          }
-
-          p {
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: ${typography.f16};
-            color: ${colors.gray};
-          }
-
-          form {
-            max-width: 60%;
-            margin-left: auto;
-            margin-right: auto;
-          }
-
-          @media ${phone} {
-            form {
-              max-width: 90%;
+          <style jsx>{`
+            h2 {
+              text-align: center;
+              padding-top: 120px;
+              font-size: ${typography.f30};
+              color: ${colors.grayDark};
+              margin-bottom: 8px;
+              font-weight: 600;
             }
-          }
-        `}</style>
-      </Page>
+
+            p {
+              text-align: center;
+              margin-bottom: 50px;
+              font-size: ${typography.f16};
+              color: ${colors.gray};
+            }
+
+            form {
+              max-width: 60%;
+              margin-left: auto;
+              margin-right: auto;
+            }
+
+            @media ${phone} {
+              form {
+                max-width: 90%;
+              }
+            }
+          `}</style>
+        </Page>
+      </I18nextProvider>
     )
   }
 }
@@ -118,7 +134,8 @@ class ResetPassword extends Component {
 ResetPassword.propTypes = {
   fetchAccount: PropTypes.func.isRequired,
   resetPassword: PropTypes.func.isRequired,
-  user: PropTypes.object
+  user: PropTypes.object,
+  translations: PropTypes.object
 }
 
 const mapStateToProps = state => {

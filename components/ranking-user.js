@@ -1,11 +1,13 @@
 'use strict'
 
+import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
+
 import { colors, typography } from './../components/ui/theme'
 import { UiButton } from './../components/ui'
 import RankingProgress from './ranking-progress'
 
-const RankingUser = ({ user, position, currentUser }) => {
+const RankingUser = ({ user, position, currentUser, t }) => {
   let lastTimePlayed
   const hotStreak = user.rankedSolo.isHotStreak ? '🔥' : null
 
@@ -37,7 +39,7 @@ const RankingUser = ({ user, position, currentUser }) => {
           <h4 className="ranking-user__username">{user.name}</h4>
         </div>
 
-        <UiButton ui="outline default small">View Profile</UiButton>
+        <UiButton ui="outline default small">{t('View Profile')}</UiButton>
       </header>
 
       <footer className="ranking-footer">
@@ -50,7 +52,7 @@ const RankingUser = ({ user, position, currentUser }) => {
             {user.city}, {user.state} — {user.country}
           </span>
           <span className="ranking-info__play">
-            Last time played:
+            {t('Last time played')}:
             {' '}
             <strong>{lastTimePlayed}</strong>
           </span>
@@ -150,7 +152,8 @@ const RankingUser = ({ user, position, currentUser }) => {
 RankingUser.propTypes = {
   user: PropTypes.object,
   position: PropTypes.number,
-  currentUser: PropTypes.object
+  currentUser: PropTypes.object,
+  t: PropTypes.func
 }
 
-export default RankingUser
+export default translate(['common'])(RankingUser)
