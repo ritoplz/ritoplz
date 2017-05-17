@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ui badge component snapshots should render form-control 1`] = `
+exports[`ui form-control component snapshots should render form-control 1`] = `
 <div
   className="form-control"
   data-jsx={2101790025}
