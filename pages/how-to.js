@@ -73,7 +73,10 @@ class HowTo extends Component {
                   to add your summoner. We only ask your summoner name.
                 </p>
 
-                <img src="static/add-summoner.png" alt="" />
+                <img
+                  src="static/add-summoner.png"
+                  alt="Add summoner on Ritoplz"
+                />
               </div>
 
               <div className="step">
@@ -91,7 +94,10 @@ class HowTo extends Component {
                   with a code. Copy that code and go to step 03.
                 </p>
 
-                <img src="static/get-code.png" alt="" />
+                <img
+                  src="static/get-code.png"
+                  alt="Get summoner code on my summoners"
+                />
               </div>
 
               <div className="step">
@@ -113,7 +119,10 @@ class HowTo extends Component {
                   and name it with the code received.
                 </p>
 
-                <img src="static/mastery-page.png" alt="" />
+                <img
+                  src="static/mastery-page.png"
+                  alt="Mastery page and Runes page"
+                />
               </div>
 
               <div className="step">
@@ -131,7 +140,10 @@ class HowTo extends Component {
                   page and click on the confirm button of your summoner.
                 </p>
 
-                <img src="static/confirm-summoner.png" alt="" />
+                <img
+                  src="static/confirm-summoner.png"
+                  alt="Confirm your summoner on Ritoplz"
+                />
               </div>
             </div>
 
