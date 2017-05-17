@@ -57,6 +57,7 @@
   },
   "now": {
     "name": "ritoplz",
+    "alias": "staging-web.ritoplz.com",
     "env": {
       "NODE_ENV": "staging"
     }
