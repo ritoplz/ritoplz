@@ -17,15 +17,15 @@ const SocialButton = ({
 
   switch (icon) {
     case 'facebook':
-      socialIcon = <FacebookIcon />
+      socialIcon = <FacebookIcon color="#fff" />
       break
 
     case 'twitter':
-      socialIcon = <TwitterIcon />
+      socialIcon = <TwitterIcon color="#fff" />
       break
 
     default:
-      socialIcon = <FacebookIcon />
+      socialIcon = <FacebookIcon color="#fff" />
   }
 
   return (
