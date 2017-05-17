@@ -5,20 +5,33 @@ import withRedux from 'next-redux-wrapper'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
 import Alert from 'react-s-alert'
+import { I18nextProvider } from 'react-i18next'
 
 import Page from './../layouts/page'
 import { UiButton, UiLink, TextInput, Row, Notify } from './../components/ui'
 import { colors, typography, phone } from './../components/ui/theme'
 import Header from './../components/header'
 
-import store from './../store/configure-store'
 import { isLogged } from './../services/auth'
+import { startI18n, getTranslation } from './../services/i18n'
+import store from './../store/configure-store'
 import { fetchAccount } from './../actions/fetch-account'
 import { addSummoner } from './../actions/add-summoner'
 
 class AddSummoner extends Component {
-  constructor() {
-    super()
+  static async getInitialProps() {
+    const translations = await getTranslation(
+      'pt',
+      'common',
+      'http://localhost:3000/static/locales/'
+    )
+
+    return { translations }
+  }
+
+  constructor(props) {
+    super(props)
+    this.i18n = startI18n(props.translations)
     this.addSummoner = this.addSummoner.bind(this)
   }
 
@@ -54,66 +67,68 @@ class AddSummoner extends Component {
 
   render() {
     return (
-      <Page>
-        <Header logged={isLogged()} user={this.props.user} />
-        <Row>
-          <h2>Add summoner</h2>
-          <p>
-            Add and confirm your summoner to enter our Ranking.
-          </p>
+      <I18nextProvider i18n={this.i18n}>
+        <Page>
+          <Header logged={isLogged()} user={this.props.user} />
+          <Row>
+            <h2>Add summoner</h2>
+            <p>
+              Add and confirm your summoner to enter our Ranking.
+            </p>
 
-          <form onSubmit={this.addSummoner}>
-            <TextInput
-              label="Summoner name"
-              placeholder="Summoner name"
-              inputRef={ref => {
-                this.summoner = ref
-              }}
-            />
+            <form onSubmit={this.addSummoner}>
+              <TextInput
+                label="Summoner name"
+                placeholder="Summoner name"
+                inputRef={ref => {
+                  this.summoner = ref
+                }}
+              />
 
-            <UiButton ui="primary block" type="submit">Add summoner</UiButton>
-            <UiLink
-              href="/profile"
-              ui="link block small"
-              customStyle={{ marginTop: '10px' }}
-            >
-              Back to profile
-            </UiLink>
-          </form>
+              <UiButton ui="primary block" type="submit">Add summoner</UiButton>
+              <UiLink
+                href="/profile"
+                ui="link block small"
+                customStyle={{ marginTop: '10px' }}
+              >
+                Back to profile
+              </UiLink>
+            </form>
 
-          <Notify />
-        </Row>
+            <Notify />
+          </Row>
 
-        <style jsx>{`
-          h2 {
-            text-align: center;
-            padding-top: 120px;
-            font-size: ${typography.f30};
-            color: ${colors.grayDark};
-            margin-bottom: 8px;
-            font-weight: 600;
-          }
-
-          p {
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: ${typography.f16};
-            color: ${colors.gray};
-          }
-
-          form {
-            max-width: 60%;
-            margin-left: auto;
-            margin-right: auto;
-          }
-
-          @media ${phone} {
-            form {
-              max-width: 90%;
+          <style jsx>{`
+            h2 {
+              text-align: center;
+              padding-top: 120px;
+              font-size: ${typography.f30};
+              color: ${colors.grayDark};
+              margin-bottom: 8px;
+              font-weight: 600;
             }
-          }
-        `}</style>
-      </Page>
+
+            p {
+              text-align: center;
+              margin-bottom: 50px;
+              font-size: ${typography.f16};
+              color: ${colors.gray};
+            }
+
+            form {
+              max-width: 60%;
+              margin-left: auto;
+              margin-right: auto;
+            }
+
+            @media ${phone} {
+              form {
+                max-width: 90%;
+              }
+            }
+          `}</style>
+        </Page>
+      </I18nextProvider>
     )
   }
 }
@@ -121,7 +136,8 @@ class AddSummoner extends Component {
 AddSummoner.propTypes = {
   fetchAccount: PropTypes.func.isRequired,
   addSummoner: PropTypes.func.isRequired,
-  user: PropTypes.object
+  user: PropTypes.object,
+  translations: PropTypes.object
 }
 
 const mapStateToProps = state => {

@@ -1,16 +1,22 @@
 'use strict'
 
+import { translate } from 'react-i18next'
+import PropTypes from 'prop-types'
+
 import { UiLink } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
 
-const EmptyState = () => (
+const EmptyState = ({ t }) => (
   <div>
-    <h2>You don't have any summmoners yet</h2>
+    <h2>{t(`You don't have any summmoners yet`)}</h2>
     <p>
-      To enter to our Rankings you have to have at least on summoner confirmed.
+      {t(
+        'To enter to our Rankings you have to have at least one summoner confirmed'
+      )}
+      .
     </p>
 
-    <UiLink href="/add-summoner">Add summoner</UiLink>
+    <UiLink href="/add-summoner">{t('Add summoner')}</UiLink>
     <style jsx>{`
       div {
         text-align: center;
@@ -36,4 +42,8 @@ const EmptyState = () => (
   </div>
 )
 
-export default EmptyState
+EmptyState.propTypes = {
+  t: PropTypes.func
+}
+
+export default translate(['common'])()

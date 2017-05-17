@@ -1,13 +1,14 @@
 'use strict'
 
+import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
 
 import { colors, typography } from './ui/theme'
 
-const LegalTitle = ({ title, date }) => (
+const LegalTitle = ({ title, date, t }) => (
   <div>
     <h2>{title}</h2>
-    <p>Last update: {date}</p>
+    <p>{t('Last update')}: {date}</p>
 
     <style jsx>{`
       div {
@@ -33,7 +34,8 @@ const LegalTitle = ({ title, date }) => (
 
 LegalTitle.propTypes = {
   title: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired
+  date: PropTypes.string.isRequired,
+  t: PropTypes.func
 }
 
-export default LegalTitle
+export default translate(['common'])(LegalTitle)

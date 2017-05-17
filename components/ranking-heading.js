@@ -1,17 +1,19 @@
 'use strict'
 
+import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
+
 import { colors, typography } from './ui/theme'
 import { isLogged } from './../services/auth'
 
-const RankingHeading = ({ user }) => {
+const RankingHeading = ({ user, t }) => {
   let rankingHeading
   if (isLogged() && user) {
     if (user.country && user.state && user.city) {
       rankingHeading = (
         <h2>
           <strong className="username">{user.name}</strong>
-          , you are in
+          , {t('you are in')}
           {' '}
           <strong>{user.city}, {user.state} — {user.country}</strong>
 
@@ -45,7 +47,8 @@ const RankingHeading = ({ user }) => {
 }
 
 RankingHeading.propTypes = {
-  user: PropTypes.object
+  user: PropTypes.object,
+  t: PropTypes.func
 }
 
-export default RankingHeading
+export default translate(['common'])(RankingHeading)

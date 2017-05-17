@@ -1,10 +1,12 @@
 'use strict'
 
+import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
+
 import { UiButton } from './../components/ui'
 import { colors, typography, phone } from './../components/ui/theme'
 
-const SummonersInactive = ({ summoners, confirmSummoner }) => {
+const SummonersInactive = ({ summoners, confirmSummoner, t }) => {
   let inactiveSummoners
 
   if (summoners.length > 0) {
@@ -15,10 +17,10 @@ const SummonersInactive = ({ summoners, confirmSummoner }) => {
         <li key={summoner.code} onClick={() => confirmSummoner(summoner)}>
           <div>
             <h4>{name}</h4>
-            <span>Code: {code}</span>
+            <span>{t('Code')}: {code}</span>
           </div>
 
-          <UiButton ui="success small">Confirm summoner</UiButton>
+          <UiButton ui="success small">{t('Confirm summoner')}</UiButton>
 
           <style jsx>{`
             li {
@@ -73,7 +75,8 @@ const SummonersInactive = ({ summoners, confirmSummoner }) => {
 
 SummonersInactive.propTypes = {
   summoners: PropTypes.array,
-  confirmSummoner: PropTypes.func.isRequired
+  confirmSummoner: PropTypes.func.isRequired,
+  t: PropTypes.func
 }
 
-export default SummonersInactive
+export default translate(['common'])(SummonersInactive)

@@ -1,16 +1,17 @@
 'use strict'
 
+import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
 
 import { Badge } from './../components/ui'
 import { colors, typography } from './../components/ui/theme'
 
-const LatestMatches = ({ info }) => {
+const LatestMatches = ({ info, t }) => {
   let latestMatches
 
   if (info.recentMatches) {
     latestMatches = info.recentMatches.games.map((match, index) => {
-      const badge = match.stats.win ? 'Won' : 'Lost'
+      const badge = match.stats.win ? `${t('Won')}` : `${t('Lost')}`
       const badgeStatus = match.stats.win ? 'success' : 'danger'
       const timePlayed = Math.floor(match.stats.timePlayed / 60)
       let matchType
@@ -54,14 +55,14 @@ const LatestMatches = ({ info }) => {
     <table cellPadding="0" cellSpacing="0" width="100%">
       <thead>
         <tr>
-          <th>Type</th>
-          <th>Double Kills</th>
-          <th>Killing Sprees</th>
-          <th>Largest Killing Spree</th>
-          <th>Champions Killed</th>
-          <th>Deaths</th>
-          <th>Duration</th>
-          <th>Win/Lose</th>
+          <th>{t('Type')}</th>
+          <th>{t('Double Kills')}</th>
+          <th>{t('Killing Sprees')}</th>
+          <th>{t('Largest Killing Spree')}</th>
+          <th>{t('Champions Killed')}</th>
+          <th>{t('Deaths')}</th>
+          <th>{t('Duration')}</th>
+          <th>{t('Win/Lose')}</th>
         </tr>
       </thead>
 
@@ -104,7 +105,8 @@ const LatestMatches = ({ info }) => {
 }
 
 LatestMatches.propTypes = {
-  info: PropTypes.object
+  info: PropTypes.object,
+  t: PropTypes.func
 }
 
-export default LatestMatches
+export default translate(['common'])(LatestMatches)

@@ -1,13 +1,16 @@
 'use strict'
 
+import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
 
 import { Badge } from './../components/ui'
 import { colors, typography, phone } from './../components/ui/theme'
 
-const Stats = ({ info }) => {
+const Stats = ({ info, t }) => {
   const badgeType = info.recentMatches.lastPlayedSolo.win ? 'success' : 'danger'
-  const badge = info.recentMatches.lastPlayedSolo.win ? 'won' : 'lost'
+  const badge = info.recentMatches.lastPlayedSolo.win
+    ? `${t('Won')}`
+    : `${t('Lost')}`
 
   return (
     <div>
@@ -17,7 +20,7 @@ const Stats = ({ info }) => {
             <h5 className="header-box__title">
               {info.rankedSolo.wins || 'Unranked'}
             </h5>
-            <span className="header-box__subtitle">Wins</span>
+            <span className="header-box__subtitle">{t('Wins')}</span>
           </div>
         </div>
 
@@ -26,7 +29,7 @@ const Stats = ({ info }) => {
             <h5 className="header-box__title">
               {info.rankedSolo.losses || 'Unranked'}
             </h5>
-            <span className="header-box__subtitle">Losses</span>
+            <span className="header-box__subtitle">{t('Losses')}</span>
           </div>
         </div>
 
@@ -36,7 +39,9 @@ const Stats = ({ info }) => {
             <h5 className="header-box__title header-box__title--badge">
               {info.recentMatches.lastPlayedSolo.date}
             </h5>
-            <span className="header-box__subtitle">Last time played</span>
+            <span className="header-box__subtitle">
+              {t('Last time played')}
+            </span>
           </div>
         </div>
       </header>
@@ -92,7 +97,8 @@ const Stats = ({ info }) => {
 }
 
 Stats.propTypes = {
-  info: PropTypes.object
+  info: PropTypes.object,
+  t: PropTypes.func
 }
 
-export default Stats
+export default translate(['common'])(Stats)

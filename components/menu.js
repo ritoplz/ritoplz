@@ -1,12 +1,14 @@
 'use strict'
 
+import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
+
 import { colors, phone } from './ui/theme'
 import { UiLink } from './ui'
 import MenuUser from './menu-user'
 
-const Menu = ({ logged, user }) => {
+const Menu = ({ logged, user, t }) => {
   let showUser
   if (logged) {
     showUser = (
@@ -19,13 +21,13 @@ const Menu = ({ logged, user }) => {
 
         <li>
           <Link prefetch href="/my-summoners">
-            <a>My summoners</a>
+            <a>{t('My summoners')}</a>
           </Link>
         </li>
 
         <li>
           <Link prefetch href="/settings">
-            <a>Settings</a>
+            <a>{t('Settings')}</a>
           </Link>
         </li>
 
@@ -69,7 +71,7 @@ const Menu = ({ logged, user }) => {
         </li>
 
         <div>
-          <UiLink href="/login" ui="primary small">Login</UiLink>
+          <UiLink href="/login" ui="primary small">{t('Login')}</UiLink>
         </div>
 
         <style jsx>{`
@@ -109,7 +111,8 @@ const Menu = ({ logged, user }) => {
 
 Menu.propTypes = {
   logged: PropTypes.bool,
-  user: PropTypes.object
+  user: PropTypes.object,
+  t: PropTypes.func
 }
 
-export default Menu
+export default translate(['common'])(Menu)

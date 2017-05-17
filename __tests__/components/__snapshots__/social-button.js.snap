@@ -13,7 +13,7 @@ exports[`ui social-button component snapshots should render facebook button 1`] 
     data-jsx={285824617}
   >
     <svg
-      fill="#FFF"
+      fill="#fff"
       height="15px"
       viewBox="0 0 40 40"
       width="15px"
@@ -42,7 +42,7 @@ exports[`ui social-button component snapshots should render primary button with 
     data-jsx={285824617}
   >
     <svg
-      fill="#FFF"
+      fill="#fff"
       height="15px"
       viewBox="0 0 40 40"
       width="15px"
@@ -71,7 +71,7 @@ exports[`ui social-button component snapshots should render twitter button 1`] =
     data-jsx={285824617}
   >
     <svg
-      fill="#FFF"
+      fill="#fff"
       height="15px"
       viewBox="0 0 40 40"
       width="15px"

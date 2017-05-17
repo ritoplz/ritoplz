@@ -1,6 +1,9 @@
 'use strict'
 
+import { translate } from 'react-i18next'
 import Link from 'next/link'
+import PropTypes from 'prop-types'
+
 import { Row } from './../components/ui'
 import { colors, typography, phone } from './../components/ui/theme'
 import {
@@ -10,7 +13,7 @@ import {
   GithubIcon
 } from './../components/icons'
 
-const Footer = () => (
+const Footer = ({ t }) => (
   <footer>
     <Row>
       <ul className="social">
@@ -39,52 +42,63 @@ const Footer = () => (
       <ul>
         <li>
           <Link prefetch href="/about">
-            <a>About</a>
+            <a>{t('About')}</a>
           </Link>
         </li>
 
         <li>
           <Link prefetch href="/signup">
-            <a>Create an account</a>
+            <a>{t('Create an account')}</a>
           </Link>
         </li>
 
         <li>
           <Link href="https://github.com/ritoplz/ritoplz/releases">
-            <a>Releases</a>
+            <a>{t('Releases')}</a>
           </Link>
         </li>
 
         <li>
           <Link href="https://www.dropbox.com/sh/66azn9735a3yehp/AADK7GzGwtYi4iDZsSHl6zCda?dl=0">
-            <a>Press</a>
+            <a>{t('Press')}</a>
           </Link>
         </li>
 
         <li>
           <Link prefetch href="/faq">
-            <a>FAQ</a>
+            <a>{t('FAQ')}</a>
           </Link>
         </li>
 
         <li>
           <Link prefetch href="/terms">
-            <a>Terms of Services</a>
+            <a>{t('Terms of Services')}</a>
           </Link>
         </li>
 
         <li>
           <Link prefetch href="/privacy">
-            <a>Privacy Policy</a>
+            <a>{t('Privacy Policy')}</a>
           </Link>
         </li>
 
         <li>
-          <a href="mailto:ritoplzteam@gmail.com">Contact</a>
+          <a href="mailto:ritoplzteam@gmail.com">{t('Contact')}</a>
         </li>
       </ul>
 
-      <p>Made with ❤ by Ritoplz — © 2017. All rights reserved.</p>
+      <p>
+        {t('Made with')}
+        {' '}
+        ❤
+        {' '}
+        {t('by')}
+        {' '}
+        Ritoplz — © 2017.
+        {' '}
+        {t('All rights reserved')}
+        .
+      </p>
     </Row>
 
     <style jsx>{`
@@ -141,4 +155,8 @@ const Footer = () => (
   </footer>
 )
 
-export default Footer
+Footer.propTypes = {
+  t: PropTypes.func
+}
+
+export default translate(['common'])(Footer)
