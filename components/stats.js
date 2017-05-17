@@ -3,15 +3,9 @@
 import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
 
-import { Badge } from './../components/ui'
 import { colors, typography, phone } from './../components/ui/theme'
 
 const Stats = ({ info, t }) => {
-  const badgeType = info.recentMatches.lastPlayedSolo.win ? 'success' : 'danger'
-  const badge = info.recentMatches.lastPlayedSolo.win
-    ? `${t('Won')}`
-    : `${t('Lost')}`
-
   return (
     <div>
       <header className="header">
@@ -32,18 +26,6 @@ const Stats = ({ info, t }) => {
             <span className="header-box__subtitle">{t('Losses')}</span>
           </div>
         </div>
-
-        <div className="header-box">
-          <div>
-            <Badge type={badgeType}>{badge}</Badge>
-            <h5 className="header-box__title header-box__title--badge">
-              {info.recentMatches.lastPlayedSolo.date}
-            </h5>
-            <span className="header-box__subtitle">
-              {t('Last time played')}
-            </span>
-          </div>
-        </div>
       </header>
 
       <style jsx>{`
@@ -55,7 +37,7 @@ const Stats = ({ info, t }) => {
         }
 
         .header-box {
-          flex-basis: calc(33.33% - 15px);
+          flex-basis: calc(50% - 15px);
           box-shadow: 0 10px 30px rgba(50, 50, 93, .05), 0 5px 12px rgba(0, 0, 0, .05);
           border-radius: 6px;
           padding: 40px 15px;
@@ -73,10 +55,6 @@ const Stats = ({ info, t }) => {
           font-weight: 600;
           color: ${colors.grayDark};
           margin-bottom: 10px;
-        }
-
-        .header-box__title--badge {
-          margin-top: 10px;
         }
 
         .header-box__subtitle {

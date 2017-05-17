@@ -16,6 +16,7 @@ import InactiveSummoners from './../components/summoners-inactive'
 import EmptyState from './../components/empty-state'
 import { SpinnerIcon } from './../components/icons'
 import { Row, Notify, UiLink } from './../components/ui'
+import Footer from './../components/footer'
 
 import { isLogged } from './../services/auth'
 import { startI18n, getTranslation } from './../services/i18n'
@@ -94,23 +95,25 @@ class MySummoners extends Component {
 
   render() {
     let mySummoners
+    const { summoners, inactiveSummoners } = this.state
 
-    if (
-      this.props.requested &&
-      this.state.summoners &&
-      this.state.inactiveSummoners
-    ) {
-      if (
-        this.state.summoners.length > 0 &&
-        this.state.inactiveSummoners.length > 0
-      ) {
+    if (this.props.requested && summoners && inactiveSummoners) {
+      if (summoners.length > 0 || inactiveSummoners.length > 0) {
         mySummoners = (
-          <div>
-            <ActiveSummoners summoners={this.state.summoners} />
-            <InactiveSummoners
-              summoners={this.state.inactiveSummoners}
-              confirmSummoner={this.confirmSummoner}
-            />
+          <section>
+            <PageTitle title="My summoners">
+              <UiLink href="/add-summoner" ui="primary small">
+                Add new summoner
+              </UiLink>
+            </PageTitle>
+
+            <div>
+              <ActiveSummoners summoners={summoners} />
+              <InactiveSummoners
+                summoners={inactiveSummoners}
+                confirmSummoner={this.confirmSummoner}
+              />
+            </div>
 
             <style jsx>{`
               div {
@@ -119,7 +122,7 @@ class MySummoners extends Component {
                 justify-content: space-between;
               }
             `}</style>
-          </div>
+          </section>
         )
       } else {
         mySummoners = <EmptyState />
@@ -133,16 +136,12 @@ class MySummoners extends Component {
         <Page>
           <Header logged={isLogged()} user={this.props.user} />
           <Row>
-            <PageTitle title="My summoners">
-              <UiLink href="/add-summoner" ui="primary small">
-                Add new summoner
-              </UiLink>
-            </PageTitle>
-
             {mySummoners}
 
             <Notify />
           </Row>
+
+          <Footer />
         </Page>
       </I18nextProvider>
     )

@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 import { Link } from 'next-url-prettifier'
 
 import { colors, typography } from './ui/theme'
-import { UiButton } from './ui'
 import RankingProgress from './ranking-progress'
 import Router from './../services/routes'
 

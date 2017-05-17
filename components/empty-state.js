@@ -46,4 +46,4 @@ EmptyState.propTypes = {
   t: PropTypes.func
 }
 
-export default translate(['common'])()
+export default translate(['common'])(EmptyState)
