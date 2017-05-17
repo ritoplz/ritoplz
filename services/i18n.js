@@ -2,11 +2,11 @@
 
 /* global fetch */
 
-import { init } from 'i18next'
+import i18n from 'i18next'
 import 'isomorphic-fetch'
 
 export const startI18n = file =>
-  init({
+  i18n.init({
     fallbackLng: 'pt',
     resources: file,
     load: 'languageOnly',

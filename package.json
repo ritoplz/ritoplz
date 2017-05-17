@@ -125,7 +125,8 @@
       "no-implicit-coercion": 0,
       "no-prototype-builtins": 0,
       "array-callback-return": 0,
-      "import/no-unassigned-import": 0
+      "import/no-unassigned-import": 0,
+      "import/no-named-as-default-member": 0
     },
     "ignores": [
       "static/*.js",
