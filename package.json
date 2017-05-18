@@ -12,13 +12,13 @@
     "dev": "NODE_ENV=development node server",
     "staging": "NODE_ENV=staging node server",
     "build": "next build",
-    "start": "NODE_ENV=staging node server.js",
+    "start": "NODE_ENV=production node server",
     "precommit": "lint-staged",
     "test": "NODE_ENV=test npm run lint && node_modules/.bin/jest",
     "lint": "node_modules/.bin/xo"
   },
   "dependencies": {
-    "axios": "^0.15.2",
+    "axios": "^0.16.1",
     "express": "^4.15.2",
     "goot": "^0.0.6",
     "i18next": "^8.2.1",
@@ -45,8 +45,8 @@
   "devDependencies": {
     "babel-plugin-transform-define": "^1.2.0",
     "enzyme": "^2.8.2",
-    "eslint-config-prettier": "^1.7.0",
-    "eslint-plugin-react": "^6.10.3",
+    "eslint-config-prettier": "^2.1.0",
+    "eslint-plugin-react": "^7.0.1",
     "husky": "^0.13.3",
     "jest": "^20.0.1",
     "lint-staged": "^3.4.1",
