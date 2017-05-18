@@ -23,11 +23,7 @@ import { fetchAccount } from './../actions/fetch-account'
 
 class Faq extends Component {
   static async getInitialProps() {
-    const translations = await getTranslation(
-      'pt',
-      'common',
-      'http://localhost:3000/static/locales/'
-    )
+    const translations = await getTranslation('pt', 'common')
 
     return { translations }
   }

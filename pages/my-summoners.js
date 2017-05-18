@@ -26,11 +26,7 @@ import { confirmSummoner } from './../actions/confirm-summoner'
 
 class MySummoners extends Component {
   static async getInitialProps() {
-    const translations = await getTranslation(
-      'pt',
-      'common',
-      'http://localhost:3000/static/locales/'
-    )
+    const translations = await getTranslation('pt', 'common')
 
     return { translations }
   }
