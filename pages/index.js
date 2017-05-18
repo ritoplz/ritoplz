@@ -51,6 +51,7 @@ class Home extends Component {
               position: absolute;
               top: 300px;
               right: 0;
+              width: 100%;
             }
 
             @media ${tablet} {

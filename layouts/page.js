@@ -40,6 +40,8 @@ const Page = connect(state => state)(({ children }) => (
     <Head>
       <title>Ritoplz - Worldwide League of Legends Rankings</title>
 
+      <link rel="manifest" href="static/manifest.json" />
+      <meta name="theme-color" content="#317EFB" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta charSet="utf-8" />
       <meta
