@@ -38,6 +38,7 @@ const Summoners = ({ summoners, selectSummoner, summonerSelected }) => {
               cursor: pointer;
               transition: .15s ease-in-out;
               border: 1px solid transparent;
+              margin-bottom: 20px;
             }
 
             li:hover {
