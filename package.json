@@ -12,7 +12,7 @@
     "dev": "NODE_ENV=development node server",
     "staging": "NODE_ENV=staging node server",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_ENV=staging node server.js",
     "precommit": "lint-staged",
     "test": "NODE_ENV=test npm run lint && node_modules/.bin/jest",
     "lint": "node_modules/.bin/xo"
