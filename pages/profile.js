@@ -25,11 +25,7 @@ import { fetchProfile } from './../actions/fetch-profile'
 
 class Profile extends Component {
   static async getInitialProps({ query: { username } }) {
-    const translations = await getTranslation(
-      'pt',
-      'common',
-      'http://localhost:3000/static/locales/'
-    )
+    const translations = await getTranslation('pt', 'common')
 
     return { translations, username }
   }

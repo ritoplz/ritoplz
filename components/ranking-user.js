@@ -35,12 +35,12 @@ const RankingUser = ({ user, position, currentUser, t }) => {
 
         <div className="ranking-user">
           <h3 className="ranking-user__summoner">
-            {user.username} {hotStreak}
+            {user.name} {hotStreak}
           </h3>
-          <h4 className="ranking-user__username">{user.name}</h4>
+          <h4 className="ranking-user__username">{user.username}</h4>
         </div>
 
-        <Link route={Router.linkPage('profile', { username: user.name })}>
+        <Link route={Router.linkPage('profile', { username: user.username })}>
           <a>View Profile</a>
         </Link>
       </header>

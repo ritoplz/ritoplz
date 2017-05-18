@@ -20,11 +20,7 @@ import store from './../store/configure-store'
 
 class Home extends Component {
   static async getInitialProps() {
-    const translations = await getTranslation(
-      'pt',
-      'common',
-      'http://localhost:3000/static/locales/'
-    )
+    const translations = await getTranslation('pt', 'common')
 
     return { translations }
   }
@@ -55,6 +51,7 @@ class Home extends Component {
               position: absolute;
               top: 300px;
               right: 0;
+              width: 100%;
             }
 
             @media ${tablet} {
