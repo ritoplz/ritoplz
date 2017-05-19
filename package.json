@@ -128,7 +128,8 @@
       "no-prototype-builtins": 0,
       "array-callback-return": 0,
       "import/no-unassigned-import": 0,
-      "import/no-named-as-default-member": 0
+      "import/no-named-as-default-member": 0,
+      "react/no-unescaped-entities": 0
     },
     "ignores": [
       "static/*.js",
