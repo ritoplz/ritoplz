@@ -46,8 +46,8 @@ const ProfileSummoners = ({
   const summoner = summoners.map((summoner, index) => (
     <li key={summoner._id} onClick={() => changeSummoner(index)}>
       <img
-        src={`http://avatar.leagueoflegends.com/BR/${summoner.name}.png`}
-        alt=""
+        src={`https://avatar.leagueoflegends.com/BR/${summoner.name}.png`}
+        alt={summoner.name}
       />
       {summoner.name}
 

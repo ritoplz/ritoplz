@@ -29,8 +29,8 @@ const RankingUser = ({ user, position, currentUser, t }) => {
       <header className="ranking-header">
         <img
           className="ranking-header__avatar"
-          src={`https://ddragon.leagueoflegends.com/cdn/7.9.1/img/profileicon/${user.profileIconId}.png`}
-          alt={user.username}
+          src={`https://avatar.leagueoflegends.com/BR/${user.name}.png`}
+          alt={user.name}
         />
 
         <div className="ranking-user">
