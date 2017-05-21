@@ -9,7 +9,6 @@ import LatestMatches from './latest-matches'
 import { colors, typography } from './ui/theme'
 
 const ProfileSummoner = ({ summoners, index, champions, t }) => {
-  console.log(summoners[index].recentMatches)
   const flag = ritoplzTier(
     summoners[index].rankedSolo.tier || summoners[index].rankedSolo
   ).flag.original
