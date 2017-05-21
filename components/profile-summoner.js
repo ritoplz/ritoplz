@@ -9,7 +9,9 @@ import LatestMatches from './latest-matches'
 import { colors, typography } from './ui/theme'
 
 const ProfileSummoner = ({ summoners, index, champions, t }) => {
-  const flag = ritoplzTier(summoners[index].rankedSolo.tier).flag.original
+  const flag = ritoplzTier(
+    summoners[index].rankedSolo.tier || summoners[index].rankedSolo
+  ).flag.original
 
   return (
     <div>
@@ -25,13 +27,13 @@ const ProfileSummoner = ({ summoners, index, champions, t }) => {
           <div>
             <h4 className="summoner-info__name">{summoners[index].name}</h4>
             <span className="summoner-info__tier">
-              {summoners[index].rankedSolo.tier}
+              {summoners[index].rankedSolo.tier || summoners[index].rankedSolo}
               {' '}
-              {summoners[index].rankedSolo.division}
+              {summoners[index].rankedSolo.division || ''}
               {' '}
               — LP
               {' '}
-              {summoners[index].rankedSolo.lp}
+              {summoners[index].rankedSolo.lp || ''}
             </span>
           </div>
         </div>
@@ -40,21 +42,21 @@ const ProfileSummoner = ({ summoners, index, champions, t }) => {
           <li className="summoner-games-item">
             <h5 className="summoner-games__title">
               {summoners[index].rankedSolo.wins +
-                summoners[index].rankedSolo.losses}
+                summoners[index].rankedSolo.losses || 0}
             </h5>
             <span className="summoner-games__subtitle">{t('games')}</span>
           </li>
 
           <li className="summoner-games-item">
             <h5 className="summoner-games__title">
-              {summoners[index].rankedSolo.wins}
+              {summoners[index].rankedSolo.wins || 0}
             </h5>
             <span className="summoner-games__subtitle">{t('wins')}</span>
           </li>
 
           <li className="summoner-games-item">
             <h5 className="summoner-games__title">
-              {summoners[index].rankedSolo.losses}
+              {summoners[index].rankedSolo.losses || 0}
             </h5>
             <span className="summoner-games__subtitle">{t('losses')}</span>
           </li>
