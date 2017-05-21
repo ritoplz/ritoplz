@@ -5,25 +5,32 @@ import PropTypes from 'prop-types'
 
 import { colors, typography, phone } from './../components/ui/theme'
 import { Badge } from './../components/ui'
+import { TrashIcon } from './../components/icons'
 
-const SummonersActive = ({ summoners, t }) => {
+const SummonersActive = ({ summoners, deleteSummoner, t }) => {
   let activeSummoners
 
   if (summoners.length > 0) {
     activeSummoners = summoners.map(summoner => {
-      const { name, profileIconId, rankedSolo } = summoner
+      const { name, rankedSolo, _id } = summoner
 
       return (
-        <li key={summoner._id}>
+        <li key={_id}>
           <img
-            src={`https://ddragon.leagueoflegends.com/cdn/7.8.1/img/profileicon/${profileIconId}.png`}
+            src={`https://avatar.leagueoflegends.com/BR/${name}.png`}
             alt={name}
           />
 
           <div>
             <h4>{name}</h4>
-            <span>{rankedSolo.tier} {rankedSolo.division}</span>
+            <span>
+              {rankedSolo.tier || 'UNRANKED'} {rankedSolo.division || ''}
+            </span>
           </div>
+
+          <span className="delete-summoner" onClick={() => deleteSummoner(_id)}>
+            <TrashIcon />
+          </span>
 
           <Badge type="primary">{t('confirmed')}</Badge>
 
@@ -35,6 +42,15 @@ const SummonersActive = ({ summoners, t }) => {
               padding: 15px;
               margin-bottom: 20px;
               align-items: center;
+              transition: .15s ease-in-out;
+            }
+
+            li:hover {
+              transform: translateY(-5px);
+            }
+
+            li:hover .delete-summoner {
+              display: block;
             }
 
             img {
@@ -58,6 +74,12 @@ const SummonersActive = ({ summoners, t }) => {
               font-size: ${typography.f12};
               font-weight: 500;
               color: ${colors.gray};
+            }
+
+            .delete-summoner {
+              margin-right: 20px;
+              cursor: pointer;
+              display: none;
             }
           `}</style>
         </li>
@@ -86,6 +108,7 @@ const SummonersActive = ({ summoners, t }) => {
 
 SummonersActive.propTypes = {
   summoners: PropTypes.array,
+  deleteSummoner: PropTypes.func.isRequired,
   t: PropTypes.func
 }
 

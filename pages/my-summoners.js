@@ -23,6 +23,7 @@ import { startI18n, getTranslation } from './../services/i18n'
 import store from './../store/configure-store'
 import { fetchAccount } from './../actions/fetch-account'
 import { confirmSummoner } from './../actions/confirm-summoner'
+import { deleteSummoner } from './../actions/delete-summoner'
 
 class MySummoners extends Component {
   static async getInitialProps() {
@@ -35,6 +36,7 @@ class MySummoners extends Component {
     super(props)
     this.i18n = startI18n(props.translations)
     this.confirmSummoner = this.confirmSummoner.bind(this)
+    this.deleteSummoner = this.deleteSummoner.bind(this)
 
     this.state = {
       fetched: false
@@ -47,7 +49,7 @@ class MySummoners extends Component {
     if (isLogged()) {
       return fetchAccount().then(res => {
         if (res.error) {
-          Router.push('/my-summoner')
+          Router.push('/my-summoners')
         }
       })
     }
@@ -78,7 +80,7 @@ class MySummoners extends Component {
     const { confirmSummoner } = this.props
     confirmSummoner(name).then(({ data, error }) => {
       if (data) {
-        return Alert.error('Summoner confirmed')
+        return Alert.success('Summoner confirmed')
       }
 
       if (error) {
@@ -86,6 +88,17 @@ class MySummoners extends Component {
       }
 
       return Alert.error('Summoner not confirmed yet')
+    })
+  }
+
+  deleteSummoner(summonerId) {
+    const { deleteSummoner } = this.props
+    deleteSummoner(summonerId).then(({ data }) => {
+      if (data) {
+        return Alert.success('Summoner deleted')
+      }
+
+      return Alert.error('Try again in a few minutes')
     })
   }
 
@@ -104,7 +117,10 @@ class MySummoners extends Component {
             </PageTitle>
 
             <div>
-              <ActiveSummoners summoners={summoners} />
+              <ActiveSummoners
+                summoners={summoners}
+                deleteSummoner={this.deleteSummoner}
+              />
               <InactiveSummoners
                 summoners={inactiveSummoners}
                 confirmSummoner={this.confirmSummoner}
@@ -150,7 +166,8 @@ MySummoners.propTypes = {
   summoners: PropTypes.array,
   requested: PropTypes.bool,
   confirmSummoner: PropTypes.func.isRequired,
-  translations: PropTypes.object
+  translations: PropTypes.object,
+  deleteSummoner: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => {
@@ -164,7 +181,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchAccount: () => dispatch(fetchAccount()),
-    confirmSummoner: summoner => dispatch(confirmSummoner(summoner))
+    confirmSummoner: summoner => dispatch(confirmSummoner(summoner)),
+    deleteSummoner: summonerId => dispatch(deleteSummoner(summonerId))
   }
 }
 

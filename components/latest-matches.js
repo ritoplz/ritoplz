@@ -7,22 +7,27 @@ import ProfileMatch from './profile-match'
 
 const LatestMatches = ({ matches, champions }) => {
   let championIcon
+  let matchList
 
-  const matchList = matches.games.map(match => {
-    Object.keys(champions).map(champion => {
-      if (champions[champion].key.toString() === match.championId.toString()) {
-        championIcon = `http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/${champions[champion].image.full}`
-      }
+  if (matches) {
+    matchList = matches.games.map(match => {
+      Object.keys(champions).map(champion => {
+        if (
+          champions[champion].key.toString() === match.championId.toString()
+        ) {
+          championIcon = `http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/${champions[champion].image.full}`
+        }
+      })
+
+      return (
+        <ProfileMatch
+          championIcon={championIcon}
+          match={match}
+          key={match.gameId}
+        />
+      )
     })
-
-    return (
-      <ProfileMatch
-        championIcon={championIcon}
-        match={match}
-        key={match.gameId}
-      />
-    )
-  })
+  }
 
   return (
     <div>
