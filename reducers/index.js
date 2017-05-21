@@ -9,6 +9,7 @@ import addSummoner from './add-summoner'
 import rankings from './rankings'
 import resetPassword from './reset-password'
 import profile from './profile'
+import profileSummoner from './profile-summoner'
 
 export default combineReducers({
   signup,
@@ -17,5 +18,6 @@ export default combineReducers({
   addSummoner,
   rankings,
   profile,
-  resetPassword
+  resetPassword,
+  profileSummoner
 })
