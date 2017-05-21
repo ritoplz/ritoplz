@@ -15,7 +15,7 @@ const LatestMatches = ({ matches, champions }) => {
         if (
           champions[champion].key.toString() === match.championId.toString()
         ) {
-          championIcon = `http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/${champions[champion].image.full}`
+          championIcon = `https://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/${champions[champion].image.full}`
         }
       })
 

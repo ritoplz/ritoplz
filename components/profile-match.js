@@ -32,17 +32,19 @@ const ProfileMatch = ({ championIcon, match, t }) => (
       <img className="match-info__avatar" src={championIcon} alt="" />
 
       <div>
-        <h5 className="match-info__title">{match.stats.championsKilled}</h5>
+        <h5 className="match-info__title">
+          {match.stats.championsKilled || 0}
+        </h5>
         <span className="match-info__subtitle">{t('Kills')}</span>
       </div>
 
       <div>
-        <h5 className="match-info__title">{match.stats.assists}</h5>
+        <h5 className="match-info__title">{match.stats.assists || 0}</h5>
         <span className="match-info__subtitle">{t('Assists')}</span>
       </div>
 
       <div>
-        <h5 className="match-info__title">{match.stats.numDeaths}</h5>
+        <h5 className="match-info__title">{match.stats.numDeaths || 0}</h5>
         <span className="match-info__subtitle">{t('Deaths')}</span>
       </div>
 
