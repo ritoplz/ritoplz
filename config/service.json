@@ -10,5 +10,10 @@
     "development": "http://localhost:3000/static/locales",
     "staging": "https://staging-web.ritoplz.com/static/locales",
     "production": "https://ritoplz.com/static/locales"
+  },
+  "facebook": {
+    "development": {
+      "appId": 145634995501895
+    }
   }
 }

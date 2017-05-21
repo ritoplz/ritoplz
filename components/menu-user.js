@@ -19,13 +19,11 @@ const MenuUser = ({ user }) => {
       <style jsx>{`
         span {
           font-size: ${typography.f14};
-          margin-left: 25px;
-          padding-left: 25px;
-          border-left: 1px solid ${colors.border};
           height: auto;
           line-height: 1.5;
           margin-top: 30px;
           margin-bottom: 30px;
+          margin-left: 30px;
         }
 
         a {

@@ -14,13 +14,15 @@ const SummonersInactive = ({ summoners, confirmSummoner, t }) => {
       const { name, code } = summoner
 
       return (
-        <li key={summoner.code} onClick={() => confirmSummoner(summoner)}>
-          <div>
+        <li key={code}>
+          <div className="info">
             <h4>{name}</h4>
             <span>{t('Code')}: {code}</span>
           </div>
 
-          <UiButton ui="success small">{t('Confirm summoner')}</UiButton>
+          <div onClick={() => confirmSummoner(summoner)}>
+            <UiButton ui="success small">{t('Confirm summoner')}</UiButton>
+          </div>
 
           <style jsx>{`
             li {
@@ -33,7 +35,7 @@ const SummonersInactive = ({ summoners, confirmSummoner, t }) => {
               align-items: center;
             }
 
-            div {
+            .info {
               flex-basis: calc(100% - 65px);
             }
 
