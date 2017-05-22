@@ -4,7 +4,7 @@ import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 
-import { colors, typography } from './ui/theme'
+import { colors, typography, phone } from './ui/theme'
 import { isLogged } from './../services/auth'
 
 const ProfileSummoners = ({
@@ -90,6 +90,14 @@ const ProfileSummoners = ({
           min-width: 200px;
           border-radius: 4px;
           z-index: 10;
+          max-height: 300px;
+          overflow-y: auto;
+        }
+
+        @media ${phone} {
+          ul {
+            right: 0;
+          }
         }
       `}</style>
     </ul>

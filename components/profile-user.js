@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import hashAvatar from 'react-hash-avatar'
 import renderHTML from 'react-render-html'
 
-import { colors, typography } from './ui/theme'
+import { colors, typography, phone } from './ui/theme'
 import { ArrowDownIcon, FacebookIcon, TwitterIcon } from './icons'
 import ProfileSummoners from './profile-summoners'
 
@@ -164,6 +164,12 @@ const ProfileUser = ({ profile, currentUser, index, t, changeSummoner }) => {
           display: inline-block;
           margin-left: 15px;
           cursor: pointer;
+        }
+
+        @media ${phone} {
+          .share {
+            display: none;
+          }
         }
       `}</style>
     </section>
