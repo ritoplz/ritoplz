@@ -5,9 +5,10 @@
 
 import i18n from 'i18next'
 import 'isomorphic-fetch'
+import LngDetector from 'i18next-browser-languagedetector'
 
 export const startI18n = file =>
-  i18n.init({
+  i18n.use(LngDetector).init({
     fallbackLng: 'en',
     resources: file,
     load: 'languageOnly',
