@@ -2716,6 +2716,10 @@ husky@^0.13.3:
     is-ci "^1.0.9"
     normalize-path "^1.0.0"
 
+i18next-browser-languagedetector@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/i18next-browser-languagedetector/-/i18next-browser-languagedetector-1.0.1.tgz#73e43aa46fc1c909cac6178b9d1b803d02610faa"
+
 i18next@^8.3.0:
   version "8.3.0"
   resolved "https://registry.yarnpkg.com/i18next/-/i18next-8.3.0.tgz#04739294a665d204cab5fe4f4dd3e9bc3750ace4"
