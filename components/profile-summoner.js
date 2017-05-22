@@ -6,7 +6,7 @@ import ritoplzTier from 'ritoplz-tier'
 
 import PageTitle from './page-title'
 import LatestMatches from './latest-matches'
-import { colors, typography } from './ui/theme'
+import { colors, typography, phone } from './ui/theme'
 
 const ProfileSummoner = ({ summoners, index, champions, t }) => {
   const flag = ritoplzTier(
@@ -83,11 +83,13 @@ const ProfileSummoner = ({ summoners, index, champions, t }) => {
           display: flex;
           justify-content: space-between;
           align-items: center;
+          flex-wrap: wrap;
         }
 
         .summoner-info {
           display: flex;
           align-items: center;
+          flex-wrap: wrap;
         }
 
         .summoner-info__flag {
@@ -133,6 +135,22 @@ const ProfileSummoner = ({ summoners, index, champions, t }) => {
           margin-top: 5px;
           display: block;
         }
+
+        @media ${phone} {
+          .summoner-info {
+            flex-basis: 100%;
+          }
+
+          .summoner-games {
+            flex-basis: 100%;
+            justify-content: space-between;
+          }
+
+          .summoner-games-item {
+            margin-left: 0;
+            padding-left: 0;
+            border: 0;
+          }
       `}</style>
     </div>
   )
