@@ -74,7 +74,7 @@ class Login extends Component {
             </RegisterSidebar>
 
             <RegisterMain
-              title="It’s good to have you back."
+              title="It's good to have you back"
               subtitle="Sign in to your account here."
               redirect={
                 <UiLink ui="primary small" href="/signup">Sign up</UiLink>
