@@ -9,14 +9,15 @@ import { I18nextProvider } from 'react-i18next'
 
 import Page from './../layouts/page'
 
-import { Row, UiSelect, Notify } from './../components/ui'
+import { Row, Notify } from './../components/ui'
 import RankingUser from './../components/ranking-user'
 import RankingHeading from './../components/ranking-heading'
+import RankingFilter from './../components/ranking-filter'
 import Header from './../components/header'
 import { SpinnerIcon } from './../components/icons'
 import { colors, typography, phone } from './../components/ui/theme'
 
-import { locations, countries } from './../services/places'
+import { locations } from './../services/places'
 import { isLogged } from './../services/auth'
 import { startI18n, getTranslation } from './../services/i18n'
 import store from './../store/configure-store'
@@ -42,9 +43,9 @@ class Rankings extends Component {
       nextPage: false,
       country: 'BR',
       countrySelected: { label: 'Brazil', value: 'BR' },
-      stateSelected: { label: 'São Paulo', value: 'SP' },
+      stateSelected: '',
       state: 25,
-      citySelected: { label: 'São Paulo', value: 'SP' }
+      citySelected: ''
     }
   }
 
@@ -185,38 +186,15 @@ class Rankings extends Component {
           <Row>
             <RankingHeading user={this.props.user} />
 
-            <div className="filter">
-              <div className="filter-select">
-                <UiSelect
-                  label="Country"
-                  options={countries}
-                  placeholder="Select your country"
-                  inputSelected={this.state.countrySelected}
-                />
-              </div>
-
-              <div className="filter-select">
-                <UiSelect
-                  label="State"
-                  options={locations[this.state.country]}
-                  placeholder="Select your state"
-                  handleSelectChange={selected => this.onSelectState(selected)}
-                  inputSelected={this.state.stateSelected}
-                />
-              </div>
-
-              <div className="filter-select">
-                <UiSelect
-                  label="City"
-                  options={
-                    locations[this.state.country][this.state.state].cities
-                  }
-                  placeholder="Select your city"
-                  handleSelectChange={selected => this.onSelectCity(selected)}
-                  inputSelected={this.state.citySelected}
-                />
-              </div>
-            </div>
+            <RankingFilter
+              countrySelected={this.state.countrySelected}
+              country={this.state.country}
+              selectState={this.onSelectState}
+              stateSelected={this.state.stateSelected}
+              state={this.state.state}
+              selectCity={this.onSelectCity}
+              citySelected={this.state.citySelected}
+            />
 
             <ul>
               <li className="active">Ranked</li>
@@ -237,18 +215,6 @@ class Rankings extends Component {
           </Row>
 
           <style jsx>{`
-            .filter {
-              display: flex;
-              justify-content: space-between;
-              margin-top: 100px;
-              margin-bottom: 50px;
-              flex-wrap: wrap;
-            }
-
-            .filter-select {
-              flex-basis: calc(33.33% - 15px);
-            }
-
             ul {
               display: flex;
               border-bottom: 1px solid ${colors.border};

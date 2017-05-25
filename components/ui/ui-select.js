@@ -814,7 +814,7 @@ UiSelect.propTypes = {
   options: PropTypes.array.isRequired,
   handleSelectChange: PropTypes.func,
   label: PropTypes.string,
-  inputSelected: PropTypes.object
+  inputSelected: PropTypes.oneOfType([PropTypes.object, PropTypes.string])
 }
 
 export default UiSelect
