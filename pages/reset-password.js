@@ -10,8 +10,10 @@ import { I18nextProvider } from 'react-i18next'
 import Page from './../layouts/page'
 
 import { UiButton, TextInput, Row, Notify } from './../components/ui'
-import { colors, typography, phone } from './../components/ui/theme'
+import { phone } from './../components/ui/theme'
 import Header from './../components/header'
+import Footer from './../components/footer'
+import ResetPasswordContext from './../components/reset-password-context'
 
 import { isLogged } from './../services/auth'
 import { startI18n, getTranslation } from './../services/i18n'
@@ -69,15 +71,12 @@ class ResetPassword extends Component {
         <Page>
           <Header logged={isLogged()} user={this.props.user} />
           <Row>
-            <h2>Reset your password</h2>
-            <p>
-              Forgot your password? Happens all the time. Enter your email below to reset it.
-            </p>
+            <ResetPasswordContext />
 
             <form onSubmit={this.resetPassword}>
               <TextInput
                 label="Email"
-                placeholder="ritoplz@gmail.com"
+                placeholder="ritoplzteam@gmail.com"
                 type="email"
                 inputRef={ref => {
                   this.email = ref
@@ -92,27 +91,14 @@ class ResetPassword extends Component {
             <Notify />
           </Row>
 
+          <Footer />
+
           <style jsx>{`
-            h2 {
-              text-align: center;
-              padding-top: 120px;
-              font-size: ${typography.f30};
-              color: ${colors.grayDark};
-              margin-bottom: 8px;
-              font-weight: 600;
-            }
-
-            p {
-              text-align: center;
-              margin-bottom: 50px;
-              font-size: ${typography.f16};
-              color: ${colors.gray};
-            }
-
             form {
               max-width: 60%;
               margin-left: auto;
               margin-right: auto;
+              padding-bottom: 100px;
             }
 
             @media ${phone} {
