@@ -3,8 +3,8 @@
 import { translate } from 'react-i18next'
 import PropTypes from 'prop-types'
 
-import { colors, typography } from './../components/ui/theme'
-import { TwitterIcon } from './../components/icons'
+import { colors, typography } from './ui/theme'
+import { TwitterIcon } from './icons'
 
 const AboutContext = ({ t }) => (
   <div>
