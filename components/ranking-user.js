@@ -41,7 +41,7 @@ const RankingUser = ({ user, position, currentUser, t }) => {
         </div>
 
         <Link route={Router.linkPage('profile', { username: user.userSlug })}>
-          <a>View Profile</a>
+          <a>{t('View Profile')}</a>
         </Link>
       </header>
 
