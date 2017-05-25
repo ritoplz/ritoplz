@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import PropTypes from 'prop-types'
+
 import Logo from './../components/logo'
 import { phone } from './ui/theme'
 

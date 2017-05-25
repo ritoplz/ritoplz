@@ -1,6 +1,7 @@
 'use strict'
 
 import PropTypes from 'prop-types'
+
 import { colors, typography, phone } from './../components/ui/theme'
 
 const RegisterMain = ({ children, title, subtitle, redirect, greeting }) => (
