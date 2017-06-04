@@ -17,6 +17,7 @@ const ProfileUser = ({ profile, currentUser, index, t, changeSummoner }) => {
     ? `${profile.city}, ${profile.state} — ${profile.country} 🇧🇷`
     : `${t('User has no location')}`
   const userAvatar = renderHTML(avatar)
+  const textTwitter = `Check my profile on Ritoplz and see my summoner's analytics https://ritoplz.com/profile/${profile.username}`
 
   if (profile.summoners.length > 0) {
     const summonerName = profile.summoners[index].name
@@ -108,7 +109,10 @@ const ProfileUser = ({ profile, currentUser, index, t, changeSummoner }) => {
           <FacebookIcon />
         </a>
 
-        <a href="/" className="share__icon">
+        <a
+          href={`https://twitter.com/intent/tweet?text=${textTwitter}&hashtags=Ritoplz,LeagueOfLegends&via=ritoplzrankings`}
+          className="share__icon"
+        >
           <TwitterIcon />
         </a>
       </div>
