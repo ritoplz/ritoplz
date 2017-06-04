@@ -105,7 +105,10 @@ const ProfileUser = ({ profile, currentUser, index, t, changeSummoner }) => {
       <div className="share">
         <span className="share__title">Share on:</span>
 
-        <a href="/" className="share__icon">
+        <a
+          href={`https://facebook.com/sharer.php?u=https://ritoplz.com/${profile.username}`}
+          className="share__icon"
+        >
           <FacebookIcon />
         </a>
 
