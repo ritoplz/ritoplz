@@ -133,6 +133,10 @@ class MySummoners extends Component {
                 flex-wrap: wrap;
                 justify-content: space-between;
               }
+
+              section {
+                min-height: 50vh;
+              }
             `}</style>
           </section>
         )

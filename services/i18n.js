@@ -14,7 +14,10 @@ export const startI18n = file =>
     load: 'languageOnly',
     ns: ['common'],
     defaultNS: 'common',
-    debug: false
+    debug: false,
+    react: {
+      wait: true
+    }
   })
 
 export async function getTranslation(lang, file) {
