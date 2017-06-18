@@ -1,40 +1,35 @@
 'use strict'
 
-import api from '../services/api'
+import api from './../services/api'
 
-import {
-  ACCOUNT_REQUEST,
-  ACCOUNT_SUCCESS,
-  ACCOUNT_ERROR
-} from './../constants'
+import { ACCOUNT_REQUEST, ACCOUNT_SUCCESS, ACCOUNT_ERROR } from './../constants'
 
-function accountRequest() {
+export function accountRequest() {
   return {
     type: ACCOUNT_REQUEST
   }
 }
 
-function accountSuccess(data) {
+export function accountSuccess(data) {
   return {
     type: ACCOUNT_SUCCESS,
     data
   }
 }
 
-function accountError(data) {
+export function accountError(error) {
   return {
     type: ACCOUNT_ERROR,
-    data
+    error
   }
 }
 
-function fetchAccount() {
+export function fetchAccount() {
   return dispatch => {
     dispatch(accountRequest())
-    return api.get('/account')
-    .then(res => dispatch(accountSuccess(res)))
-    .catch(err => dispatch(accountError(err)))
+    return api
+      .get('/account')
+      .then(res => dispatch(accountSuccess(res)))
+      .catch(err => dispatch(accountError(err)))
   }
 }
-
-export default fetchAccount

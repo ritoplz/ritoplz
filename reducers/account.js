@@ -1,10 +1,6 @@
 'use strict'
 
-import {
-  ACCOUNT_REQUEST,
-  ACCOUNT_SUCCESS,
-  ACCOUNT_ERROR
-} from './../constants'
+import { ACCOUNT_REQUEST, ACCOUNT_SUCCESS, ACCOUNT_ERROR } from './../constants'
 
 const initialState = {
   requesting: false,
@@ -33,7 +29,8 @@ export default (state = initialState, action) => {
       return {
         ...state,
         requesting: false,
-        error: action.data
+        requested: true,
+        error: action.error
       }
 
     default:

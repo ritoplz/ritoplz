@@ -33,7 +33,8 @@ export default (state = initialState, action) => {
       return {
         ...state,
         requesting: false,
-        error: action.data
+        requested: true,
+        error: action.error
       }
 
     default:

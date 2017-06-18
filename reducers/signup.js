@@ -1,10 +1,6 @@
 'use strict'
 
-import {
-  SIGNUP_REQUEST,
-  SIGNUP_SUCCESS,
-  SIGNUP_ERROR
-} from './../constants'
+import { SIGNUP_REQUEST, SIGNUP_SUCCESS, SIGNUP_ERROR } from './../constants'
 
 const initialState = {
   requesting: false,
@@ -30,7 +26,8 @@ export default (state = initialState, action) => {
     case SIGNUP_ERROR:
       return Object.assign({}, state, {
         requesting: false,
-        error: action.data
+        requested: true,
+        error: action.error
       })
 
     default:

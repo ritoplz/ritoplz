@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ui fieldset component snapshots should render fieldset 1`] = `
+<div
+  className="fieldset"
+  data-jsx={1892067607}
+>
+  <div
+    className="fielset-group--left"
+    data-jsx={1892067607}
+  >
+    <h4
+      data-jsx={1892067607}
+    >
+      title
+       
+    </h4>
+    <p
+      data-jsx={1892067607}
+    >
+      description
+    </p>
+  </div>
+  <div
+    className="fielset-group--right"
+    data-jsx={1892067607}
+  >
+    Fieldset
+  </div>
+</div>
+`;

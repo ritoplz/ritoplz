@@ -1,0 +1,19 @@
+{
+  "api": {
+    "test": "http://localhost:3001",
+    "development": "http://localhost:3001",
+    "staging": "https://staging.ritoplz.com",
+    "production": "https://api.ritoplz.com"
+  },
+  "i18n": {
+    "test": "http://localhost:3000/static/locales",
+    "development": "http://localhost:3000/static/locales",
+    "staging": "https://staging-web.ritoplz.com/static/locales",
+    "production": "https://ritoplz.com/static/locales"
+  },
+  "facebook": {
+    "development": {
+      "appId": 145634995501895
+    }
+  }
+}

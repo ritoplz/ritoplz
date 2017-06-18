@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ui ui-link component snapshots should render ui-link 1`] = `
+<a
+  className="primary"
+  data-jsx={1642471407}
+  href="/"
+  onClick={[Function]}
+  style={undefined}
+>
+  Link
+</a>
+`;

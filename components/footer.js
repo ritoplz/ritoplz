@@ -1,118 +1,162 @@
 'use strict'
 
-import React from 'react'
+import { translate } from 'react-i18next'
 import Link from 'next/link'
-import { style } from 'next/css'
+import PropTypes from 'prop-types'
 
-const styles = {
-  footer: {
-    paddingTop: '20px',
-    paddingBottom: '20px',
+import { Row } from './../components/ui'
+import { colors, typography, phone } from './../components/ui/theme'
+import {
+  TwitterIcon,
+  FacebookIcon,
+  InstagramIcon,
+  GithubIcon
+} from './../components/icons'
 
-    '@media (max-width: 750px)': {
-      paddingTop: '30px',
-      paddingBottom: '30px'
-    }
-  },
+const Footer = ({ t }) => (
+  <footer>
+    <Row>
+      <ul className="social">
+        <li>
+          <a href="https://www.facebook.com/ritoplzrankings/">
+            <FacebookIcon />
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/ritoplzrankings">
+            <TwitterIcon />
+          </a>
+        </li>
+        <li>
+          <a href="https://instagram.com/ritoplzrankings">
+            <InstagramIcon />
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/ritoplz/ritoplz">
+            <GithubIcon />
+          </a>
+        </li>
+      </ul>
 
-  row: {
-    maxWidth: '900px',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    display: 'flex',
-    justifyContent: 'space-between',
-    flexWrap: 'wrap',
+      <ul>
+        <li>
+          <Link prefetch href="/about">
+            <a>{t('About')}</a>
+          </Link>
+        </li>
 
-    '@media (max-width: 750px)': {
-      textAlign: 'center'
-    }
-  },
+        <li>
+          <Link prefetch href="/signup">
+            <a>{t('Create an account')}</a>
+          </Link>
+        </li>
 
-  copyright: {
-    color: '#666',
-    fontSize: '14px',
+        <li>
+          <Link href="https://github.com/ritoplz/ritoplz/releases">
+            <a>{t('Releases')}</a>
+          </Link>
+        </li>
 
-    '@media (max-width: 750px)': {
-      textAlign: 'center',
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      order: '2',
-      marginTop: '20px'
-    }
-  },
+        <li>
+          <Link href="https://www.dropbox.com/sh/66azn9735a3yehp/AADK7GzGwtYi4iDZsSHl6zCda?dl=0">
+            <a>{t('Press')}</a>
+          </Link>
+        </li>
 
-  item: {
-    display: 'inline-block',
-    borderRight: '1px solid #ededed',
-    verticalAlign: 'middle',
-    marginRight: '15px',
-    height: '20px',
-    lineHeight: '20px',
-    paddingRight: '15px',
+        <li>
+          <Link prefetch href="/faq">
+            <a>{t('FAQ')}</a>
+          </Link>
+        </li>
 
-    '@media (max-width: 750px)': {
-      marginBottom: '10px'
-    }
-  },
+        <li>
+          <Link prefetch href="/terms">
+            <a>{t('Terms of Services')}</a>
+          </Link>
+        </li>
 
-  link: {
-    color: '#666',
-    textDecoration: 'none',
-    fontSize: '12px',
-    transition: 'all .2s ease',
+        <li>
+          <Link prefetch href="/privacy">
+            <a>{t('Privacy Policy')}</a>
+          </Link>
+        </li>
 
-    ':hover': {
-      color: '#ccc'
-    }
-  }
+        <li>
+          <a href="mailto:ritoplzteam@gmail.com">{t('Contact')}</a>
+        </li>
+      </ul>
+
+      <p>
+        {t('Made with')}
+        {' '}
+        ❤
+        {' '}
+        {t('by')}
+        {' '}
+        Ritoplz — © 2017.
+        {' '}
+        {t('All rights reserved')}
+        .
+      </p>
+    </Row>
+
+    <style jsx>{`
+      footer {
+        border-top: 1px solid ${colors.border};
+        padding-top: 50px;
+        padding-bottom: 50px;
+        text-align: center;
+      }
+
+      ul {
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        justify-content: space-around;
+        max-width: 80%;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+      }
+
+      a {
+        color: ${colors.grayDark};
+        opacity: .75;
+        font-size: ${typography.f14};
+        transition: .15s ease-in-out;
+      }
+
+      a:hover {
+        opacity: 1;
+      }
+
+      p {
+        color: ${colors.gray};
+        font-size: ${typography.f14};
+      }
+
+      .social {
+        max-width: 200px;
+      }
+
+      @media ${phone} {
+        li {
+          flex-basis: 100%;
+          margin-top: 10px;
+          margin-bottom: 10px;
+        }
+
+        .social li {
+          flex-basis: 25%;
+        }
+      }
+    `}</style>
+  </footer>
+)
+
+Footer.propTypes = {
+  t: PropTypes.func
 }
 
-export default () => {
-  return (
-    <footer className={style(styles.footer)}>
-      <div className={style(styles.row)}>
-        <span className={style(styles.copyright)}>Copyright © 2016 Ritoplz. All rights reserved.</span>
-
-        <nav className={style(styles.footerLinks)}>
-          <ul>
-            <li className={style(styles.item)}>
-              <Link href="https://github.com/ritoplz">
-                <img src="/static/github.svg"/>
-              </Link>
-            </li>
-
-            <li className={style(styles.item)}>
-              <Link href="https://twitter.com/ritoplzrankings">
-                <img src="/static/twitter.svg"/>
-              </Link>
-            </li>
-
-            <li className={style(styles.item)}>
-              <Link href="/faq">
-                <span className={style(styles.link)}>FAQ</span>
-              </Link>
-            </li>
-
-            <li className={style(styles.item)}>
-              <Link href="/terms">
-                <span className={style(styles.link)}>Termos de Serviço</span>
-              </Link>
-            </li>
-
-            <li className={style(styles.item)}>
-              <Link href="/privacy">
-                <span className={style(styles.link)}>Política de Privacidade</span>
-              </Link>
-            </li>
-
-            <li className={style(styles.item)}>
-              <a href="mailto:ritoplzteam@gmail.com">
-                <span className={style(styles.link)}>ritoplzteam@gmail.com</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </footer>
-  )
-}
+export default translate(['common'])(Footer)

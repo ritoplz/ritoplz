@@ -1,6 +1,6 @@
 'use strict'
 
-import api from '../services/api'
+import api from './../services/api'
 
 import {
   RANKINGS_REQUEST,
@@ -8,27 +8,27 @@ import {
   RANKINGS_ERROR
 } from './../constants'
 
-function rankingsRequest() {
+export function rankingsRequest() {
   return {
     type: RANKINGS_REQUEST
   }
 }
 
-function rankingsSuccess(data) {
+export function rankingsSuccess(data) {
   return {
     type: RANKINGS_SUCCESS,
     data
   }
 }
 
-function rankingsError(err) {
+export function rankingsError(error) {
   return {
     type: RANKINGS_ERROR,
-    err
+    error
   }
 }
 
-function fetchRankings(params = { country: 'BR', state: undefined, city: undefined, limit: 50, skip: 0 }) {
+export function fetchRankings(params) {
   return dispatch => {
     dispatch(rankingsRequest())
 
@@ -43,9 +43,7 @@ function fetchRankings(params = { country: 'BR', state: undefined, city: undefin
         unrankeds: params.unrankeds
       }
     })
-    .then(res => dispatch(rankingsSuccess(res)))
-    .catch(err => dispatch(rankingsError(err)))
+      .then(res => dispatch(rankingsSuccess(res)))
+      .catch(err => dispatch(rankingsError(err)))
   }
 }
-
-export default fetchRankings
