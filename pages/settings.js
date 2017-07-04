@@ -50,6 +50,7 @@ class Settings extends Component {
       password: '',
       newPassword: '',
       emailConfirmed: false,
+      confirm: '',
       country: 'BR',
       countrySelected: { label: 'Brazil', value: 'BR' },
       stateSelected: { label: 'São Paulo', value: 'SP' },
@@ -129,8 +130,9 @@ class Settings extends Component {
       name,
       username,
       email,
-      password,
+      oldPassword,
       newPassword,
+      confirm,
       country,
       stateSelected,
       city
@@ -144,9 +146,10 @@ class Settings extends Component {
     }
 
     if (userSettings.email === email) {
-      if (password && newPassword) {
-        userData.password = password
+      if (oldPassword && newPassword && confirm) {
+        userData.oldPassword = oldPassword
         userData.newPassword = newPassword
+        userData.confirm = confirm
       }
 
       return editUser(userData)
@@ -268,9 +271,9 @@ class Settings extends Component {
                   type="password"
                   label="Current password"
                   placeholder="Current password"
-                  name="password"
+                  name="oldPassword"
                   handleInputChange={this.handleInputChange}
-                  inputValue={this.state.password}
+                  inputValue={this.state.oldPassword}
                 />
                 <TextInput
                   type="password"
@@ -279,6 +282,14 @@ class Settings extends Component {
                   name="newPassword"
                   handleInputChange={this.handleInputChange}
                   inputValue={this.state.newPassword}
+                />
+                <TextInput
+                  type="password"
+                  label="Confirm password"
+                  placeholder="Confirm password"
+                  name="confirm"
+                  handleInputChange={this.handleInputChange}
+                  inputValue={this.state.confirm}
                 />
               </Fieldset>
 

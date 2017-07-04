@@ -49,8 +49,7 @@ class ResetPassword extends Component {
   resetPassword(e) {
     e.preventDefault()
     const { resetPassword } = this.props
-    const userData = { email: this.email }
-
+    const userData = { email: this.email.value }
     resetPassword(userData).then(({ data, error }) => {
       if (data) {
         Alert.success('Instructions sent to your email.')
@@ -58,9 +57,7 @@ class ResetPassword extends Component {
       }
 
       if (error) {
-        Alert.error(
-          'We were not able to reset your password at the moment, please contact us.'
-        )
+        Alert.error(error.message)
       }
     })
   }
