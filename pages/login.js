@@ -8,6 +8,7 @@ import Router from 'next/router'
 import Link from 'next/link'
 import Alert from 'react-s-alert'
 import { I18nextProvider } from 'react-i18next'
+import spacetime from 'spacetime'
 
 import Page from './../layouts/page'
 
@@ -25,7 +26,8 @@ import { onLogin } from './../actions/login'
 class Login extends Component {
   static async getInitialProps() {
     const translations = await getTranslation('pt', 'common')
-    const greeting = await goot()
+    const now = spacetime().hour()
+    const greeting = await goot(now)
     return { greeting, translations }
   }
 
@@ -67,7 +69,8 @@ class Login extends Component {
                 League of Legends Rankings.
               </h2>
               <p className="login-heading__description">
-                Worldwide Rankings for League of Legends. See who's the best player in your region.
+                Worldwide Rankings for League of Legends. See who's the best
+                player in your region.
               </p>
 
               <RegisterFooter />
@@ -77,7 +80,9 @@ class Login extends Component {
               title="It's good to have you back"
               subtitle="Sign in to your account here."
               redirect={
-                <UiLink ui="primary small" href="/signup">Sign up</UiLink>
+                <UiLink ui="primary small" href="/signup">
+                  Sign up
+                </UiLink>
               }
               greeting={greeting}
             >
@@ -106,7 +111,9 @@ class Login extends Component {
                   </span>
                 </Link>
 
-                <UiButton ui="success block" type="submit">Login</UiButton>
+                <UiButton ui="success block" type="submit">
+                  Login
+                </UiButton>
               </form>
             </RegisterMain>
 
@@ -146,7 +153,7 @@ class Login extends Component {
               font-size: ${typography.f14};
               color: ${colors.gray};
               margin-bottom: 50px;
-              transition: .15s ease-in-out;
+              transition: 0.15s ease-in-out;
               cursor: pointer;
               display: flex;
               flex-direction: row-reverse;

@@ -7,6 +7,7 @@ import withRedux from 'next-redux-wrapper'
 import Router from 'next/router'
 import Alert from 'react-s-alert'
 import { I18nextProvider } from 'react-i18next'
+import spacetime from 'spacetime'
 
 import Page from './../layouts/page'
 
@@ -24,7 +25,8 @@ import { onSignup } from './../actions/signup'
 class Signup extends Component {
   static async getInitialProps() {
     const translations = await getTranslation('pt', 'common')
-    const greeting = await goot()
+    const now = spacetime().hour()
+    const greeting = await goot(now)
     return { greeting, translations }
   }
 
@@ -70,7 +72,8 @@ class Signup extends Component {
                 League of Legends Rankings.
               </h2>
               <p className="signup-heading__description">
-                Join the Worldwide Rankings for League of Legends. See who's the best player in your region.
+                Join the Worldwide Rankings for League of Legends. See who's the
+                best player in your region.
               </p>
 
               <RegisterFooter />
@@ -79,7 +82,11 @@ class Signup extends Component {
             <RegisterMain
               title="Welcome to Ritoplz 🎉"
               subtitle="Create an account and keep playing, let's rank up."
-              redirect={<UiLink ui="primary small" href="/login">Login</UiLink>}
+              redirect={
+                <UiLink ui="primary small" href="/login">
+                  Login
+                </UiLink>
+              }
               greeting={greeting}
             >
               <form className="signup-form" onSubmit={this.handleSignup}>
@@ -114,11 +121,8 @@ class Signup extends Component {
                 </UiButton>
 
                 <p className="warning">
-                  We will
-                  {' '}
-                  <strong>never</strong>
-                  {' '}
-                  ask for any League of Legends credentials.
+                  We will <strong>never</strong> ask for any League of Legends
+                  credentials.
                 </p>
               </form>
             </RegisterMain>
@@ -159,7 +163,7 @@ class Signup extends Component {
               font-size: ${typography.f14};
               color: ${colors.gray};
               margin-bottom: 50px;
-              transition: .15s ease-in-out;
+              transition: 0.15s ease-in-out;
               cursor: pointer;
               display: flex;
               flex-direction: row-reverse;
