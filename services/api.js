@@ -1,11 +1,9 @@
 'use strict'
 
-/* global API_URL */
-
 import axios from 'axios'
 import { getToken, isLogged } from './auth'
 
-const apiUrl = API_URL || 'http://localhost:3001'
+const apiUrl = process.env.API_URL || 'http://localhost:3001'
 
 const api = axios.create({
   baseURL: apiUrl,

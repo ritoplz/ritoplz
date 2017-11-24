@@ -1,10 +1,7 @@
 'use strict'
 
-/* global fetch */
-/* global I18N_URL */
-
 import i18n from 'i18next'
-import 'isomorphic-fetch'
+import axios from 'axios'
 import LngDetector from 'i18next-browser-languagedetector'
 
 export const startI18n = file =>
@@ -21,13 +18,12 @@ export const startI18n = file =>
   })
 
 export async function getTranslation(lang, file) {
-  const i18nUrl = I18N_URL || 'http://localhost:3000/static/locales'
-  const response = await fetch(`${i18nUrl}/${lang}/${file}.json`)
-  const json = await response.json()
+  const i18nUrl = process.env.I18N_URL || 'http://localhost:3000/static/locales'
+  const response = await axios(`${i18nUrl}/${lang}/${file}.json`)
 
   return {
     [lang]: {
-      [file]: json
+      [file]: response.data
     }
   }
 }
