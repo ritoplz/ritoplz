@@ -1,6 +1,7 @@
 {
   "name": "Ritoplz",
-  "description": "Worldwide Rankings for League of Legends. See who's the best player in your region.",
+  "description":
+    "Worldwide Rankings for League of Legends. See who's the best player in your region.",
   "version": "2.0.0",
   "repository": {
     "url": "https://github.com/ritoplz/ritoplz.git",
@@ -14,8 +15,8 @@
     "build": "next build",
     "start": "NODE_ENV=production node server",
     "precommit": "lint-staged",
-    "test": "NODE_ENV=test npm run lint && node_modules/.bin/jest",
-    "lint": "node_modules/.bin/xo"
+    "test": "yarn lint && jest",
+    "lint": "xo"
   },
   "dependencies": {
     "axios": "^0.15.2",
@@ -65,28 +66,29 @@
     "xo": "^0.18.2"
   },
   "babel": {
-    "presets": [
-      "next/babel"
-    ],
+    "presets": ["next/babel"],
     "env": {
       "development": {
-        "plugins": [
-          "inline-dotenv"
-        ]
+        "plugins": ["inline-dotenv"]
       },
       "production": {
-        "plugins": [
-          "transform-inline-environment-variables"
+        "plugins": ["transform-inline-environment-variables"]
+      },
+      "test": {
+        "presets": [
+          [
+            "env",
+            {
+              "modules": "commonjs"
+            }
+          ],
+          "next/babel"
         ]
       }
     }
   },
   "xo": {
-    "extends": [
-      "prettier",
-      "prettier/react",
-      "plugin:react/recommended"
-    ],
+    "extends": ["prettier", "prettier/react", "plugin:react/recommended"],
     "rules": {
       "react/react-in-jsx-scope": 0,
       "space-before-function-paren": 0,
@@ -98,10 +100,7 @@
       "import/no-named-as-default-member": 0,
       "react/no-unescaped-entities": 0
     },
-    "ignores": [
-      "static/*.js",
-      "next.config.js"
-    ]
+    "ignores": ["static/*.js", "next.config.js"]
   },
   "lint-staged": {
     "*.js": [
