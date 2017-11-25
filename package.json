@@ -2,103 +2,44 @@
   "name": "Ritoplz",
   "description":
     "Worldwide Rankings for League of Legends. See who's the best player in your region.",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "repository": {
     "url": "https://github.com/ritoplz/ritoplz.git",
     "type": "git"
   },
   "author": "Bu Kinoshita <bukinoshita@gmail.com>",
   "license": "MIT",
+  "keywords": ["league of legends", "LoL", "Rankings", "Ritoplz"],
   "scripts": {
-    "dev": "NODE_ENV=development node server",
-    "staging": "NODE_ENV=staging node server",
+    "dev": "next",
     "build": "next build",
-    "start": "NODE_ENV=production node server",
+    "start": "next start",
     "precommit": "lint-staged",
-    "test": "yarn lint && jest",
-    "lint": "xo"
+    "test": "xo"
   },
   "dependencies": {
-    "axios": "^0.15.2",
-    "babel-plugin-inline-dotenv": "^1.1.1",
-    "babel-plugin-transform-inline-environment-variables": "^0.2.0",
-    "express": "^4.16.2",
-    "goot": "^1.0.0",
-    "i18next": "^10.1.0",
-    "i18next-browser-languagedetector": "^2.1.0",
-    "next": "^4.1.4",
-    "next-redux-wrapper": "^1.3.4",
-    "next-url-prettifier": "^1.1.5",
+    "next": "^4.2.0-canary.1",
     "nprogress": "^0.2.0",
-    "prop-types": "^15.6.0",
-    "rc-progress": "^2.2.4",
     "react": "^16.1.1",
-    "react-addons-css-transition-group": "^15.6.2",
-    "react-addons-shallow-compare": "^15.6.2",
-    "react-cookies": "^0.1.0",
-    "react-dom": "^16.1.1",
-    "react-dom-factories": "^1.0.2",
-    "react-hash-avatar": "^0.0.2",
-    "react-i18next": "^7.0.0",
-    "react-infinite-scroller": "^1.1.1",
-    "react-redux": "^5.0.6",
-    "react-render-html": "^0.6.0",
-    "react-s-alert": "^1.3.2",
-    "react-selectize": "^3.0.1",
-    "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0",
-    "ritoplz-tier": "^0.0.4",
-    "spacetime": "^2.1.2",
-    "timeago-react": "^2.0.0"
+    "react-dom": "^16.1.1"
   },
   "devDependencies": {
-    "babel-plugin-transform-define": "^1.3.0",
-    "enzyme": "^3.2.0",
     "eslint-config-prettier": "^2.8.0",
     "eslint-plugin-react": "^7.5.1",
     "husky": "^0.14.3",
     "jest": "^21.2.1",
     "lint-staged": "^5.0.0",
     "prettier": "^1.8.2",
-    "react-addons-test-utils": "^15.6.2",
-    "react-test-renderer": "^16.1.1",
-    "redux-logger": "^3.0.6",
+    "prop-types": "^15.6.0",
     "xo": "^0.18.2"
   },
   "babel": {
-    "presets": ["next/babel"],
-    "env": {
-      "development": {
-        "plugins": ["inline-dotenv"]
-      },
-      "production": {
-        "plugins": ["transform-inline-environment-variables"]
-      },
-      "test": {
-        "presets": [
-          [
-            "env",
-            {
-              "modules": "commonjs"
-            }
-          ],
-          "next/babel"
-        ]
-      }
-    }
+    "presets": ["next/babel"]
   },
   "xo": {
     "extends": ["prettier", "prettier/react", "plugin:react/recommended"],
     "rules": {
-      "react/react-in-jsx-scope": 0,
-      "space-before-function-paren": 0,
-      "object-curly-spacing": 0,
-      "no-implicit-coercion": 0,
-      "no-prototype-builtins": 0,
-      "array-callback-return": 0,
-      "import/no-unassigned-import": 0,
-      "import/no-named-as-default-member": 0,
-      "react/no-unescaped-entities": 0
+      "react/react-in-jsx-scope": 0
     },
     "ignores": ["static/*.js", "next.config.js"]
   },
