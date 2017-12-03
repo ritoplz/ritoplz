@@ -1,79 +1,61 @@
 'use strict'
 
-import { Component } from 'react'
-import withRedux from 'next-redux-wrapper'
-import PropTypes from 'prop-types'
-import { I18nextProvider } from 'react-i18next'
+import React from 'react'
 
 import Page from './../layouts/page'
 
-import Header from './../components/header'
-import Hero from './../components/home-hero'
-import Road from './../components/home-road'
-import Footer from './../components/footer'
-import Analytics from './../components/home-analytics'
-import { Row } from './../components/ui'
-import { phone, tablet } from './../components/ui/theme'
+import { colors, typography } from './../theme'
 
-import { startI18n, getTranslation } from './../services/i18n'
-import store from './../store/configure-store'
+const Home = () => (
+  <Page>
+    <section>
+      <div>
+        <h1>Ritoplz v3</h1>
+        <h2>coming soon</h2>
 
-class Home extends Component {
-  static async getInitialProps() {
-    const translations = await getTranslation('pt', 'common')
+        <a href="https://github.com/ritoplz/ritoplz">github</a>
+      </div>
 
-    return { translations }
-  }
+      <style jsx>{`
+        section {
+          min-height: 100vh;
+          max-height: 100vh;
+          height: 100%;
+          width: 100%;
+          background-color: ${colors.primary};
+          display: flex;
+          align-items: center;
+        }
 
-  constructor(props) {
-    super(props)
+        div {
+          width: 100%;
+          text-align: center;
+        }
 
-    this.i18n = startI18n(props.translations)
-  }
+        h1 {
+          font-weight: ${typography.regular};
+          color: ${colors.white};
+        }
 
-  render() {
-    return (
-      <I18nextProvider i18n={this.i18n}>
-        <Page>
-          <Header logged={false} />
+        h2 {
+          font-weight: ${typography.thin};
+          color: ${colors.white};
+        }
 
-          <Row>
-            <Hero />
-            <img src="static/background.png" alt="" />
-            <Road />
-            <Analytics />
-          </Row>
+        a {
+          color: ${colors.white};
+          margin-top: 30px;
+          display: block;
+          transition: all 0.2s;
+          opacity: 0.75;
+        }
 
-          <Footer />
+        a:hover {
+          opacity: 1;
+        }
+      `}</style>
+    </section>
+  </Page>
+)
 
-          <style jsx>{`
-            img {
-              position: absolute;
-              top: 300px;
-              right: 0;
-              width: 100%;
-            }
-
-            @media ${tablet} {
-              img {
-                top: 400px;
-              }
-            }
-
-            @media ${phone} {
-              img {
-                display: none;
-              }
-            }
-          `}</style>
-        </Page>
-      </I18nextProvider>
-    )
-  }
-}
-
-Home.propTypes = {
-  translations: PropTypes.object
-}
-
-export default withRedux(store, null, null)(Home)
+export default Home

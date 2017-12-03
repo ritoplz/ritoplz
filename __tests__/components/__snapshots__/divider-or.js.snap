@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`ui divider-or component snapshots should render divider-or 1`] = `
-<div
-  data-jsx={4137905713}
->
-  or
-</div>
-`;

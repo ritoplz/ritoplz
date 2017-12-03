@@ -4,10 +4,9 @@ import Progress from 'nprogress'
 import Head from 'next/head'
 import Router from 'next/router'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 
 import pkg from './../package'
-import { colors } from './../components/ui/theme'
+import { colors } from './../theme'
 
 let progress
 
@@ -35,7 +34,7 @@ if (global.document) {
   }
 }
 
-const Page = connect(state => state)(({ children }) => (
+const Page = ({ children }) => (
   <div>
     <Head>
       <title>Ritoplz - Worldwide League of Legends Rankings</title>
@@ -44,14 +43,8 @@ const Page = connect(state => state)(({ children }) => (
       <meta name="theme-color" content="#317EFB" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta charSet="utf-8" />
-      <meta
-        name="description"
-        content="Worldwide Rankings for League of Legends. See who's the best player in your region."
-      />
-      <meta
-        name="keywords"
-        content="league of legends, lol, LOL, League, of, Legends, Rankings, ritoplz, Ritoplz, summoner, summoners, platinum, bronze, silver, lp"
-      />
+      <meta name="description" content={pkg.description} />
+      <meta name="keywords" content={pkg.keywords} />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@ritoplzrankings" />
@@ -84,9 +77,7 @@ const Page = connect(state => state)(({ children }) => (
       <link rel="icon" href="static/favicon.png" type="image/x-icon" />
     </Head>
 
-    <main>
-      {children}
-    </main>
+    <main>{children}</main>
 
     <style jsx global>{`
       * {
@@ -105,7 +96,8 @@ const Page = connect(state => state)(({ children }) => (
         max-width: 100%;
       }
 
-      ul, li {
+      ul,
+      li {
         list-style: none;
       }
 
@@ -134,12 +126,12 @@ const Page = connect(state => state)(({ children }) => (
         width: 100px;
         height: 100%;
         box-shadow: 0 0 10px ${colors.primary}, 0 0 5px ${colors.primary};
-        opacity: 1.0;
+        opacity: 1;
         transform: rotate(3deg) translate(0px, -4px);
       }
     `}</style>
   </div>
-))
+)
 
 Page.propTypes = {
   children: PropTypes.node.isRequired
