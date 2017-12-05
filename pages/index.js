@@ -1,61 +1,83 @@
 'use strict'
 
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 
 import Page from './../layouts/page'
 
-import { colors, typography } from './../theme'
+import Logo from './../components/logo'
+import pageWithIntl from './../components/page-with-intl'
 
-const Home = () => (
+import { colors, typography, phone } from './../theme'
+
+export default pageWithIntl(() => (
   <Page>
     <section>
       <div>
-        <h1>Ritoplz v3</h1>
-        <h2>coming soon</h2>
+        <Logo />
+        <h2>
+          <FormattedMessage
+            id="description"
+            defaultMessage="Worldwide Rankings for League of Legends. See who's the best player in your region."
+          />
+        </h2>
 
-        <a href="https://github.com/ritoplz/ritoplz">github</a>
+        <p>
+          <FormattedMessage id="soon" defaultMessage="coming soon" />
+        </p>
       </div>
 
       <style jsx>{`
         section {
-          min-height: 100vh;
-          max-height: 100vh;
-          height: 100%;
-          width: 100%;
-          background-color: ${colors.primary};
           display: flex;
           align-items: center;
+          min-height: 100vh;
+          text-align: center;
+          width: 100%;
+          background: ${colors.primary};
+          background: -moz-linear-gradient(
+            left,
+            ${colors.primary} 1%,
+            ${colors.secondary} 100%
+          );
+          background: -webkit-linear-gradient(
+            left,
+            ${colors.primary} 1%,
+            ${colors.secondary} 100%
+          );
+          background: linear-gradient(
+            to right,
+            ${colors.primary} 1%,
+            ${colors.secondary} 100%
+          );
         }
 
         div {
-          width: 100%;
-          text-align: center;
-        }
-
-        h1 {
-          font-weight: ${typography.regular};
-          color: ${colors.white};
+          max-width: 550px;
+          margin-left: auto;
+          margin-right: auto;
         }
 
         h2 {
-          font-weight: ${typography.thin};
           color: ${colors.white};
-        }
-
-        a {
-          color: ${colors.white};
+          font-weight: ${typography.light};
+          font-size: ${typography.f26};
+          line-height: 40px;
           margin-top: 30px;
-          display: block;
-          transition: all 0.2s;
-          opacity: 0.75;
         }
 
-        a:hover {
-          opacity: 1;
+        p {
+          color: ${colors.white};
+          margin-top: 50px;
+        }
+
+        @media ${phone} {
+          h2 {
+            font-size: ${typography.f20};
+            line-height: 30px;
+          }
         }
       `}</style>
     </section>
   </Page>
-)
-
-export default Home
+))

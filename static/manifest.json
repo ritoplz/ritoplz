@@ -2,11 +2,13 @@
   "short_name": "Ritoplz",
   "name": "Ritoplz",
   "start_url": ".",
-  "theme_color": "#6772E5",
-  "background_color": "#6772E5",
-  "icons": [{
-    "src": "static/homescreen192.png",
-    "sizes": "192x192",
-    "type": "image/png"
-  }]
+  "theme_color": "#483dfd",
+  "background_color": "#483dfd",
+  "icons": [
+    {
+      "src": "static/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
 }

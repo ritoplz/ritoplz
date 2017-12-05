@@ -3,7 +3,8 @@
 export const colors = {
   black: '000000',
   white: '#ffffff',
-  primary: '#6772e5'
+  primary: '#483dfd',
+  secondary: '#843dfd'
 }
 
 export const typography = {

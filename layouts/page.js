@@ -1,5 +1,7 @@
 'use strict'
 
+import React from 'react'
+import { injectIntl } from 'react-intl'
 import Progress from 'nprogress'
 import Head from 'next/head'
 import Router from 'next/router'
@@ -40,7 +42,7 @@ const Page = ({ children }) => (
       <title>Ritoplz - Worldwide League of Legends Rankings</title>
 
       <link rel="manifest" href="static/manifest.json" />
-      <meta name="theme-color" content="#317EFB" />
+      <meta name="theme-color" content="#483dfd" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta charSet="utf-8" />
       <meta name="description" content={pkg.description} />
@@ -69,9 +71,7 @@ const Page = ({ children }) => (
       />
       <meta property="og:site_name" content="Ritoplz" />
 
-      <script src="static/drift.js" />
       <script src="static/analytics.js" />
-      <script src="static/heatmaps.js" />
 
       <link rel="shortcut icon" href="static/favicon.png" type="image/x-icon" />
       <link rel="icon" href="static/favicon.png" type="image/x-icon" />
@@ -137,4 +137,4 @@ Page.propTypes = {
   children: PropTypes.node.isRequired
 }
 
-export default Page
+export default injectIntl(Page)
